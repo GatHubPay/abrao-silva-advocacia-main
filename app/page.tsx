@@ -261,7 +261,7 @@ export default function AbraoSilvaAdvocacia() {
 
             <div className="space-y-8 md:space-y-12">
               {/* Formulário */}
-               <div className=" backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden  hover:shadow-3xl transition-all duration-300">
+               <div className="  rounded-2xl shadow-2xl overflow-hidden  hover:shadow-3xl transition-all duration-300">
                 <div className="p-6 md:p-8">
                   <div className="mb-6">
                     <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Fale diretamente com um de <span className="text-[#e2ba4b]">nossos Advogados</span></h3>
