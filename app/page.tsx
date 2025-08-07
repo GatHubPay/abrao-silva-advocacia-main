@@ -490,31 +490,32 @@ export default function AbraoSilvaAdvocacia() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-gradient-to-b from-black via-[#333333] to-[#333333] text-white mt-auto">
-        {/* Main Footer Content - Menu Horizontal */}
-        <div className="container mx-auto px-4 py-4">
+      <footer className="bg-black text-white mt-auto">
+        {/* Main Footer Content */}
+        <div className="container mx-auto px-4 py-8">
           <div className="flex items-center justify-between">
             
-            {/* Left Column - Logo and Company Name */}
-            <div className="flex items-center space-x-3">
-              <Image 
-                src="/logo.png" 
-                alt="Abrão & Silva Advocacia" 
-                width={200} 
-                height={100} 
-                className="h-20 w-auto" 
-              />
-              
+            {/* Left Side - Logo */}
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center">
+                <div className="bg-[#e2ba4b] text-black font-bold text-2xl px-3 py-2 rounded mr-3">
+                  AS
+                </div>
+                <div className="text-white">
+                  <div className="font-semibold text-lg">ABRÃO & SILVA</div>
+                  <div className="text-sm text-gray-300">ADVOGADOS ASSOCIADOS</div>
+                </div>
+              </div>
             </div>
 
-            {/* Middle Column - Contact Information and Social Media */}
-            <div className="flex flex-col items-center space-y-2">
-              <span className="text-[#b3cce6] text-xs font-medium">SAC geral</span>
+            {/* Middle Left - Contact Information & Social Media */}
+            <div className="flex flex-col items-center space-y-3">
+              <span className="text-white text-sm font-medium">SAC geral</span>
               <div className="flex items-center space-x-2">
-                <Phone className="h-3 w-3 text-[#b3cce6]" />
+                <Phone className="h-4 w-4 text-white" />
                 <a 
                   href="tel:6234122893" 
-                  className="text-[#b3cce6] hover:text-white transition-colors text-sm font-medium"
+                  className="text-white hover:text-gray-300 transition-colors text-sm font-medium"
                 >
                   (62) 3412-2893
                 </a>
@@ -529,63 +530,75 @@ export default function AbraoSilvaAdvocacia() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#b3cce6] hover:text-white transition-colors"
+                      className="bg-gray-700 hover:bg-gray-600 p-2 rounded transition-colors"
                       aria-label={social.name}
                     >
-                      <IconComponent className="h-4 w-4" />
+                      <IconComponent className="h-4 w-4 text-white" />
                     </a>
                   );
                 })}
               </div>
             </div>
 
-            {/* Right Column - Navigation Links and CTA Button */}
-            <div className="flex flex-col items-end space-y-3">
-              {/* Navigation Links */}
-              <div className="text-right">
-                <div className="flex flex-wrap justify-end space-x-4 text-[#b3cce6] text-xs font-medium">
-                  <span>HOME</span>
-                  <span>|</span>
-                  <span>SOBRE NÓS</span>
-                  <span>|</span>
-                  <span>ÁREAS DE ATUAÇÃO</span>
-                  <span>|</span>
-                  <span>EQUIPE</span>
-                </div>
-                <div className="flex flex-wrap justify-end space-x-4 text-[#b3cce6] text-xs font-medium mt-1">
-                  <span>DÚVIDAS</span>
-                  <span>|</span>
-                  <span>BLOG</span>
-                  <span>|</span>
-                  <div className="flex items-center space-x-1">
-                    <span>UNIDADES</span>
-                    <ChevronDown className="h-3 w-3" />
-                  </div>
-                  <span>|</span>
-                  <span>CONTATO</span>
-                </div>
+            {/* Middle Right - Navigation Links */}
+            <div className="flex flex-col items-center space-y-2">
+              {/* Top Row - Gold Links */}
+              <div className="flex items-center space-x-4">
+                <span className="text-[#e2ba4b] text-sm font-medium">HOME</span>
+                <div className="w-px h-4 bg-white"></div>
+                <span className="text-[#e2ba4b] text-sm font-medium">SOBRE NÓS</span>
+                <div className="w-px h-4 bg-white"></div>
+                <span className="text-[#e2ba4b] text-sm font-medium">ÁREAS DE ATUAÇÃO</span>
+                <div className="w-px h-4 bg-white"></div>
+                <span className="text-[#e2ba4b] text-sm font-medium">EQUIPE</span>
               </div>
-              
-              {/* Call-to-Action Button */}
-              <button className="bg-[#4a7ba8] hover:bg-[#5a8bb8] border border-[#2d5a8a] text-[#1a3d5a] px-3 py-2 rounded-lg transition-colors flex items-center space-x-2">
-                <MapPin className="h-4 w-4" />
-                <span className="text-xs font-medium">Encontre um escritório mais próximo!</span>
+              {/* Bottom Row - White Links */}
+              <div className="flex items-center space-x-4">
+                <span className="text-white text-sm font-medium">DÚVIDAS</span>
+                <div className="w-px h-4 bg-white"></div>
+                <span className="text-white text-sm font-medium">BLOG</span>
+                <div className="w-px h-4 bg-white"></div>
+                <div className="flex items-center space-x-1">
+                  <span className="text-white text-sm font-medium">UNIDADES</span>
+                  <ChevronDown className="h-3 w-3 text-white" />
+                </div>
+                <div className="w-px h-4 bg-white"></div>
+                <span className="text-white text-sm font-medium">CONTATO</span>
+              </div>
+            </div>
+
+            {/* Right Side - Call to Action Button */}
+            <div className="flex items-center">
+              <button className="bg-[#e2ba4b] hover:bg-[#d4a93a] text-black px-4 py-3 rounded-lg transition-colors flex items-center space-x-3">
+                <BookOpen className="h-5 w-5" />
+                <span className="text-sm font-medium">Encontre um escritório mais próximo!</span>
               </button>
             </div>
           </div>
         </div>
 
         {/* Bottom Bar - Copyright */}
-        <div className="bg-[#F5F5F5] px-4 py-2">
+        <div className="bg-gray-200 px-4 py-3">
           <div className="container mx-auto">
             <div className="text-center">
-              <span className="text-[#333333] text-sm">
+              <span className="text-black text-sm">
                 Copyright © {new Date().getFullYear()} ABRAO E SILVA | ADVOGADOS ASSOCIADOS. Todos os Direitos reservados.
               </span>
             </div>
           </div>
         </div>
       </footer>
+
+      {/* Floating WhatsApp Button */}
+      <div className="fixed bottom-4 right-4 z-50">
+        <div className="flex flex-col items-end space-y-1">
+          <span className="text-black text-xs bg-white px-2 py-1 rounded text-center">Cerrado Propaganda</span>
+          <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-3 rounded-lg transition-colors flex items-center space-x-2 shadow-lg">
+            <MessageCircle className="h-5 w-5" />
+            <span className="text-sm font-medium">Como posso te ajudar?</span>
+          </button>
+        </div>
+      </div>
     </div>
   )
 }
