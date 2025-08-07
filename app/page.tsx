@@ -310,20 +310,17 @@ export default function AbraoSilvaAdvocacia() {
 
         {/* Depoimentos Section */}
        
-        <div className="container mx-auto px-4 pt-8">
-                 <div className="bg-gradient-to-r from-black to-gray-800 text-white rounded-xl p-6 mb-6 text-center">
-                    <h3 className="text-2xl md:text-3xl font-bold mb-2"> UNIDADE ANICUNS/GO</h3>
-                  </div>
-                  </div>
+   
         {/* Localização Section */}
         <section id="localizacao" className="py-12 md:py-16 lg:py-24 bg-gray-50">
-          
           <div className="container mx-auto px-4">
-            
             <div className="text-center mb-12 md:mb-16">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4 md:mb-6">Nossa Localização</h2>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4 md:mb-6">
+                Nossa{" "}
+                <span className="text-[#e2ba4b]">Localização</span>
+              </h2>
               <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-                Encontre-nos em Anicuns/GO. Atendemos em todo território nacional.
+                Encontre-nos em Anicuns/GO. Atendemos em todo território nacional com excelência e dedicação.
               </p>
             </div>
 
@@ -331,13 +328,20 @@ export default function AbraoSilvaAdvocacia() {
               {/* Mapa */}
               <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100 hover:shadow-3xl transition-all duration-300">
                 <div className="p-6 md:p-8">
-                  {/* Destaque da Unidade */}
-             
-                  <h3 className="text-xl md:text-2xl font-bold text-black mb-6">Unidade de Anicuns/GO</h3>
+                  <h3 className="text-xl md:text-2xl font-bold text-black mb-6 text-center">
+                    Localização no Mapa
+                  </h3>
                   <GoogleMapComponent />
-                  <div className="mt-4 text-center">
-                    <p className="font-bold text-black text-base md:text-lg">Anicuns - GO</p>
-                    <p className="text-xs md:text-sm text-gray-500 mt-2">Atendimento em todo território nacional</p>
+                  <div className="mt-6 text-center">
+                    <p className="font-bold text-black text-lg">Anicuns - GO</p>
+                    <p className="text-gray-500 mt-2">Atendimento em todo território nacional</p>
+                    <Button 
+                      onClick={() => scrollToSection("contato")}
+                      className="mt-4 btn-golden text-black py-3 px-6 text-lg font-semibold"
+                    >
+                      FALE CONOSCO »
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
                   </div>
                 </div>
               </div>
