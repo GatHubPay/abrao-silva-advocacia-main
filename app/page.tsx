@@ -350,11 +350,11 @@ export default function AbraoSilvaAdvocacia() {
           
           <div className="container mx-auto px-4 relative z-10">
             <div className="text-center mb-12 md:mb-16">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4 md:mb-6">
                 Fale diretamente com um de{" "}
                 <span className="text-[#e2ba4b]">nossos Advogados</span>
               </h2>
-              <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto px-4">
+              <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
                 Preencha o formulário abaixo e aguarde o nosso retorno com um atendimento focado nas suas necessidades.
               </p>
             </div>

@@ -170,7 +170,7 @@
 /* Custom styles for the contact section background */
 .contact-bg {
   background-image: 
-    url('/fundo/balanca-justica.jpg'),
+    url('/fundo/02.png'),
     radial-gradient(circle at 20% 80%, rgba(226, 186, 75, 0.1) 0%, transparent 50%),
     radial-gradient(circle at 80% 20%, rgba(226, 186, 75, 0.1) 0%, transparent 50%),
     linear-gradient(45deg, rgba(0, 0, 0, 0.8) 0%, rgba(51, 51, 51, 0.8) 100%);
