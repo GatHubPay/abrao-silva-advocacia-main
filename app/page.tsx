@@ -216,7 +216,7 @@ export default function AbraoSilvaAdvocacia() {
                 <span className="text-[#e2ba4b]">Localização</span>
               </h2>
               <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-                Encontre-nos em Anicuns/GO. Atendemos em todo território nacional com excelência e dedicação.
+                Estamos localizados em Anicuns/GO e atendemos em todo território nacional.
               </p>
             </div>
 
