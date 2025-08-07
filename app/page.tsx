@@ -215,8 +215,8 @@ export default function AbraoSilvaAdvocacia() {
                 Nossa{" "}
                 <span className="text-[#e2ba4b]">Localização</span>
               </h2>
-              <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-                Estamos localizados em Anicuns/GO e atendemos em todo território nacional.
+              <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto px-4">
+                Estamos localizados em Anicuns (GOIÁS) e atendemos em todo território nacional.
               </p>
             </div>
 
@@ -254,29 +254,29 @@ export default function AbraoSilvaAdvocacia() {
                 Fale diretamente com um de{" "}
                 <span className="text-[#e2ba4b]">nossos Advogados</span>
               </h2>
-              <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto px-4">
+              <p className="text-lg md:text-xl text-white max-w-3xl mx-auto px-4">
                 Preencha o formulário abaixo e aguarde o nosso retorno com um atendimento focado nas suas necessidades.
               </p>
             </div>
 
             <div className="space-y-8 md:space-y-12">
               {/* Formulário */}
-               <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden border border-gray-100 hover:shadow-3xl transition-all duration-300">
+               <div className=" backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden  hover:shadow-3xl transition-all duration-300">
                 <div className="p-6 md:p-8">
                   <div className="mb-6">
-                    <h3 className="text-2xl md:text-3xl font-bold text-black mb-2">Fale diretamente com um de <span className="text-[#e2ba4b]">nossos Advogados</span></h3>
-                    <p className="text-base md:text-lg text-gray-600">
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Fale diretamente com um de <span className="text-[#e2ba4b]">nossos Advogados</span></h3>
+                    <p className="text-base md:text-lg text-white">
                       Preencha o formulário abaixo e aguarde o nosso retorno com um atendimento focado nas suas necessidades
                     </p>
                   </div>
                   <form className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-1.5">Nome</label>
+                        <label className="block text-sm font-semibold text-white mb-1.5">Nome</label>
                         <Input placeholder="Seu nome completo" className="border-gray-300 h-12 form-input-focus" />
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-1.5">E-mail</label>
+                        <label className="block text-sm font-semibold text-white mb-1.5">E-mail</label>
                         <Input
                           type="email"
                           placeholder="seu@email.com"
@@ -286,22 +286,22 @@ export default function AbraoSilvaAdvocacia() {
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-1.5">Telefone</label>
+                        <label className="block text-sm font-semibold text-white mb-1.5">Telefone</label>
                         <Input placeholder="(62) 99999-9999" className="border-gray-300 h-12 form-input-focus" />
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-1.5">Assunto</label>
+                        <label className="block text-sm font-semibold text-white mb-1.5">Assunto</label>
                         <Input
                           placeholder="Ex: Direito Previdenciário"
-                          className="border-gray-300 h-12 form-input-focus"
+                          className="border-gray-300 h-12 form-input-focus text-white"
                         />
                       </div>
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">Mensagem</label>
+                        <label className="block text-sm font-semibold text-white mb-1.5">Mensagem</label>
                       <Textarea
                         placeholder="Descreva sua situação jurídica com detalhes..."
-                        className="border-gray-300 min-h-[120px] form-input-focus resize-none"
+                        className="border-gray-300 min-h-[120px] form-input-focus resize-none text-white  "
                       />
                     </div>
                     <Button className="w-full btn-golden text-black py-3 text-lg font-semibold h-12 shadow-lg">
