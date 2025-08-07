@@ -419,7 +419,7 @@ export default function AbraoSilvaAdvocacia() {
         <section id="informacoes" className="py-12 md:py-16 lg:py-24 bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12 md:mb-16">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4 md:mb-6">Informações de Contato</h2>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4 md:mb-6">Informações de <span className="text-[#e2ba4b]">Contato</span></h2>
               <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
                 Todas as informações para entrar em contato conosco.
               </p>
@@ -427,7 +427,7 @@ export default function AbraoSilvaAdvocacia() {
 
             <div className="space-y-8 md:space-y-12">
               {/* Dados de Contato */}
-              <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100 hover:shadow-3xl transition-all duration-300">
+              <div className="bg-[#e2ba4b] rounded-2xl shadow-2xl overflow-hidden border border-[#e2ba4b] hover:shadow-3xl transition-all duration-300">
                 <div className="p-6 md:p-8">
                   <h3 className="text-xl md:text-2xl font-bold text-black mb-6">Informações de Contato</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
