@@ -498,30 +498,26 @@ export default function AbraoSilvaAdvocacia() {
             {/* Left Side - Logo */}
             <div className="flex items-center space-x-4">
               <div className="flex items-center">
-                <div className="bg-[#e2ba4b] text-black font-bold text-2xl px-3 py-2 rounded mr-3">
-                  AS
-                </div>
                 <div className="text-white">
-                  <div className="font-semibold text-lg">ABRÃO & SILVA</div>
-                  <div className="text-sm text-gray-300">ADVOGADOS ASSOCIADOS</div>
+                  <Image src="/logo.png" alt="Abrão & Silva Advocacia" width={200 } height={100} className="h-20 w-auto" />
                 </div>
               </div>
             </div>
 
             {/* Middle Left - Contact Information & Social Media */}
-            <div className="flex flex-col items-center space-y-3">
-              <span className="text-white text-sm font-medium">SAC geral</span>
-              <div className="flex items-center space-x-2">
-                <Phone className="h-4 w-4 text-white" />
+            <div className="flex flex-col items-center space-y-4">
+              <span className="text-white text-2xl font-bold">SAC geral</span>
+              <div className="flex items-center space-x-3">
+                <Phone className="h-6 w-6 text-white" />
                 <a 
                   href="tel:6234122893" 
-                  className="text-white hover:text-gray-300 transition-colors text-sm font-medium"
+                  className="text-white hover:text-gray-300 transition-colors text-2xl font-bold"
                 >
                   (62) 3412-2893
                 </a>
               </div>
               {/* Social Media Icons */}
-              <div className="flex space-x-2">
+              <div className="flex space-x-1">
                 {socialLinks.map((social) => {
                   const IconComponent = social.icon;
                   return (
@@ -530,10 +526,10 @@ export default function AbraoSilvaAdvocacia() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-gray-700 hover:bg-gray-600 p-2 rounded transition-colors"
+                      className="bg-gray-700 hover:bg-gray-600 p-1.5 rounded transition-colors"
                       aria-label={social.name}
                     >
-                      <IconComponent className="h-4 w-4 text-white" />
+                      <IconComponent className="h-3 w-3 text-white" />
                     </a>
                   );
                 })}
@@ -592,7 +588,6 @@ export default function AbraoSilvaAdvocacia() {
       {/* Floating WhatsApp Button */}
       <div className="fixed bottom-4 right-4 z-50">
         <div className="flex flex-col items-end space-y-1">
-          <span className="text-black text-xs bg-white px-2 py-1 rounded text-center">Cerrado Propaganda</span>
           <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-3 rounded-lg transition-colors flex items-center space-x-2 shadow-lg">
             <MessageCircle className="h-5 w-5" />
             <span className="text-sm font-medium">Como posso te ajudar?</span>
