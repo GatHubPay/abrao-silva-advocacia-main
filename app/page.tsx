@@ -103,95 +103,6 @@ export default function AbraoSilvaAdvocacia() {
     }
   ]
 
-  const areasAtuacao = [
-    {
-      icon: Scale,
-      title: "Direito Previdenciário",
-      description: "Aposentadorias, pensões e benefícios previdenciários com máxima eficiência e dedicação",
-      color: "from-gray-900 to-gray-700",
-    },
-    {
-      icon: FileText,
-      title: "Direito Tributário",
-      description: "Planejamento tributário estratégico e defesa fiscal especializada para empresas",
-      color: "from-gray-800 to-gray-600",
-    },
-    {
-      icon: Users,
-      title: "Restituição para Professores",
-      description: "Recuperação de valores pagos indevidamente ao INSS por profissionais da educação",
-      color: "from-gray-700 to-gray-500",
-    },
-    {
-      icon: Heart,
-      title: "Direito Médico",
-      description: "Defesa especializada de profissionais da área da saúde em processos éticos",
-      color: "from-gray-900 to-gray-700",
-    },
-    {
-      icon: Briefcase,
-      title: "Processo de Execução",
-      description: "Cobrança judicial e extrajudicial com estratégias eficazes e resultados comprovados",
-      color: "from-gray-800 to-gray-600",
-    },
-    {
-      icon: Building,
-      title: "Direito Cível",
-      description: "Contratos, responsabilidade civil, direito de família e questões patrimoniais",
-      color: "from-gray-700 to-gray-500",
-    },
-    {
-      icon: UserCheck,
-      title: "Direito Trabalhista",
-      description: "Defesa completa dos direitos trabalhistas para empregados e empregadores",
-      color: "from-gray-900 to-gray-700",
-    },
-  ]
-
-  const diferenciais = [
-    {
-      icon: Target,
-      title: "Foco no Resultado",
-      description: "Estratégias personalizadas para cada caso com foco em resultados efetivos",
-    },
-    {
-      icon: Zap,
-      title: "Agilidade",
-      description: "Resposta rápida e acompanhamento processual em tempo real",
-    },
-    {
-      icon: Shield,
-      title: "Confiabilidade",
-      description: "Mais de 7 anos de experiência e centenas de casos resolvidos",
-    },
-    {
-      icon: Globe,
-      title: "Atuação Nacional",
-      description: "Atendimento em todo território nacional com excelência",
-    },
-  ]
-
-  const depoimentos = [
-    {
-      nome: "Maria Silva",
-      cargo: "Empresária",
-      texto: "Profissionais excepcionais que resolveram meu caso previdenciário com total dedicação e competência.",
-      rating: 5,
-    },
-    {
-      nome: "João Santos",
-      cargo: "Professor",
-      texto: "Conseguiram minha restituição em tempo record. Atendimento personalizado e resultados surpreendentes.",
-      rating: 5,
-    },
-    {
-      nome: "Ana Costa",
-      cargo: "Médica",
-      texto: "Excelente defesa no meu processo ético. Equipe preparada e estratégia jurídica impecável.",
-      rating: 5,
-    },
-  ]
-
   return (
     <div className="bg-white flex flex-col">
       {/* Header */}
@@ -296,21 +207,6 @@ export default function AbraoSilvaAdvocacia() {
 
       {/* Main Content */}
       <div className="flex-1 pt-16 md:pt-20">
-        {/* Hero Section */}
-       
-
-        {/* Diferenciais Section */}
-       
-
-        {/* Sobre Section */}
-      
-
-        {/* Serviços Section */}
-    
-
-        {/* Depoimentos Section */}
-       
-   
         {/* Localização Section */}
         <section id="localizacao" className="py-12 md:py-16 lg:py-24 bg-gray-50">
           <div className="container mx-auto px-4">
@@ -517,49 +413,42 @@ export default function AbraoSilvaAdvocacia() {
                 </a>
               </div>
               {/* Social Media Icons */}
-              <div className="flex space-x-1">
-                {socialLinks.map((social) => {
-                  const IconComponent = social.icon;
-                  return (
-                    <a
-                      key={social.name}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-gray-700 hover:bg-gray-600 p-1.5 rounded transition-colors"
-                      aria-label={social.name}
-                    >
-                      <IconComponent className="h-3 w-3 text-white" />
-                    </a>
-                  );
-                })}
-              </div>
+              <div className="hidden md:flex items-center space-x-3 ">
+               {socialLinks.map((social) => {
+                 const IconComponent = social.icon;
+                 return (
+                   <a
+                     key={social.name}
+                     href={social.href}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="p-3 border border-gray-600 rounded-lg hover:border-gray-400 hover:bg-gray-800 transition-colors flex items-center justify-center"
+                     aria-label={social.name}
+                   >
+                     <IconComponent className="h-6 w-6 text-white" />
+                   </a>
+                 );
+               })}
+             </div>
             </div>
 
             {/* Middle Right - Navigation Links */}
             <div className="flex flex-col items-center space-y-2">
-              {/* Top Row - Gold Links */}
+              {/* Navigation Links */}
               <div className="flex items-center space-x-4">
-                <span className="text-[#e2ba4b] text-sm font-medium">HOME</span>
-                <div className="w-px h-4 bg-white"></div>
-                <span className="text-[#e2ba4b] text-sm font-medium">SOBRE NÓS</span>
-                <div className="w-px h-4 bg-white"></div>
-                <span className="text-[#e2ba4b] text-sm font-medium">ÁREAS DE ATUAÇÃO</span>
-                <div className="w-px h-4 bg-white"></div>
-                <span className="text-[#e2ba4b] text-sm font-medium">EQUIPE</span>
-              </div>
-              {/* Bottom Row - White Links */}
-              <div className="flex items-center space-x-4">
-                <span className="text-white text-sm font-medium">DÚVIDAS</span>
-                <div className="w-px h-4 bg-white"></div>
-                <span className="text-white text-sm font-medium">BLOG</span>
-                <div className="w-px h-4 bg-white"></div>
-                <div className="flex items-center space-x-1">
-                  <span className="text-white text-sm font-medium">UNIDADES</span>
-                  <ChevronDown className="h-3 w-3 text-white" />
-                </div>
-                <div className="w-px h-4 bg-white"></div>
-                <span className="text-white text-sm font-medium">CONTATO</span>
+                {menuItems.map((item, index) => (
+                  <div key={item.key} className="flex items-center">
+                    <button
+                      onClick={() => scrollToSection(item.id)}
+                      className="text-[#e2ba4b] hover:text-white transition-colors text-sm font-medium"
+                    >
+                      {item.label}
+                    </button>
+                    {index < menuItems.length - 1 && (
+                      <div className="w-px h-4 bg-white ml-4"></div>
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
 
