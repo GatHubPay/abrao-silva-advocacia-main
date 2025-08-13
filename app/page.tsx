@@ -370,41 +370,35 @@ export default function AbraoSilvaAdvocacia() {
       {/* Main Content */}
       <div className="flex-1 pt-16 md:pt-20">
         {/* Localização Section */}
-        <section id="localizacao" className="py-12 md:py-16 lg:py-24 bg-gray-50">
+        <section id="localizacao" className="py-12 md:py-16 lg:py-24 bg-gray-50 location-bg">
           <div className="container mx-auto px-4">
             <div className={`text-center mb-12 md:mb-16 scroll-reveal ${isLoaded ? 'animate-fadeInUp' : ''}`}>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4 md:mb-6">
-                Nossa localização em <span className="gradient-text">ANICUNS - GOIÁS</span>
+                Nossa localização em <span className="text-black">ANICUNS - GOIÁS</span>
               </h2>
               <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto px-4">
-                Estamos localizados em Anicuns (GOIÁS) e atendemos em todo território nacional.
+              Contamos também com outras unidades em diversas regiões do Brasil.
               </p>
             </div>
 
-            <div className="space-y-8 md:space-y-12">
+            <div className="space-y-8 md:space-y-12 ">
               {/* Mapa */}
-              <div className={`relative group scroll-reveal-left golden-particles ${isLoaded ? 'animate-scaleIn delay-200' : ''}`}>
                 {/* Borda animada principal */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-[#e2ba4b] via-[#f4d366] to-[#e2ba4b] rounded-2xl blur-sm opacity-75 group-hover:opacity-100 animate-[golden-glow_3s_ease-in-out_infinite] transition-all duration-300"></div>
-                
+
                 {/* Efeito shimmer */}
-                <div className="absolute -inset-1 rounded-2xl overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 animate-[shimmer_3s_ease-in-out_infinite] opacity-0 group-hover:opacity-100"></div>
-                </div>
+               
                 
                 {/* Card principal */}
-                <div className="location-bg rounded-2xl shadow-2xl overflow-hidden relative border-2 border-[#e2ba4b] card-hover-effect">
+                <div className="bg-gradient-to-br from-[#e2ba4b] to-[#d4a93a]  shadow-2xl border border-[#d4a93a] overflow-hidden card-hover-effect">
                 <div className="relative p-6 md:p-8 z-10">
                   <h3 className="text-xl md:text-2xl font-bold text-black mb-6 text-center animate-float">
                     Localização no Mapa
                   </h3>
                   <GoogleMapComponent />
                   <div className="mt-6 text-center">
-                    <p className="font-bold text-black text-lg animate-bounce-gentle">Anicuns - GO</p>
-                    <p className="text-gray-500 mt-2">Atendimento em todo território nacional</p>
                     <Button 
                       onClick={() => scrollToSection("contato")}
-                      className="mt-4 btn-golden btn-hover-scale text-black py-3 px-6 text-lg font-semibold animate-pulse-golden"
+                      className="mt-4 btn-black bg-black text-white btn-hover-scale  py-3 px-6 text-lg font-semibold animate-pulse-golden"
                     >
                       FALE CONOSCO »
                       <ArrowRight className="ml-2 h-5 w-5" />
@@ -413,7 +407,6 @@ export default function AbraoSilvaAdvocacia() {
                 </div>
                 </div>
               </div>
-            </div>
           </div>
         </section>
 
@@ -438,46 +431,41 @@ export default function AbraoSilvaAdvocacia() {
                   <div className="mb-6">
                     <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Fale diretamente com um de <span className="gradient-text">nossos Advogados</span></h3>
                     <p className="text-base md:text-lg text-white">
-                      Preencha o formulário abaixo e aguarde o nosso retorno com um atendimento focado nas suas necessidades
+                      Preencha o formulário abaixo e aguarde o nosso retorno com um atendimento focado nas suas necessidades.
                     </p>
                   </div>
                   <form className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-semibold text-white mb-1.5">Nome</label>
-                        <Input placeholder="Seu nome completo" className="border-gray-300 h-12 form-input-focus" />
+                        <Input placeholder="Seu nome completo" className="border-gray-300  bg-white h-12 form-input-focus" />
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-white mb-1.5">E-mail</label>
                         <Input
                           type="email"
                           placeholder="seu@email.com"
-                          className="border-gray-300 h-12 form-input-focus"
+                          className="border-gray-300 bg-white h-12 form-input-focus"
                         />
                       </div>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-semibold text-white mb-1.5">Telefone</label>
-                        <Input placeholder="(62) 99999-9999" className="border-gray-300 h-12 form-input-focus" />
+                        <Input placeholder="(62) 99999-9999" className="border-gray-300 bg-white h-12 form-input-focus" />
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-white mb-1.5">Assunto</label>
                         <Input
                           placeholder="Ex: Direito Previdenciário"
-                          className="border-gray-300 h-12 form-input-focus text-white"
+                          className="border-gray-300 bg-white h-12 form-input-focus text-black"
                         />
                       </div>
                     </div>
                     <div>
-                        <label className="block text-sm font-semibold text-white mb-1.5">Mensagem</label>
                       <Textarea
                         placeholder="Descreva sua situação jurídica com detalhes..."
-                        className="border-gray-300 min-h-[120px] form-input-focus resize-none text-white"
+                        className="border-gray-300 bg-white min-h-[120px] form-input-focus resize-none text-black"
                       />
                     </div>
                     <Button className="w-full btn-golden btn-hover-scale text-black py-3 text-lg font-semibold h-12 shadow-lg animate-pulse-golden">
-                      SOLICITAR UM ESPECIALISTA »
+                      SOLICITAR UM ESPECIALISTA 
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
                   </form>
@@ -564,7 +552,7 @@ export default function AbraoSilvaAdvocacia() {
             </div>
 
             <div className="space-y-8 md:space-y-12">
-              <div className="bg-[#e2ba4b] rounded-2xl shadow-2xl overflow-hidden border border-[#e2ba4b] card-hover-effect scroll-reveal-left golden-particles">
+              <div className="bg-[#e2ba4b]  shadow-2xl overflow-hidden border border-[#e2ba4b] card-hover-effect scroll-reveal-left golden-particles">
                 <div className="p-6 md:p-8">
                   <h3 className="text-xl md:text-2xl font-bold text-black mb-6 animate-float">
                     Informações de Contato
