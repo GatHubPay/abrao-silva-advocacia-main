@@ -14,57 +14,30 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
   experimental: {
-    scrollRestoration: true,
-    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
-    // optimizeCss: true, // Removido - causava erro de módulo 'critters' não encontrado
+    optimizePackageImports: ['lucide-react'],
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
   
-  // Otimizações de bundle
+  // Otimizações de bundle simplificadas
   webpack: (config, { dev, isServer }) => {
     // Otimizações apenas para produção
-    if (!dev) {
-      config.optimization = {
-        ...config.optimization,
-        usedExports: true,
-        sideEffects: false,
-        splitChunks: {
-          chunks: 'all',
-          cacheGroups: {
-            // Separar vendor chunks para melhor cache
-            vendor: {
-              test: /[\\/]node_modules[\\/]/,
-              name: 'vendors',
-              chunks: 'all',
-              priority: 10,
-            },
-            // Chunk específico para Google Maps
-            maps: {
-              test: /[\\/]node_modules[\\/]@react-google-maps[\\/]/,
-              name: 'google-maps',
-              chunks: 'all',
-              priority: 20,
-            },
-            // Chunk para Radix UI components
-            radix: {
-              test: /[\\/]node_modules[\\/]@radix-ui[\\/]/,
-              name: 'radix-ui',
-              chunks: 'all',
-              priority: 15,
-            },
+    if (!dev && !isServer) {
+      // Configuração mais conservadora para evitar problemas de build
+      config.optimization.splitChunks = {
+        ...config.optimization.splitChunks,
+        cacheGroups: {
+          ...config.optimization.splitChunks.cacheGroups,
+          // Chunk específico para Google Maps
+          maps: {
+            test: /[\\/]node_modules[\\/]@react-google-maps[\\/]/,
+            name: 'google-maps',
+            chunks: 'all',
+            priority: 20,
           },
         },
       };
-      
-      // Otimizações adicionais para reduzir parsing time
-      config.optimization.providedExports = true;
-      config.optimization.mangleExports = true;
-      
-      // Minimizar o tamanho dos chunks
-      config.optimization.splitChunks.maxSize = 250000; // 250kb max per chunk
-      config.optimization.splitChunks.minSize = 20000;  // 20kb min per chunk
     }
     
     return config;
