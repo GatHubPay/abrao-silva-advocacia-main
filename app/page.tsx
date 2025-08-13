@@ -212,8 +212,8 @@ export default function AbraoSilvaAdvocacia() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12 md:mb-16">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4 md:mb-6">
-                Nossa{" "}
-                <span className="text-[#e2ba4b]">Localização</span>
+                Unidade de{" "}
+                <span className="text-[#e2ba4b]">Anicuns (Goiás)</span>
               </h2>
               <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto px-4">
                 Estamos localizados em Anicuns (GOIÁS) e atendemos em todo território nacional.
