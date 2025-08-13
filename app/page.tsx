@@ -244,8 +244,8 @@ export default function AbraoSilvaAdvocacia() {
 
             <div className="space-y-8 md:space-y-12">
               {/* Mapa */}
-              <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100 hover:shadow-3xl transition-all duration-300">
-                <div className="p-6 md:p-8">
+              <div className="location-bg rounded-2xl shadow-2xl overflow-hidden border border-gray-100 hover:shadow-3xl transition-all duration-300">
+                <div className="relative p-6 md:p-8 z-10">
                   <h3 className="text-xl md:text-2xl font-bold text-black mb-6 text-center">
                     Localização no Mapa
                   </h3>
