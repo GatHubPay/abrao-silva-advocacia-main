@@ -31,25 +31,25 @@ import dynamic from "next/dynamic"
 
 // Lazy load agressivo de componentes para reduzir bundle inicial
 const GoogleMapComponent = dynamic(() => import("@/components/GoogleMap"), {
-  loading: () => <div className="h-64 bg-gray-200 rounded-lg animate-pulse flex items-center justify-center">
-    <span className="text-gray-500">Carregando mapa...</span>
+  loading: () => <div className="h-64 bg-gray-800 rounded-lg animate-pulse flex items-center justify-center">
+    <span className="text-gray-300">Carregando mapa...</span>
   </div>,
   ssr: false
 })
 
 // Remover lazy loading - carregar componentes imediatamente
 // const AreasAtuacaoSection = dynamic(() => import("@/components/sections/AreasAtuacao"), {
-//   loading: () => <div className="h-96 bg-gray-100 animate-pulse"></div>,
+//   loading: () => <div className="h-96 bg-gray-800 animate-pulse"></div>,
 //   ssr: false
 // })
 
 // const InformacoesSection = dynamic(() => import("@/components/sections/Informacoes"), {
-//   loading: () => <div className="h-64 bg-gray-100 animate-pulse"></div>,
+//   loading: () => <div className="h-64 bg-gray-800 animate-pulse"></div>,
 //   ssr: false
 // })
 
 // const FooterSection = dynamic(() => import("@/components/sections/Footer"), {
-//   loading: () => <div className="h-48 bg-black animate-pulse"></div>,
+//   loading: () => <div className="h-48 bg-gray-800 animate-pulse"></div>,
 //   ssr: false
 // })
 
@@ -449,34 +449,34 @@ export default function AbraoSilvaAdvocacia() {
                       Preencha o formulário abaixo e aguarde o nosso retorno com um atendimento focado nas suas necessidades.
                     </p>
                   </div>
-                  <form className="space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <form className="space-y-4 text-black">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-black">
                       <div>
-                        <Input placeholder="Seu nome completo" className="border-gray-300  bg-white h-12 form-input-focus" />
+                        <Input placeholder="Nome Completo" className="border-gray-300 bg-white h-12 text-black placeholder-black" />
                       </div>
                       <div>
                         <Input
                           type="email"
-                          placeholder="seu@email.com"
-                          className="border-gray-300 bg-white h-12 form-input-focus"
+                          placeholder="E-mail"
+                          className="border-gray-300 bg-white h-12 text-black placeholder-black"
                         />
                       </div>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <Input placeholder="(62) 99999-9999" className="border-gray-300 bg-white h-12 form-input-focus" />
+                        <Input placeholder="Telefone" className="border-gray-300 bg-white h-12 text-black placeholder-black" />
                       </div>
                       <div>
                         <Input
-                          placeholder="Ex: Direito Previdenciário"
-                          className="border-gray-300 bg-white h-12 form-input-focus text-black"
+                          placeholder="Área de Interesse"
+                          className="border-gray-300 bg-white h-12 text-black placeholder-black"
                         />
                       </div>
                     </div>
                     <div>
                       <Textarea
-                        placeholder="Descreva sua situação jurídica com detalhes..."
-                        className="border-gray-300 bg-white min-h-[120px] form-input-focus resize-none text-black"
+                        placeholder="Mensagem"
+                        className="border-gray-300 bg-white min-h-[120px] text-black placeholder-black resize-none"
                       />
                     </div>
                     <Button className="w-full btn-golden btn-hover-scale text-black py-3 text-lg font-semibold h-12 shadow-lg animate-pulse-golden">
