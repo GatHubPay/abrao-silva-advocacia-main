@@ -386,9 +386,10 @@ export default function AbraoSilvaAdvocacia() {
         <section id="localizacao" className="py-12 md:py-16 lg:py-24 bg-gray-50 location-bg">
           <div className="container mx-auto px-4">
             <div className={`text-center mb-12 md:mb-16 scroll-reveal ${isLoaded ? 'animate-fadeInUp' : ''}`}>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4 md:mb-6">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-2">
                 Nossa localização em <span className="text-black">ANICUNS - GOIÁS</span>
               </h2>
+              <div className="w-16 h-1 bg-[#e2ba4b] mx-auto mb-6"></div>
               <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto px-4">
               Contamos também com outras unidades em diversas regiões do Brasil.
               </p>
@@ -428,10 +429,11 @@ export default function AbraoSilvaAdvocacia() {
           
           <div className="container mx-auto px-4 relative z-10">
             <div className="text-center mb-12 md:mb-16 scroll-reveal">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
                 Fale diretamente com um de{" "}
                 <span className="gradient-text">nossos Advogados</span>
               </h2>
+              <div className="w-16 h-1 bg-[#e2ba4b] mx-auto mb-6"></div>
               <p className="text-lg md:text-xl text-white max-w-3xl mx-auto px-4">
                 Preencha o formulário abaixo e aguarde o nosso retorno com um atendimento focado nas suas necessidades.
               </p>
@@ -497,9 +499,10 @@ export default function AbraoSilvaAdvocacia() {
           
           <div className="container mx-auto px-4 relative z-10">
             <div className={`text-center mb-12 md:mb-16 scroll-reveal ${isLoaded ? 'animate-fadeInUp' : ''}`}>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
                 Áreas de <span className="gradient-text">ATUAÇÃO</span>
               </h2>
+              <div className="w-16 h-1 bg-[#e2ba4b] mx-auto mb-6"></div>
               <p className="text-lg md:text-xl text-white max-w-4xl mx-auto px-4 mb-4">
                 Atendimento nas Diversas Áreas do Direito
               </p>
@@ -556,9 +559,10 @@ export default function AbraoSilvaAdvocacia() {
         <section id="informacoes" className="py-12 md:py-16 lg:py-24 bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12 md:mb-16 scroll-reveal">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4 md:mb-6">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-2">
                 Informações de <span className="gradient-text">Contato</span>
               </h2>
+              <div className="w-16 h-1 bg-[#e2ba4b] mx-auto mb-6"></div>
               <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
                 Todas as informações para entrar em contato conosco.
               </p>
