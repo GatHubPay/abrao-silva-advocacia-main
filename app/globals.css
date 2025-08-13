@@ -477,6 +477,22 @@
   animation: fadeInFallback 2s ease-out 1s forwards;
 }
 
+/* Evita o piscar das imagens */
+img[src*="/performance/"] {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Container das imagens de performance */
+.performance-image-container {
+  background-color: #f3f4f6;
+  min-height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Fallback para garantir que apareça mesmo sem JavaScript */
 @keyframes fadeInFallback {
   to {

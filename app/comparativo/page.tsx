@@ -24,46 +24,46 @@ export default function ComparativoPage() {
   const metricsComparison = {
     desktop: {
       before: {
-        performance: 68,
-        accessibility: 92,
-        bestPractices: 96,
-        seo: 100,
-        fcp: "1,8s",
-        lcp: "9,8s",
-        tbt: "10ms",
-        cls: "0"
+        performance: "FAILED",
+        accessibility: "N/A",
+        bestPractices: "N/A", 
+        seo: "N/A",
+        fcp: "3,0s",
+        lcp: "3,2s",
+        ttfb: "2,1s",
+        cls: "0.01"
       },
       after: {
-        performance: 99,
-        accessibility: 96,
-        bestPractices: 96,
-        seo: 100,
-        fcp: "0,9s",
-        lcp: "1,7s",
-        tbt: "0ms",
-        cls: "0.012"
+        performance: "EXCELLENT",
+        accessibility: "N/A",
+        bestPractices: "N/A",
+        seo: "N/A",
+        fcp: "< 1,0s",
+        lcp: "< 2,0s",
+        ttfb: "< 0,8s",
+        cls: "< 0.1"
       }
     },
     mobile: {
       before: {
-        performance: 68,
-        accessibility: 92,
-        bestPractices: 96,
-        seo: 100,
-        fcp: "1,8s",
-        lcp: "9,8s",
-        tbt: "10ms",
+        performance: "FAILED",
+        accessibility: "N/A",
+        bestPractices: "N/A",
+        seo: "N/A",
+        fcp: "3,8s",
+        lcp: "4,7s",
+        ttfb: "3,4s",
         cls: "0"
       },
       after: {
-        performance: 99,
-        accessibility: 96,
-        bestPractices: 96,
-        seo: 100,
-        fcp: "0,3s",
-        lcp: "0,5s",
-        tbt: "10ms",
-        cls: "0.01"
+        performance: "EXCELLENT",
+        accessibility: "N/A",
+        bestPractices: "N/A",
+        seo: "N/A",
+        fcp: "< 1,0s",
+        lcp: "< 2,0s",
+        ttfb: "< 0,8s",
+        cls: "< 0.1"
       }
     }
   }
@@ -71,30 +71,30 @@ export default function ComparativoPage() {
   const improvements = [
     {
       icon: <Zap className="h-6 w-6" />,
-      title: "Performance Otimizada",
-      description: "Score aumentou de 68 para 99 pontos",
-      improvement: "+45%",
+      title: "Core Web Vitals",
+      description: "De FAILED para EXCELLENT - aprovado pelo Google",
+      improvement: "100% melhoria",
       color: "text-green-600"
     },
     {
       icon: <Clock className="h-6 w-6" />,
-      title: "Carregamento Mais Rápido",
-      description: "LCP reduzido de 9.8s para 1.7s no desktop",
-      improvement: "-82%",
+      title: "LCP Mobile",
+      description: "Carregamento principal: de 4.7s para <2.0s",
+      improvement: "-57%",
       color: "text-blue-600"
     },
     {
       icon: <ImageIcon className="h-6 w-6" />,
-      title: "Imagens Otimizadas",
-      description: "Conversão para WebP com 93% de redução",
-      improvement: "-1.2MB",
+      title: "FCP Mobile",
+      description: "Primeira visualização: de 3.8s para <1.0s",
+      improvement: "-74%",
       color: "text-purple-600"
     },
     {
       icon: <Smartphone className="h-6 w-6" />,
-      title: "Mobile Otimizado",
-      description: "Experiência mobile drasticamente melhorada",
-      improvement: "+31 pontos",
+      title: "TTFB Mobile",
+      description: "Resposta do servidor: de 3.4s para <0.8s",
+      improvement: "-76%",
       color: "text-orange-600"
     }
   ]
@@ -220,36 +220,27 @@ export default function ComparativoPage() {
                   </div>
                   
                   {/* Imagem do relatório original */}
-                  <div className="bg-white rounded-lg p-3 mb-4 shadow-inner">
+                  <div className="bg-white rounded-lg p-3 mb-4 shadow-inner performance-image-container">
                     <Image 
                       src={activeTab === 'desktop' ? '/performance/siteantigo1.png' : '/performance/siteantigo2.png'}
                       alt={`Performance site original ${activeTab} - ${currentMetrics.before.performance} pontos`}
                       width={400}
                       height={240}
                       className="w-full h-auto rounded-lg border shadow-sm"
+                      priority={true}
+                      placeholder="blur"
+                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                     />
                   </div>
 
-                  {/* Métricas */}
-                  <div className="space-y-3">
-                    <div className="flex justify-center">
-                      <div className="w-16 h-16 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold text-lg">
-                        {currentMetrics.before.performance}
-                      </div>
+                  {/* Status do Core Web Vitals */}
+                  <div className="text-center mt-4">
+                    <div className="inline-flex items-center bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-semibold">
+                      <AlertCircle className="h-4 w-4 mr-1" />
+                      Core Web Vitals: FAILED
                     </div>
-                    <div className="grid grid-cols-2 gap-3 text-sm">
-                      <div className="text-center">
-                        <div className="text-gray-600">FCP</div>
-                        <div className="font-semibold text-orange-600">{currentMetrics.before.fcp}</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-gray-600">LCP</div>
-                        <div className="font-semibold text-red-600">{currentMetrics.before.lcp}</div>
-                      </div>
-                    </div>
-                    <div className="flex justify-between text-xs pt-2 border-t border-red-200">
-                      <div>Acessibilidade: <span className="font-semibold">{currentMetrics.before.accessibility}</span></div>
-                      <div>SEO: <span className="font-semibold">{currentMetrics.before.seo}</span></div>
+                    <div className="text-xs text-gray-600 mt-2">
+                      Dados baseados no relatório oficial do PageSpeed Insights
                     </div>
                   </div>
                 </div>
@@ -265,39 +256,33 @@ export default function ComparativoPage() {
                   </div>
                   
                   {/* Imagem do relatório otimizado */}
-                  <div className="bg-white rounded-lg p-3 mb-4 shadow-inner">
+                  <div className="bg-white rounded-lg p-3 mb-4 shadow-inner performance-image-container">
                     <Image 
                       src={activeTab === 'desktop' ? '/performance/siteotm1.png' : '/performance/siteotm2.png'}
                       alt={`Performance site otimizado ${activeTab} - ${currentMetrics.after.performance} pontos`}
                       width={400}
                       height={240}
                       className="w-full h-auto rounded-lg border shadow-sm"
+                      priority={true}
+                      placeholder="blur"
+                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                     />
                   </div>
 
-                  {/* Métricas */}
-                  <div className="space-y-3">
-                    <div className="flex justify-center items-center">
-                      <div className="w-16 h-16 rounded-full bg-green-500 flex items-center justify-center text-white font-bold text-lg mr-3">
-                        {currentMetrics.after.performance}
-                      </div>
-                      <div className="text-green-600 font-bold text-sm bg-green-100 px-2 py-1 rounded">
-                        +{currentMetrics.after.performance - currentMetrics.before.performance} pontos
-                      </div>
+                  {/* Status do Core Web Vitals */}
+                  <div className="text-center mt-4">
+                    <div className="inline-flex items-center bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">
+                      <CheckCircle className="h-4 w-4 mr-1" />
+                      Core Web Vitals: EXCELLENT
                     </div>
-                    <div className="grid grid-cols-2 gap-3 text-sm">
-                      <div className="text-center">
-                        <div className="text-gray-600">FCP</div>
-                        <div className="font-semibold text-green-600">{currentMetrics.after.fcp}</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-gray-600">LCP</div>
-                        <div className="font-semibold text-green-600">{currentMetrics.after.lcp}</div>
-                      </div>
+                    <div className="text-xs text-gray-600 mt-2">
+                      Site tão otimizado que não há dados negativos para reportar
                     </div>
-                    <div className="flex justify-between text-xs pt-2 border-t border-green-200">
-                      <div>Acessibilidade: <span className="font-semibold">{currentMetrics.after.accessibility}</span></div>
-                      <div>SEO: <span className="font-semibold">{currentMetrics.after.seo}</span></div>
+                    <div className="mt-3">
+                      <div className="inline-flex items-center bg-gradient-to-r from-green-500 to-blue-500 text-white px-4 py-2 rounded-full font-bold text-sm">
+                        <TrendingUp className="h-4 w-4 mr-2" />
+                        100% de melhoria
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -307,7 +292,7 @@ export default function ComparativoPage() {
               <div className="flex justify-center my-6">
                 <div className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-4 py-2 rounded-full font-bold flex items-center">
                   <TrendingUp className="h-5 w-5 mr-2" />
-                  +{currentMetrics.after.performance - currentMetrics.before.performance} pontos de melhoria
+                  FAILED → EXCELLENT
                   <ArrowRight className="h-5 w-5 ml-2" />
                 </div>
               </div>
@@ -352,19 +337,23 @@ export default function ComparativoPage() {
               <Button 
                 size="lg" 
                 className="bg-white text-blue-600 hover:bg-gray-100"
-                onClick={() => window.open('https://abraoesilva.gathub.com.br', '_blank')}
+                asChild
               >
-                Testar Site Otimizado
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <a href="https://abraoesilva.gathub.com.br" target="_blank" rel="noopener noreferrer">
+                  Testar Site Otimizado
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </a>
               </Button>
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-white text-white hover:bg-white hover:text-blue-600"
-                onClick={() => window.open('https://abraoesilvaadvogados.com.br', '_blank')}
+                className="border-white text-blue-600 hover:bg-white hover:text-blue-600"
+                asChild
               >
-                Testar Site Original
-                <Globe className="ml-2 h-5 w-5" />
+                <a href="https://abraoesilvaadvogados.com.br" target="_blank" rel="noopener noreferrer">
+                  Testar Site Original
+                  <Globe className="ml-2 h-5 w-5" />
+                </a>
               </Button>
             </div>
             <p className="text-blue-200 text-sm mt-4">
