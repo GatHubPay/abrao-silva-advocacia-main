@@ -16,14 +16,7 @@ const nextConfig = {
   experimental: {
     scrollRestoration: true,
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
-    optimizeCss: true, // Otimizar CSS para reduzir parsing
-    turbo: {
-      rules: {
-        '*.js': ['babel-loader'],
-        '*.ts': ['babel-loader'],
-        '*.tsx': ['babel-loader'],
-      }
-    }
+    // optimizeCss: true, // Removido - causava erro de módulo 'critters' não encontrado
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
