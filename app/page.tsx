@@ -243,7 +243,17 @@ export default function AbraoSilvaAdvocacia() {
 
             <div className="space-y-8 md:space-y-12">
               {/* Mapa */}
-              <div className="location-bg rounded-2xl shadow-2xl overflow-hidden border border-gray-100 hover:shadow-3xl transition-all duration-300">
+              <div className="relative group">
+                {/* Borda animada principal */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-[#e2ba4b] via-[#f4d366] via-[#e2ba4b] via-[#d4a93a] to-[#e2ba4b] rounded-2xl blur-sm opacity-75 group-hover:opacity-100 animate-[golden-glow_3s_ease-in-out_infinite] transition-all duration-300"></div>
+                
+                {/* Efeito shimmer */}
+                <div className="absolute -inset-1 rounded-2xl overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 animate-[shimmer_3s_ease-in-out_infinite] opacity-0 group-hover:opacity-100"></div>
+                </div>
+                
+                {/* Card principal */}
+                <div className="location-bg rounded-2xl shadow-2xl overflow-hidden relative border-2 border-[#e2ba4b] hover:shadow-3xl transition-all duration-300 group-hover:scale-[1.02]">
                 <div className="relative p-6 md:p-8 z-10">
                   <h3 className="text-xl md:text-2xl font-bold text-black mb-6 text-center">
                     Localização no Mapa
@@ -260,6 +270,7 @@ export default function AbraoSilvaAdvocacia() {
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
                   </div>
+                </div>
                 </div>
               </div>
             </div>
