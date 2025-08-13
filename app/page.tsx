@@ -105,6 +105,15 @@ export default function AbraoSilvaAdvocacia() {
     const loadTimer = setTimeout(() => {
       setIsLoaded(true)
       setupScrollAnimations()
+      
+      // Revelar elementos que já estão na tela imediatamente
+      const elementsInView = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right')
+      elementsInView.forEach((el) => {
+        const rect = el.getBoundingClientRect()
+        if (rect.top < window.innerHeight * 0.8) {
+          el.classList.add('revealed')
+        }
+      })
     }, 100)
 
     window.addEventListener("scroll", handleScroll)
@@ -274,7 +283,7 @@ export default function AbraoSilvaAdvocacia() {
         {/* Localização Section */}
         <section id="localizacao" className="py-12 md:py-16 lg:py-24 bg-gray-50">
           <div className="container mx-auto px-4">
-            <div className={`text-center mb-12 md:mb-16 scroll-reveal ${isLoaded ? 'animate-fadeInUp' : 'opacity-0'}`}>
+            <div className={`text-center mb-12 md:mb-16 scroll-reveal ${isLoaded ? 'animate-fadeInUp' : ''}`}>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4 md:mb-6">
                 Nossa localização em <span className="gradient-text">ANICUNS - GOIÁS</span>
               </h2>
@@ -285,7 +294,7 @@ export default function AbraoSilvaAdvocacia() {
 
             <div className="space-y-8 md:space-y-12">
               {/* Mapa */}
-              <div className={`relative group scroll-reveal-left golden-particles ${isLoaded ? 'animate-scaleIn delay-200' : 'opacity-0'}`}>
+              <div className={`relative group scroll-reveal-left golden-particles ${isLoaded ? 'animate-scaleIn delay-200' : ''}`}>
                 {/* Borda animada principal */}
                 <div className="absolute -inset-1 bg-gradient-to-r from-[#e2ba4b] via-[#f4d366] to-[#e2ba4b] rounded-2xl blur-sm opacity-75 group-hover:opacity-100 animate-[golden-glow_3s_ease-in-out_infinite] transition-all duration-300"></div>
                 
