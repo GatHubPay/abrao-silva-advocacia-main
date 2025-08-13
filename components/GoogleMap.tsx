@@ -1,6 +1,6 @@
 'use client';
 
-import { GoogleMap, Marker } from '@react-google-maps/api';
+import { GoogleMap, Marker, InfoWindow } from '@react-google-maps/api';
 import { MapPin, AlertCircle } from 'lucide-react';
 import { useState, useCallback, useMemo } from 'react';
 import { useJsApiLoader } from '@react-google-maps/api';
@@ -10,7 +10,7 @@ const libraries: ("places" | "geometry" | "drawing" | "visualization")[] = [];
 
 const containerStyle = {
   width: '100%',
-  height: '320px'
+  height: '500px'
 };
 
 const center = {
@@ -26,6 +26,7 @@ const officeLocation = {
 export default function GoogleMapComponent() {
   const [mapLoaded, setMapLoaded] = useState(false);
   const [mapError, setMapError] = useState(false);
+  const [showInfoWindow, setShowInfoWindow] = useState(false);
   
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
@@ -43,6 +44,21 @@ export default function GoogleMapComponent() {
 
   const handleMapError = useCallback(() => {
     setMapError(true);
+  }, []);
+
+  const handleMarkerClick = useCallback(() => {
+    console.log('Marcador clicado!');
+    setShowInfoWindow(true);
+  }, []);
+
+  const handleInfoWindowClose = useCallback(() => {
+    setShowInfoWindow(false);
+  }, []);
+
+  const openGoogleMaps = useCallback(() => {
+    const address = encodeURIComponent('Av. Bandeirantes, 2216, Setor Leste - Anicuns, GO, 76170-000');
+    const url = `https://www.google.com/maps/search/${address}/@${officeLocation.lat},${officeLocation.lng},15z`;
+    window.open(url, '_blank', 'noopener,noreferrer');
   }, []);
 
   // Memoizar opções do mapa para evitar re-renders
@@ -64,16 +80,15 @@ export default function GoogleMapComponent() {
     clickableIcons: false // Reduz interações desnecessárias
   }), []);
 
-  // Memoizar ícone do marker
-  const markerIcon = useMemo(() => ({
-    url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
-      <svg width="32" height="45" viewBox="0 0 32 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M16 0C7.16344 0 0 7.16344 0 16C0 24.8366 16 45 16 45C16 45 32 24.8366 32 16C32 7.16344 24.8366 0 16 0Z" fill="#e2ba4b"/>
-        <circle cx="16" cy="16" r="8" fill="#FFFFFF"/>
-        <circle cx="16" cy="16" r="4" fill="#e2ba4b"/>
-      </svg>
-    `)
-  }), []);
+  // Memoizar ícone do marker - vermelho
+  const markerIcon = useMemo(() => {
+    // Usar ícone padrão do Google Maps vermelho
+    return {
+      url: 'https://maps.google.com/mapfiles/ms/icons/red-dot.png',
+      scaledSize: { width: 32, height: 32 },
+      anchor: { x: 16, y: 32 }
+    };
+  }, []);
 
   // Fallback quando não há chave da API
   if (!apiKey) {
@@ -102,7 +117,7 @@ export default function GoogleMapComponent() {
   // Mostrar erro de carregamento
   if (loadError) {
     return (
-      <div className="relative w-full h-80 bg-red-50 rounded-lg overflow-hidden shadow-lg">
+      <div className="relative w-full h-[500px] bg-red-50 rounded-lg overflow-hidden shadow-lg">
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
             <AlertCircle className="h-8 w-8 text-red-500 mx-auto mb-2" />
@@ -115,7 +130,7 @@ export default function GoogleMapComponent() {
   }
 
   return (
-    <div className="relative w-full h-80 bg-white rounded-lg overflow-hidden shadow-lg">
+    <div className="relative w-full h-[500px] bg-white rounded-lg overflow-hidden shadow-lg">
       {isLoaded ? (
         <GoogleMap
           mapContainerStyle={containerStyle}
@@ -127,7 +142,42 @@ export default function GoogleMapComponent() {
           <Marker
             position={officeLocation}
             icon={markerIcon}
+            onClick={handleMarkerClick}
+            cursor="pointer"
+            title="Clique para ver informações do escritório"
           />
+          {showInfoWindow && (
+            <InfoWindow
+              position={officeLocation}
+              onCloseClick={handleInfoWindowClose}
+            >
+              <div className="p-4 max-w-sm bg-white rounded-lg shadow-lg">
+                <div className="flex items-start gap-3 mb-4">
+                  <div className="bg-red-100 p-2 rounded-full flex-shrink-0">
+                    <MapPin className="h-5 w-5 text-red-600" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-gray-900 text-base mb-2">
+                      Abrão & Silva Advocacia
+                    </h3>
+                    <p className="text-sm text-gray-700 leading-relaxed">
+                      <strong>Endereço:</strong><br />
+                      Av. Bandeirantes, 2216<br />
+                      Setor Leste - Anicuns, GO<br />
+                      <strong>CEP:</strong> 76170-000
+                    </p>
+                  </div>
+                </div>
+                <button
+                  onClick={openGoogleMaps}
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold py-3 px-4 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center gap-2"
+                >
+                  <MapPin className="h-4 w-4" />
+                  Ver mapa ampliado
+                </button>
+              </div>
+            </InfoWindow>
+          )}
         </GoogleMap>
       ) : (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
@@ -140,13 +190,19 @@ export default function GoogleMapComponent() {
       
       {/* Overlay com informações */}
       <div className="absolute top-4 left-4 bg-white p-3 rounded-lg shadow-lg border">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 mb-2">
           <MapPin className="h-5 w-5 text-gray-600" />
           <div>
             <p className="font-semibold text-sm text-gray-800">Escritório Abrão Silva</p>
             <p className="text-xs text-gray-600">Anicuns - GO</p>
           </div>
         </div>
+        <button
+          onClick={openGoogleMaps}
+          className="text-xs text-blue-600 hover:text-blue-800 underline font-medium transition-colors duration-200"
+        >
+          Ver mapa ampliado
+        </button>
       </div>
     </div>
   );
