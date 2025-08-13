@@ -211,12 +211,23 @@ export default function AbraoSilvaAdvocacia() {
     }
   }, [])
 
+  const handleMenuClick = (item: any) => {
+    if (item.type === "external") {
+      window.open(item.href, "_blank", "noopener,noreferrer")
+    } else {
+      const element = document.getElementById(item.id)
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" })
+      }
+    }
+    setIsMenuOpen(false)
+  }
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
       element.scrollIntoView({ behavior: "smooth" })
     }
-    setIsMenuOpen(false)
   }
 
   const handleAcceptCookies = () => {
@@ -230,10 +241,12 @@ export default function AbraoSilvaAdvocacia() {
   }
 
   const menuItems = [
-    { label: "Localização", id: "localizacao", key: "localizacao" },
-    { label: "Entre em Contato", id: "contato", key: "contato" },
-    { label: "Áreas de Atuação", id: "areas-atuacao", key: "areas-atuacao" },
-    { label: "Informações", id: "informacoes", key: "informacoes" }
+    { label: "Localização", id: "localizacao", key: "localizacao", type: "scroll" },
+    { label: "Entre em Contato", id: "contato", key: "contato", type: "scroll" },
+    { label: "Áreas de Atuação", id: "areas-atuacao", key: "areas-atuacao", type: "scroll" },
+    { label: "Informações", id: "informacoes", key: "informacoes", type: "scroll" },
+    { label: "Equipe", href: "https://abraoesilvaadvogados.com.br/equipe-2/", key: "equipe", type: "external" },
+    { label: "Dúvidas", href: "https://abraoesilvaadvogados.com.br/duvidas/", key: "duvidas", type: "external" }
   ]
 
   const socialLinks = [
@@ -283,7 +296,7 @@ export default function AbraoSilvaAdvocacia() {
                               {menuItems.map((item, index) => (
                   <button
                     key={item.key}
-                    onClick={() => scrollToSection(item.id)}
+                    onClick={() => handleMenuClick(item)}
                     className="text-white hover:text-[#e2ba4b] transition-all duration-300 font-medium text-sm btn-hover-scale animate-slideInDown"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
@@ -354,7 +367,7 @@ export default function AbraoSilvaAdvocacia() {
                 {menuItems.map((item, index) => (
                   <button
                     key={item.key}
-                    onClick={() => scrollToSection(item.id)}
+                    onClick={() => handleMenuClick(item)}
                     className="block w-full text-left px-4 py-2 text-white hover:bg-[#e2ba4b] hover:text-black transition-all duration-300 font-medium btn-hover-scale animate-fadeInLeft"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
@@ -667,7 +680,7 @@ export default function AbraoSilvaAdvocacia() {
                 {menuItems.map((item, index) => (
                   <div key={item.key} className="flex items-center animate-fadeInUp" style={{ animationDelay: `${index * 0.1}s` }}>
                     <button
-                      onClick={() => scrollToSection(item.id)}
+                      onClick={() => handleMenuClick(item)}
                       className="text-[#e2ba4b] hover:text-white transition-all duration-300 text-sm font-medium btn-hover-scale"
                     >
                       {item.label}
