@@ -9,8 +9,6 @@ import {
   Menu,
   X,
   Scale,
-  Users,
-  FileText,
   Heart,
   Briefcase,
   Building,
@@ -23,17 +21,9 @@ import {
   Youtube,
   Linkedin,
   MessageCircle,
-  ChevronDown,
   Clock,
-  Award,
-  Star,
-  CheckCircle,
   ArrowRight,
   Shield,
-  Target,
-  Zap,
-  TrendingUp,
-  Globe,
   BookOpen,
 } from "lucide-react"
 import Image from "next/image"
@@ -46,6 +36,60 @@ const GoogleMapComponent = dynamic(() => import("@/components/GoogleMap"), {
   </div>,
   ssr: false
 })
+
+// Remover import desnecessário que estava causando erro
+
+// Componente inline para o popup de cookies para evitar bundle adicional
+function InlineCookiePopup({ 
+  showCookiePopup, 
+  handleAcceptCookies, 
+  handleRejectCookies 
+}: {
+  showCookiePopup: boolean;
+  handleAcceptCookies: () => void;
+  handleRejectCookies: () => void;
+}) {
+  if (!showCookiePopup) return null;
+  
+  return (
+    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50 animate-in slide-in-from-bottom duration-300">
+      <div className="container mx-auto px-4 py-4">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between space-y-4 md:space-y-0 md:space-x-6">
+          <div className="flex-1">
+            <div className="flex items-start space-x-3">
+              <div className="bg-[#e2ba4b] p-2 rounded-full flex-shrink-0">
+                <Shield className="h-5 w-5 text-black" />
+              </div>
+              <div>
+                <h4 className="text-sm font-semibold text-black mb-1">
+                  Utilizamos cookies
+                </h4>
+                <p className="text-xs text-gray-600 leading-relaxed">
+                  Este site utiliza cookies para melhorar sua experiência de navegação e fornecer funcionalidades personalizadas. 
+                  Ao continuar navegando, você concorda com nossa política de cookies.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center space-x-3 flex-shrink-0">
+            <button
+              onClick={handleRejectCookies}
+              className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-800 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+            >
+              Rejeitar
+            </button>
+            <button
+              onClick={handleAcceptCookies}
+              className="px-4 py-2 text-sm font-medium bg-[#e2ba4b] hover:bg-[#d4a93a] text-black rounded-lg transition-colors shadow-sm"
+            >
+              Aceitar Cookies
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function AbraoSilvaAdvocacia() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -758,45 +802,12 @@ export default function AbraoSilvaAdvocacia() {
         </div>
       </div>
 
-      {/* Cookie Popup */}
-      {showCookiePopup && (
-        <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50 animate-in slide-in-from-bottom duration-300">
-          <div className="container mx-auto px-4 py-4">
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between space-y-4 md:space-y-0 md:space-x-6">
-              <div className="flex-1">
-                <div className="flex items-start space-x-3">
-                  <div className="bg-[#e2ba4b] p-2 rounded-full flex-shrink-0">
-                    <Shield className="h-5 w-5 text-black" />
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-semibold text-black mb-1">
-                      Utilizamos cookies
-                    </h4>
-                    <p className="text-xs text-gray-600 leading-relaxed">
-                      Este site utiliza cookies para melhorar sua experiência de navegação e fornecer funcionalidades personalizadas. 
-                      Ao continuar navegando, você concorda com nossa política de cookies.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center space-x-3 flex-shrink-0">
-                <button
-                  onClick={handleRejectCookies}
-                  className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-800 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
-                >
-                  Rejeitar
-                </button>
-                <button
-                  onClick={handleAcceptCookies}
-                  className="px-4 py-2 text-sm font-medium bg-[#e2ba4b] hover:bg-[#d4a93a] text-black rounded-lg transition-colors shadow-sm"
-                >
-                  Aceitar Cookies
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Cookie Popup Otimizado */}
+      <InlineCookiePopup 
+        showCookiePopup={showCookiePopup}
+        handleAcceptCookies={handleAcceptCookies}
+        handleRejectCookies={handleRejectCookies}
+      />
     </div>
   )
 }

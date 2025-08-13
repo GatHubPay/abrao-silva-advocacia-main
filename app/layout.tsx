@@ -40,12 +40,28 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        <link rel="dns-prefetch" href="https://maps.googleapis.com" />
         
-        {/* Fontes com display=swap para evitar bloqueio */}
+        {/* Preload da fonte principal para reduzir CLS */}
         <link 
-          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" 
-          rel="stylesheet"
+          rel="preload" 
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" 
+          as="style"
+          onLoad="this.onload=null;this.rel='stylesheet'"
         />
+        <noscript>
+          <link 
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" 
+            rel="stylesheet"
+          />
+        </noscript>
+        
+        {/* Preload de recursos críticos */}
+        <link rel="preload" href="/logo.png" as="image" />
+        
+        {/* Preload da imagem LCP para melhorar performance */}
+        <link rel="preload" href="/fundo/01.webp" as="image" type="image/webp" />
+        <link rel="preload" href="/fundo/01.png" as="image" type="image/png" />
         
         <meta name="theme-color" content="#e2ba4b" />
         <meta name="apple-mobile-web-app-capable" content="yes" />

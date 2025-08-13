@@ -15,9 +15,50 @@ const nextConfig = {
   },
   experimental: {
     scrollRestoration: true,
+    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
+  },
+  
+  // Otimizações de bundle
+  webpack: (config, { dev, isServer }) => {
+    // Otimizações apenas para produção
+    if (!dev) {
+      config.optimization = {
+        ...config.optimization,
+        usedExports: true,
+        sideEffects: false,
+        splitChunks: {
+          chunks: 'all',
+          cacheGroups: {
+            // Separar vendor chunks para melhor cache
+            vendor: {
+              test: /[\\/]node_modules[\\/]/,
+              name: 'vendors',
+              chunks: 'all',
+              priority: 10,
+            },
+            // Chunk específico para Google Maps
+            maps: {
+              test: /[\\/]node_modules[\\/]@react-google-maps[\\/]/,
+              name: 'google-maps',
+              chunks: 'all',
+              priority: 20,
+            },
+            // Chunk para Radix UI components
+            radix: {
+              test: /[\\/]node_modules[\\/]@radix-ui[\\/]/,
+              name: 'radix-ui',
+              chunks: 'all',
+              priority: 15,
+            },
+          },
+        },
+      };
+    }
+    
+    return config;
   },
 
   poweredByHeader: false,

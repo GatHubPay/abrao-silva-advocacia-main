@@ -253,7 +253,7 @@
   z-index: 0;
 }
 
-/* Custom styles for the location card background */
+/* Custom styles for the location card background - Otimizado para LCP */
 .location-bg {
   background-image: 
     url('/fundo/01.webp'),
@@ -264,6 +264,9 @@
   background-position: center, center, center, center;
   background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
   position: relative;
+  /* Otimizações para performance */
+  will-change: transform;
+  contain: layout style paint;
 }
 
 /* Fallback para navegadores sem suporte ao WebP */
