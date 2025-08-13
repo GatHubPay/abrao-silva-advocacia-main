@@ -160,7 +160,7 @@ export default function PerformanceReportPage() {
                 className="border-white text-blue-600 hover:bg-white hover:text-blue-600"
                 asChild
               >
-                <a href="https://pagespeed.web.dev/analysis?url=https://abraoesilvaadvogados.com.br" target="_blank" rel="noopener noreferrer">
+                <a href="https://pagespeed.web.dev/analysis?url=https://abraoesilvaadvogados.com.br&form_factor=desktop" target="_blank" rel="noopener noreferrer">
                   <BarChart3 className="mr-2 h-5 w-5" />
                   Testar Site Original
                 </a>
@@ -415,7 +415,7 @@ export default function PerformanceReportPage() {
                 className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-3"
                 asChild
               >
-                <a href="https://pagespeed.web.dev/analysis?url=https://abraoesilva.gathub.com.br" target="_blank" rel="noopener noreferrer">
+                <a href="https://pagespeed.web.dev/analysis?url=https://abraoesilva.gathub.com.br&form_factor=desktop" target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="mr-2 h-5 w-5" />
                   Testar Site Otimizado
                 </a>
@@ -426,7 +426,7 @@ export default function PerformanceReportPage() {
                 className="border-white text-blue-600 hover:bg-white hover:text-blue-600 text-lg px-8 py-3"
                 asChild
               >
-                <a href="https://pagespeed.web.dev/analysis?url=https://abraoesilvaadvogados.com.br" target="_blank" rel="noopener noreferrer">
+                <a href="https://pagespeed.web.dev/analysis?url=https://abraoesilvaadvogados.com.br&form_factor=desktop" target="_blank" rel="noopener noreferrer">
                   <BarChart3 className="mr-2 h-5 w-5" />
                   Testar Site Original
                 </a>
