@@ -2,7 +2,7 @@
 
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import { MapPin, AlertCircle } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 
 const containerStyle = {
   width: '100%',
@@ -25,13 +25,43 @@ export default function GoogleMapComponent() {
   
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
-  const handleMapLoad = () => {
+  const handleMapLoad = useCallback(() => {
     setMapLoaded(true);
-  };
+  }, []);
 
-  const handleMapError = () => {
+  const handleMapError = useCallback(() => {
     setMapError(true);
-  };
+  }, []);
+
+  // Memoizar opções do mapa para evitar re-renders
+  const mapOptions = useMemo(() => ({
+    styles: [
+      {
+        featureType: 'poi',
+        elementType: 'labels',
+        stylers: [{ visibility: 'off' }]
+      }
+    ],
+    zoomControl: true,
+    mapTypeControl: false,
+    scaleControl: true,
+    streetViewControl: false,
+    rotateControl: false,
+    fullscreenControl: false,
+    gestureHandling: 'cooperative', // Melhor para mobile
+    clickableIcons: false // Reduz interações desnecessárias
+  }), []);
+
+  // Memoizar ícone do marker
+  const markerIcon = useMemo(() => ({
+    url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+      <svg width="32" height="45" viewBox="0 0 32 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 0C7.16344 0 0 7.16344 0 16C0 24.8366 16 45 16 45C16 45 32 24.8366 32 16C32 7.16344 24.8366 0 16 0Z" fill="#e2ba4b"/>
+        <circle cx="16" cy="16" r="8" fill="#FFFFFF"/>
+        <circle cx="16" cy="16" r="4" fill="#e2ba4b"/>
+      </svg>
+    `)
+  }), []);
 
   // Fallback quando não há chave da API
   if (!apiKey) {
