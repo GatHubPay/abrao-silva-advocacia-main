@@ -16,6 +16,14 @@ const nextConfig = {
   experimental: {
     scrollRestoration: true,
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
+    optimizeCss: true, // Otimizar CSS para reduzir parsing
+    turbo: {
+      rules: {
+        '*.js': ['babel-loader'],
+        '*.ts': ['babel-loader'],
+        '*.tsx': ['babel-loader'],
+      }
+    }
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
@@ -56,6 +64,14 @@ const nextConfig = {
           },
         },
       };
+      
+      // Otimizações adicionais para reduzir parsing time
+      config.optimization.providedExports = true;
+      config.optimization.mangleExports = true;
+      
+      // Minimizar o tamanho dos chunks
+      config.optimization.splitChunks.maxSize = 250000; // 250kb max per chunk
+      config.optimization.splitChunks.minSize = 20000;  // 20kb min per chunk
     }
     
     return config;

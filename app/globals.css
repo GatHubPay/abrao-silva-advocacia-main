@@ -309,13 +309,14 @@
   background-color: rgba(226, 186, 75, 0.01) !important;
 }
 
-/* Custom button hover effect melhorado */
+/* Custom button hover effect melhorado - Otimizado para performance */
 .btn-golden {
   background: linear-gradient(135deg, #e2ba4b 0%, #d4a93a 100%);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
-  will-change: transform, box-shadow;
+  will-change: transform;
+  transform: translateZ(0); /* Force hardware acceleration */
 }
 
 .btn-golden::before {
@@ -547,13 +548,15 @@ img[src*="/performance/"] {
   transform: translateX(0);
 }
 
-/* Melhorias nos botões */
+/* Melhorias nos botões - Otimizado para performance */
 .btn-hover-scale {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.2s ease-out;
+  will-change: transform;
+  transform: translateZ(0) scale(1); /* Force hardware acceleration */
 }
 
 .btn-hover-scale:hover {
-  transform: scale(1.05);
+  transform: translateZ(0) scale(1.03); /* Reduzido para evitar layout thrashing */
 }
 
 /* Efeito de gradiente animado */
@@ -578,22 +581,21 @@ img[src*="/performance/"] {
   }
 }
 
-/* Efeito de card com hover melhorado */
+/* Efeito de card com hover otimizado para performance */
 .card-hover-effect {
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  transform-style: preserve-3d;
-  will-change: transform, box-shadow;
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  will-change: transform;
+  transform: translateZ(0); /* Force hardware acceleration */
 }
 
 .card-hover-effect:hover {
-  transform: translateY(-8px) rotateX(5deg);
-  box-shadow: 0 20px 40px rgba(226, 186, 75, 0.2), 0 10px 20px rgba(0, 0, 0, 0.1);
-  filter: brightness(1.05);
+  transform: translateZ(0) translateY(-4px); /* Simplificado, sem rotateX */
+  box-shadow: 0 12px 24px rgba(226, 186, 75, 0.15), 0 6px 12px rgba(0, 0, 0, 0.08);
 }
 
 .card-hover-effect:active {
-  transform: translateY(-4px) rotateX(2deg);
-  transition: all 0.1s;
+  transform: translateZ(0) translateY(-2px);
+  transition: transform 0.1s ease-out;
 }
 
 /* Efeito de partículas douradas */
