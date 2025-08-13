@@ -491,11 +491,16 @@ export default function AbraoSilvaAdvocacia() {
         </section>
 
         {/* Áreas de Atuação Section */}
-        <section id="areas-atuacao" className="py-12 md:py-16 lg:py-24 bg-black text-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-black opacity-90"></div>
-          <div className="absolute inset-0 opacity-30">
-            <div className="absolute inset-0 bg-gradient-to-br from-transparent via-[#e2ba4b]/10 to-transparent"></div>
-          </div>
+        <section id="areas-atuacao" className="py-12 md:py-16 lg:py-24 text-white relative overflow-hidden">
+          {/* Background Image */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: "url('/fundo/01.webp')",
+            }}
+          ></div>
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black/80"></div>
           
           <div className="container mx-auto px-4 relative z-10">
             <div className={`text-center mb-12 md:mb-16 scroll-reveal ${isLoaded ? 'animate-fadeInUp' : ''}`}>
