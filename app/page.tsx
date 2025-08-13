@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -43,6 +43,8 @@ export default function AbraoSilvaAdvocacia() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("")
   const [showCookiePopup, setShowCookiePopup] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false)
+  const observerRef = useRef<IntersectionObserver | null>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,6 +65,31 @@ export default function AbraoSilvaAdvocacia() {
       }
     }
 
+    // Configurar Intersection Observer para animações de scroll
+    const setupScrollAnimations = () => {
+      observerRef.current = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed')
+            }
+          })
+        },
+        {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        }
+      )
+
+      // Observar todos os elementos com classes de scroll reveal
+      const scrollElements = document.querySelectorAll(
+        '.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right'
+      )
+      scrollElements.forEach((el) => {
+        observerRef.current?.observe(el)
+      })
+    }
+
     // Verificar se o usuário já aceitou/rejeitou cookies
     const cookiePreference = localStorage.getItem('cookiePreference')
     if (!cookiePreference) {
@@ -74,8 +101,19 @@ export default function AbraoSilvaAdvocacia() {
       return () => clearTimeout(timer)
     }
 
+    // Configurar animações após o componente carregar
+    const loadTimer = setTimeout(() => {
+      setIsLoaded(true)
+      setupScrollAnimations()
+    }, 100)
+
     window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      observerRef.current?.disconnect()
+      clearTimeout(loadTimer)
+    }
   }, [])
 
   const scrollToSection = (sectionId: string) => {
@@ -144,15 +182,16 @@ export default function AbraoSilvaAdvocacia() {
 
             {/* Center - Desktop Menu */}
             <nav className="hidden md:flex items-center space-x-8">
-              {menuItems.map((item) => (
-                <button
-                  key={item.key}
-                  onClick={() => scrollToSection(item.id)}
-                  className="text-white hover:text-gray-300 transition-colors font-medium text-sm"
-                >
-                  {item.label}
-                </button>
-              ))}
+                              {menuItems.map((item, index) => (
+                  <button
+                    key={item.key}
+                    onClick={() => scrollToSection(item.id)}
+                    className="text-white hover:text-[#e2ba4b] transition-all duration-300 font-medium text-sm btn-hover-scale animate-slideInDown"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    {item.label}
+                  </button>
+                ))}
             </nav>
 
             {/* Right Side - Social Icons */}
@@ -165,10 +204,11 @@ export default function AbraoSilvaAdvocacia() {
                      href={social.href}
                      target="_blank"
                      rel="noopener noreferrer"
-                     className="p-3 border border-gray-600 rounded-lg hover:border-gray-400 hover:bg-gray-800 transition-colors flex items-center justify-center"
+                     className="p-3 border border-gray-600 rounded-lg hover:border-[#e2ba4b] hover:bg-[#e2ba4b] transition-all duration-300 flex items-center justify-center btn-hover-scale group animate-float"
                      aria-label={social.name}
+                     style={{ animationDelay: `${socialLinks.indexOf(social) * 0.2}s` }}
                    >
-                     <IconComponent className="h-6 w-6 text-white" />
+                     <IconComponent className="h-6 w-6 text-white group-hover:text-black transition-colors duration-300" />
                    </a>
                  );
                })}
@@ -202,21 +242,23 @@ export default function AbraoSilvaAdvocacia() {
                         href={social.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors flex items-center justify-center"
+                        className="bg-gray-800 p-4 rounded-lg hover:bg-[#e2ba4b] transition-all duration-300 flex items-center justify-center btn-hover-scale group animate-bounce-gentle"
                         aria-label={social.name}
+                        style={{ animationDelay: `${socialLinks.indexOf(social) * 0.1}s` }}
                       >
-                        <IconComponent className="h-7 w-7 text-white" />
+                        <IconComponent className="h-7 w-7 text-white group-hover:text-black transition-colors duration-300" />
                       </a>
                     );
                   })}
                 </div>
                 
                 {/* Mobile Menu Items */}
-                {menuItems.map((item) => (
+                {menuItems.map((item, index) => (
                   <button
                     key={item.key}
                     onClick={() => scrollToSection(item.id)}
-                    className="block w-full text-left px-4 py-2 text-white hover:bg-gray-800 transition-colors font-medium"
+                    className="block w-full text-left px-4 py-2 text-white hover:bg-[#e2ba4b] hover:text-black transition-all duration-300 font-medium btn-hover-scale animate-fadeInLeft"
+                    style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     {item.label}
                   </button>
@@ -232,9 +274,9 @@ export default function AbraoSilvaAdvocacia() {
         {/* Localização Section */}
         <section id="localizacao" className="py-12 md:py-16 lg:py-24 bg-gray-50">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12 md:mb-16">
+            <div className={`text-center mb-12 md:mb-16 scroll-reveal ${isLoaded ? 'animate-fadeInUp' : 'opacity-0'}`}>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4 md:mb-6">
-                Nossa localização em <span className="text-[#e2ba4b]">ANICUNS - GOIÁS</span>
+                Nossa localização em <span className="gradient-text">ANICUNS - GOIÁS</span>
               </h2>
               <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto px-4">
                 Estamos localizados em Anicuns (GOIÁS) e atendemos em todo território nacional.
@@ -243,7 +285,7 @@ export default function AbraoSilvaAdvocacia() {
 
             <div className="space-y-8 md:space-y-12">
               {/* Mapa */}
-              <div className="relative group">
+              <div className={`relative group scroll-reveal-left golden-particles ${isLoaded ? 'animate-scaleIn delay-200' : 'opacity-0'}`}>
                 {/* Borda animada principal */}
                 <div className="absolute -inset-1 bg-gradient-to-r from-[#e2ba4b] via-[#f4d366] to-[#e2ba4b] rounded-2xl blur-sm opacity-75 group-hover:opacity-100 animate-[golden-glow_3s_ease-in-out_infinite] transition-all duration-300"></div>
                 
@@ -253,18 +295,18 @@ export default function AbraoSilvaAdvocacia() {
                 </div>
                 
                 {/* Card principal */}
-                <div className="location-bg rounded-2xl shadow-2xl overflow-hidden relative border-2 border-[#e2ba4b] hover:shadow-3xl transition-all duration-300 group-hover:scale-[1.02]">
+                <div className="location-bg rounded-2xl shadow-2xl overflow-hidden relative border-2 border-[#e2ba4b] card-hover-effect">
                 <div className="relative p-6 md:p-8 z-10">
-                  <h3 className="text-xl md:text-2xl font-bold text-black mb-6 text-center">
+                  <h3 className="text-xl md:text-2xl font-bold text-black mb-6 text-center animate-float">
                     Localização no Mapa
                   </h3>
                   <GoogleMapComponent />
                   <div className="mt-6 text-center">
-                    <p className="font-bold text-black text-lg">Anicuns - GO</p>
+                    <p className="font-bold text-black text-lg animate-bounce-gentle">Anicuns - GO</p>
                     <p className="text-gray-500 mt-2">Atendimento em todo território nacional</p>
                     <Button 
                       onClick={() => scrollToSection("contato")}
-                      className="mt-4 btn-golden text-black py-3 px-6 text-lg font-semibold"
+                      className="mt-4 btn-golden btn-hover-scale text-black py-3 px-6 text-lg font-semibold animate-pulse-golden"
                     >
                       FALE CONOSCO »
                       <ArrowRight className="ml-2 h-5 w-5" />
@@ -281,10 +323,10 @@ export default function AbraoSilvaAdvocacia() {
         <section id="contato" className="py-12 md:py-16 lg:py-24 contact-bg relative overflow-hidden">
           
           <div className="container mx-auto px-4 relative z-10">
-            <div className="text-center mb-12 md:mb-16">
+            <div className="text-center mb-12 md:mb-16 scroll-reveal">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6">
                 Fale diretamente com um de{" "}
-                <span className="text-[#e2ba4b]">nossos Advogados</span>
+                <span className="gradient-text">nossos Advogados</span>
               </h2>
               <p className="text-lg md:text-xl text-white max-w-3xl mx-auto px-4">
                 Preencha o formulário abaixo e aguarde o nosso retorno com um atendimento focado nas suas necessidades.
@@ -293,22 +335,22 @@ export default function AbraoSilvaAdvocacia() {
 
             <div className="space-y-8 md:space-y-12">
               {/* Formulário */}
-               <div className="  rounded-2xl shadow-2xl overflow-hidden  hover:shadow-3xl transition-all duration-300">
+               <div className="rounded-2xl shadow-2xl overflow-hidden card-hover-effect scroll-reveal-right golden-particles">
                 <div className="p-6 md:p-8">
                   <div className="mb-6">
-                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Fale diretamente com um de <span className="text-[#e2ba4b]">nossos Advogados</span></h3>
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Fale diretamente com um de <span className="gradient-text">nossos Advogados</span></h3>
                     <p className="text-base md:text-lg text-white">
                       Preencha o formulário abaixo e aguarde o nosso retorno com um atendimento focado nas suas necessidades
                     </p>
                   </div>
                   <form className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-sm font-semibold text-white mb-1.5">Nome</label>
+                      <div className="scroll-reveal delay-100">
+                        <label className="block text-sm font-semibold text-white mb-1.5 animate-fadeInLeft">Nome</label>
                         <Input placeholder="Seu nome completo" className="border-gray-300 h-12 form-input-focus" />
                       </div>
-                      <div>
-                        <label className="block text-sm font-semibold text-white mb-1.5">E-mail</label>
+                      <div className="scroll-reveal delay-200">
+                        <label className="block text-sm font-semibold text-white mb-1.5 animate-fadeInRight">E-mail</label>
                         <Input
                           type="email"
                           placeholder="seu@email.com"
@@ -317,26 +359,26 @@ export default function AbraoSilvaAdvocacia() {
                       </div>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-sm font-semibold text-white mb-1.5">Telefone</label>
+                      <div className="scroll-reveal delay-300">
+                        <label className="block text-sm font-semibold text-white mb-1.5 animate-fadeInLeft">Telefone</label>
                         <Input placeholder="(62) 99999-9999" className="border-gray-300 h-12 form-input-focus" />
                       </div>
-                      <div>
-                        <label className="block text-sm font-semibold text-white mb-1.5">Assunto</label>
+                      <div className="scroll-reveal delay-400">
+                        <label className="block text-sm font-semibold text-white mb-1.5 animate-fadeInRight">Assunto</label>
                         <Input
                           placeholder="Ex: Direito Previdenciário"
                           className="border-gray-300 h-12 form-input-focus text-white"
                         />
                       </div>
                     </div>
-                    <div>
-                        <label className="block text-sm font-semibold text-white mb-1.5">Mensagem</label>
+                    <div className="scroll-reveal delay-500">
+                        <label className="block text-sm font-semibold text-white mb-1.5 animate-fadeInUp">Mensagem</label>
                       <Textarea
                         placeholder="Descreva sua situação jurídica com detalhes..."
-                        className="border-gray-300 min-h-[120px] form-input-focus resize-none text-white  "
+                        className="border-gray-300 min-h-[120px] form-input-focus resize-none text-white"
                       />
                     </div>
-                    <Button className="w-full btn-golden text-black py-3 text-lg font-semibold h-12 shadow-lg">
+                    <Button className="w-full btn-golden btn-hover-scale text-black py-3 text-lg font-semibold h-12 shadow-lg animate-pulse-golden">
                       SOLICITAR UM ESPECIALISTA »
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
@@ -350,8 +392,8 @@ export default function AbraoSilvaAdvocacia() {
         {/* Informações Section */}
         <section id="informacoes" className="py-12 md:py-16 lg:py-24 bg-gray-50">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12 md:mb-16">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4 md:mb-6">Informações de <span className="text-[#e2ba4b]">Contato</span></h2>
+            <div className="text-center mb-12 md:mb-16 scroll-reveal">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4 md:mb-6">Informações de <span className="gradient-text">Contato</span></h2>
               <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
                 Todas as informações para entrar em contato conosco.
               </p>
@@ -359,53 +401,53 @@ export default function AbraoSilvaAdvocacia() {
 
             <div className="space-y-8 md:space-y-12">
               {/* Dados de Contato */}
-              <div className="bg-[#e2ba4b] rounded-2xl shadow-2xl overflow-hidden border border-[#e2ba4b] hover:shadow-3xl transition-all duration-300">
+              <div className="bg-[#e2ba4b] rounded-2xl shadow-2xl overflow-hidden border border-[#e2ba4b] card-hover-effect scroll-reveal-left golden-particles">
                 <div className="p-6 md:p-8">
-                  <h3 className="text-xl md:text-2xl font-bold text-black mb-6">Informações de Contato</h3>
+                  <h3 className="text-xl md:text-2xl font-bold text-black mb-6 animate-float">Informações de Contato</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Coluna Esquerda */}
                     <div className="space-y-6">
-                      <div className="flex items-start space-x-4">
-                        <div className="bg-black p-3 rounded-full flex-shrink-0">
-                          <Phone className="h-6 w-6 text-white" />
+                      <div className="flex items-start space-x-4 scroll-reveal delay-100">
+                        <div className="bg-black p-3 rounded-full flex-shrink-0 animate-pulse-golden btn-hover-scale">
+                          <Phone className="h-6 w-6 text-white animate-float" />
                         </div>
                         <div className="min-w-0 flex-1 mb-4">
-                          <p className="font-semibold text-black text-base">Telefone SAC</p>
-                          <p className="text-gray-600 text-base break-all">(62) 3412-2893</p>
+                          <p className="font-semibold text-black text-base animate-fadeInLeft">Telefone SAC</p>
+                          <p className="text-gray-600 text-base break-all animate-fadeInLeft delay-100">(62) 3412-2893</p>
                           <p className="text-sm text-gray-500 break-words"></p>
 
                         </div>
                       </div>
-                      <div className="flex items-start space-x-4">
-                        <div className="bg-black p-3 rounded-full flex-shrink-0">
-                          <Mail className="h-6 w-6 text-white" />
+                      <div className="flex items-start space-x-4 scroll-reveal delay-200">
+                        <div className="bg-black p-3 rounded-full flex-shrink-0 animate-pulse-golden btn-hover-scale">
+                          <Mail className="h-6 w-6 text-white animate-float" />
                         </div>
                         <div className="min-w-0 flex-1">
-                          <p className="font-semibold text-black text-base">E-mail Oficial</p>
-                          <p className="text-gray-600 text-base break-all">contato@abraoesilva.adv.br</p>
+                          <p className="font-semibold text-black text-base animate-fadeInLeft">E-mail Oficial</p>
+                          <p className="text-gray-600 text-base break-all animate-fadeInLeft delay-100">contato@abraoesilva.adv.br</p>
                         </div>
                       </div>
                     </div>
                     {/* Coluna Direita */}
                     <div className="space-y-6">
-                      <div className="flex items-start space-x-4">
-                        <div className="bg-black p-3 rounded-full flex-shrink-0">
-                          <MapPin className="h-6 w-6 text-white" />
+                      <div className="flex items-start space-x-4 scroll-reveal delay-300">
+                        <div className="bg-black p-3 rounded-full flex-shrink-0 animate-pulse-golden btn-hover-scale">
+                          <MapPin className="h-6 w-6 text-white animate-bounce-gentle" />
                         </div>
                         <div className="min-w-0 flex-1">
-                          <p className="font-semibold text-black text-base">Localização</p>
-                          <p className="text-gray-600 text-base">Anicuns - GO</p>
-                          <p className="text-sm text-gray-500 break-words">Av. Bandeirantes, 2216, Setor Leste - Anicuns, GO, 76170-000</p>
+                          <p className="font-semibold text-black text-base animate-fadeInRight">Localização</p>
+                          <p className="text-gray-600 text-base animate-fadeInRight delay-100">Anicuns - GO</p>
+                          <p className="text-sm text-gray-500 break-words animate-fadeInRight delay-200">Av. Bandeirantes, 2216, Setor Leste - Anicuns, GO, 76170-000</p>
                         </div>
                       </div>
-                      <div className="flex items-start space-x-4">
-                        <div className="bg-black p-3 rounded-full flex-shrink-0">
-                          <Clock className="h-6 w-6 text-white" />
+                      <div className="flex items-start space-x-4 scroll-reveal delay-400">
+                        <div className="bg-black p-3 rounded-full flex-shrink-0 animate-pulse-golden btn-hover-scale">
+                          <Clock className="h-6 w-6 text-white animate-float" />
                         </div>
                         <div className="min-w-0 flex-1">
-                          <p className="font-semibold text-black text-base">Horário de Atendimento</p>
-                          <p className="text-gray-600 text-base">Seg - Sex: 07:00 às 17:00</p>
-                          <p className="text-sm text-gray-500">Pausa para almoço: 11:00 às 13:00</p>
+                          <p className="font-semibold text-black text-base animate-fadeInRight">Horário de Atendimento</p>
+                          <p className="text-gray-600 text-base animate-fadeInRight delay-100">Seg - Sex: 07:00 às 17:00</p>
+                          <p className="text-sm text-gray-500 animate-fadeInRight delay-200">Pausa para almoço: 11:00 às 13:00</p>
                         </div>
                       </div>
                     </div>
@@ -446,7 +488,7 @@ export default function AbraoSilvaAdvocacia() {
               </div>
               {/* Social Media Icons */}
               <div className="flex items-center space-x-3">
-               {socialLinks.map((social) => {
+               {socialLinks.map((social, index) => {
                  const IconComponent = social.icon;
                  return (
                    <a
@@ -454,10 +496,11 @@ export default function AbraoSilvaAdvocacia() {
                      href={social.href}
                      target="_blank"
                      rel="noopener noreferrer"
-                     className="p-2 lg:p-3 border border-gray-600 rounded-lg hover:border-gray-400 hover:bg-gray-800 transition-colors flex items-center justify-center"
+                     className="p-2 lg:p-3 border border-gray-600 rounded-lg hover:border-[#e2ba4b] hover:bg-[#e2ba4b] transition-all duration-300 flex items-center justify-center btn-hover-scale group animate-float"
                      aria-label={social.name}
+                     style={{ animationDelay: `${index * 0.2}s` }}
                    >
-                     <IconComponent className="h-5 w-5 lg:h-6 lg:w-6 text-white" />
+                     <IconComponent className="h-5 w-5 lg:h-6 lg:w-6 text-white group-hover:text-black transition-colors duration-300" />
                    </a>
                  );
                })}
@@ -469,10 +512,10 @@ export default function AbraoSilvaAdvocacia() {
               {/* Navigation Links */}
               <div className="flex flex-col lg:flex-row items-center space-y-2 lg:space-y-0 lg:space-x-4">
                 {menuItems.map((item, index) => (
-                  <div key={item.key} className="flex items-center">
+                  <div key={item.key} className="flex items-center animate-fadeInUp" style={{ animationDelay: `${index * 0.1}s` }}>
                     <button
                       onClick={() => scrollToSection(item.id)}
-                      className="text-[#e2ba4b] hover:text-white transition-colors text-sm font-medium"
+                      className="text-[#e2ba4b] hover:text-white transition-all duration-300 text-sm font-medium btn-hover-scale"
                     >
                       {item.label}
                     </button>
@@ -486,8 +529,8 @@ export default function AbraoSilvaAdvocacia() {
 
             {/* Right Side - Call to Action Button */}
             <div className="flex items-center justify-center lg:justify-end w-full lg:w-auto">
-              <button className="bg-[#e2ba4b] hover:bg-[#d4a93a] text-black px-4 py-3 rounded-lg transition-colors flex items-center space-x-3 text-center">
-                <BookOpen className="h-5 w-5" />
+              <button className="btn-golden btn-hover-scale text-black px-4 py-3 rounded-lg transition-all duration-300 flex items-center space-x-3 text-center animate-pulse-golden">
+                <BookOpen className="h-5 w-5 animate-float" />
                 <span className="text-sm font-medium">Encontre um escritório mais próximo!</span>
               </button>
             </div>
@@ -509,8 +552,8 @@ export default function AbraoSilvaAdvocacia() {
       {/* Floating WhatsApp Button */}
       <div className="fixed bottom-4 right-4 z-50">
         <div className="flex flex-col items-end space-y-1">
-          <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-3 rounded-lg transition-colors flex items-center space-x-2 shadow-lg">
-            <MessageCircle className="h-5 w-5" />
+          <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-3 rounded-lg transition-all duration-300 flex items-center space-x-2 shadow-lg btn-hover-scale animate-bounce-gentle hover:shadow-2xl">
+            <MessageCircle className="h-5 w-5 animate-float" />
             <span className="text-sm font-medium">Como posso te ajudar?</span>
           </button>
         </div>
