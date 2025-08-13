@@ -89,10 +89,10 @@ export default function GoogleMapComponent() {
             position={officeLocation}
             icon={{
               url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="20" cy="20" r="20" fill="#1f2937"/>
-                  <circle cx="20" cy="20" r="12" fill="#ffffff"/>
-                  <circle cx="20" cy="20" r="6" fill="#1f2937"/>
+                <svg width="32" height="45" viewBox="0 0 32 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16 0C7.16344 0 0 7.16344 0 16C0 24.8366 16 45 16 45C16 45 32 24.8366 32 16C32 7.16344 24.8366 0 16 0Z" fill="#DC2626"/>
+                  <circle cx="16" cy="16" r="8" fill="#FFFFFF"/>
+                  <circle cx="16" cy="16" r="4" fill="#DC2626"/>
                 </svg>
               `)
             }}
