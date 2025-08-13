@@ -648,12 +648,14 @@ export default function AbraoSilvaAdvocacia() {
             {/* SAC e Redes Sociais */}
             <div className="flex flex-col items-center space-y-4">
               <div className="text-center">
-                <div className="text-white text-lg font-bold mb-2">SAC geral</div>
-                <div className="flex items-center justify-center space-x-2 group hover:bg-[#e2ba4b]/10 px-4 py-2 rounded-lg transition-all duration-300">
-                  <Phone className="h-5 w-5 text-white group-hover:text-[#e2ba4b] transition-colors duration-300" />
+                <div className="text-white text-lg font-bold mb-2 hover:text-[#e2ba4b] transition-colors duration-300 cursor-pointer animate-bounce-gentle">
+                  SAC geral
+                </div>
+                <div className="flex items-center justify-center space-x-2 group px-4 py-2 transition-colors duration-300">
+                  <Phone className="h-5 w-5 text-white group-hover:text-[#e2ba4b] transition-colors duration-300 animate-bounce-gentle" />
                   <a 
                     href="tel:6234122893" 
-                    className="text-white hover:text-[#e2ba4b] transition-all duration-300 text-lg font-bold btn-hover-scale"
+                    className="text-white hover:text-[#e2ba4b] transition-colors duration-300 text-lg font-bold animate-bounce-gentle"
                   >
                     (62) 3412-2893
                   </a>
@@ -732,10 +734,15 @@ export default function AbraoSilvaAdvocacia() {
 
             {/* Botão Encontre um Escritório */}
             <div className="flex items-center">
-              <button className="btn-golden btn-hover-scale text-black px-4 py-3 rounded-lg transition-all duration-300 flex items-center space-x-2 text-sm font-medium animate-pulse-golden">
+              <a
+                href="https://abraoesilvaadvogados.com.br/contato/#nossas-unidades"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-golden btn-hover-scale text-black px-4 py-3 rounded-lg transition-all duration-300 flex items-center space-x-2 text-sm font-medium animate-pulse-golden"
+              >
                 <BookOpen className="h-4 w-4" />
-                <span>Encontre um escritório<br/>mais próximo!</span>
-              </button>
+                <span>Encontre um escritório<br />mais próximo!</span>
+              </a>
             </div>
           </div>
         </div>

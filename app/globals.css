@@ -569,6 +569,21 @@ img[src*="/performance/"] {
   animation: gradient-shift 3s ease infinite;
 }
 
+/* Efeito de gradiente no hover */
+.gradient-text-hover {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.gradient-text-hover:hover {
+  background: linear-gradient(45deg, #e2ba4b, #f4d366, #e2ba4b);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 2s ease infinite;
+}
+
 @keyframes gradient-shift {
   0% {
     background-position: 0% 50%;
@@ -579,6 +594,21 @@ img[src*="/performance/"] {
   100% {
     background-position: 0% 50%;
   }
+}
+
+@keyframes pulse-golden {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(226, 186, 75, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(226, 186, 75, 0.8), 0 0 30px rgba(226, 186, 75, 0.4);
+    transform: scale(1.02);
+  }
+}
+
+.animate-pulse-golden {
+  animation: pulse-golden 2s ease-in-out infinite;
 }
 
 /* Efeito de card com hover otimizado para performance */
