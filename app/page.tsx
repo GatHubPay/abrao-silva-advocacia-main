@@ -37,21 +37,21 @@ const GoogleMapComponent = dynamic(() => import("@/components/GoogleMap"), {
   ssr: false
 })
 
-// Lazy load das seções não críticas para reduzir script evaluation
-const AreasAtuacaoSection = dynamic(() => import("@/components/sections/AreasAtuacao"), {
-  loading: () => <div className="h-96 bg-gray-100 animate-pulse"></div>,
-  ssr: false
-})
+// Remover lazy loading - carregar componentes imediatamente
+// const AreasAtuacaoSection = dynamic(() => import("@/components/sections/AreasAtuacao"), {
+//   loading: () => <div className="h-96 bg-gray-100 animate-pulse"></div>,
+//   ssr: false
+// })
 
-const InformacoesSection = dynamic(() => import("@/components/sections/Informacoes"), {
-  loading: () => <div className="h-64 bg-gray-100 animate-pulse"></div>,
-  ssr: false
-})
+// const InformacoesSection = dynamic(() => import("@/components/sections/Informacoes"), {
+//   loading: () => <div className="h-64 bg-gray-100 animate-pulse"></div>,
+//   ssr: false
+// })
 
-const FooterSection = dynamic(() => import("@/components/sections/Footer"), {
-  loading: () => <div className="h-48 bg-black animate-pulse"></div>,
-  ssr: false
-})
+// const FooterSection = dynamic(() => import("@/components/sections/Footer"), {
+//   loading: () => <div className="h-48 bg-black animate-pulse"></div>,
+//   ssr: false
+// })
 
 // Componente inline para o popup de cookies para evitar bundle adicional
 function InlineCookiePopup({ 
@@ -110,7 +110,6 @@ export default function AbraoSilvaAdvocacia() {
   const [activeSection, setActiveSection] = useState("")
   const [showCookiePopup, setShowCookiePopup] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
-  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set())
   const observerRef = useRef<IntersectionObserver | null>(null)
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null)
   const rafRef = useRef<number | null>(null)
@@ -135,68 +134,38 @@ export default function AbraoSilvaAdvocacia() {
 
             if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
               setActiveSection(section)
-              // Garantir que a seção seja carregada quando ativa
-              setVisibleSections(prev => new Set(prev.add(section)))
               break
-            }
-            
-            // Carregar seção se estiver próxima (300px de distância)
-            if (scrollPosition + 300 >= offsetTop && !visibleSections.has(section)) {
-              setVisibleSections(prev => new Set(prev.add(section)))
             }
           }
         }
       })
-  }, [visibleSections])
+  }, [])
 
   useEffect(() => {
 
-    // Configurar Intersection Observer otimizado para lazy loading de seções
+    // Configurar Intersection Observer para animações de scroll
     const setupScrollAnimations = () => {
       observerRef.current = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               entry.target.classList.add('revealed')
-              
-              // Marcar seção como visível para lazy loading
-              const sectionId = entry.target.id;
-              if (sectionId) {
-                setVisibleSections(prev => new Set(prev.add(sectionId)));
-              }
             }
           })
         },
         {
-          threshold: 0.01, // Threshold mais baixo para detectar mais cedo
-          rootMargin: '200px 0px 200px 0px' // Carregar 200px antes e depois
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
         }
       )
 
       // Observar todos os elementos com classes de scroll reveal
       const scrollElements = document.querySelectorAll(
-        '.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, section[id]'
+        '.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right'
       )
       scrollElements.forEach((el) => {
         observerRef.current?.observe(el)
       })
-      
-      // Inicializar seções visíveis no viewport - incluir divs placeholder
-      const initialVisibleSections = document.querySelectorAll('section[id], div[id]');
-      initialVisibleSections.forEach((section) => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top < window.innerHeight + 500) { // Buffer maior para garantir carregamento
-          setVisibleSections(prev => new Set(prev.add(section.id)));
-        }
-      });
-      
-      // Garantir que seções críticas sempre carreguem
-      setVisibleSections(prev => {
-        const newSet = new Set(prev);
-        newSet.add('localizacao');
-        newSet.add('contato');
-        return newSet;
-      });
     }
 
     // Verificar se o usuário já aceitou/rejeitou cookies
@@ -225,15 +194,7 @@ export default function AbraoSilvaAdvocacia() {
       })
     }, 100)
 
-    // Fallback: forçar carregamento de todas as seções após 2 segundos
-    const fallbackTimer = setTimeout(() => {
-      setVisibleSections(prev => {
-        const newSet = new Set(prev);
-        newSet.add('areas-atuacao');
-        newSet.add('informacoes');
-        return newSet;
-      });
-    }, 2000);
+    // Remover fallback timer - não é mais necessário
 
     window.addEventListener("scroll", handleScroll, { passive: true })
     
@@ -241,7 +202,6 @@ export default function AbraoSilvaAdvocacia() {
       window.removeEventListener("scroll", handleScroll)
       observerRef.current?.disconnect()
       clearTimeout(loadTimer)
-      clearTimeout(fallbackTimer)
       if (rafRef.current) {
         cancelAnimationFrame(rafRef.current)
       }
@@ -527,45 +487,230 @@ export default function AbraoSilvaAdvocacia() {
           </div>
         </section>
 
-        {/* Áreas de Atuação Section - Lazy Loaded */}
-        {visibleSections.has('areas-atuacao') ? (
-          <AreasAtuacaoSection isLoaded={isLoaded} scrollToSection={scrollToSection} />
-        ) : (
-          <div 
-            id="areas-atuacao" 
-            className="h-96 bg-black flex items-center justify-center"
-            onMouseEnter={() => setVisibleSections(prev => new Set(prev.add('areas-atuacao')))}
-          >
-            <div className="text-white text-center">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white mx-auto mb-2"></div>
-              <p>Carregando áreas de atuação...</p>
-            </div>
+        {/* Áreas de Atuação Section */}
+        <section id="areas-atuacao" className="py-12 md:py-16 lg:py-24 bg-black text-white relative overflow-hidden">
+          <div className="absolute inset-0 bg-black opacity-90"></div>
+          <div className="absolute inset-0 opacity-30">
+            <div className="absolute inset-0 bg-gradient-to-br from-transparent via-[#e2ba4b]/10 to-transparent"></div>
           </div>
-        )}
+          
+          <div className="container mx-auto px-4 relative z-10">
+            <div className={`text-center mb-12 md:mb-16 scroll-reveal ${isLoaded ? 'animate-fadeInUp' : ''}`}>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6">
+                Áreas de <span className="gradient-text">ATUAÇÃO</span>
+              </h2>
+              <p className="text-lg md:text-xl text-white max-w-4xl mx-auto px-4 mb-4">
+                Atendimento nas Diversas Áreas do Direito
+              </p>
+              <p className="text-base md:text-lg text-gray-300 max-w-4xl mx-auto px-4">
+                Nossa equipe capacitada e multidisciplinar está sempre preparada para atender às necessidades de nossos clientes com total eficiência.
+              </p>
+            </div>
 
-        {/* Informações Section - Lazy Loaded */}
-        {visibleSections.has('informacoes') ? (
-          <InformacoesSection />
-        ) : (
-          <div 
-            id="informacoes" 
-            className="h-64 bg-gray-50 flex items-center justify-center"
-            onMouseEnter={() => setVisibleSections(prev => new Set(prev.add('informacoes')))}
-          >
-            <div className="text-gray-600 text-center">
-              <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-gray-600 mx-auto mb-2"></div>
-              <p>Carregando informações...</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8 mb-12">
+              {[
+                { icon: Scale, title: "DIREITO", subtitle: "PREVIDENCIÁRIO", delay: 100 },
+                { icon: Briefcase, title: "DIREITO", subtitle: "TRABALHISTA", delay: 200 },
+                { icon: UserCheck, title: "DIREITO", subtitle: "CIVIL", delay: 300 },
+                { icon: Heart, title: "DIREITO", subtitle: "TRIBUTÁRIO", delay: 400 },
+                { icon: Building, title: "DIREITO PÚBLICO", subtitle: "ESTATUTÁRIO", delay: 500 }
+              ].map((area, index) => {
+                const IconComponent = area.icon;
+                return (
+                  <div key={index} className={`relative group cursor-pointer scroll-reveal-left golden-particles ${isLoaded ? `animate-scaleIn delay-${area.delay}` : ''}`}>
+                    <div className="absolute -inset-1 bg-gradient-to-r from-[#e2ba4b] via-[#f4d366] to-[#e2ba4b] rounded-2xl blur-sm opacity-75 group-hover:opacity-100 animate-[golden-glow_3s_ease-in-out_infinite] transition-all duration-300"></div>
+                    <div className="absolute -inset-1 rounded-2xl overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 animate-[shimmer_3s_ease-in-out_infinite] opacity-0 group-hover:opacity-100"></div>
+                    </div>
+                    <div className="bg-gray-900/50 backdrop-blur-sm border-2 border-[#e2ba4b] rounded-2xl p-6 md:p-8 text-center hover:bg-[#e2ba4b] hover:border-[#e2ba4b] transition-all duration-500 card-hover-effect h-full flex flex-col justify-between min-h-[280px] relative">
+                      <div className="flex flex-col items-center">
+                        <div className="w-16 h-16 md:w-20 md:h-20 bg-gray-800 group-hover:bg-black rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 btn-hover-scale">
+                          <IconComponent className="h-8 w-8 md:h-10 md:w-10 text-[#e2ba4b] group-hover:text-white transition-colors duration-300" />
+                        </div>
+                        <h3 className="text-lg md:text-xl font-bold text-white group-hover:text-black transition-colors duration-300 mb-2">
+                          {area.title}
+                        </h3>
+                        <h4 className="text-base md:text-lg font-bold text-white group-hover:text-black transition-colors duration-300">
+                          {area.subtitle}
+                        </h4>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="text-center">
+              <Button 
+                onClick={() => scrollToSection("contato")}
+                className="btn-golden btn-hover-scale text-black py-4 px-8 text-lg font-semibold animate-pulse-golden inline-flex items-center space-x-2"
+              >
+                <span>+ SAIBA MAIS</span>
+              </Button>
             </div>
           </div>
-        )}
+        </section>
+
+        {/* Informações Section */}
+        <section id="informacoes" className="py-12 md:py-16 lg:py-24 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12 md:mb-16 scroll-reveal">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4 md:mb-6">
+                Informações de <span className="gradient-text">Contato</span>
+              </h2>
+              <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
+                Todas as informações para entrar em contato conosco.
+              </p>
+            </div>
+
+            <div className="space-y-8 md:space-y-12">
+              <div className="bg-[#e2ba4b] rounded-2xl shadow-2xl overflow-hidden border border-[#e2ba4b] card-hover-effect scroll-reveal-left golden-particles">
+                <div className="p-6 md:p-8">
+                  <h3 className="text-xl md:text-2xl font-bold text-black mb-6 animate-float">
+                    Informações de Contato
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-6">
+                      <div className="flex items-start space-x-4">
+                        <div className="bg-black p-3 rounded-full flex-shrink-0 btn-hover-scale">
+                          <Phone className="h-6 w-6 text-white" />
+                        </div>
+                        <div className="min-w-0 flex-1 mb-4">
+                          <p className="font-semibold text-black text-base">Telefone SAC</p>
+                          <p className="text-gray-600 text-base break-all">(62) 3412-2893</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-4">
+                        <div className="bg-black p-3 rounded-full flex-shrink-0 btn-hover-scale">
+                          <Mail className="h-6 w-6 text-white" />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <p className="font-semibold text-black text-base">E-mail Oficial</p>
+                          <p className="text-gray-600 text-base break-all">contato@abraoesilva.adv.br</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="space-y-6">
+                      <div className="flex items-start space-x-4">
+                        <div className="bg-black p-3 rounded-full flex-shrink-0 btn-hover-scale">
+                          <MapPin className="h-6 w-6 text-white" />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <p className="font-semibold text-black text-base">Localização</p>
+                          <p className="text-gray-600 text-base">Anicuns - GO</p>
+                          <p className="text-sm text-gray-500 break-words">
+                            Av. Bandeirantes, 2216, Setor Leste - Anicuns, GO, 76170-000
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-4">
+                        <div className="bg-black p-3 rounded-full flex-shrink-0 btn-hover-scale">
+                          <Clock className="h-6 w-6 text-white" />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <p className="font-semibold text-black text-base">Horário de Atendimento</p>
+                          <p className="text-gray-600 text-base">Seg - Sex: 07:00 às 17:00</p>
+                          <p className="text-sm text-gray-500">Pausa para almoço: 11:00 às 13:00</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
 
-      {/* Footer - Lazy Loaded */}
-      <FooterSection 
-        socialLinks={socialLinks} 
-        menuItems={menuItems} 
-        scrollToSection={scrollToSection} 
-      />
+      {/* Footer */}
+      <footer className="bg-black text-white mt-auto">
+        <div className="container mx-auto px-4 py-8">
+          <div className="flex flex-col lg:flex-row items-center justify-between space-y-8 lg:space-y-0">
+            
+            <div className="flex items-center justify-center lg:justify-start w-full lg:w-auto">
+              <div className="flex items-center">
+                <div className="text-white">
+                  <Image 
+                    src="/logo.png" 
+                    alt="Abrão & Silva Advocacia" 
+                    width={200} 
+                    height={100} 
+                    className="h-16 w-auto lg:h-20" 
+                    loading="lazy" 
+                    quality={85} 
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col items-center space-y-4 w-full lg:w-auto">
+              <span className="text-white text-xl lg:text-2xl font-bold text-center">SAC geral</span>
+              <div className="flex items-center space-x-3">
+                <Phone className="h-5 w-5 lg:h-6 lg:w-6 text-white" />
+                <a 
+                  href="tel:6234122893" 
+                  className="text-white hover:text-gray-300 transition-colors text-xl lg:text-2xl font-bold"
+                >
+                  (62) 3412-2893
+                </a>
+              </div>
+              <div className="flex items-center space-x-3">
+               {socialLinks.map((social, index) => {
+                 const IconComponent = social.icon;
+                 return (
+                   <a
+                     key={social.name}
+                     href={social.href}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="p-2 lg:p-3 border border-gray-600 rounded-lg hover:border-[#e2ba4b] hover:bg-[#e2ba4b] transition-all duration-300 flex items-center justify-center btn-hover-scale group animate-float"
+                     aria-label={social.name}
+                     style={{ animationDelay: `${index * 0.2}s` }}
+                   >
+                     <IconComponent className="h-5 w-5 lg:h-6 lg:w-6 text-white group-hover:text-black transition-colors duration-300" />
+                   </a>
+                 );
+               })}
+             </div>
+            </div>
+
+            <div className="flex flex-col items-center space-y-2 w-full lg:w-auto">
+              <div className="flex flex-col lg:flex-row items-center space-y-2 lg:space-y-0 lg:space-x-4">
+                {menuItems.map((item, index) => (
+                  <div key={item.key} className="flex items-center animate-fadeInUp" style={{ animationDelay: `${index * 0.1}s` }}>
+                    <button
+                      onClick={() => scrollToSection(item.id)}
+                      className="text-[#e2ba4b] hover:text-white transition-all duration-300 text-sm font-medium btn-hover-scale"
+                    >
+                      {item.label}
+                    </button>
+                    {index < menuItems.length - 1 && (
+                      <div className="hidden lg:block w-px h-4 bg-white ml-4"></div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex items-center justify-center lg:justify-end w-full lg:w-auto">
+              <button className="btn-golden btn-hover-scale text-black px-4 py-3 rounded-lg transition-all duration-300 flex items-center space-x-3 text-center animate-pulse-golden">
+                <BookOpen className="h-5 w-5 animate-float" />
+                <span className="text-sm font-medium">Encontre um escritório mais próximo!</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-gray-200 px-4 py-3">
+          <div className="container mx-auto">
+            <div className="text-center">
+              <span className="text-black text-xs lg:text-sm">
+                Copyright © {new Date().getFullYear()} ABRAO E SILVA | ADVOGADOS ASSOCIADOS. Todos os Direitos reservados.
+              </span>
+            </div>
+          </div>
+        </div>
+      </footer>
 
       {/* Floating WhatsApp Button */}
       <div className="fixed bottom-4 right-4 z-50">

@@ -42,19 +42,11 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
         <link rel="dns-prefetch" href="https://maps.googleapis.com" />
         
-        {/* Preload da fonte principal para reduzir CLS */}
+        {/* Fontes com display=swap para evitar bloqueio */}
         <link 
-          rel="preload" 
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" 
-          as="style"
-          onLoad="this.onload=null;this.rel='stylesheet'"
+          rel="stylesheet"
         />
-        <noscript>
-          <link 
-            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" 
-            rel="stylesheet"
-          />
-        </noscript>
         
         {/* Preload de recursos críticos */}
         <link rel="preload" href="/logo.png" as="image" />
