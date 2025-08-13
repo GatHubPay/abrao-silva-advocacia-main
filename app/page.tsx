@@ -632,75 +632,109 @@ export default function AbraoSilvaAdvocacia() {
         <div className="container mx-auto px-4 py-8">
           <div className="flex flex-col lg:flex-row items-center justify-between space-y-8 lg:space-y-0">
             
-            <div className="flex items-center justify-center lg:justify-start w-full lg:w-auto">
-              <div className="flex items-center">
-                <div className="text-white">
-                  <Image 
-                    src="/logo.png" 
-                    alt="Abrão & Silva Advocacia" 
-                    width={200} 
-                    height={100} 
-                    className="h-16 w-auto lg:h-20" 
-                    loading="lazy" 
-                    quality={85} 
-                  />
+            {/* Logo */}
+            <div className="flex items-center justify-center lg:justify-start">
+              <Image 
+                src="/logo.png" 
+                alt="Abrão & Silva Advocacia" 
+                width={200} 
+                height={100} 
+                className="h-16 w-auto" 
+                loading="lazy" 
+                quality={85} 
+              />
+            </div>
+
+            {/* SAC e Redes Sociais */}
+            <div className="flex flex-col items-center space-y-4">
+              <div className="text-center">
+                <div className="text-white text-lg font-bold mb-2">SAC geral</div>
+                <div className="flex items-center justify-center space-x-2 group hover:bg-[#e2ba4b]/10 px-4 py-2 rounded-lg transition-all duration-300">
+                  <Phone className="h-5 w-5 text-white group-hover:text-[#e2ba4b] transition-colors duration-300" />
+                  <a 
+                    href="tel:6234122893" 
+                    className="text-white hover:text-[#e2ba4b] transition-all duration-300 text-lg font-bold btn-hover-scale"
+                  >
+                    (62) 3412-2893
+                  </a>
                 </div>
               </div>
-            </div>
-
-            <div className="flex flex-col items-center space-y-4 w-full lg:w-auto">
-              <span className="text-white text-xl lg:text-2xl font-bold text-center">SAC geral</span>
+              
+              {/* Redes Sociais */}
               <div className="flex items-center space-x-3">
-                <Phone className="h-5 w-5 lg:h-6 lg:w-6 text-white" />
-                <a 
-                  href="tel:6234122893" 
-                  className="text-white hover:text-gray-300 transition-colors text-xl lg:text-2xl font-bold"
-                >
-                  (62) 3412-2893
-                </a>
-              </div>
-              <div className="flex items-center space-x-3">
-               {socialLinks.map((social, index) => {
-                 const IconComponent = social.icon;
-                 return (
-                   <a
-                     key={social.name}
-                     href={social.href}
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     className="p-2 lg:p-3 border border-gray-600 rounded-lg hover:border-[#e2ba4b] hover:bg-[#e2ba4b] transition-all duration-300 flex items-center justify-center btn-hover-scale group animate-float"
-                     aria-label={social.name}
-                     style={{ animationDelay: `${index * 0.2}s` }}
-                   >
-                     <IconComponent className="h-5 w-5 lg:h-6 lg:w-6 text-white group-hover:text-black transition-colors duration-300" />
-                   </a>
-                 );
-               })}
-             </div>
-            </div>
-
-            <div className="flex flex-col items-center space-y-2 w-full lg:w-auto">
-              <div className="flex flex-col lg:flex-row items-center space-y-2 lg:space-y-0 lg:space-x-4">
-                {menuItems.map((item, index) => (
-                  <div key={item.key} className="flex items-center animate-fadeInUp" style={{ animationDelay: `${index * 0.1}s` }}>
-                    <button
-                      onClick={() => handleMenuClick(item)}
-                      className="text-[#e2ba4b] hover:text-white transition-all duration-300 text-sm font-medium btn-hover-scale"
+                {socialLinks.map((social, index) => {
+                  const IconComponent = social.icon;
+                  return (
+                    <a
+                      key={social.name}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 border border-gray-600 rounded-lg hover:border-[#e2ba4b] hover:bg-[#e2ba4b] transition-all duration-300 flex items-center justify-center btn-hover-scale group"
+                      aria-label={social.name}
                     >
-                      {item.label}
-                    </button>
-                    {index < menuItems.length - 1 && (
-                      <div className="hidden lg:block w-px h-4 bg-white ml-4"></div>
-                    )}
-                  </div>
-                ))}
+                      <IconComponent className="h-5 w-5 text-white group-hover:text-black transition-colors duration-300" />
+                    </a>
+                  );
+                })}
               </div>
             </div>
 
-            <div className="flex items-center justify-center lg:justify-end w-full lg:w-auto">
-              <button className="btn-golden btn-hover-scale text-black px-4 py-3 rounded-lg transition-all duration-300 flex items-center space-x-3 text-center animate-pulse-golden">
-                <BookOpen className="h-5 w-5 animate-float" />
-                <span className="text-sm font-medium">Encontre um escritório mais próximo!</span>
+            {/* Menu Navegação - 2 linhas */}
+            <div className="hidden lg:flex flex-col items-center space-y-3">
+              {/* Primeira linha - 3 itens */}
+              <div className="flex items-center space-x-3 text-sm">
+                <button
+                  onClick={() => scrollToSection("localizacao")}
+                  className="text-[#e2ba4b] hover:text-white transition-all duration-300 font-medium"
+                >
+                  Localização
+                </button>
+                <span className="text-gray-500">|</span>
+                <button
+                  onClick={() => scrollToSection("contato")}
+                  className="text-white hover:text-[#e2ba4b] transition-all duration-300 font-medium"
+                >
+                  Entre em Contato
+                </button>
+                <span className="text-gray-500">|</span>
+                <button
+                  onClick={() => scrollToSection("areas-atuacao")}
+                  className="text-white hover:text-[#e2ba4b] transition-all duration-300 font-medium"
+                >
+                  Áreas de Atuação
+                </button>
+              </div>
+              {/* Segunda linha - 3 itens */}
+              <div className="flex items-center space-x-3 text-sm">
+                <button
+                  onClick={() => scrollToSection("informacoes")}
+                  className="text-white hover:text-[#e2ba4b] transition-all duration-300 font-medium"
+                >
+                  Informações
+                </button>
+                <span className="text-gray-500">|</span>
+                <button
+                  onClick={() => handleMenuClick({ href: "https://abraoesilvaadvogados.com.br/equipe-2/", type: "external" })}
+                  className="text-white hover:text-[#e2ba4b] transition-all duration-300 font-medium"
+                >
+                  Equipe
+                </button>
+                <span className="text-gray-500">|</span>
+                <button
+                  onClick={() => handleMenuClick({ href: "https://abraoesilvaadvogados.com.br/duvidas/", type: "external" })}
+                  className="text-white hover:text-[#e2ba4b] transition-all duration-300 font-medium"
+                >
+                  Dúvidas
+                </button>
+              </div>
+            </div>
+
+            {/* Botão Encontre um Escritório */}
+            <div className="flex items-center">
+              <button className="btn-golden btn-hover-scale text-black px-4 py-3 rounded-lg transition-all duration-300 flex items-center space-x-2 text-sm font-medium animate-pulse-golden">
+                <BookOpen className="h-4 w-4" />
+                <span>Encontre um escritório<br/>mais próximo!</span>
               </button>
             </div>
           </div>
