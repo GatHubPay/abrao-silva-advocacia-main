@@ -25,11 +25,22 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: '/(.*)',
+        // Assets estáticos - cache longo
+        source: '/_next/static/(.*)',
         headers: [
           {
             key: 'Cache-Control',
             value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        // Imagens de performance - cache otimizado
+        source: '/performance/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=2592000',
           },
         ],
       },
