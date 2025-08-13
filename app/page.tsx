@@ -245,7 +245,7 @@ export default function AbraoSilvaAdvocacia() {
               {/* Mapa */}
               <div className="relative group">
                 {/* Borda animada principal */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-[#e2ba4b] via-[#f4d366] via-[#e2ba4b] via-[#d4a93a] to-[#e2ba4b] rounded-2xl blur-sm opacity-75 group-hover:opacity-100 animate-[golden-glow_3s_ease-in-out_infinite] transition-all duration-300"></div>
+                <div className="absolute -inset-1 bg-gradient-to-r from-[#e2ba4b] via-[#f4d366] to-[#e2ba4b] rounded-2xl blur-sm opacity-75 group-hover:opacity-100 animate-[golden-glow_3s_ease-in-out_infinite] transition-all duration-300"></div>
                 
                 {/* Efeito shimmer */}
                 <div className="absolute -inset-1 rounded-2xl overflow-hidden">
