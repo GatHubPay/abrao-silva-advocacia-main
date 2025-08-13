@@ -1,59 +1,53 @@
-import type { Metadata } from 'next'
-import { GeistSans } from 'geist/font/sans'
-import { GeistMono } from 'geist/font/mono'
-import './globals.css'
-import { Html, Head, Main, NextScript } from 'next/document'
-
+import type { Metadata } from "next"
+import "./globals.css"
 
 export const metadata: Metadata = {
-  title: 'Abrão & Silva Advocacia | Excelência Jurídica',
-  description: 'Abrão & Silva Advocacia - Escritório de advocacia especializado em Direito Previdenciário, Tributário, Médico e outras áreas. Atendimento personalizado em todo território nacional.',
-  generator: 'Gat Hub',
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=5',
-  themeColor: '#000000',
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: 'default',
-    title: 'Abrão & Silva',
+  title: "Abrão & Silva Advocacia - Escritório de Advocacia em Anicuns-GO",
+  description: "Escritório de advocacia especializado em diversas áreas do direito, localizado em Anicuns-GO. Atendimento em todo território nacional.",
+  keywords: "advocacia, direito, advogado, Anicuns, Goiás, jurídico, consultoria",
+  authors: [{ name: "Abrão & Silva Advocacia" }],
+  creator: "Abrão & Silva Advocacia",
+  publisher: "Abrão & Silva Advocacia",
+  robots: "index, follow",
+  viewport: "width=device-width, initial-scale=1, maximum-scale=5",
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: "https://abraoesilva.adv.br",
+    title: "Abrão & Silva Advocacia - Escritório de Advocacia",
+    description: "Escritório de advocacia especializado em diversas áreas do direito, localizado em Anicuns-GO.",
+    siteName: "Abrão & Silva Advocacia",
   },
-  icons: {
-    icon: '/favicon.ico',
+  twitter: {
+    card: "summary_large_image",
+    title: "Abrão & Silva Advocacia",
+    description: "Escritório de advocacia especializado em diversas áreas do direito.",
+  },
+  verification: {
+    google: "google-site-verification-code",
   },
 }
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
     <html lang="pt-BR">
       <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-      <link rel="icon" href="/favicon.ico" sizes="any" />
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
-      <style>{`
-html {
-  font-family: 'Montserrat', ${GeistSans.style.fontFamily}, sans-serif;
-  --font-sans: 'Montserrat', ${GeistSans.variable};
-  --font-mono: ${GeistMono.variable};
-}
-
-body {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 20px;
-  line-height: 1.5;
-}
-
-* {
-  font-family: 'Montserrat', sans-serif;
-}
-        `}</style>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        <meta name="theme-color" content="#e2ba4b" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="format-detection" content="telephone=no" />
       </head>
-      <body>{children}</body>
+      <body className="antialiased">
+        {children}
+      </body>
     </html>
   )
 }

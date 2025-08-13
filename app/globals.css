@@ -3,10 +3,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Configuração da fonte Montserrat */
+/* Configuração da fonte Montserrat com otimização */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
 @layer base {
   html {
     font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-display: swap;
   }
   
   body {
@@ -14,10 +17,12 @@
     font-size: 20px;
     line-height: 1.5;
     font-weight: 400;
+    font-display: swap;
   }
   
   * {
     font-family: 'Montserrat', sans-serif;
+    font-display: swap;
   }
   
   /* Configurações específicas para diferentes pesos da fonte */
@@ -267,17 +272,20 @@
 /* Custom focus styles for form inputs melhorado */
 .form-input-focus {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, border-color, box-shadow;
 }
 
 .form-input-focus:focus {
   border-color: #e2ba4b !important;
   box-shadow: 0 0 0 3px rgba(226, 186, 75, 0.1) !important;
   transform: translateY(-2px);
+  background-color: rgba(226, 186, 75, 0.02) !important;
 }
 
 .form-input-focus:hover {
-  border-color: #e2ba4b !important;
+  border-color: rgba(226, 186, 75, 0.7) !important;
   transform: translateY(-1px);
+  background-color: rgba(226, 186, 75, 0.01) !important;
 }
 
 /* Custom button hover effect melhorado */
@@ -286,6 +294,7 @@
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+  will-change: transform, box-shadow;
 }
 
 .btn-golden::before {
@@ -307,11 +316,13 @@
   background: linear-gradient(135deg, #d4a93a 0%, #c69a2b 100%);
   transform: translateY(-3px) scale(1.02);
   box-shadow: 0 15px 35px rgba(226, 186, 75, 0.4), 0 5px 15px rgba(0, 0, 0, 0.1);
+  filter: brightness(1.1);
 }
 
 .btn-golden:active {
   transform: translateY(-1px) scale(1.01);
   transition: all 0.1s;
+  filter: brightness(0.95);
 }
 
 /* Animação shimmer para o card do mapa */
@@ -334,11 +345,11 @@
   }
 }
 
-/* Animações de texto */
+/* Animações de texto otimizadas */
 @keyframes fadeInUp {
   0% {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
   100% {
     opacity: 1;
@@ -349,7 +360,7 @@
 @keyframes fadeInLeft {
   0% {
     opacity: 0;
-    transform: translateX(-30px);
+    transform: translateX(-20px);
   }
   100% {
     opacity: 1;
@@ -360,7 +371,7 @@
 @keyframes fadeInRight {
   0% {
     opacity: 0;
-    transform: translateX(30px);
+    transform: translateX(20px);
   }
   100% {
     opacity: 1;
@@ -371,7 +382,7 @@
 @keyframes scaleIn {
   0% {
     opacity: 0;
-    transform: scale(0.9);
+    transform: scale(0.95);
   }
   100% {
     opacity: 1;
@@ -382,38 +393,11 @@
 @keyframes slideInDown {
   0% {
     opacity: 0;
-    transform: translateY(-30px);
+    transform: translateY(-20px);
   }
   100% {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes pulse-golden {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(226, 186, 75, 0.7);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(226, 186, 75, 0);
-  }
-}
-
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-@keyframes blink {
-  0%, 50% {
-    border-color: transparent;
-  }
-  51%, 100% {
-    border-color: #e2ba4b;
   }
 }
 
@@ -422,7 +406,7 @@
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
   }
 }
 
@@ -431,36 +415,32 @@
     transform: translateY(0);
   }
   40% {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
   }
   60% {
-    transform: translateY(-5px);
+    transform: translateY(-2px);
   }
 }
 
-/* Classes de animação */
+/* Classes de animação otimizadas */
 .animate-fadeInUp {
-  animation: fadeInUp 0.8s ease-out forwards;
+  animation: fadeInUp 0.6s ease-out forwards;
 }
 
 .animate-fadeInLeft {
-  animation: fadeInLeft 0.8s ease-out forwards;
+  animation: fadeInLeft 0.6s ease-out forwards;
 }
 
 .animate-fadeInRight {
-  animation: fadeInRight 0.8s ease-out forwards;
+  animation: fadeInRight 0.6s ease-out forwards;
 }
 
 .animate-scaleIn {
-  animation: scaleIn 0.6s ease-out forwards;
+  animation: scaleIn 0.5s ease-out forwards;
 }
 
 .animate-slideInDown {
-  animation: slideInDown 0.8s ease-out forwards;
-}
-
-.animate-pulse-golden {
-  animation: pulse-golden 2s infinite;
+  animation: slideInDown 0.6s ease-out forwards;
 }
 
 .animate-float {
@@ -471,15 +451,7 @@
   animation: bounce-gentle 2s infinite;
 }
 
-/* Animação de typing para títulos */
-.typing-animation {
-  overflow: hidden;
-  border-right: 3px solid #e2ba4b;
-  white-space: nowrap;
-  animation: typing 3s steps(40, end), blink 1s infinite;
-}
-
-/* Efeitos de scroll reveal */
+/* Efeitos de scroll reveal otimizados */
 .scroll-reveal {
   opacity: 0.3;
   transform: translateY(20px);
@@ -573,51 +545,18 @@
 .card-hover-effect {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
+  will-change: transform, box-shadow;
 }
 
 .card-hover-effect:hover {
   transform: translateY(-8px) rotateX(5deg);
   box-shadow: 0 20px 40px rgba(226, 186, 75, 0.2), 0 10px 20px rgba(0, 0, 0, 0.1);
+  filter: brightness(1.05);
 }
 
-/* Animação de loading */
-.loading-spinner {
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #e2ba4b;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* Delays para animações sequenciais */
-.delay-100 {
-  animation-delay: 0.1s;
-}
-
-.delay-200 {
-  animation-delay: 0.2s;
-}
-
-.delay-300 {
-  animation-delay: 0.3s;
-}
-
-.delay-400 {
-  animation-delay: 0.4s;
-}
-
-.delay-500 {
-  animation-delay: 0.5s;
+.card-hover-effect:active {
+  transform: translateY(-4px) rotateX(2deg);
+  transition: all 0.1s;
 }
 
 /* Efeito de partículas douradas */
@@ -640,4 +579,32 @@
 
 .golden-particles:hover::before {
   opacity: 1;
+}
+
+/* Transições de cores suaves otimizadas */
+button, a, input, textarea {
+  transition-property: color, background-color, border-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+/* Delays para animações sequenciais */
+.delay-100 {
+  animation-delay: 0.1s;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.delay-300 {
+  animation-delay: 0.3s;
+}
+
+.delay-400 {
+  animation-delay: 0.4s;
+}
+
+.delay-500 {
+  animation-delay: 0.5s;
 }

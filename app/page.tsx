@@ -37,7 +37,15 @@ import {
   BookOpen,
 } from "lucide-react"
 import Image from "next/image"
-import GoogleMapComponent from "@/components/GoogleMap"
+import dynamic from "next/dynamic"
+
+// Lazy load do componente do mapa para melhor performance
+const GoogleMapComponent = dynamic(() => import("@/components/GoogleMap"), {
+  loading: () => <div className="h-64 bg-gray-200 rounded-lg animate-pulse flex items-center justify-center">
+    <span className="text-gray-500">Carregando mapa...</span>
+  </div>,
+  ssr: false
+})
 
 export default function AbraoSilvaAdvocacia() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -45,24 +53,34 @@ export default function AbraoSilvaAdvocacia() {
   const [showCookiePopup, setShowCookiePopup] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
   const observerRef = useRef<IntersectionObserver | null>(null)
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const rafRef = useRef<number | null>(null)
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["localizacao", "contato", "informacoes"]
-      const scrollPosition = window.scrollY + 100
+      // Cancelar RAF anterior se existir
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current)
+      }
+      
+      // Usar RAF para otimizar performance
+      rafRef.current = requestAnimationFrame(() => {
+        const sections = ["localizacao", "contato", "informacoes"]
+        const scrollPosition = window.scrollY + 100
 
-      for (const section of sections) {
-        const element = document.getElementById(section)
-        if (element) {
-          const offsetTop = element.offsetTop
-          const offsetHeight = element.offsetHeight
+        for (const section of sections) {
+          const element = document.getElementById(section)
+          if (element) {
+            const offsetTop = element.offsetTop
+            const offsetHeight = element.offsetHeight
 
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section)
-            break
+            if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+              setActiveSection(section)
+              break
+            }
           }
         }
-      }
+      })
     }
 
     // Configurar Intersection Observer para animações de scroll
@@ -116,12 +134,18 @@ export default function AbraoSilvaAdvocacia() {
       })
     }, 100)
 
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll, { passive: true })
     
     return () => {
       window.removeEventListener("scroll", handleScroll)
       observerRef.current?.disconnect()
       clearTimeout(loadTimer)
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current)
+      }
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current)
+      }
     }
   }, [])
 
@@ -186,6 +210,8 @@ export default function AbraoSilvaAdvocacia() {
                 className="h-8 w-auto md:h-12"
                 width={100}
                 height={100}
+                priority
+                quality={85}
               />
             </div>
 
@@ -354,12 +380,12 @@ export default function AbraoSilvaAdvocacia() {
                   </div>
                   <form className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="scroll-reveal delay-100">
-                        <label className="block text-sm font-semibold text-white mb-1.5 animate-fadeInLeft">Nome</label>
+                      <div>
+                        <label className="block text-sm font-semibold text-white mb-1.5">Nome</label>
                         <Input placeholder="Seu nome completo" className="border-gray-300 h-12 form-input-focus" />
                       </div>
-                      <div className="scroll-reveal delay-200">
-                        <label className="block text-sm font-semibold text-white mb-1.5 animate-fadeInRight">E-mail</label>
+                      <div>
+                        <label className="block text-sm font-semibold text-white mb-1.5">E-mail</label>
                         <Input
                           type="email"
                           placeholder="seu@email.com"
@@ -368,20 +394,20 @@ export default function AbraoSilvaAdvocacia() {
                       </div>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="scroll-reveal delay-300">
-                        <label className="block text-sm font-semibold text-white mb-1.5 animate-fadeInLeft">Telefone</label>
+                      <div>
+                        <label className="block text-sm font-semibold text-white mb-1.5">Telefone</label>
                         <Input placeholder="(62) 99999-9999" className="border-gray-300 h-12 form-input-focus" />
                       </div>
-                      <div className="scroll-reveal delay-400">
-                        <label className="block text-sm font-semibold text-white mb-1.5 animate-fadeInRight">Assunto</label>
+                      <div>
+                        <label className="block text-sm font-semibold text-white mb-1.5">Assunto</label>
                         <Input
                           placeholder="Ex: Direito Previdenciário"
                           className="border-gray-300 h-12 form-input-focus text-white"
                         />
                       </div>
                     </div>
-                    <div className="scroll-reveal delay-500">
-                        <label className="block text-sm font-semibold text-white mb-1.5 animate-fadeInUp">Mensagem</label>
+                    <div>
+                        <label className="block text-sm font-semibold text-white mb-1.5">Mensagem</label>
                       <Textarea
                         placeholder="Descreva sua situação jurídica com detalhes..."
                         className="border-gray-300 min-h-[120px] form-input-focus resize-none text-white"
@@ -416,47 +442,45 @@ export default function AbraoSilvaAdvocacia() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Coluna Esquerda */}
                     <div className="space-y-6">
-                      <div className="flex items-start space-x-4 scroll-reveal delay-100">
-                        <div className="bg-black p-3 rounded-full flex-shrink-0 animate-pulse-golden btn-hover-scale">
-                          <Phone className="h-6 w-6 text-white animate-float" />
+                      <div className="flex items-start space-x-4">
+                        <div className="bg-black p-3 rounded-full flex-shrink-0 btn-hover-scale">
+                          <Phone className="h-6 w-6 text-white" />
                         </div>
                         <div className="min-w-0 flex-1 mb-4">
-                          <p className="font-semibold text-black text-base animate-fadeInLeft">Telefone SAC</p>
-                          <p className="text-gray-600 text-base break-all animate-fadeInLeft delay-100">(62) 3412-2893</p>
-                          <p className="text-sm text-gray-500 break-words"></p>
-
+                          <p className="font-semibold text-black text-base">Telefone SAC</p>
+                          <p className="text-gray-600 text-base break-all">(62) 3412-2893</p>
                         </div>
                       </div>
-                      <div className="flex items-start space-x-4 scroll-reveal delay-200">
-                        <div className="bg-black p-3 rounded-full flex-shrink-0 animate-pulse-golden btn-hover-scale">
-                          <Mail className="h-6 w-6 text-white animate-float" />
+                      <div className="flex items-start space-x-4">
+                        <div className="bg-black p-3 rounded-full flex-shrink-0 btn-hover-scale">
+                          <Mail className="h-6 w-6 text-white" />
                         </div>
                         <div className="min-w-0 flex-1">
-                          <p className="font-semibold text-black text-base animate-fadeInLeft">E-mail Oficial</p>
-                          <p className="text-gray-600 text-base break-all animate-fadeInLeft delay-100">contato@abraoesilva.adv.br</p>
+                          <p className="font-semibold text-black text-base">E-mail Oficial</p>
+                          <p className="text-gray-600 text-base break-all">contato@abraoesilva.adv.br</p>
                         </div>
                       </div>
                     </div>
                     {/* Coluna Direita */}
                     <div className="space-y-6">
-                      <div className="flex items-start space-x-4 scroll-reveal delay-300">
-                        <div className="bg-black p-3 rounded-full flex-shrink-0 animate-pulse-golden btn-hover-scale">
-                          <MapPin className="h-6 w-6 text-white animate-bounce-gentle" />
+                      <div className="flex items-start space-x-4">
+                        <div className="bg-black p-3 rounded-full flex-shrink-0 btn-hover-scale">
+                          <MapPin className="h-6 w-6 text-white" />
                         </div>
                         <div className="min-w-0 flex-1">
-                          <p className="font-semibold text-black text-base animate-fadeInRight">Localização</p>
-                          <p className="text-gray-600 text-base animate-fadeInRight delay-100">Anicuns - GO</p>
-                          <p className="text-sm text-gray-500 break-words animate-fadeInRight delay-200">Av. Bandeirantes, 2216, Setor Leste - Anicuns, GO, 76170-000</p>
+                          <p className="font-semibold text-black text-base">Localização</p>
+                          <p className="text-gray-600 text-base">Anicuns - GO</p>
+                          <p className="text-sm text-gray-500 break-words">Av. Bandeirantes, 2216, Setor Leste - Anicuns, GO, 76170-000</p>
                         </div>
                       </div>
-                      <div className="flex items-start space-x-4 scroll-reveal delay-400">
-                        <div className="bg-black p-3 rounded-full flex-shrink-0 animate-pulse-golden btn-hover-scale">
-                          <Clock className="h-6 w-6 text-white animate-float" />
+                      <div className="flex items-start space-x-4">
+                        <div className="bg-black p-3 rounded-full flex-shrink-0 btn-hover-scale">
+                          <Clock className="h-6 w-6 text-white" />
                         </div>
                         <div className="min-w-0 flex-1">
-                          <p className="font-semibold text-black text-base animate-fadeInRight">Horário de Atendimento</p>
-                          <p className="text-gray-600 text-base animate-fadeInRight delay-100">Seg - Sex: 07:00 às 17:00</p>
-                          <p className="text-sm text-gray-500 animate-fadeInRight delay-200">Pausa para almoço: 11:00 às 13:00</p>
+                          <p className="font-semibold text-black text-base">Horário de Atendimento</p>
+                          <p className="text-gray-600 text-base">Seg - Sex: 07:00 às 17:00</p>
+                          <p className="text-sm text-gray-500">Pausa para almoço: 11:00 às 13:00</p>
                         </div>
                       </div>
                     </div>
@@ -478,7 +502,7 @@ export default function AbraoSilvaAdvocacia() {
             <div className="flex items-center justify-center lg:justify-start w-full lg:w-auto">
               <div className="flex items-center">
                 <div className="text-white">
-                  <Image src="/logo.png" alt="Abrão & Silva Advocacia" width={200} height={100} className="h-16 w-auto lg:h-20" />
+                  <Image src="/logo.png" alt="Abrão & Silva Advocacia" width={200} height={100} className="h-16 w-auto lg:h-20" loading="lazy" quality={85} />
                 </div>
               </div>
             </div>
