@@ -372,7 +372,11 @@ export default function AbraoSilvaAdvocacia() {
                   <button
                     key={item.key}
                     onClick={() => handleMenuClick(item)}
-                    className="text-white hover:text-[#e2ba4b] transition-all duration-300 font-medium text-sm btn-hover-scale animate-slideInDown"
+                    className={`${
+                      item.key === 'localizacao' 
+                        ? 'text-[#e2ba4b] hover:text-white' 
+                        : 'text-white hover:text-[#e2ba4b]'
+                    } transition-all duration-300 font-medium text-sm btn-hover-scale animate-slideInDown`}
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     {item.label}
@@ -443,7 +447,11 @@ export default function AbraoSilvaAdvocacia() {
                   <button
                     key={item.key}
                     onClick={() => handleMenuClick(item)}
-                    className="block w-full text-left px-4 py-2 text-white hover:bg-[#e2ba4b] hover:text-black transition-all duration-300 font-medium btn-hover-scale animate-fadeInLeft"
+                    className={`block w-full text-left px-4 py-2 ${
+                      item.key === 'localizacao' 
+                        ? 'text-[#e2ba4b] hover:bg-white hover:text-black' 
+                        : 'text-white hover:bg-[#e2ba4b] hover:text-black'
+                    } transition-all duration-300 font-medium btn-hover-scale animate-fadeInLeft`}
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     {item.label}
@@ -487,7 +495,7 @@ export default function AbraoSilvaAdvocacia() {
                   <div className="mt-6 text-center">
                     <Button 
                       onClick={() => scrollToSection("contato")}
-                      className="mt-4 btn-black bg-black text-white btn-hover-scale  py-3 px-6 text-lg font-semibold animate-pulse-golden"
+                      className="mt-4 btn-black bg-black text-white btn-hover-scale py-3 px-6 text-lg font-semibold animate-pulse-golden rounded-none"
                     >
                       FALE CONOSCO »
                       <ArrowRight className="ml-2 h-5 w-5" />
@@ -500,7 +508,7 @@ export default function AbraoSilvaAdvocacia() {
         </section>
 
         {/* Contato Section */}
-        <section id="contato" className="py-12 md:py-16 lg:py-24 contact-bg  relative overflow-hidden">
+        <section id="contato" className="py-12 md:py-16 lg:py-24 contact-bg paper-money-effect relative overflow-hidden">
           
           <div className="container mx-auto px-4 relative z-10">
             <div className="text-center mb-12 md:mb-16 scroll-reveal">
@@ -596,7 +604,7 @@ export default function AbraoSilvaAdvocacia() {
                 { icon: PrevidenciarioIcon, title: "Direito", subtitle: "Previdenciário", delay: 100 },
                 { icon: TrabalhistaIcon, title: "Direito", subtitle: "Trabalhista", delay: 200 },
                 { icon: CivilIcon, title: "Direito", subtitle: "Civil", delay: 300 },
-                { icon: TributarioIcon, title: "Área", subtitle: "Tributária", delay: 400 },
+                { icon: TributarioIcon, title: "Direito", subtitle: "Tributária", delay: 400 },
                 { icon: PublicoEstatutarioIcon, title: "Direito Público", subtitle: "Estatutário", delay: 500 }
               ].map((area, index) => {
                 const IconComponent = area.icon;

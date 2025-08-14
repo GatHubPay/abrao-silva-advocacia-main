@@ -690,7 +690,7 @@ button, a, input, textarea {
   animation-delay: 0.5s;
 }
 
-/* Efeito papel moeda aprimorado */
+/* Efeito papel moeda aprimorado - mais sutil */
 .paper-money-effect {
   position: relative;
   overflow: hidden;
@@ -704,34 +704,35 @@ button, a, input, textarea {
   right: 0;
   bottom: 0;
   background-image: 
-    /* Linhas verticais sutis como papel moeda */
-    repeating-linear-gradient(90deg, transparent, transparent 8px, rgba(226, 186, 75, 0.06) 8px, rgba(226, 186, 75, 0.06) 10px),
-    /* Linhas horizontais sutis */
-    repeating-linear-gradient(0deg, transparent, transparent 12px, rgba(226, 186, 75, 0.04) 12px, rgba(226, 186, 75, 0.04) 14px),
-    /* Padrão diagonal para textura */
-    repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(226, 186, 75, 0.03) 20px, rgba(226, 186, 75, 0.03) 22px),
-    /* Pontos pequenos como marca d'água */
-    radial-gradient(circle at 25% 25%, rgba(226, 186, 75, 0.08) 1px, transparent 1px),
-    radial-gradient(circle at 75% 75%, rgba(226, 186, 75, 0.06) 1px, transparent 1px);
+    /* Linhas finas verticais como papel moeda real */
+    repeating-linear-gradient(90deg, transparent, transparent 15px, rgba(226, 186, 75, 0.03) 15px, rgba(226, 186, 75, 0.03) 16px),
+    /* Linhas finas horizontais */
+    repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(226, 186, 75, 0.02) 20px, rgba(226, 186, 75, 0.02) 21px),
+    /* Padrão de marca d'água sutil */
+    radial-gradient(circle at 20% 30%, rgba(226, 186, 75, 0.04) 2px, transparent 2px),
+    radial-gradient(circle at 80% 70%, rgba(226, 186, 75, 0.03) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(226, 186, 75, 0.02) 1px, transparent 1px);
   background-size: 
     100% 100%,
     100% 100%, 
-    100% 100%,
-    40px 40px,
+    80px 80px,
+    120px 120px,
     60px 60px;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.7;
-  animation: subtle-shimmer 8s ease-in-out infinite;
+  opacity: 0.5;
+  animation: paper-texture 12s ease-in-out infinite;
 }
 
-@keyframes subtle-shimmer {
+/* Animação mais sutil para o papel moeda */
+@keyframes paper-texture {
   0%, 100% {
-    opacity: 0.7;
-    transform: translateX(0);
+    opacity: 0.4;
   }
-  50% {
-    opacity: 0.9;
-    transform: translateX(2px);
+  33% {
+    opacity: 0.6;
+  }
+  66% {
+    opacity: 0.5;
   }
 }
