@@ -94,21 +94,6 @@ const GoogleMapComponent = dynamic(() => import("@/components/GoogleMap"), {
   ssr: false
 })
 
-// Remover lazy loading - carregar componentes imediatamente
-// const AreasAtuacaoSection = dynamic(() => import("@/components/sections/AreasAtuacao"), {
-//   loading: () => <div className="h-96 bg-gray-800 animate-pulse"></div>,
-//   ssr: false
-// })
-
-// const InformacoesSection = dynamic(() => import("@/components/sections/Informacoes"), {
-//   loading: () => <div className="h-64 bg-gray-800 animate-pulse"></div>,
-//   ssr: false
-// })
-
-// const FooterSection = dynamic(() => import("@/components/sections/Footer"), {
-//   loading: () => <div className="h-48 bg-gray-800 animate-pulse"></div>,
-//   ssr: false
-// })
 
 // Componente inline para o popup de cookies para evitar bundle adicional
 function InlineCookiePopup({ 
@@ -199,6 +184,7 @@ export default function AbraoSilvaAdvocacia() {
   }, [])
 
   useEffect(() => {
+    let cookieTimer: NodeJS.Timeout | null = null
 
     // Configurar Intersection Observer para animações de scroll
     const setupScrollAnimations = () => {
@@ -225,17 +211,6 @@ export default function AbraoSilvaAdvocacia() {
       })
     }
 
-    // Verificar se o usuário já aceitou/rejeitou cookies
-    const cookiePreference = localStorage.getItem('cookiePreference')
-    if (!cookiePreference) {
-      // Mostrar popup após 2 segundos se não há preferência salva
-      const timer = setTimeout(() => {
-        setShowCookiePopup(true)
-      }, 2000)
-      
-      return () => clearTimeout(timer)
-    }
-
     // Configurar animações após o componente carregar
     const loadTimer = setTimeout(() => {
       setIsLoaded(true)
@@ -251,7 +226,22 @@ export default function AbraoSilvaAdvocacia() {
       })
     }, 100)
 
-    // Remover fallback timer - não é mais necessário
+    // Verificar cookies DEPOIS de configurar as animações
+    try {
+      const cookiePreference = localStorage.getItem('cookiePreference')
+      if (!cookiePreference) {
+        // Mostrar popup após 2 segundos se não há preferência salva
+        cookieTimer = setTimeout(() => {
+          setShowCookiePopup(true)
+        }, 2000)
+      }
+    } catch (error) {
+      console.warn('Erro ao acessar localStorage:', error)
+      // Fallback: mostrar popup se não conseguir acessar localStorage
+      cookieTimer = setTimeout(() => {
+        setShowCookiePopup(true)
+      }, 2000)
+    }
 
     window.addEventListener("scroll", handleScroll, { passive: true })
     
@@ -259,6 +249,9 @@ export default function AbraoSilvaAdvocacia() {
       window.removeEventListener("scroll", handleScroll)
       observerRef.current?.disconnect()
       clearTimeout(loadTimer)
+      if (cookieTimer) {
+        clearTimeout(cookieTimer)
+      }
       if (rafRef.current) {
         cancelAnimationFrame(rafRef.current)
       }
@@ -288,13 +281,38 @@ export default function AbraoSilvaAdvocacia() {
   }
 
   const handleAcceptCookies = () => {
-    localStorage.setItem('cookiePreference', 'accepted')
-    setShowCookiePopup(false)
+    try {
+      localStorage.setItem('cookiePreference', 'accepted')
+      localStorage.setItem('cookieAcceptedAt', new Date().toISOString())
+      setShowCookiePopup(false)
+    } catch (error) {
+      console.warn('Erro ao salvar preferência de cookies:', error)
+      setShowCookiePopup(false)
+    }
   }
 
   const handleRejectCookies = () => {
-    localStorage.setItem('cookiePreference', 'rejected')
-    setShowCookiePopup(false)
+    try {
+      localStorage.setItem('cookiePreference', 'rejected')
+      localStorage.setItem('cookieRejectedAt', new Date().toISOString())
+      setShowCookiePopup(false)
+    } catch (error) {
+      console.warn('Erro ao salvar preferência de cookies:', error)
+      setShowCookiePopup(false)
+    }
+  }
+
+  // Função para limpar dados de cookies (para desenvolvimento)
+  const clearCookieData = () => {
+    try {
+      localStorage.removeItem('cookiePreference')
+      localStorage.removeItem('cookieAcceptedAt')
+      localStorage.removeItem('cookieRejectedAt')
+      setShowCookiePopup(true)
+      console.log('Dados de cookies limpos com sucesso')
+    } catch (error) {
+      console.warn('Erro ao limpar dados de cookies:', error)
+    }
   }
 
   const menuItems = [
@@ -589,9 +607,11 @@ export default function AbraoSilvaAdvocacia() {
                       <div className="absolute inset-0 bg-gradient-to-r from-[#e2ba4b] via-[#f4d366] to-[#e2ba4b] scale-0 group-hover:scale-100 transition-transform duration-700 ease-out origin-center"></div>
                       
                       {/* Conteúdo do card */}
-                      <div className="flex flex-col items-center relative z-10">
-                        <div className="w-16 h-16 md:w-20 md:h-20 bg-transparent rounded-2xl border-2 border-white flex items-center justify-center mb-6 transition-all duration-500 group-hover:bg-white">
-                          <IconComponent className="h-8 w-8 md:h-10 md:w-10 text-black icon-outline transition-all duration-500 group-hover:text-black" />
+                      <div className="flex flex-col items-center relative z-10 group">
+                        <div className="w-16 h-16 md:w-20 md:h-20 bg-transparent rounded-2xl border-2 border-white flex items-center justify-center mb-6 transition-all duration-500 group-hover:border-black">
+                          <IconComponent 
+                            className="h-8 w-8 md:h-10 md:w-10 icon-outline transition-all duration-500 fill-white group-hover:fill-black"
+                          />
                         </div>
                         <h3 className="text-lg md:text-xl font-bold text-white group-hover:text-black transition-colors duration-500">
                           {area.title}<br />{area.subtitle}
