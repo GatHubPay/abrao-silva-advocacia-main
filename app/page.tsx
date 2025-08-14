@@ -458,7 +458,7 @@ export default function AbraoSilvaAdvocacia() {
       {/* Main Content */}
       <div className="flex-1 pt-16 md:pt-20">
         {/* Localização Section */}
-        <section id="localizacao" className="py-12 md:py-16 lg:py-24 bg-gray-50 location-bg">
+        <section id="localizacao" className="py-12 md:py-16 lg:py-24 bg-gray-50 location-bg paper-money-effect">
           <div className="container mx-auto px-4">
             <div className={`text-center mb-12 md:mb-16 scroll-reveal ${isLoaded ? 'animate-fadeInUp' : ''}`}>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-2">
@@ -500,7 +500,7 @@ export default function AbraoSilvaAdvocacia() {
         </section>
 
         {/* Contato Section */}
-        <section id="contato" className="py-12 md:py-16 lg:py-24 contact-bg relative overflow-hidden">
+        <section id="contato" className="py-12 md:py-16 lg:py-24 contact-bg  relative overflow-hidden">
           
           <div className="container mx-auto px-4 relative z-10">
             <div className="text-center mb-12 md:mb-16 scroll-reveal">
