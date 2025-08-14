@@ -602,7 +602,7 @@ export default function AbraoSilvaAdvocacia() {
                 const IconComponent = area.icon;
                 return (
                   <div key={index} className={`relative group cursor-pointer scroll-reveal-left ${isLoaded ? `animate-scaleIn delay-${area.delay}` : ''}`}>
-                    <div className="bg-gradient-to-b from-black to-[#4B5563] p-6 md:p-8 text-center transition-all duration-500 h-full flex flex-col justify-between min-h-[280px] relative overflow-hidden">
+                    <div className="bg-gradient-to-b from-black to-[#4B4B4B] p-6 md:p-8 text-center transition-all duration-500 h-full flex flex-col justify-between min-h-[280px] relative overflow-hidden">
                       {/* Efeito de expansão dourada de dentro para fora */}
                       <div className="absolute inset-0 bg-gradient-to-r from-[#e2ba4b] via-[#f4d366] to-[#e2ba4b] scale-0 group-hover:scale-100 transition-transform duration-700 ease-out origin-center"></div>
                       
