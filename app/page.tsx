@@ -468,15 +468,15 @@ export default function AbraoSilvaAdvocacia() {
         {/* Localização Section */}
         <section id="localizacao" className="py-12 md:py-16 lg:py-24 bg-gray-50 location-bg paper-money-effect">
           <div className="container mx-auto px-4">
-            <div className={`text-center mb-12 md:mb-16 scroll-reveal ${isLoaded ? 'animate-fadeInUp' : ''}`}>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-2 inline-block relative">
-                Nossa localização em <span className="text-[#ffffff]">ANICUNS - GOIÁS</span>
-                <span
-                  className="block absolute left-0 -bottom-1 w-full h-1 bg-black"
-                  style={{ transform: 'translateY(100%)' }}
-                  aria-hidden="true"
-                ></span>
-              </h2>
+                          <div className={`text-center mb-12 md:mb-16 scroll-reveal ${isLoaded ? 'animate-fadeInUp' : ''}`}>
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-2 inline-block relative">
+                  Nossa localização em <span className="text-[#ffffff]">GOIÂNIA - CENTRO</span>
+                  <span
+                    className="block absolute left-0 -bottom-1 w-full h-1 bg-black"
+                    style={{ transform: 'translateY(100%)' }}
+                    aria-hidden="true"
+                  ></span>
+                </h2>
               <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto px-4 mt-6">
                 Contamos também com outras unidades em diversas regiões do Brasil.
               </p>
@@ -611,37 +611,42 @@ export default function AbraoSilvaAdvocacia() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8 mb-12">
-              {[
-                { icon: PrevidenciarioIcon, title: "Direito", subtitle: "Previdenciário", delay: 100 },
-                { icon: TrabalhistaIcon, title: "Direito", subtitle: "Trabalhista", delay: 200 },
-                { icon: CivilIcon, title: "Direito", subtitle: "Civil", delay: 300 },
-                { icon: TributarioIcon, title: "Direito", subtitle: "Tributária", delay: 400 },
-                { icon: PublicoEstatutarioIcon, title: "Direito Público", subtitle: "Estatutário", delay: 500 }
-              ].map((area, index) => {
-                const IconComponent = area.icon;
-                return (
-                  <div key={index} className={`relative group cursor-pointer scroll-reveal-left ${isLoaded ? `animate-scaleIn delay-${area.delay}` : ''}`}>
-                    <div className="bg-gradient-to-b from-black to-[#4B4B4B] p-6 md:p-8 text-center transition-all duration-500 h-full flex flex-col justify-between min-h-[280px] relative overflow-hidden">
-                      {/* Efeito de expansão dourada de dentro para fora */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-[#e2ba4b] via-[#f4d366] to-[#e2ba4b] scale-0 group-hover:scale-100 transition-transform duration-700 ease-out origin-center"></div>
-                      
-                      {/* Conteúdo do card */}
-                      <div className="flex flex-col items-center relative z-10 group">
-                        <div className="w-16 h-16 md:w-20 md:h-20 bg-transparent rounded-2xl border-2 border-white flex items-center justify-center mb-6 transition-all duration-500 group-hover:border-black">
-                          <IconComponent 
-                            className="h-8 w-8 md:h-10 md:w-10 icon-outline transition-all duration-500 fill-white group-hover:fill-black"
-                          />
+              <div className="flex justify-center items-center mb-12">
+                <div className="flex flex-row gap-8 w-full max-w-2xl">
+                  {[
+                    { icon: PrevidenciarioIcon, title: "Direito", subtitle: "Previdenciário", delay: 100 },
+                    { icon: TrabalhistaIcon, title: "Direito", subtitle: "Trabalhista", delay: 200 },
+                    // { icon: CivilIcon, title: "Direito", subtitle: "Civil", delay: 300 },
+                    // { icon: TributarioIcon, title: "Direito", subtitle: "Tributária", delay: 400 },
+                    // { icon: PublicoEstatutarioIcon, title: "Direito Público", subtitle: "Estatutário", delay: 500 }
+                  ].map((area, index) => {
+                    const IconComponent = area.icon;
+                    return (
+                      <div
+                        key={index}
+                        className={`relative group cursor-pointer scroll-reveal-left ${isLoaded ? `animate-scaleIn delay-${area.delay}` : ''} flex-1`}
+                      >
+                        <div className="bg-gradient-to-b from-black to-[#4B4B4B] p-6 md:p-8 text-center transition-all duration-500 h-full flex flex-col justify-between min-h-[280px] relative overflow-hidden">
+                          {/* Efeito de expansão dourada de dentro para fora */}
+                          <div className="absolute inset-0 bg-gradient-to-r from-[#e2ba4b] via-[#f4d366] to-[#e2ba4b] scale-0 group-hover:scale-100 transition-transform duration-700 ease-out origin-center"></div>
+                          
+                          {/* Conteúdo do card */}
+                          <div className="flex flex-col items-center relative z-10 group">
+                            <div className="w-16 h-16 md:w-20 md:h-20 bg-transparent rounded-2xl border-2 border-white flex items-center justify-center mb-6 transition-all duration-500 group-hover:border-black">
+                              <IconComponent 
+                                className="h-8 w-8 md:h-10 md:w-10 icon-outline transition-all duration-500 fill-white group-hover:fill-black"
+                              />
+                            </div>
+                            <h3 className="text-lg md:text-xl font-bold text-white group-hover:text-black transition-colors duration-500">
+                              {area.title}<br />{area.subtitle}
+                            </h3>
+                          </div>
                         </div>
-                        <h3 className="text-lg md:text-xl font-bold text-white group-hover:text-black transition-colors duration-500">
-                          {area.title}<br />{area.subtitle}
-                        </h3>
                       </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+                    );
+                  })}
+                </div>
+              </div>
 
             <div className="text-center">
               <Button 
@@ -705,9 +710,9 @@ export default function AbraoSilvaAdvocacia() {
                         </div>
                         <div className="min-w-0 flex-1">
                           <p className="font-semibold text-black text-base">Localização</p>
-                          <p className="text-gray-600 text-base">Anicuns - GO</p>
+                          <p className="text-gray-600 text-base">Goiânia - GO</p>
                           <p className="text-sm text-gray-500 break-words">
-                            Av. Bandeirantes, 2216, Setor Leste - Anicuns, GO, 76170-000
+                            Av. Goiás, 382, Setor Central - Goiânia, GO
                           </p>
                         </div>
                       </div>
@@ -717,8 +722,7 @@ export default function AbraoSilvaAdvocacia() {
                         </div>
                         <div className="min-w-0 flex-1">
                           <p className="font-semibold text-black text-base">Horário de Atendimento</p>
-                          <p className="text-gray-600 text-base">Seg - Sex: 07:00 às 17:00</p>
-                          <p className="text-sm text-gray-500">Pausa para almoço: 11:00 às 13:00</p>
+                          <p className="text-gray-600 text-base">Seg - Sex: 08:00 às 17:00</p>
                         </div>
                       </div>
                     </div>
