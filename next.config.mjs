@@ -74,12 +74,6 @@ const nextConfig = {
     formats: ['image/webp', 'image/avif'],
   },
 
-  // Otimizações de performance
-  experimental: {
-    optimizeCss: true,
-    optimizePackageImports: ['lucide-react'],
-  },
-
   // Configuração de compressão
   compress: true,
 
