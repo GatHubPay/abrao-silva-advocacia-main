@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -9,7 +9,6 @@ export const metadata: Metadata = {
   creator: "Abrão & Silva Advocacia",
   publisher: "Abrão & Silva Advocacia",
   robots: "index, follow",
-  viewport: "width=device-width, initial-scale=1, maximum-scale=5",
   openGraph: {
     type: "website",
     locale: "pt_BR",
@@ -26,6 +25,13 @@ export const metadata: Metadata = {
   verification: {
     google: "google-site-verification-code",
   },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: '#e2ba4b',
 }
 
 export default function RootLayout({
@@ -55,7 +61,6 @@ export default function RootLayout({
         <link rel="preload" href="/fundo/01.webp" as="image" type="image/webp" />
         <link rel="preload" href="/fundo/01.png" as="image" type="image/png" />
         
-        <meta name="theme-color" content="#e2ba4b" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="format-detection" content="telephone=no" />
