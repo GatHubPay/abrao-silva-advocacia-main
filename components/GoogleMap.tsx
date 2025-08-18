@@ -4,6 +4,7 @@ import { GoogleMap, Marker, InfoWindow } from '@react-google-maps/api';
 import { MapPin, AlertCircle } from 'lucide-react';
 import { useState, useCallback, useMemo } from 'react';
 import { useJsApiLoader } from '@react-google-maps/api';
+import { CityConfig } from '@/lib/config';
 
 // Bibliotecas específicas do Google Maps para carregar apenas o necessário
 const libraries: ("places" | "geometry" | "drawing" | "visualization")[] = [];
@@ -13,22 +14,32 @@ const containerStyle = {
   height: '500px'
 };
 
-const center = {
-  lat: -16.6864, // Coordenadas de Anicuns
-  lng: -49.2653
-};
+interface GoogleMapComponentProps {
+  cityConfig?: CityConfig;
+}
 
-const officeLocation = {
-  lat: -16.6864,
-  lng: -49.2653
-};
-
-export default function GoogleMapComponent() {
+export default function GoogleMapComponent({ cityConfig }: GoogleMapComponentProps) {
   const [mapLoaded, setMapLoaded] = useState(false);
   const [mapError, setMapError] = useState(false);
   const [showInfoWindow, setShowInfoWindow] = useState(false);
   
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+
+  // Usar configuração da cidade ou fallback
+  const config = cityConfig || {
+    coordinates: { lat: -16.4647, lng: -49.9614 },
+    address: {
+      street: 'Av. Bandeirantes, 2216',
+      neighborhood: 'Setor Leste',
+      city: 'Anicuns',
+      state: 'GO',
+      zipCode: '76170-000'
+    },
+    description: 'Atendimento em todo território nacional'
+  };
+
+  const center = config.coordinates;
+  const officeLocation = config.coordinates;
 
   // Usar useJsApiLoader para melhor controle do carregamento
   const { isLoaded, loadError } = useJsApiLoader({
@@ -56,10 +67,12 @@ export default function GoogleMapComponent() {
   }, []);
 
   const openGoogleMaps = useCallback(() => {
-    const address = encodeURIComponent('Av. Bandeirantes, 2216, Setor Leste - Anicuns, GO, 76170-000');
+    const address = encodeURIComponent(
+      `${config.address.street}, ${config.address.neighborhood} - ${config.address.city}, ${config.address.state}`
+    );
     const url = `https://www.google.com/maps/search/${address}/@${officeLocation.lat},${officeLocation.lng},15z`;
     window.open(url, '_blank', 'noopener,noreferrer');
-  }, []);
+  }, [config, officeLocation]);
 
   // Memoizar opções do mapa para evitar re-renders
   const mapOptions = useMemo(() => ({
@@ -100,8 +113,8 @@ export default function GoogleMapComponent() {
               <MapPin className="h-10 w-10 text-white" />
             </div>
             {/* <p className="font-bold text-black text-lg">Sede Principal</p> */}
-            <p className="text-gray-600">Anicuns - GO</p>
-            <p className="text-sm text-gray-500 mt-2">Atendimento em todo território nacional</p>
+            <p className="text-gray-600">{config.address.city} - {config.address.state}</p>
+            <p className="text-sm text-gray-500 mt-2">{config.description || 'Atendimento em todo território nacional'}</p>
             <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
               <div className="flex items-center gap-2 text-yellow-800">
                 <AlertCircle className="h-4 w-4" />
@@ -161,9 +174,9 @@ export default function GoogleMapComponent() {
                     </h3>
                     <p className="text-sm text-gray-700 leading-relaxed">
                       <strong>Endereço:</strong><br />
-                      Av. Bandeirantes, 2216<br />
-                      Setor Leste - Anicuns, GO<br />
-                      <strong>CEP:</strong> 76170-000
+                      {config.address.street}<br />
+                      {config.address.neighborhood}<br />
+                      {config.address.city}, {config.address.state}
                     </p>
                   </div>
                 </div>
@@ -193,9 +206,9 @@ export default function GoogleMapComponent() {
           <MapPin className="h-5 w-5 text-red-600" />
           <div>
             <p className="font-semibold text-sm text-gray-800">Escritório Abrão & Silva</p>
-            <p className="text-xs text-black">Av. Bandeirantes, 2216</p>
-            <p className="text-xs text-black">Setor Leste - Anicuns, GO</p>
-            <p className="text-xs text-black">CEP: 76170-000</p>
+            <p className="text-xs text-black">{config.address.street}</p>
+            <p className="text-xs text-black">{config.address.neighborhood}</p>
+            <p className="text-xs text-black">{config.address.city}, {config.address.state}</p>
           </div>
         </div>
         <button

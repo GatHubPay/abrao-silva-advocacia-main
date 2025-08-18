@@ -1,0 +1,83 @@
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "goiania-centro.adv.br"
+        }
+      ],
+      "destination": "/?city=goianiaCentro"
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "sao-miguel.adv.br"
+        }
+      ],
+      "destination": "/?city=saoMiguelAraguaia"
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "setor-sul.adv.br"
+        }
+      ],
+      "destination": "/?city=setorSul"
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "goiania-centro.(.*)"
+        }
+      ],
+      "destination": "/?city=goianiaCentro"
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "sao-miguel.(.*)"
+        }
+      ],
+      "destination": "/?city=saoMiguelAraguaia"
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "setor-sul.(.*)"
+        }
+      ],
+      "destination": "/?city=setorSul"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ]
+}

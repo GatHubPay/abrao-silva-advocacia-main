@@ -1,83 +1,110 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  images: {
-    unoptimized: false,
-    formats: ['image/webp', 'image/avif'],
-    minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-  },
-  experimental: {
-    optimizePackageImports: ['lucide-react'],
-  },
-  compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
-  },
-  
-  // Otimizações de bundle simplificadas
-  webpack: (config, { dev, isServer }) => {
-    // Otimizações apenas para produção
-    if (!dev && !isServer) {
-      // Configuração mais conservadora para evitar problemas de build
-      config.optimization.splitChunks = {
-        ...config.optimization.splitChunks,
-        cacheGroups: {
-          ...config.optimization.splitChunks.cacheGroups,
-          // Chunk específico para Google Maps
-          maps: {
-            test: /[\\/]node_modules[\\/]@react-google-maps[\\/]/,
-            name: 'google-maps',
-            chunks: 'all',
-            priority: 20,
+  // Configuração para múltiplos domínios
+  async rewrites() {
+    return [
+      // Redirecionar subdomínios para a página principal com parâmetro de cidade
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'goiania-centro.(.*)',
           },
-        },
-      };
-    }
-    
-    return config;
+        ],
+        destination: '/?city=goianiaCentro',
+      },
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'sao-miguel.(.*)',
+          },
+        ],
+        destination: '/?city=saoMiguelAraguaia',
+      },
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'setor-sul.(.*)',
+          },
+        ],
+        destination: '/?city=setorSul',
+      },
+      // Suporte para domínios completos
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'goiania-centro.adv.br',
+          },
+        ],
+        destination: '/?city=goianiaCentro',
+      },
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'sao-miguel.adv.br',
+          },
+        ],
+        destination: '/?city=saoMiguelAraguaia',
+      },
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'setor-sul.adv.br',
+          },
+        ],
+        destination: '/?city=setorSul',
+      },
+    ];
   },
 
-  poweredByHeader: false,
-  reactStrictMode: true,
+  // Configuração de imagens
+  images: {
+    domains: ['localhost'],
+    formats: ['image/webp', 'image/avif'],
+  },
+
+  // Otimizações de performance
+  experimental: {
+    optimizeCss: true,
+    optimizePackageImports: ['lucide-react'],
+  },
+
+  // Configuração de compressão
+  compress: true,
+
+  // Configuração de headers de segurança
   async headers() {
     return [
       {
-        // Assets estáticos - cache longo
-        source: '/_next/static/(.*)',
+        source: '/(.*)',
         headers: [
           {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
           },
         ],
       },
-      {
-        // Imagens de performance - cache otimizado
-        source: '/performance/(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=2592000',
-          },
-        ],
-      },
-      {
-        source: '/api/(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=3600',
-          },
-        ],
-      },
-    ]
+    ];
   },
-}
+};
 
-export default nextConfig
+export default nextConfig;

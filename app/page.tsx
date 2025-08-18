@@ -85,6 +85,9 @@ const PublicoEstatutarioIcon: React.FC<SVGIconProps> = ({ className }) => (
 
 import Image from "next/image"
 import dynamic from "next/dynamic"
+import { useCityConfig } from "@/hooks/use-city-config"
+import CitySelector from "@/components/CitySelector"
+import DevCityTester from "@/components/DevCityTester"
 
 // Lazy load agressivo de componentes para reduzir bundle inicial
 const GoogleMapComponent = dynamic(() => import("@/components/GoogleMap"), {
@@ -152,6 +155,8 @@ export default function AbraoSilvaAdvocacia() {
   const [activeSection, setActiveSection] = useState("")
   const [showCookiePopup, setShowCookiePopup] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
+
+  const { cityConfig, changeCity } = useCityConfig()
   const observerRef = useRef<IntersectionObserver | null>(null)
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null)
   const rafRef = useRef<number | null>(null)
@@ -465,12 +470,21 @@ export default function AbraoSilvaAdvocacia() {
 
       {/* Main Content */}
       <div className="flex-1 pt-16 md:pt-20">
+
+        
         {/* Localização Section */}
         <section id="localizacao" className="py-12 md:py-16 lg:py-24 bg-gray-50 location-bg paper-money-effect">
           <div className="container mx-auto px-4">
+              {/* Seletor de Cidade */}
+              <div className=" flex  mb-8 justify-center z-9999">
+                <CitySelector 
+                  currentCity={cityConfig} 
+                  onCityChange={changeCity}
+                />
+              </div>
             <div className={`text-center mb-12 md:mb-16 scroll-reveal ${isLoaded ? 'animate-fadeInUp' : ''}`}>
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-2 inline-block relative">
-                Nossa localização em <span className="text-[#ffffff]">ANICUNS - GOIÁS</span>
+                Nossa localização em <span className="text-[#ffffff]">{cityConfig.displayName}</span>
                 <span
                   className="block absolute left-0 -bottom-1 w-full h-1 bg-black"
                   style={{ transform: 'translateY(100%)' }}
@@ -478,8 +492,10 @@ export default function AbraoSilvaAdvocacia() {
                 ></span>
               </h2>
               <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto px-4 mt-6">
-                Contamos também com outras unidades em diversas regiões do Brasil.
+                {cityConfig.subtitle}
               </p>
+              
+            
             </div>
 
             <div className="space-y-8 md:space-y-12 ">
@@ -491,11 +507,11 @@ export default function AbraoSilvaAdvocacia() {
                 
                 {/* Card principal */}
                 <div className="bg-gradient-to-br from-[#e2ba4b] to-[#d4a93a]  shadow-2xl border border-[#d4a93a] overflow-hidden card-hover-effect">
-                <div className="relative p-6 md:p-8 z-10">
+                <div className="relative p-6 md:p-8">
                   <h3 className="text-xl md:text-2xl font-bold text-black mb-6 text-center animate-float">
                     Localização no Mapa
                   </h3>
-                  <GoogleMapComponent />
+                  <GoogleMapComponent cityConfig={cityConfig} />
                   <div className="mt-6 text-center">
                     <Button 
                       onClick={() => scrollToSection("contato")}
@@ -611,29 +627,63 @@ export default function AbraoSilvaAdvocacia() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8 mb-12">
-              {[
-                { icon: PrevidenciarioIcon, title: "Direito", subtitle: "Previdenciário", delay: 100 },
-                { icon: TrabalhistaIcon, title: "Direito", subtitle: "Trabalhista", delay: 200 },
-                { icon: CivilIcon, title: "Direito", subtitle: "Civil", delay: 300 },
-                { icon: TributarioIcon, title: "Direito", subtitle: "Tributária", delay: 400 },
-                { icon: PublicoEstatutarioIcon, title: "Direito Público", subtitle: "Estatutário", delay: 500 }
-              ].map((area, index) => {
-                const IconComponent = area.icon;
+            <div className={`mb-12 ${
+              cityConfig.practiceAreas.length <= 2 
+                ? 'flex justify-center gap-6 md:gap-8 max-w-4xl mx-auto' 
+                : cityConfig.practiceAreas.length === 5
+                ? 'grid grid-cols-5 gap-4 max-w-6xl mx-auto'
+                : 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8'
+            }`}>
+              {cityConfig.practiceAreas.map((area, index) => {
+                // Mapear ícones baseado no nome
+                const iconMap: { [key: string]: React.FC<SVGIconProps> } = {
+                  'PrevidenciarioIcon': PrevidenciarioIcon,
+                  'TrabalhistaIcon': TrabalhistaIcon,
+                  'CivilIcon': CivilIcon,
+                  'TributarioIcon': TributarioIcon,
+                  'PublicoEstatutarioIcon': PublicoEstatutarioIcon
+                };
+                const IconComponent = iconMap[area.icon] || PrevidenciarioIcon;
                 return (
-                  <div key={index} className={`relative group cursor-pointer scroll-reveal-left ${isLoaded ? `animate-scaleIn delay-${area.delay}` : ''}`}>
-                    <div className="bg-gradient-to-b from-black to-[#4B4B4B] p-6 md:p-8 text-center transition-all duration-500 h-full flex flex-col justify-between min-h-[280px] relative overflow-hidden">
+                  <div key={index} className={`relative group cursor-pointer scroll-reveal-left ${isLoaded ? `animate-scaleIn delay-${(index + 1) * 100}` : ''} ${
+                    cityConfig.practiceAreas.length <= 2 ? 'flex-1 min-w-[300px] max-w-[400px]' : ''
+                  }`}>
+                    <div className={`bg-gradient-to-b from-black to-[#4B4B4B] text-center transition-all duration-500 h-full flex flex-col justify-between relative overflow-hidden ${
+                      cityConfig.practiceAreas.length === 5 
+                        ? 'p-4 md:p-5 min-h-[220px]' 
+                        : cityConfig.practiceAreas.length <= 2
+                        ? 'p-8 md:p-10 min-h-[320px]'
+                        : 'p-6 md:p-8 min-h-[280px]'
+                    }`}>
                       {/* Efeito de expansão dourada de dentro para fora */}
                       <div className="absolute inset-0 bg-gradient-to-r from-[#e2ba4b] via-[#f4d366] to-[#e2ba4b] scale-0 group-hover:scale-100 transition-transform duration-700 ease-out origin-center"></div>
                       
                       {/* Conteúdo do card */}
                       <div className="flex flex-col items-center relative z-10 group">
-                        <div className="w-16 h-16 md:w-20 md:h-20 bg-transparent rounded-2xl border-2 border-white flex items-center justify-center mb-6 transition-all duration-500 group-hover:border-black">
+                        <div className={`bg-transparent rounded-2xl border-2 border-white flex items-center justify-center transition-all duration-500 group-hover:border-black ${
+                          cityConfig.practiceAreas.length === 5 
+                            ? 'w-12 h-12 md:w-14 md:h-14 mb-4' 
+                            : cityConfig.practiceAreas.length <= 2
+                            ? 'w-20 h-20 md:w-24 md:h-24 mb-8'
+                            : 'w-16 h-16 md:w-20 md:h-20 mb-6'
+                        }`}>
                           <IconComponent 
-                            className="h-8 w-8 md:h-10 md:w-10 icon-outline transition-all duration-500 fill-white group-hover:fill-black"
+                            className={`icon-outline transition-all duration-500 fill-white group-hover:fill-black ${
+                              cityConfig.practiceAreas.length === 5 
+                                ? 'h-6 w-6 md:h-7 md:w-7' 
+                                : cityConfig.practiceAreas.length <= 2
+                                ? 'h-10 w-10 md:h-12 md:w-12'
+                                : 'h-8 w-8 md:h-10 md:w-10'
+                            }`}
                           />
                         </div>
-                        <h3 className="text-lg md:text-xl font-bold text-white group-hover:text-black transition-colors duration-500">
+                        <h3 className={`font-bold text-white group-hover:text-black transition-colors duration-500 ${
+                          cityConfig.practiceAreas.length === 5 
+                            ? 'text-sm md:text-base' 
+                            : cityConfig.practiceAreas.length <= 2
+                            ? 'text-xl md:text-2xl'
+                            : 'text-lg md:text-xl'
+                        }`}>
                           {area.title}<br />{area.subtitle}
                         </h3>
                       </div>
@@ -685,7 +735,7 @@ export default function AbraoSilvaAdvocacia() {
                         </div>
                         <div className="min-w-0 flex-1 mb-4">
                           <p className="font-semibold text-black text-base">Telefone SAC</p>
-                          <p className="text-gray-600 text-base break-all">(62) 3412-2893</p>
+                          <p className="text-gray-600 text-base break-all">{cityConfig.phone}</p>
                         </div>
                       </div>
                       <div className="flex items-start space-x-4">
@@ -694,7 +744,7 @@ export default function AbraoSilvaAdvocacia() {
                         </div>
                         <div className="min-w-0 flex-1">
                           <p className="font-semibold text-black text-base">E-mail Oficial</p>
-                          <p className="text-gray-600 text-base break-all">contato@abraoesilva.adv.br</p>
+                          <p className="text-gray-600 text-base break-all">{cityConfig.email}</p>
                         </div>
                       </div>
                     </div>
@@ -705,9 +755,9 @@ export default function AbraoSilvaAdvocacia() {
                         </div>
                         <div className="min-w-0 flex-1">
                           <p className="font-semibold text-black text-base">Localização</p>
-                          <p className="text-gray-600 text-base">Anicuns - GO</p>
+                          <p className="text-gray-600 text-base">{cityConfig.address.city} - {cityConfig.address.state}</p>
                           <p className="text-sm text-gray-500 break-words">
-                            Av. Bandeirantes, 2216, Setor Leste - Anicuns, GO, 76170-000
+                            {cityConfig.address.street}, {cityConfig.address.neighborhood} - {cityConfig.address.city}, {cityConfig.address.state}
                           </p>
                         </div>
                       </div>
@@ -717,8 +767,10 @@ export default function AbraoSilvaAdvocacia() {
                         </div>
                         <div className="min-w-0 flex-1">
                           <p className="font-semibold text-black text-base">Horário de Atendimento</p>
-                          <p className="text-gray-600 text-base">Seg - Sex: 07:00 às 17:00</p>
-                          <p className="text-sm text-gray-500">Pausa para almoço: 11:00 às 13:00</p>
+                          <p className="text-gray-600 text-base">{cityConfig.workingHours}</p>
+                          {cityConfig.workingHoursBreak && (
+                            <p className="text-sm text-gray-500">{cityConfig.workingHoursBreak}</p>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -757,10 +809,10 @@ export default function AbraoSilvaAdvocacia() {
                 <div className="flex items-center justify-center space-x-2 group px-4 py-2 transition-colors duration-300">
                   <Phone className="h-5 w-5 text-white group-hover:text-[#e2ba4b] transition-colors duration-300 animate-bounce-gentle" />
                   <a 
-                    href="tel:6234122893" 
+                    href={`tel:${cityConfig.phone.replace(/\D/g, '')}`}
                     className="text-white hover:text-[#e2ba4b] transition-colors duration-300 text-lg font-bold animate-bounce-gentle"
                   >
-                    (62) 3412-2893
+                    {cityConfig.phone}
                   </a>
                 </div>
               </div>
