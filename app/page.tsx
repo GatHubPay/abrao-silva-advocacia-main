@@ -310,9 +310,7 @@ export default function AbraoSilvaAdvocacia() {
       localStorage.removeItem('cookieAcceptedAt')
       localStorage.removeItem('cookieRejectedAt')
       setShowCookiePopup(true)
-      console.log('Dados de cookies limpos com sucesso')
     } catch (error) {
-      console.warn('Erro ao limpar dados de cookies:', error)
     }
   }
 
@@ -470,7 +468,7 @@ export default function AbraoSilvaAdvocacia() {
         <section id="localizacao" className="py-12 md:py-16 lg:py-24 bg-gray-50 location-bg paper-money-effect">
           <div className="container mx-auto px-4">
             <div className={`text-center mb-12 md:mb-16 scroll-reveal ${isLoaded ? 'animate-fadeInUp' : ''}`}>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-2">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-2">
                 Nossa localização em <span className="text-black">ANICUNS - GOIÁS</span>
               </h2>
               <div className="w-16 h-1 bg-[#e2ba4b] mx-auto mb-6"></div>
@@ -513,7 +511,7 @@ export default function AbraoSilvaAdvocacia() {
           
           <div className="container mx-auto px-4 relative z-10">
             <div className="text-center mb-12 md:mb-16 scroll-reveal">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2">
                 Fale diretamente com um de{" "}
                 <span className="gradient-text">nossos Advogados</span>
               </h2>
@@ -588,7 +586,7 @@ export default function AbraoSilvaAdvocacia() {
           
           <div className="container mx-auto px-4 relative z-10">
             <div className={`text-center mb-12 md:mb-16 scroll-reveal ${isLoaded ? 'animate-fadeInUp' : ''}`}>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2">
                 <span className="gradient-text">Áreas de</span> ATUAÇÃO
               </h2>
               <div className="w-16 h-1 bg-[#e2ba4b] mx-auto mb-6"></div>
@@ -647,7 +645,7 @@ export default function AbraoSilvaAdvocacia() {
         <section id="informacoes" className="py-12 md:py-16 lg:py-24 bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12 md:mb-16 scroll-reveal">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-2">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-2">
                 Informações de <span className="gradient-text">Contato</span>
               </h2>
               <div className="w-16 h-1 bg-[#e2ba4b] mx-auto mb-6"></div>
