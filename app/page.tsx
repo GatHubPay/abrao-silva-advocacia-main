@@ -471,7 +471,7 @@ export default function AbraoSilvaAdvocacia() {
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-2">
                 Nossa localização em <span className="text-black">ANICUNS - GOIÁS</span>
               </h2>
-              <div className="w-16 h-1 bg-[#e2ba4b] mx-auto mb-6"></div>
+              <div className="w-16 h-1 bg-black mx-auto mb-6"></div>
               <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto px-4">
               Contamos também com outras unidades em diversas regiões do Brasil.
               </p>
@@ -515,7 +515,7 @@ export default function AbraoSilvaAdvocacia() {
                 Fale diretamente com um de{" "}
                 <span className="gradient-text">nossos Advogados</span>
               </h2>
-              <div className="w-16 h-1 bg-[#e2ba4b] mx-auto mb-6"></div>
+              <div className="w-16 h-1 bg-black mx-auto mb-6"></div>
               <p className="text-lg md:text-xl text-white max-w-3xl mx-auto px-4">
                 Preencha o formulário abaixo e aguarde o nosso retorno com um atendimento focado nas suas necessidades.
               </p>
@@ -589,7 +589,7 @@ export default function AbraoSilvaAdvocacia() {
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2">
                 <span className="gradient-text">Áreas de</span> ATUAÇÃO
               </h2>
-              <div className="w-16 h-1 bg-[#e2ba4b] mx-auto mb-6"></div>
+              <div className="w-16 h-1 bg-black mx-auto mb-6"></div>
               <p className="text-lg md:text-xl text-white max-w-4xl mx-auto px-4 mb-4">
                 Atendimento nas Diversas Áreas do Direito
               </p>
@@ -648,7 +648,7 @@ export default function AbraoSilvaAdvocacia() {
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-2">
                 Informações de <span className="gradient-text">Contato</span>
               </h2>
-              <div className="w-16 h-1 bg-[#e2ba4b] mx-auto mb-6"></div>
+              <div className="w-16 h-1 bg-black mx-auto mb-6"></div>
               <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
                 Todas as informações para entrar em contato conosco.
               </p>

@@ -193,7 +193,9 @@ export default function GoogleMapComponent() {
           <MapPin className="h-5 w-5 text-gray-600" />
           <div>
             <p className="font-semibold text-sm text-gray-800">Escritório Abrão & Silva</p>
-            <p className="text-xs text-gray-600">Anicuns - GO</p>
+            <p className="text-xs text-gray-600">Av. Bandeirantes, 2216</p>
+            <p className="text-xs text-gray-600">Setor Leste - Anicuns, GO</p>
+            <p className="text-xs text-gray-600">CEP: 76170-000</p>
           </div>
         </div>
         <button
