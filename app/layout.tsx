@@ -2,9 +2,9 @@ import type { Metadata } from "next"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Abrão & Silva Advocacia - Escritório de Advocacia em Goiânia-GO",
-  description: "Escritório de advocacia especializado em diversas áreas do direito, localizado em Goiânia-GO. Atendimento em todo território nacional.",
-  keywords: "advocacia, direito, advogado, Goiânia, Goiás, jurídico, consultoria",
+  title: "Abrão & Silva Advocacia - Escritório de Advocacia em São Miguel do Araguaia-GO",
+  description: "Escritório de advocacia especializado em diversas áreas do direito, localizado em São Miguel do Araguaia-GO. Atendimento em todo território nacional.",
+  keywords: "advocacia, direito, advogado, São Miguel do Araguaia, Goiás, jurídico, consultoria",
   authors: [{ name: "Abrão & Silva Advocacia" }],
   creator: "Abrão & Silva Advocacia",
   publisher: "Abrão & Silva Advocacia",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     url: "https://abraoesilva.adv.br",
     title: "Abrão & Silva Advocacia - Escritório de Advocacia",
-    description: "Escritório de advocacia especializado em diversas áreas do direito, localizado em Goiânia-GO.",
+    description: "Escritório de advocacia especializado em diversas áreas do direito, localizado em São Miguel do Araguaia-GO.",
     siteName: "Abrão & Silva Advocacia",
   },
   twitter: {

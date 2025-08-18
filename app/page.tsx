@@ -470,7 +470,7 @@ export default function AbraoSilvaAdvocacia() {
           <div className="container mx-auto px-4">
                           <div className={`text-center mb-12 md:mb-16 scroll-reveal ${isLoaded ? 'animate-fadeInUp' : ''}`}>
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-2 inline-block relative">
-                  Nossa localização em <span className="text-[#ffffff]">GOIÂNIA - CENTRO</span>
+                  Nossa localização em <span className="text-[#ffffff]">SÃO MIGUEL DO ARAGUAIA</span>
                   <span
                     className="block absolute left-0 -bottom-1 w-full h-1 bg-black"
                     style={{ transform: 'translateY(100%)' }}
@@ -615,7 +615,7 @@ export default function AbraoSilvaAdvocacia() {
                 <div className="flex flex-row gap-8 w-full max-w-2xl">
                   {[
                     { icon: PrevidenciarioIcon, title: "Direito", subtitle: "Previdenciário", delay: 100 },
-                    { icon: TrabalhistaIcon, title: "Direito", subtitle: "Trabalhista", delay: 200 },
+                    // { icon: TrabalhistaIcon, title: "Direito", subtitle: "Trabalhista", delay: 200 },
                     // { icon: CivilIcon, title: "Direito", subtitle: "Civil", delay: 300 },
                     // { icon: TributarioIcon, title: "Direito", subtitle: "Tributária", delay: 400 },
                     // { icon: PublicoEstatutarioIcon, title: "Direito Público", subtitle: "Estatutário", delay: 500 }
@@ -690,7 +690,7 @@ export default function AbraoSilvaAdvocacia() {
                         </div>
                         <div className="min-w-0 flex-1 mb-4">
                           <p className="font-semibold text-black text-base">Telefone SAC</p>
-                          <p className="text-gray-600 text-base break-all">(62) 3412-2893</p>
+                          <p className="text-gray-600 text-base break-all">(62) 99643-4339</p>
                         </div>
                       </div>
                       <div className="flex items-start space-x-4">
@@ -710,9 +710,9 @@ export default function AbraoSilvaAdvocacia() {
                         </div>
                         <div className="min-w-0 flex-1">
                           <p className="font-semibold text-black text-base">Localização</p>
-                          <p className="text-gray-600 text-base">Goiânia - GO</p>
+                          <p className="text-gray-600 text-base">São Miguel do Araguaia - GO</p>
                           <p className="text-sm text-gray-500 break-words">
-                            Av. Goiás, 382, Setor Central - Goiânia, GO
+                            Av. Mato Grosso, casa 2, quadra 58, lote p2, setor central - São Miguel do Araguaia, GO
                           </p>
                         </div>
                       </div>
@@ -761,10 +761,10 @@ export default function AbraoSilvaAdvocacia() {
                 <div className="flex items-center justify-center space-x-2 group px-4 py-2 transition-colors duration-300">
                   <Phone className="h-5 w-5 text-white group-hover:text-[#e2ba4b] transition-colors duration-300 animate-bounce-gentle" />
                   <a 
-                    href="tel:6234122893" 
+                    href="tel:62996434339" 
                     className="text-white hover:text-[#e2ba4b] transition-colors duration-300 text-lg font-bold animate-bounce-gentle"
                   >
-                    (62) 3412-2893
+                    (62) 99643-4339
                   </a>
                 </div>
               </div>

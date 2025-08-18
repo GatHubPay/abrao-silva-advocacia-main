@@ -14,13 +14,13 @@ const containerStyle = {
 };
 
 const center = {
-  lat: -16.6864, // Coordenadas de Goiânia
-  lng: -49.2653
+  lat: -13.2750, // Coordenadas de São Miguel do Araguaia
+  lng: -50.1628
 };
 
 const officeLocation = {
-  lat: -16.6864,
-  lng: -49.2653
+  lat: -13.2750,
+  lng: -50.1628
 };
 
 export default function GoogleMapComponent() {
@@ -56,7 +56,7 @@ export default function GoogleMapComponent() {
   }, []);
 
   const openGoogleMaps = useCallback(() => {
-    const address = encodeURIComponent('Av. Goiás, 382, Setor Central - Goiânia, GO');
+    const address = encodeURIComponent('Av. Mato Grosso, casa 2, quadra 58, lote p2, setor central - São Miguel do Araguaia, GO');
     const url = `https://www.google.com/maps/search/${address}/@${officeLocation.lat},${officeLocation.lng},15z`;
     window.open(url, '_blank', 'noopener,noreferrer');
   }, []);
@@ -100,7 +100,7 @@ export default function GoogleMapComponent() {
               <MapPin className="h-10 w-10 text-white" />
             </div>
             {/* <p className="font-bold text-black text-lg">Sede Principal</p> */}
-            <p className="text-gray-600">Goiânia - GO</p>
+            <p className="text-gray-600">São Miguel do Araguaia - GO</p>
             <p className="text-sm text-gray-500 mt-2">Atendimento em todo território nacional</p>
             <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
               <div className="flex items-center gap-2 text-yellow-800">
@@ -161,8 +161,9 @@ export default function GoogleMapComponent() {
                     </h3>
                     <p className="text-sm text-gray-700 leading-relaxed">
                       <strong>Endereço:</strong><br />
-                      Av. Goiás, 382<br />
-                      Setor Central - Goiânia, GO
+                      Av. Mato Grosso, casa 2<br />
+                      quadra 58, lote p2, setor central<br />
+                      São Miguel do Araguaia, GO
                     </p>
                   </div>
                 </div>
@@ -192,8 +193,9 @@ export default function GoogleMapComponent() {
           <MapPin className="h-5 w-5 text-red-600" />
           <div>
             <p className="font-semibold text-sm text-gray-800">Escritório Abrão & Silva</p>
-            <p className="text-xs text-black">Av. Goiás, 382</p>
-            <p className="text-xs text-black">Setor Central - Goiânia, GO</p>
+            <p className="text-xs text-black">Av. Mato Grosso, casa 2</p>
+            <p className="text-xs text-black">quadra 58, lote p2, setor central</p>
+            <p className="text-xs text-black">São Miguel do Araguaia, GO</p>
           </div>
         </div>
         <button
