@@ -190,12 +190,12 @@ export default function GoogleMapComponent() {
       {/* Overlay com informações */}
       <div className="absolute top-4 left-4 bg-white p-3 rounded-lg shadow-lg border">
         <div className="flex items-center gap-2 mb-2">
-          <MapPin className="h-5 w-5 text-gray-600" />
+          <MapPin className="h-5 w-5 text-red-600" />
           <div>
             <p className="font-semibold text-sm text-gray-800">Escritório Abrão & Silva</p>
-            <p className="text-xs text-gray-600">Av. Bandeirantes, 2216</p>
-            <p className="text-xs text-gray-600">Setor Leste - Anicuns, GO</p>
-            <p className="text-xs text-gray-600">CEP: 76170-000</p>
+            <p className="text-xs text-black">Av. Bandeirantes, 2216</p>
+            <p className="text-xs text-black">Setor Leste - Anicuns, GO</p>
+            <p className="text-xs text-black">CEP: 76170-000</p>
           </div>
         </div>
         <button

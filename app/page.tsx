@@ -469,12 +469,16 @@ export default function AbraoSilvaAdvocacia() {
         <section id="localizacao" className="py-12 md:py-16 lg:py-24 bg-gray-50 location-bg paper-money-effect">
           <div className="container mx-auto px-4">
             <div className={`text-center mb-12 md:mb-16 scroll-reveal ${isLoaded ? 'animate-fadeInUp' : ''}`}>
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-2">
-                Nossa localização em <span className="text-black">ANICUNS - GOIÁS</span>
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-2 inline-block relative">
+                Nossa localização em <span className="text-[#ffffff]">ANICUNS - GOIÁS</span>
+                <span
+                  className="block absolute left-0 -bottom-1 w-full h-1 bg-black"
+                  style={{ transform: 'translateY(100%)' }}
+                  aria-hidden="true"
+                ></span>
               </h2>
-              <div className="w-16 h-1 bg-black mx-auto mb-6"></div>
-              <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto px-4">
-              Contamos também com outras unidades em diversas regiões do Brasil.
+              <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto px-4 mt-6">
+                Contamos também com outras unidades em diversas regiões do Brasil.
               </p>
             </div>
 
@@ -497,7 +501,7 @@ export default function AbraoSilvaAdvocacia() {
                       onClick={() => scrollToSection("contato")}
                       className="mt-4 btn-black bg-black text-white btn-hover-scale py-3 px-6 text-lg font-semibold animate-pulse-golden rounded-none"
                     >
-                      FALE CONOSCO »
+                      FALE CONOSCO 
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
                   </div>
@@ -512,11 +516,15 @@ export default function AbraoSilvaAdvocacia() {
           
           <div className="container mx-auto px-4 relative z-10">
             <div className="text-center mb-12 md:mb-16 scroll-reveal">
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 inline-block relative">
                 Fale diretamente com um de{" "}
                 <span className="gradient-text">nossos Advogados</span>
+                <span
+                  className="block absolute left-0 -bottom-1 w-full h-1 bg-white"
+                  style={{ transform: 'translateY(100%)' }}
+                  aria-hidden="true"
+                ></span>
               </h2>
-              <div className="w-16 h-1 bg-black mx-auto mb-6"></div>
               <p className="text-lg md:text-xl text-white max-w-3xl mx-auto px-4">
                 Preencha o formulário abaixo e aguarde o nosso retorno com um atendimento focado nas suas necessidades.
               </p>
@@ -587,10 +595,14 @@ export default function AbraoSilvaAdvocacia() {
           
           <div className="container mx-auto px-4 relative z-10">
             <div className={`text-center mb-12 md:mb-16 scroll-reveal ${isLoaded ? 'animate-fadeInUp' : ''}`}>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 inline-block relative">
                 <span className="gradient-text">Áreas de</span> ATUAÇÃO
+                <span
+                  className="block absolute left-0 -bottom-1 w-full h-1 bg-white"
+                  style={{ transform: 'translateY(100%)' }}
+                  aria-hidden="true"
+                ></span>
               </h2>
-              <div className="w-16 h-1 bg-black mx-auto mb-6"></div>
               <p className="text-lg md:text-xl text-white max-w-4xl mx-auto px-4 mb-4">
                 Atendimento nas Diversas Áreas do Direito
               </p>
@@ -646,10 +658,14 @@ export default function AbraoSilvaAdvocacia() {
         <section id="informacoes" className="py-12 md:py-16 lg:py-24 bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12 md:mb-16 scroll-reveal">
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-2">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-2 inline-block relative">
                 Informações de <span className="gradient-text">Contato</span>
+                <span
+                  className="block absolute left-0 -bottom-1 w-full h-1 bg-black"
+                  style={{ transform: 'translateY(100%)' }}
+                  aria-hidden="true"
+                ></span>
               </h2>
-              <div className="w-16 h-1 bg-black mx-auto mb-6"></div>
               <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
                 Todas as informações para entrar em contato conosco.
               </p>
