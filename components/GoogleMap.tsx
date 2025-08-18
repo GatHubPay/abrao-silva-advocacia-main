@@ -141,7 +141,6 @@ export default function GoogleMapComponent() {
         >
           <Marker
             position={officeLocation}
-            icon={markerIcon}
             onClick={handleMarkerClick}
             cursor="pointer"
             title="Clique para ver informações do escritório"
@@ -193,7 +192,7 @@ export default function GoogleMapComponent() {
         <div className="flex items-center gap-2 mb-2">
           <MapPin className="h-5 w-5 text-gray-600" />
           <div>
-            <p className="font-semibold text-sm text-gray-800">Escritório Abrão Silva</p>
+            <p className="font-semibold text-sm text-gray-800">Escritório Abrão & Silva</p>
             <p className="text-xs text-gray-600">Anicuns - GO</p>
           </div>
         </div>
