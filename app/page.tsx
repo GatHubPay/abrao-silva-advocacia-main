@@ -4,15 +4,10 @@ import { useState, useEffect, useRef, useCallback } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import {
   Menu,
   X,
-  Scale,
-  Heart,
-  Briefcase,
-  Building,
-  UserCheck,
+
   Phone,
   Mail,
   MapPin,
@@ -24,7 +19,6 @@ import {
   Clock,
   ArrowRight,
   Shield,
-  BookOpen,
 } from "lucide-react"
 
 

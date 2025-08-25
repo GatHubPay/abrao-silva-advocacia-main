@@ -10,6 +10,7 @@ export interface CityConfig {
   id: string;
   name: string;
   displayName: string;
+  domain: string; // [cursor-edit]
   coordinates: {
     lat: number;
     lng: number;
@@ -36,6 +37,7 @@ export const citiesConfig: Record<string, CityConfig> = {
     id: 'main',
     name: 'Anicuns',
     displayName: 'ANICUNS - GOIÁS',
+    domain: 'anicuns.abraoesilvaadvogados.com.br', // [cursor-edit]
     coordinates: {
       lat: -16.4647,
       lng: -49.9614
@@ -66,6 +68,7 @@ export const citiesConfig: Record<string, CityConfig> = {
     id: 'goianiaCentro',
     name: 'Goiânia Centro',
     displayName: 'GOIÂNIA - GOIÁS',
+    domain: 'centro.abraoesilvaadvogados.com.br', // [cursor-edit]
     coordinates: {
       lat: -16.6864,
       lng: -49.2653
@@ -94,6 +97,7 @@ export const citiesConfig: Record<string, CityConfig> = {
     id: 'saoMiguelAraguaia',
     name: 'São Miguel do Araguaia',
     displayName: 'SÃO MIGUEL DO ARAGUAIA - GOIÁS',
+    domain: 'saomiguel.abraoesilvaadvogados.com.br', // [cursor-edit]
     coordinates: {
       lat: -13.2750,
       lng: -50.1628
@@ -118,6 +122,7 @@ export const citiesConfig: Record<string, CityConfig> = {
     id: 'setorSul',
     name: 'Setor Sul',
     displayName: 'GOIÂNIA - SETOR SUL - GOIÁS',
+    domain: 'setorsul.abraoesilvaadvogados.com.br', // [cursor-edit]
     coordinates: {
       lat: -16.6864,
       lng: -49.2653
@@ -141,6 +146,27 @@ export const citiesConfig: Record<string, CityConfig> = {
     ]
   }
 };
+
+// Função para obter o domínio de uma cidade // [cursor-edit]
+export function getCityDomain(cityId: string): string {
+  return citiesConfig[cityId]?.domain || citiesConfig.main.domain;
+}
+
+// Função para redirecionar para o domínio da cidade // [cursor-edit]
+export function redirectToCityDomain(cityId: string): void {
+  if (typeof window === 'undefined') return;
+  
+  const targetDomain = getCityDomain(cityId);
+  const currentDomain = window.location.hostname;
+  
+  // Se já estamos no domínio correto, não fazer nada
+  if (currentDomain === targetDomain) return;
+  
+  // Redirecionar para o domínio correto mantendo o protocolo
+  const protocol = window.location.protocol;
+  const newUrl = `${protocol}//${targetDomain}${window.location.pathname}${window.location.search}${window.location.hash}`;
+  window.location.href = newUrl;
+}
 
 // Função para obter configuração da cidade baseada no domínio ou parâmetro
 export function getCityConfig(): CityConfig {
@@ -170,6 +196,24 @@ export function getCityConfig(): CityConfig {
     return citiesConfig.main;
   }
   
+  // Verificar domínios específicos // [cursor-edit]
+  if (hostname === 'centro.abraoesilvaadvogados.com.br') {
+    return citiesConfig.goianiaCentro;
+  }
+  
+  if (hostname === 'saomiguel.abraoesilvaadvogados.com.br') {
+    return citiesConfig.saoMiguelAraguaia;
+  }
+  
+  if (hostname === 'setorsul.abraoesilvaadvogados.com.br') {
+    return citiesConfig.setorSul;
+  }
+  
+  if (hostname === 'anicuns.abraoesilvaadvogados.com.br') {
+    return citiesConfig.main;
+  }
+
+  // Manter compatibilidade com domínios antigos // [cursor-edit]
   if (hostname.includes('goiania-centro') || hostname.includes('goianiacentro')) {
     return citiesConfig.goianiaCentro;
   }
@@ -179,19 +223,6 @@ export function getCityConfig(): CityConfig {
   }
   
   if (hostname.includes('setor-sul') || hostname.includes('setorsul')) {
-    return citiesConfig.setorSul;
-  }
-
-  // Verificar subdomínio
-  if (hostname.startsWith('goiania-centro.')) {
-    return citiesConfig.goianiaCentro;
-  }
-  
-  if (hostname.startsWith('sao-miguel.')) {
-    return citiesConfig.saoMiguelAraguaia;
-  }
-  
-  if (hostname.startsWith('setor-sul.')) {
     return citiesConfig.setorSul;
   }
 

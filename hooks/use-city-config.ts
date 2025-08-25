@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getCityConfig, CityConfig } from '@/lib/config';
+import { getCityConfig, CityConfig, redirectToCityDomain } from '@/lib/config'; // [cursor-edit]
 
 export function useCityConfig() {
   const [cityConfig, setCityConfig] = useState<CityConfig>(getCityConfig());
@@ -25,12 +25,10 @@ export function useCityConfig() {
     };
   }, []);
 
-  // Função para mudar a cidade
+  // Função para mudar a cidade // [cursor-edit]
   const changeCity = (cityId: string) => {
-    const url = new URL(window.location.href);
-    url.searchParams.set('city', cityId);
-    window.history.pushState({}, '', url.toString());
-    setCityConfig(getCityConfig());
+    // Redirecionar para o domínio correto
+    redirectToCityDomain(cityId);
   };
 
   return {
