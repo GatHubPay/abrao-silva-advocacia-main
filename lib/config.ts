@@ -37,7 +37,7 @@ export const citiesConfig: Record<string, CityConfig> = {
     id: 'main',
     name: 'Anicuns',
     displayName: 'ANICUNS - GOIÁS',
-    domain: 'anicuns.abraoesilvaadvogados.com.br', // [cursor-edit]
+    domain: 'anicuns.abraoesilvaadvassociados.com.br', // [cursor-edit]
     coordinates: {
       lat: -16.4647,
       lng: -49.9614
@@ -68,7 +68,7 @@ export const citiesConfig: Record<string, CityConfig> = {
     id: 'goianiaCentro',
     name: 'Goiânia Centro',
     displayName: 'GOIÂNIA - GOIÁS',
-    domain: 'centro.abraoesilvaadvogados.com.br', // [cursor-edit]
+    domain: 'centro.abraoesilvaadvassociados.com.br', // [cursor-edit]
     coordinates: {
       lat: -16.6864,
       lng: -49.2653
@@ -97,7 +97,7 @@ export const citiesConfig: Record<string, CityConfig> = {
     id: 'saoMiguelAraguaia',
     name: 'São Miguel do Araguaia',
     displayName: 'SÃO MIGUEL DO ARAGUAIA - GOIÁS',
-    domain: 'saomiguel.abraoesilvaadvogados.com.br', // [cursor-edit]
+    domain: 'saomiguel.abraoesilvaadvassociados.com.br', // [cursor-edit]
     coordinates: {
       lat: -13.2750,
       lng: -50.1628
@@ -122,7 +122,7 @@ export const citiesConfig: Record<string, CityConfig> = {
     id: 'setorSul',
     name: 'Setor Sul',
     displayName: 'GOIÂNIA - SETOR SUL - GOIÁS',
-    domain: 'setorsul.abraoesilvaadvogados.com.br', // [cursor-edit]
+    domain: 'setorsul.abraoesilvaadvassociados.com.br', // [cursor-edit]
     coordinates: {
       lat: -16.6864,
       lng: -49.2653
@@ -197,19 +197,19 @@ export function getCityConfig(): CityConfig {
   }
   
   // Verificar domínios específicos // [cursor-edit]
-  if (hostname === 'centro.abraoesilvaadvogados.com.br') {
+  if (hostname === 'centro.abraoesilvaadvassociados.com.br') {
     return citiesConfig.goianiaCentro;
   }
   
-  if (hostname === 'saomiguel.abraoesilvaadvogados.com.br') {
+  if (hostname === 'saomiguel.abraoesilvaadvassociados.com.br') {
     return citiesConfig.saoMiguelAraguaia;
   }
   
-  if (hostname === 'setorsul.abraoesilvaadvogados.com.br') {
+  if (hostname === 'setorsul.abraoesilvaadvassociados.com.br') {
     return citiesConfig.setorSul;
   }
   
-  if (hostname === 'anicuns.abraoesilvaadvogados.com.br') {
+  if (hostname === 'anicuns.abraoesilvaadvassociados.com.br') {
     return citiesConfig.main;
   }
 
