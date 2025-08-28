@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { MapPin, ChevronDown } from 'lucide-react';
-import { citiesConfig, CityConfig, redirectToCityDomain } from '@/lib/config'; // [cursor-edit]
+import { citiesConfig, CityConfig, redirectToCityPath } from '@/lib/config'; // [cursor-edit]
 import { Button } from '@/components/ui/button';
 
 interface CitySelectorProps {
@@ -14,8 +14,9 @@ export default function CitySelector({ currentCity, onCityChange }: CitySelector
   const [isOpen, setIsOpen] = useState(false);
 
   const handleCitySelect = (cityId: string) => {
-    // Redirecionar para o domínio correto // [cursor-edit]
-    redirectToCityDomain(cityId);
+    // Redirecionar para o path correto // [cursor-edit]
+    redirectToCityPath(cityId);
+    
     setIsOpen(false);
   };
 

@@ -156,17 +156,27 @@ export function getCityPath(cityId: string): string {
 export function redirectToCityPath(cityId: string): void {
   if (typeof window === 'undefined') return;
   
-  const targetPath = getCityPath(cityId);
-  const currentPath = window.location.pathname;
+  console.log('redirectToCityPath chamado com cityId:', cityId); // [cursor-edit] - Debug
   
-  // Se já estamos no path correto, não fazer nada
-  if (currentPath === targetPath) return;
+  // Em vez de mudar o pathname, vamos usar parâmetros de URL
+  // Isso mantém tudo na mesma página mas com cidade diferente
+  const currentUrl = new URL(window.location.href);
+  currentUrl.searchParams.set('city', cityId);
   
-  // Redirecionar para o path correto
-  window.location.pathname = targetPath;
+  console.log('Redirecionando para URL:', currentUrl.toString()); // [cursor-edit] - Debug
+  
+  // Usar pushState para mudar a URL sem recarregar a página
+  // Isso permite que o React detecte a mudança e atualize a interface
+  window.history.pushState({ cityId }, '', currentUrl.toString());
+  
+  // Disparar um evento customizado para notificar sobre a mudança
+  const customEvent = new CustomEvent('cityChange', { detail: { cityId } });
+  window.dispatchEvent(customEvent);
+  
+  console.log('Evento cityChange disparado para:', cityId); // [cursor-edit] - Debug
 }
 
-// Função para obter configuração da cidade baseada no path ou parâmetro
+// Função para obter configuração da cidade baseada no parâmetro da URL
 export function getCityConfig(): CityConfig {
   // Verificar se estamos no browser
   if (typeof window === 'undefined') {
@@ -181,49 +191,12 @@ export function getCityConfig(): CityConfig {
     return citiesConfig[cityParam];
   }
 
-  // Verificar path da URL
-  const pathname = window.location.pathname;
-  
   // Suporte para desenvolvimento local
   if (window.location.hostname.includes('localhost') || window.location.hostname.includes('127.0.0.1')) {
-    // Para desenvolvimento local, verificar se há parâmetro de cidade
-    if (cityParam && citiesConfig[cityParam]) {
-      return citiesConfig[cityParam];
-    }
-    // Padrão para localhost
+    // Para desenvolvimento local, padrão é main (Anicuns)
     return citiesConfig.main;
   }
   
-  // Verificar paths específicos // [cursor-edit]
-  if (pathname === '/goiania-centro') {
-    return citiesConfig.goianiaCentro;
-  }
-  
-  if (pathname === '/sao-miguel') {
-    return citiesConfig.saoMiguelAraguaia;
-  }
-  
-  if (pathname === '/setor-sul') {
-    return citiesConfig.setorSul;
-  }
-  
-  if (pathname === '/anicuns') {
-    return citiesConfig.main;
-  }
-
-  // Manter compatibilidade com paths antigos // [cursor-edit]
-  if (pathname.includes('/goiania-centro') || pathname.includes('/goianiacentro')) {
-    return citiesConfig.goianiaCentro;
-  }
-  
-  if (pathname.includes('/sao-miguel') || pathname.includes('/saomiguel')) {
-    return citiesConfig.saoMiguelAraguaia;
-  }
-  
-  if (pathname.includes('/setor-sul') || pathname.includes('/setorsul')) {
-    return citiesConfig.setorSul;
-  }
-
-  // Padrão: main (Anicuns)
+  // Para produção, padrão é main (Anicuns)
   return citiesConfig.main;
 }
