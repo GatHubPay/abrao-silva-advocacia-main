@@ -67,7 +67,7 @@ export const citiesConfig: Record<string, CityConfig> = {
   goianiaCentro: {
     id: 'goianiaCentro',
     name: 'Goiânia Centro',
-    displayName: 'GOIÂNIA - GOIÁS',
+    displayName: 'GOIÂNIA CENTRO - GOIÁS',
     domain: 'centro.abraoesilvaadvassociados.com.br', // [cursor-edit]
     coordinates: {
       lat: -16.6864,
@@ -83,7 +83,7 @@ export const citiesConfig: Record<string, CityConfig> = {
     phone: '(62) 3225-4567',
     email: 'goiania@abraoesilva.adv.br',
     workingHours: 'Seg - Sex: 08:00 às 18:00',
-    title: 'Nossa localização em GOIÂNIA - GOIÁS',
+    title: 'Nossa localização em GOIÂNIA CENTRO - GOIÁS',
     subtitle: 'Especializada em Direito Empresarial e Civil no centro da capital.',
     description: 'Atendimento especializado para empresas e pessoas físicas',
     practiceAreas: [
