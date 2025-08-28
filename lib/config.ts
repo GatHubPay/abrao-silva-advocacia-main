@@ -10,7 +10,7 @@ export interface CityConfig {
   id: string;
   name: string;
   displayName: string;
-  domain: string; // [cursor-edit]
+  path: string; // [cursor-edit] - Alterado de domain para path
   coordinates: {
     lat: number;
     lng: number;
@@ -37,7 +37,7 @@ export const citiesConfig: Record<string, CityConfig> = {
     id: 'main',
     name: 'Anicuns',
     displayName: 'ANICUNS - GOIÁS',
-    domain: 'anicuns.abraoesilvaadvassociados.com.br', // [cursor-edit]
+    path: '/anicuns', // [cursor-edit] - Alterado para subpasta
     coordinates: {
       lat: -16.4647,
       lng: -49.9614
@@ -68,7 +68,7 @@ export const citiesConfig: Record<string, CityConfig> = {
     id: 'goianiaCentro',
     name: 'Goiânia Centro',
     displayName: 'GOIÂNIA CENTRO - GOIÁS',
-    domain: 'centro.abraoesilvaadvassociados.com.br', // [cursor-edit]
+    path: '/goiania-centro', // [cursor-edit] - Alterado para subpasta
     coordinates: {
       lat: -16.6864,
       lng: -49.2653
@@ -97,7 +97,7 @@ export const citiesConfig: Record<string, CityConfig> = {
     id: 'saoMiguelAraguaia',
     name: 'São Miguel do Araguaia',
     displayName: 'SÃO MIGUEL DO ARAGUAIA - GOIÁS',
-    domain: 'saomiguel.abraoesilvaadvassociados.com.br', // [cursor-edit]
+    path: '/sao-miguel', // [cursor-edit] - Alterado para subpasta
     coordinates: {
       lat: -13.2750,
       lng: -50.1628
@@ -122,7 +122,7 @@ export const citiesConfig: Record<string, CityConfig> = {
     id: 'setorSul',
     name: 'Setor Sul',
     displayName: 'GOIÂNIA - SETOR SUL - GOIÁS',
-    domain: 'setorsul.abraoesilvaadvassociados.com.br', // [cursor-edit]
+    path: '/setor-sul', // [cursor-edit] - Alterado para subpasta
     coordinates: {
       lat: -16.6864,
       lng: -49.2653
@@ -147,28 +147,26 @@ export const citiesConfig: Record<string, CityConfig> = {
   }
 };
 
-// Função para obter o domínio de uma cidade // [cursor-edit]
-export function getCityDomain(cityId: string): string {
-  return citiesConfig[cityId]?.domain || citiesConfig.main.domain;
+// Função para obter o path de uma cidade // [cursor-edit]
+export function getCityPath(cityId: string): string {
+  return citiesConfig[cityId]?.path || citiesConfig.main.path;
 }
 
-// Função para redirecionar para o domínio da cidade // [cursor-edit]
-export function redirectToCityDomain(cityId: string): void {
+// Função para redirecionar para o path da cidade // [cursor-edit]
+export function redirectToCityPath(cityId: string): void {
   if (typeof window === 'undefined') return;
   
-  const targetDomain = getCityDomain(cityId);
-  const currentDomain = window.location.hostname;
+  const targetPath = getCityPath(cityId);
+  const currentPath = window.location.pathname;
   
-  // Se já estamos no domínio correto, não fazer nada
-  if (currentDomain === targetDomain) return;
+  // Se já estamos no path correto, não fazer nada
+  if (currentPath === targetPath) return;
   
-  // Redirecionar para o domínio correto mantendo o protocolo
-  const protocol = window.location.protocol;
-  const newUrl = `${protocol}//${targetDomain}${window.location.pathname}${window.location.search}${window.location.hash}`;
-  window.location.href = newUrl;
+  // Redirecionar para o path correto
+  window.location.pathname = targetPath;
 }
 
-// Função para obter configuração da cidade baseada no domínio ou parâmetro
+// Função para obter configuração da cidade baseada no path ou parâmetro
 export function getCityConfig(): CityConfig {
   // Verificar se estamos no browser
   if (typeof window === 'undefined') {
@@ -183,11 +181,11 @@ export function getCityConfig(): CityConfig {
     return citiesConfig[cityParam];
   }
 
-  // Verificar domínio
-  const hostname = window.location.hostname;
+  // Verificar path da URL
+  const pathname = window.location.pathname;
   
-  // Suporte para domínios locais de teste
-  if (hostname.includes('localhost') || hostname.includes('127.0.0.1')) {
+  // Suporte para desenvolvimento local
+  if (window.location.hostname.includes('localhost') || window.location.hostname.includes('127.0.0.1')) {
     // Para desenvolvimento local, verificar se há parâmetro de cidade
     if (cityParam && citiesConfig[cityParam]) {
       return citiesConfig[cityParam];
@@ -196,33 +194,33 @@ export function getCityConfig(): CityConfig {
     return citiesConfig.main;
   }
   
-  // Verificar domínios específicos // [cursor-edit]
-  if (hostname === 'centro.abraoesilvaadvassociados.com.br') {
+  // Verificar paths específicos // [cursor-edit]
+  if (pathname === '/goiania-centro') {
     return citiesConfig.goianiaCentro;
   }
   
-  if (hostname === 'saomiguel.abraoesilvaadvassociados.com.br') {
+  if (pathname === '/sao-miguel') {
     return citiesConfig.saoMiguelAraguaia;
   }
   
-  if (hostname === 'setorsul.abraoesilvaadvassociados.com.br') {
+  if (pathname === '/setor-sul') {
     return citiesConfig.setorSul;
   }
   
-  if (hostname === 'anicuns.abraoesilvaadvassociados.com.br') {
+  if (pathname === '/anicuns') {
     return citiesConfig.main;
   }
 
-  // Manter compatibilidade com domínios antigos // [cursor-edit]
-  if (hostname.includes('goiania-centro') || hostname.includes('goianiacentro')) {
+  // Manter compatibilidade com paths antigos // [cursor-edit]
+  if (pathname.includes('/goiania-centro') || pathname.includes('/goianiacentro')) {
     return citiesConfig.goianiaCentro;
   }
   
-  if (hostname.includes('sao-miguel') || hostname.includes('saomiguel')) {
+  if (pathname.includes('/sao-miguel') || pathname.includes('/saomiguel')) {
     return citiesConfig.saoMiguelAraguaia;
   }
   
-  if (hostname.includes('setor-sul') || hostname.includes('setorsul')) {
+  if (pathname.includes('/setor-sul') || pathname.includes('/setorsul')) {
     return citiesConfig.setorSul;
   }
 
