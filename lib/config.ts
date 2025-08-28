@@ -156,14 +156,10 @@ export function getCityPath(cityId: string): string {
 export function redirectToCityPath(cityId: string): void {
   if (typeof window === 'undefined') return;
   
-  console.log('redirectToCityPath chamado com cityId:', cityId); // [cursor-edit] - Debug
-  
   // Em vez de mudar o pathname, vamos usar parâmetros de URL
   // Isso mantém tudo na mesma página mas com cidade diferente
   const currentUrl = new URL(window.location.href);
   currentUrl.searchParams.set('city', cityId);
-  
-  console.log('Redirecionando para URL:', currentUrl.toString()); // [cursor-edit] - Debug
   
   // Usar pushState para mudar a URL sem recarregar a página
   // Isso permite que o React detecte a mudança e atualize a interface
@@ -172,8 +168,6 @@ export function redirectToCityPath(cityId: string): void {
   // Disparar um evento customizado para notificar sobre a mudança
   const customEvent = new CustomEvent('cityChange', { detail: { cityId } });
   window.dispatchEvent(customEvent);
-  
-  console.log('Evento cityChange disparado para:', cityId); // [cursor-edit] - Debug
 }
 
 // Função para obter configuração da cidade baseada no parâmetro da URL
