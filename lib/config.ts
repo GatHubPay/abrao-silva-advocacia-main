@@ -34,7 +34,7 @@ export interface CityConfig {
 
 export const citiesConfig: Record<string, CityConfig> = {
   main: {
-    id: 'main',
+    id: 'anicuns',
     name: 'Anicuns',
     displayName: 'ANICUNS - GOIÁS',
     path: '/anicuns', // [cursor-edit] - Alterado para subpasta
@@ -149,7 +149,11 @@ export const citiesConfig: Record<string, CityConfig> = {
 
 // Função para obter o path de uma cidade // [cursor-edit]
 export function getCityPath(cityId: string): string {
-  return citiesConfig[cityId]?.path || citiesConfig.main.path;
+  // Mapear 'main' para 'anicuns' na URL
+  if (cityId === 'main') {
+    return '/anicuns';
+  }
+  return citiesConfig[cityId]?.path || '/anicuns';
 }
 
 // Função para redirecionar para o path da cidade // [cursor-edit]
@@ -158,8 +162,12 @@ export function redirectToCityPath(cityId: string): void {
   
   // Em vez de mudar o pathname, vamos usar parâmetros de URL
   // Isso mantém tudo na mesma página mas com cidade diferente
+  
+  // Mapear 'main' para 'anicuns' na URL
+  const urlCityId = cityId === 'main' ? 'anicuns' : cityId;
+  
   const currentUrl = new URL(window.location.href);
-  currentUrl.searchParams.set('city', cityId);
+  currentUrl.searchParams.set('city', urlCityId);
   
   // Usar pushState para mudar a URL sem recarregar a página
   // Isso permite que o React detecte a mudança e atualize a interface
@@ -180,6 +188,11 @@ export function getCityConfig(): CityConfig {
   // Verificar parâmetro na URL
   const urlParams = new URLSearchParams(window.location.search);
   const cityParam = urlParams.get('city');
+  
+  // Mapear 'anicuns' para 'main' para compatibilidade
+  if (cityParam === 'anicuns') {
+    return citiesConfig.main;
+  }
   
   if (cityParam && citiesConfig[cityParam]) {
     return citiesConfig[cityParam];
