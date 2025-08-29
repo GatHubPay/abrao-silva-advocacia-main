@@ -303,6 +303,7 @@ export default function ContactSection({ cityConfig, contactInfo }: ContactSecti
                     coordinates: cityConfig.coordinates,
                     address: cityConfig.address,
                     phone: contactInfo.phone,
+                    whatsapp: cityConfig.whatsapp, // [cursor-edit] - Adicionado campo whatsapp
                     email: contactInfo.email,
                     workingHours: contactInfo.schedule,
                     title: `Localização em ${cityConfig.address.city}`,
