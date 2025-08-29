@@ -474,7 +474,7 @@ export default function AbraoSilvaAdvocacia() {
         <section id="localizacao" className="py-12 md:py-16 lg:py-24 bg-gray-50 location-bg paper-money-effect">
           <div className="container mx-auto px-4">
               {/* Seletor de Cidade */}
-              <div className="wp-animate-fade flex mb-8 justify-center z-9999">
+              <div className="wp-animate-fade flex mb-8 justify-center relative z-[9999999999]">
                 <CitySelector 
                   currentCity={cityConfig} 
                   onCityChange={changeCity}

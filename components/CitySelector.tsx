@@ -21,10 +21,10 @@ export default function CitySelector({ currentCity, onCityChange }: CitySelector
   };
 
   return (
-    <div className="relative ">
+    <div className="relative z-[9999999999]">
       <Button
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-white text-black border border-gray-300 hover:bg-gray-50 flex items-center gap-2 px-4 py-2 rounded-lg shadow-sm transition-all duration-200"
+        className="bg-white text-black border border-gray-300 hover:bg-gray-50 flex items-center gap-2 px-4 py-2 rounded-lg shadow-sm transition-all duration-200 relative z-[9999999999]"
       >
         <MapPin className="h-4 w-4" />
         <span className="font-medium">{currentCity.displayName}</span>
@@ -32,7 +32,7 @@ export default function CitySelector({ currentCity, onCityChange }: CitySelector
       </Button>
 
       {isOpen && (
-        <div className="absolute top-full left-0 mt-2 w-64 bg-white border-2 border-gray-300 rounded-lg shadow-2xl z-[999999999]">
+        <div className="absolute top-full left-0 mt-2 w-64 bg-white border-2 border-gray-300 rounded-lg shadow-2xl z-[9999999999]">
           <div className="p-2">
             {Object.entries(citiesConfig).map(([cityId, city]) => (
               <button
