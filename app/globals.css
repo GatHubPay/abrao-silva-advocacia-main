@@ -696,6 +696,36 @@ button, a, input, textarea {
   overflow: hidden;
 }
 
+/* Imagem hero simples e grande - sem efeitos */
+.hero-image-mobile {
+  /* Removidos todos os efeitos - apenas container simples */
+}
+
+/* Crop da imagem para mostrar apenas da cintura para cima */
+.hero-portrait-crop {
+  object-fit: cover;
+  object-position: center 20%; /* Foca na parte superior da imagem */
+}
+
+/* Ajuste específico para diferentes tamanhos de tela */
+@media (max-width: 768px) {
+  .hero-portrait-crop {
+    object-position: center 15%; /* Mais foco no rosto/torso no mobile */
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero-portrait-crop {
+    object-position: center 25%; /* Ajuste para tablet */
+  }
+}
+
+@media (min-width: 1025px) {
+  .hero-portrait-crop {
+    object-position: center 30%; /* Ajuste para desktop */
+  }
+}
+
 .paper-money-effect::after {
   content: '';
   position: absolute;
@@ -735,4 +765,166 @@ button, a, input, textarea {
   66% {
     opacity: 0.5;
   }
+}
+
+/* [cursor-edit] Animações de Scroll Reveal - Estilo WordPress */
+@keyframes slideInFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInFromTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Classes de animação para títulos e botões */
+.wp-animate-title {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.wp-animate-title.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+  animation: slideInFromBottom 0.8s ease-out forwards;
+}
+
+.wp-animate-subtitle {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
+}
+
+.wp-animate-subtitle.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+  animation: slideInFromBottom 0.6s ease-out 0.2s forwards;
+}
+
+.wp-animate-button {
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s;
+}
+
+.wp-animate-button.animate-in {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  animation: fadeInScale 0.6s ease-out 0.4s forwards;
+}
+
+.wp-animate-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.wp-animate-left.animate-in {
+  opacity: 1;
+  transform: translateX(0);
+  animation: slideInFromLeft 0.7s ease-out forwards;
+}
+
+.wp-animate-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.wp-animate-right.animate-in {
+  opacity: 1;
+  transform: translateX(0);
+  animation: slideInFromRight 0.7s ease-out forwards;
+}
+
+.wp-animate-fade {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.wp-animate-fade.animate-in {
+  opacity: 1;
+  transform: scale(1);
+  animation: fadeInScale 0.6s ease-out forwards;
+}
+
+/* Animação especial para cards de áreas de atuação */
+.wp-animate-card {
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.wp-animate-card.animate-in {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Delays sequenciais para múltiplos elementos */
+.wp-animate-delay-1 { transition-delay: 0.1s; animation-delay: 0.1s; }
+.wp-animate-delay-2 { transition-delay: 0.2s; animation-delay: 0.2s; }
+.wp-animate-delay-3 { transition-delay: 0.3s; animation-delay: 0.3s; }
+.wp-animate-delay-4 { transition-delay: 0.4s; animation-delay: 0.4s; }
+.wp-animate-delay-5 { transition-delay: 0.5s; animation-delay: 0.5s; }
+.wp-animate-delay-6 { transition-delay: 0.6s; animation-delay: 0.6s; }
+
+/* Animação para elementos do menu */
+.wp-animate-menu-item {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.wp-animate-menu-item.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+  animation: slideInFromTop 0.4s ease-out forwards;
 }

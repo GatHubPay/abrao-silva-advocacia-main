@@ -185,25 +185,28 @@ export default function AbraoSilvaAdvocacia() {
   useEffect(() => {
     let cookieTimer: NodeJS.Timeout | null = null
 
-    // Configurar Intersection Observer para animações de scroll
+    // [cursor-edit] Configurar Intersection Observer para animações de scroll - Estilo WordPress
     const setupScrollAnimations = () => {
       observerRef.current = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
+              // Adicionar classe para elementos antigos
               entry.target.classList.add('revealed')
+              // Adicionar classe para novos elementos WordPress-style
+              entry.target.classList.add('animate-in')
             }
           })
         },
         {
-          threshold: 0.1,
-          rootMargin: '0px 0px -50px 0px'
+          threshold: 0.15,
+          rootMargin: '0px 0px -80px 0px'
         }
       )
 
-      // Observar todos os elementos com classes de scroll reveal
+      // Observar todos os elementos com classes de scroll reveal (antigas e novas)
       const scrollElements = document.querySelectorAll(
-        '.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right'
+        '.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .wp-animate-title, .wp-animate-subtitle, .wp-animate-button, .wp-animate-card, .wp-animate-left, .wp-animate-right, .wp-animate-fade'
       )
       scrollElements.forEach((el) => {
         observerRef.current?.observe(el)
@@ -215,12 +218,13 @@ export default function AbraoSilvaAdvocacia() {
       setIsLoaded(true)
       setupScrollAnimations()
       
-      // Revelar elementos que já estão na tela imediatamente
-      const elementsInView = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right')
+      // [cursor-edit] Revelar elementos que já estão na tela imediatamente
+      const elementsInView = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .wp-animate-title, .wp-animate-subtitle, .wp-animate-button, .wp-animate-card, .wp-animate-left, .wp-animate-right, .wp-animate-fade')
       elementsInView.forEach((el) => {
         const rect = el.getBoundingClientRect()
         if (rect.top < window.innerHeight * 0.8) {
           el.classList.add('revealed')
+          el.classList.add('animate-in')
         }
       })
     }, 100)
@@ -370,11 +374,11 @@ export default function AbraoSilvaAdvocacia() {
                   <button
                     key={item.key}
                     onClick={() => handleMenuClick(item)}
-                    className={`${
+                    className={`wp-animate-menu-item ${
                       item.key === 'localizacao' 
                         ? 'text-[#e2ba4b] hover:text-white' 
                         : 'text-white hover:text-[#e2ba4b]'
-                    } transition-all duration-300 font-medium text-sm btn-hover-scale animate-slideInDown`}
+                    } transition-all duration-300 font-medium text-sm btn-hover-scale`}
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     {item.label}
@@ -470,14 +474,14 @@ export default function AbraoSilvaAdvocacia() {
         <section id="localizacao" className="py-12 md:py-16 lg:py-24 bg-gray-50 location-bg paper-money-effect">
           <div className="container mx-auto px-4">
               {/* Seletor de Cidade */}
-              <div className=" flex  mb-8 justify-center z-9999">
+              <div className="wp-animate-fade flex mb-8 justify-center z-9999">
                 <CitySelector 
                   currentCity={cityConfig} 
                   onCityChange={changeCity}
                 />
               </div>
-            <div className={`text-center mb-12 md:mb-16 scroll-reveal ${isLoaded ? 'animate-fadeInUp' : ''}`}>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-2 inline-block relative">
+            <div className="text-center mb-12 md:mb-16">
+              <h2 className="wp-animate-title text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-2 inline-block relative">
                 Nossa localização em <span className="text-[#ffffff]">{cityConfig.displayName}</span>
                 <span
                   className="block absolute left-0 -bottom-1 w-full h-1 bg-black"
@@ -485,7 +489,7 @@ export default function AbraoSilvaAdvocacia() {
                   aria-hidden="true"
                 ></span>
               </h2>
-              <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto px-4 mt-6">
+              <p className="wp-animate-subtitle text-lg md:text-xl text-gray-600 max-w-4xl mx-auto px-4 mt-6">
                 {cityConfig.subtitle}
               </p>
               
@@ -502,14 +506,14 @@ export default function AbraoSilvaAdvocacia() {
                 {/* Card principal */}
                 <div className="bg-gradient-to-br from-[#e2ba4b] to-[#d4a93a]  shadow-2xl border border-[#d4a93a] overflow-hidden card-hover-effect">
                 <div className="relative p-6 md:p-8">
-                  <h3 className="text-xl md:text-2xl font-bold text-black mb-6 text-center animate-float">
+                  <h3 className="wp-animate-fade text-xl md:text-2xl font-bold text-black mb-6 text-center animate-float">
                     Localização no Mapa
                   </h3>
                   <GoogleMapComponent cityConfig={cityConfig} />
                   <div className="mt-6 text-center">
                     <Button 
                       onClick={() => scrollToSection("contato")}
-                      className="mt-4 btn-black bg-black text-white btn-hover-scale py-3 px-6 text-lg font-semibold animate-pulse-golden rounded-none"
+                      className="wp-animate-button mt-4 btn-black bg-black text-white btn-hover-scale py-3 px-6 text-lg font-semibold animate-pulse-golden rounded-none"
                     >
                       FALE CONOSCO 
                       <ArrowRight className="ml-2 h-5 w-5" />
@@ -525,8 +529,8 @@ export default function AbraoSilvaAdvocacia() {
         <section id="contato" className="py-12 md:py-16 lg:py-24 contact-bg paper-money-effect relative overflow-hidden">
           
           <div className="container mx-auto px-4 relative z-10">
-            <div className="text-center mb-12 md:mb-16 scroll-reveal">
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 inline-block relative">
+            <div className="text-center mb-12 md:mb-16">
+              <h2 className="wp-animate-title text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 inline-block relative">
                 Fale diretamente com um de{" "}
                 <span className="gradient-text">nossos Advogados</span>
                 <span
@@ -535,18 +539,18 @@ export default function AbraoSilvaAdvocacia() {
                   aria-hidden="true"
                 ></span>
               </h2>
-              <p className="text-lg md:text-xl text-white max-w-3xl mx-auto px-4">
+              <p className="wp-animate-subtitle text-lg md:text-xl text-white max-w-3xl mx-auto px-4">
                 Preencha o formulário abaixo e aguarde o nosso retorno com um atendimento focado nas suas necessidades.
               </p>
             </div>
 
             <div className="space-y-8 md:space-y-12">
               {/* Formulário */}
-               <div className="rounded-2xl shadow-2xl overflow-hidden card-hover-effect scroll-reveal-right golden-particles">
+               <div className="wp-animate-right rounded-2xl shadow-2xl overflow-hidden card-hover-effect golden-particles">
                 <div className="p-6 md:p-8">
                   <div className="mb-6">
-                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Fale diretamente com um de <span className="gradient-text">nossos Advogados</span></h3>
-                    <p className="text-base md:text-lg text-white">
+                    <h3 className="wp-animate-fade text-2xl md:text-3xl font-bold text-white mb-2">Fale diretamente com um de <span className="gradient-text">nossos Advogados</span></h3>
+                    <p className="wp-animate-fade wp-animate-delay-1 text-base md:text-lg text-white">
                       Preencha o formulário abaixo e aguarde o nosso retorno com um atendimento focado nas suas necessidades.
                     </p>
                   </div>
@@ -580,7 +584,7 @@ export default function AbraoSilvaAdvocacia() {
                         className="border-gray-300 bg-white min-h-[120px] text-black placeholder-black resize-none"
                       />
                     </div>
-                    <Button className="w-full btn-golden btn-hover-scale text-black py-3 text-lg font-semibold h-12 shadow-lg animate-pulse-golden">
+                    <Button className="wp-animate-button w-full btn-golden btn-hover-scale text-black py-3 text-lg font-semibold h-12 shadow-lg animate-pulse-golden">
                       SOLICITAR UM ESPECIALISTA 
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
@@ -604,8 +608,8 @@ export default function AbraoSilvaAdvocacia() {
           <div className="absolute inset-0 bg-black/80"></div>
           
           <div className="container mx-auto px-4 relative z-10">
-            <div className={`text-center mb-12 md:mb-16 scroll-reveal ${isLoaded ? 'animate-fadeInUp' : ''}`}>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 inline-block relative">
+            <div className="text-center mb-12 md:mb-16">
+              <h2 className="wp-animate-title text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 inline-block relative">
                 <span className="gradient-text">Áreas de</span> ATUAÇÃO
                 <span
                   className="block absolute left-0 -bottom-1 w-full h-1 bg-white"
@@ -613,10 +617,10 @@ export default function AbraoSilvaAdvocacia() {
                   aria-hidden="true"
                 ></span>
               </h2>
-              <p className="text-lg md:text-xl text-white max-w-4xl mx-auto px-4 mb-4">
+              <p className="wp-animate-subtitle text-lg md:text-xl text-white max-w-4xl mx-auto px-4 mb-4">
                 Atendimento nas Diversas Áreas do Direito
               </p>
-              <p className="text-base md:text-lg text-gray-300 max-w-4xl mx-auto px-4">
+              <p className="wp-animate-subtitle wp-animate-delay-1 text-base md:text-lg text-gray-300 max-w-4xl mx-auto px-4">
                 Nossa equipe capacitada e multidisciplinar está sempre preparada para atender às necessidades de nossos clientes com total eficiência.
               </p>
             </div>
@@ -639,7 +643,7 @@ export default function AbraoSilvaAdvocacia() {
                 };
                 const IconComponent = iconMap[area.icon] || PrevidenciarioIcon;
                 return (
-                  <div key={index} className={`relative group cursor-pointer scroll-reveal-left ${isLoaded ? `animate-scaleIn delay-${(index + 1) * 100}` : ''} ${
+                  <div key={index} className={`wp-animate-card wp-animate-delay-${Math.min(index + 1, 6)} relative group cursor-pointer ${
                     cityConfig.practiceAreas.length <= 2 ? 'flex-1 min-w-[300px] max-w-[400px]' : ''
                   }`}>
                     <div className={`bg-gradient-to-b from-black to-[#4B4B4B] text-center transition-all duration-500 h-full flex flex-col justify-between relative overflow-hidden ${
@@ -690,7 +694,7 @@ export default function AbraoSilvaAdvocacia() {
             <div className="text-center">
               <Button 
                 onClick={() => scrollToSection("contato")}
-                className="bg-gray-900/40 backdrop-blur-sm border-none btn-hover-scale hover:bg-[#e2ba4b] hover:text-black text-white py-4 px-8 text-lg font-semibold inline-flex items-center space-x-2 rounded-none transition-colors duration-300"
+                className="wp-animate-button bg-gray-900/40 backdrop-blur-sm border-none btn-hover-scale hover:bg-[#e2ba4b] hover:text-black text-white py-4 px-8 text-lg font-semibold inline-flex items-center space-x-2 rounded-none transition-colors duration-300"
               >
                 <span>+</span> SAIBA MAIS
               </Button>
@@ -701,8 +705,8 @@ export default function AbraoSilvaAdvocacia() {
         {/* Informações Section */}
         <section id="informacoes" className="py-12 md:py-16 lg:py-24 bg-gray-50">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12 md:mb-16 scroll-reveal">
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-2 inline-block relative">
+            <div className="text-center mb-12 md:mb-16">
+              <h2 className="wp-animate-title text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-2 inline-block relative">
                 Informações de <span className="gradient-text">Contato</span>
                 <span
                   className="block absolute left-0 -bottom-1 w-full h-1 bg-black"
@@ -710,15 +714,15 @@ export default function AbraoSilvaAdvocacia() {
                   aria-hidden="true"
                 ></span>
               </h2>
-              <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
+              <p className="wp-animate-subtitle text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
                 Todas as informações para entrar em contato conosco.
               </p>
             </div>
 
             <div className="space-y-8 md:space-y-12">
-              <div className="bg-[#e2ba4b]  shadow-2xl overflow-hidden border border-[#e2ba4b] card-hover-effect scroll-reveal-left golden-particles">
+              <div className="wp-animate-left bg-[#e2ba4b]  shadow-2xl overflow-hidden border border-[#e2ba4b] card-hover-effect golden-particles">
                 <div className="p-6 md:p-8">
-                  <h3 className="text-xl md:text-2xl font-bold text-black mb-6 animate-float">
+                  <h3 className="wp-animate-fade text-xl md:text-2xl font-bold text-black mb-6 animate-float">
                     Informações de Contato
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
