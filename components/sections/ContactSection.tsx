@@ -294,7 +294,23 @@ export default function ContactSection({ cityConfig, contactInfo }: ContactSecti
                 Nossa Localização
               </h4>
               <div className="h-[250px] lg:h-[300px] rounded-xl overflow-hidden">
-                <GoogleMapComponent cityConfig={cityConfig} />
+                <GoogleMapComponent 
+                  cityConfig={cityConfig ? {
+                    id: 'contact-location',
+                    name: cityConfig.address.city,
+                    displayName: `${cityConfig.address.city} - ${cityConfig.address.state}`,
+                    path: '/contato',
+                    coordinates: cityConfig.coordinates,
+                    address: cityConfig.address,
+                    phone: contactInfo.phone,
+                    email: contactInfo.email,
+                    workingHours: contactInfo.schedule,
+                    title: `Localização em ${cityConfig.address.city}`,
+                    subtitle: 'Escritório especializado',
+                    description: cityConfig.description || 'Atendimento especializado',
+                    practiceAreas: []
+                  } : undefined} 
+                />
               </div>
             </div>
 
