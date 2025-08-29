@@ -326,6 +326,7 @@ export default function ParceriasTributarias() {
               state: "GO",
               zipCode: "74080-000"
             },
+            whatsapp: "5562985851251", // [cursor-edit] - WhatsApp Setor Sul
             description: "Escritório especializado em parcerias tributárias"
           }}
           contactInfo={{

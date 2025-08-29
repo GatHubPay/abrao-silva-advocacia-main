@@ -36,6 +36,7 @@ interface ContactSectionProps {
       state: string
       zipCode: string
     }
+    whatsapp?: string // [cursor-edit] - Adicionado campo whatsapp
     description?: string
   }
   contactInfo: {
@@ -303,7 +304,7 @@ export default function ContactSection({ cityConfig, contactInfo }: ContactSecti
                     coordinates: cityConfig.coordinates,
                     address: cityConfig.address,
                     phone: contactInfo.phone,
-                    whatsapp: cityConfig.whatsapp, // [cursor-edit] - Adicionado campo whatsapp
+                    whatsapp: cityConfig.whatsapp || '5562934122893', // [cursor-edit] - Adicionado campo whatsapp com fallback
                     email: contactInfo.email,
                     workingHours: contactInfo.schedule,
                     title: `Localização em ${cityConfig.address.city}`,
