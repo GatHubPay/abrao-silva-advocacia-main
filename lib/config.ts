@@ -83,7 +83,7 @@ export const citiesConfig: Record<string, CityConfig> = {
       zipCode: '74023-010'
     },
     phone: '(62) 3225-4567',
-    whatsapp: '5562932254567', // [cursor-edit] - WhatsApp Goiânia Centro
+    whatsapp: '5562934122893', // [cursor-edit] - WhatsApp Goiânia Centro
     email: 'goiania@abraoesilva.adv.br',
     workingHours: 'Seg - Sex: 08:00 às 18:00',
     title: 'Nossa localização em GOIÂNIA CENTRO - GOIÁS',
