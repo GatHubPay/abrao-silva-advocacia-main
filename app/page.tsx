@@ -891,20 +891,23 @@ export default function AbraoSilvaAdvocacia() {
                 href="https://abraoesilvaadvogados.com.br/contato/#nossas-unidades"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 bg-[#e2ba4b] text-black px-6 py-4 text-base font-medium shadow-lg hover:bg-[#d4a942] transition-colors duration-200"
+                className="wp-animate-button flex items-center gap-3 bg-[#e2ba4b] text-black px-5 py-3 text-sm font-medium shadow-lg hover:bg-[#d4a942] transition-all duration-150 btn-hover-scale group animate-bounce-gentle relative overflow-hidden"
                 style={{
-                  borderTopLeftRadius: '2rem',
+                  borderTopLeftRadius: '1.5rem',
                   borderTopRightRadius: '0rem',
-                  borderBottomRightRadius: '1.5rem',
+                  borderBottomRightRadius: '1rem',
                   borderBottomLeftRadius: '0rem',
-                  minWidth: 240,
-                  minHeight: 100,
+                  minWidth: 220,
+                  minHeight: 80,
                 }}
               >
-                <svg aria-hidden="true" className="flex-shrink-0" width={28} height={28} viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg">
+                {/* Efeito shimmer */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500 ease-out"></div>
+                
+                <svg aria-hidden="true" className="flex-shrink-0 group-hover:scale-110 transition-transform duration-150" width={24} height={24} viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg">
                   <path fill="currentColor" d="M560.02 32c-1.96 0-3.98.37-5.96 1.16L384.01 96H384L212 35.28A64.252 64.252 0 0 0 191.76 32c-6.69 0-13.37 1.05-19.81 3.14L20.12 87.95A32.006 32.006 0 0 0 0 117.66v346.32C0 473.17 7.53 480 15.99 480c1.96 0 3.97-.37 5.96-1.16L192 416l172 60.71a63.98 63.98 0 0 0 40.05.15l151.83-52.81A31.996 31.996 0 0 0 576 394.34V48.02c0-9.19-7.53-16.02-15.98-16.02zM224 90.42l128 45.19v285.97l-128-45.19V90.42zM48 418.05V129.07l128-44.53v286.2l-.64.23L48 418.05zm480-35.13l-128 44.53V141.26l.64-.24L528 93.95v288.97z"></path>
                 </svg>
-                <span className="text-base text-black leading-snug font-medium">
+                <span className="text-sm text-black leading-snug font-medium relative z-10 group-hover:font-semibold transition-all duration-150">
                   Encontre um escritório<br />mais próximo!
                 </span>
               </a>
@@ -926,9 +929,9 @@ export default function AbraoSilvaAdvocacia() {
       {/* Floating WhatsApp Button */}
       <div className="fixed bottom-4 right-4 z-50">
         <div className="flex flex-col items-end space-y-1">
-          <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-3 rounded-lg transition-all duration-300 flex items-center space-x-2 shadow-lg btn-hover-scale animate-bounce-gentle hover:shadow-2xl">
-            <MessageCircle className="h-5 w-5 animate-float" />
-            <span className="text-sm font-medium">Como posso te ajudar?</span>
+          <button className="wp-animate-button bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-full transition-all duration-300 flex items-center space-x-2 shadow-lg btn-hover-scale animate-bounce-gentle hover:shadow-2xl group">
+            <MessageCircle className="h-4 w-4 animate-float group-hover:scale-110 transition-transform duration-300" />
+            <span className="text-xs font-medium whitespace-nowrap">Como posso te ajudar?</span>
           </button>
         </div>
       </div>
