@@ -51,7 +51,7 @@ export const citiesConfig: Record<string, CityConfig> = {
       zipCode: '76170-000'
     },
     phone: '(62) 3412-2893',
-    whatsapp: '556232254567', // [cursor-edit] - WhatsApp Anicuns
+    whatsapp: '556234122893', // [cursor-edit] - WhatsApp Anicuns
     email: 'contato@abraoesilva.adv.br',
     workingHours: 'Seg - Sex: 07:00 às 17:00',
     workingHoursBreak: 'Pausa para almoço: 11:00 às 13:00',
@@ -83,7 +83,7 @@ export const citiesConfig: Record<string, CityConfig> = {
       zipCode: '74023-010'
     },
     phone: '(62) 3225-4567',
-    whatsapp: '556232254567', // [cursor-edit] - WhatsApp Goiânia Centro
+    whatsapp: '556234122893', // [cursor-edit] - WhatsApp Goiânia Centro
     email: 'goiania@abraoesilva.adv.br',
     workingHours: 'Seg - Sex: 08:00 às 18:00',
     title: 'Nossa localização em GOIÂNIA CENTRO - GOIÁS',
