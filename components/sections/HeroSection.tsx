@@ -51,42 +51,46 @@ export default function HeroSection({
           {/* Imagem Principal - Aparece PRIMEIRO no mobile - BEM GRANDE */}
           <div className="order-1 lg:order-2 w-full scroll-reveal-right animate-fadeInRight">
             <div className="relative w-full max-w-xl mx-auto lg:max-w-none">
-              <div className="bg-gradient-to-br from-[#e2ba4b] to-[#d4a93a] rounded-2xl p-4 lg:p-8 shadow-xl">
-                <div className="bg-white rounded-xl p-4 lg:p-8 text-center">
-                  <div className="w-full h-80 md:h-96 lg:h-80 bg-gray-200 rounded-lg flex items-center justify-center mb-4 overflow-hidden">
-                    <Image
-                      src={heroImageSrc}
-                      alt={heroImageAlt}
-                      width={500}
-                      height={600}
-                      className="w-full h-full hero-portrait-crop rounded-lg"
-                      priority
-                      onError={(e) => {
-                        // Fallback para quando a imagem não existir
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        const parent = target.parentElement;
-                        if (parent) {
-                          parent.innerHTML = `
-                            <div class="text-center">
+              {/* // [cursor-edit] - Removido fundo branco e margens excessivas */}
+              <div className="relative">
+                <div className="w-full h-80 md:h-96 lg:h-[500px] overflow-hidden rounded-2xl shadow-2xl">
+                  <Image
+                    src={heroImageSrc}
+                    alt={heroImageAlt}
+                    width={500}
+                    height={600}
+                    className="w-full h-full object-cover object-center"
+                    priority
+                    onError={(e) => {
+                      // Fallback para quando a imagem não existir
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      const parent = target.parentElement;
+                      if (parent) {
+                        parent.innerHTML = `
+                          <div class="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+                            <div class="text-center text-white">
                               <div class="h-16 w-16 mx-auto mb-4 flex items-center justify-center">
                                 <svg class="h-16 w-16 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
                                   <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                                 </svg>
                               </div>
-                              <p class="text-gray-500 font-medium text-sm">Imagem dr.png será inserida aqui</p>
+                              <p class="text-gray-300 font-medium text-sm">Imagem dr.png será inserida aqui</p>
                               <p class="text-xs text-gray-400">${heroImageAlt}</p>
                             </div>
-                          `;
-                        }
-                      }}
-                    />
-                  </div>
-                  <div className="flex items-center justify-center space-x-1 text-[#e2ba4b]">
+                          </div>
+                        `;
+                      }
+                    }}
+                  />
+                </div>
+                {/* // [cursor-edit] - Badge de excelência melhorado */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-4 rounded-b-2xl">
+                  <div className="flex items-center justify-center space-x-1">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 lg:h-6 lg:w-6 fill-current" />
+                      <Star key={i} className="h-4 w-4 lg:h-5 lg:w-5 fill-[#e2ba4b] text-[#e2ba4b]" />
                     ))}
-                    <span className="ml-2 text-gray-600 font-bold text-base lg:text-lg">Excelência Comprovada</span>
+                    <span className="ml-2 text-white font-bold text-sm lg:text-base">Excelência Comprovada</span>
                   </div>
                 </div>
               </div>

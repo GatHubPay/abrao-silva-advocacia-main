@@ -1,0 +1,152 @@
+/* [cursor-edit] - Estilos CSS otimizados para parcerias tributárias com fundo moderno */
+
+/* Efeitos de glassmorphism */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(226, 186, 75, 0.2);
+}
+
+/* Sombras aprimoradas */
+.shadow-3xl {
+  box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.4);
+}
+
+/* Animações de scroll reveal otimizadas */
+.scroll-reveal,
+.scroll-reveal-left,
+.scroll-reveal-right {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal-left {
+  transform: translateX(-30px) translateY(15px);
+}
+
+.scroll-reveal-right {
+  transform: translateX(30px) translateY(15px);
+}
+
+.scroll-reveal.revealed,
+.scroll-reveal-left.revealed,
+.scroll-reveal-right.revealed {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+}
+
+/* Animações de hover otimizadas */
+.card-hover-effect {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, box-shadow;
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Gradiente de texto otimizado */
+.gradient-text {
+  background: linear-gradient(135deg, #e2ba4b 0%, #d4a93a 50%, #c69b2e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+/* Animação de botão hover */
+.btn-hover-scale {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.btn-hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Animação de loading spinner */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Melhorias de acessibilidade */
+.focus-visible:focus {
+  outline: 2px solid #e2ba4b;
+  outline-offset: 2px;
+}
+
+/* Otimizações para dispositivos móveis */
+@media (max-width: 768px) {
+  .scroll-reveal,
+  .scroll-reveal-left,
+  .scroll-reveal-right {
+    transform: translateY(20px);
+  }
+  
+  .scroll-reveal-left,
+  .scroll-reveal-right {
+    transform: translateY(20px);
+  }
+  
+  .card-hover-effect:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+}
+
+/* Otimizações para redução de movimento */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal,
+  .scroll-reveal-left,
+  .scroll-reveal-right,
+  .card-hover-effect,
+  .btn-hover-scale {
+    transition: none;
+  }
+  
+  .animate-spin {
+    animation: none;
+  }
+}
+
+/* Melhorias de contraste para acessibilidade */
+@media (prefers-contrast: high) {
+  .gradient-text {
+    background: #000;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+/* Suporte para modo escuro */
+@media (prefers-color-scheme: dark) {
+  .bg-white {
+    background-color: #1a1a1a;
+    color: #ffffff;
+  }
+  
+  .text-black {
+    color: #ffffff;
+  }
+  
+  .text-gray-600 {
+    color: #a1a1aa;
+  }
+}
