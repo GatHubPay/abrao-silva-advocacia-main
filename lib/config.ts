@@ -23,6 +23,7 @@ export interface CityConfig {
     zipCode?: string;
   };
   phone: string;
+  whatsapp: string; // [cursor-edit] - Número do WhatsApp específico da cidade
   email: string;
   workingHours: string;
   workingHoursBreak?: string;
@@ -50,6 +51,7 @@ export const citiesConfig: Record<string, CityConfig> = {
       zipCode: '76170-000'
     },
     phone: '(62) 3412-2893',
+    whatsapp: '5562934122893', // [cursor-edit] - WhatsApp Anicuns
     email: 'contato@abraoesilva.adv.br',
     workingHours: 'Seg - Sex: 07:00 às 17:00',
     workingHoursBreak: 'Pausa para almoço: 11:00 às 13:00',
@@ -81,6 +83,7 @@ export const citiesConfig: Record<string, CityConfig> = {
       zipCode: '74023-010'
     },
     phone: '(62) 3225-4567',
+    whatsapp: '5562932254567', // [cursor-edit] - WhatsApp Goiânia Centro
     email: 'goiania@abraoesilva.adv.br',
     workingHours: 'Seg - Sex: 08:00 às 18:00',
     title: 'Nossa localização em GOIÂNIA CENTRO - GOIÁS',
@@ -109,6 +112,7 @@ export const citiesConfig: Record<string, CityConfig> = {
       state: 'GO'
     },
     phone: '(62) 99643-4339',
+    whatsapp: '5562996434339', // [cursor-edit] - WhatsApp São Miguel
     email: 'saomiguel@abraoesilva.adv.br',
     workingHours: 'Seg - Sex: 08:00 às 17:00',
     title: 'Nossa localização em SÃO MIGUEL DO ARAGUAIA - GOIÁS',
@@ -135,6 +139,7 @@ export const citiesConfig: Record<string, CityConfig> = {
       zipCode: '74080-100'
     },
     phone: '(62) 98585-1251',
+    whatsapp: '5562985851251', // [cursor-edit] - WhatsApp Setor Sul
     email: 'setorsul@abraoesilva.adv.br',
     workingHours: 'Seg - Sex: 08:00 às 17:00',
     title: 'Nossa localização no SETOR SUL - GOIÁS',
