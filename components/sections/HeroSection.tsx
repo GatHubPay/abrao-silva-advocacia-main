@@ -38,7 +38,7 @@ export default function HeroSection({
 }: HeroSectionProps) {
   
   return (
-    <section className="py-12 md:py-16 lg:py-24 bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden">
+    <section className="pt-4 pb-12 md:pt-8 md:pb-16 lg:pt-12 lg:pb-24 bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-[url('/fundo/01.webp')] bg-cover bg-center"></div>
@@ -53,7 +53,7 @@ export default function HeroSection({
             <div className="relative w-full max-w-xl mx-auto lg:max-w-none">
               {/* // [cursor-edit] - Removido fundo branco e margens excessivas */}
               <div className="relative">
-                <div className="w-full h-80 md:h-96 lg:h-[500px] overflow-hidden rounded-2xl shadow-2xl">
+                <div className="w-full h-[500px] sm:h-[550px] md:h-[600px] lg:h-[500px] overflow-hidden rounded-2xl shadow-2xl">
                   <Image
                     src={heroImageSrc}
                     alt={heroImageAlt}
@@ -100,9 +100,30 @@ export default function HeroSection({
           {/* Conteúdo Textual - Aparece DEPOIS no mobile */}
           <div className="order-2 lg:order-1 text-white scroll-reveal animate-fadeInLeft text-center lg:text-left">
             <div className="mb-6">
-              <span className="inline-block bg-[#e2ba4b] text-black px-4 py-2 rounded-full text-sm font-semibold mb-4">
+              {/* // [cursor-edit] - Seção destacada sobre impostos com cores suaves */}
+              <div className="bg-gradient-to-r from-[#e2ba4b]/10 to-amber-500/10 border-l-4 border-[#e2ba4b] rounded-lg p-4 lg:p-6 mb-6 lg:mb-8 backdrop-blur-sm">
+                <div className="flex items-start space-x-3">
+                  <div className="flex-shrink-0">
+                    <div className="w-8 h-8 lg:w-10 lg:h-10 bg-[#e2ba4b] rounded-full flex items-center justify-center">
+                      <span className="text-black font-bold text-lg lg:text-xl">!</span>
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2 leading-tight">
+                      Sua empresa pode estar<br />
+                      <span className="text-[#e2ba4b]">pagando mais impostos</span><br />
+                      do que deveria.
+                    </h2>
+                    <p className="text-sm md:text-base lg:text-lg text-gray-300">
+                      Descubra como nossa consultoria tributária pode reduzir significativamente seus custos fiscais.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* <span className="inline-block bg-[#e2ba4b] text-black px-4 py-2 rounded-full text-sm font-semibold mb-4">
                 {subtitle}
-              </span>
+              </span> */}
               <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 lg:mb-6 leading-tight">
                 {title}
               </h1>
@@ -112,7 +133,7 @@ export default function HeroSection({
             </div>
 
             {/* Informações da Cidade */}
-            <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-4 lg:p-6 mb-6 lg:mb-8 border border-gray-700">
+            {/* <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-4 lg:p-6 mb-6 lg:mb-8 border border-gray-700">
               <h3 className="text-lg lg:text-xl font-bold text-[#e2ba4b] mb-4 flex items-center justify-center lg:justify-start">
                 <Building className="h-5 w-5 lg:h-6 lg:w-6 mr-2" />
                 {cityInfo.name}
@@ -135,7 +156,7 @@ export default function HeroSection({
                   <span className="truncate text-center lg:text-left">{cityInfo.email}</span>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button 

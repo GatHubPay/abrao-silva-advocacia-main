@@ -72,28 +72,30 @@ export const citiesConfig: Record<string, CityConfig> = {
     displayName: 'GOIÂNIA CENTRO - GOIÁS',
     path: '/goiania-centro', // [cursor-edit] - Alterado para subpasta
     coordinates: {
-      lat: -16.6864,
-      lng: -49.2653
+      lat: -16.6772722,
+      lng: -49.257407
     },
     address: {
       street: 'Av. Goiás, 382',
       neighborhood: 'Setor Central',
       city: 'Goiânia',
       state: 'GO',
-      zipCode: '74023-010'
+      zipCode: '74063-010'
     },
     phone: '(62) 3225-4567',
     whatsapp: '556234122893', // [cursor-edit] - WhatsApp Goiânia Centro
     email: 'goiania@abraoesilva.adv.br',
-    workingHours: 'Seg - Sex: 08:00 às 18:00',
+    workingHours: 'Seg - Sex: 08:00 às 17:00',
     title: 'Nossa localização em GOIÂNIA CENTRO - GOIÁS',
     subtitle: 'Especializada em Direito Empresarial e Civil no centro da capital.',
     description: 'Atendimento especializado para empresas e pessoas físicas',
     practiceAreas: [
-      { id: 'civil', title: 'Direito', subtitle: 'Civil', icon: 'CivilIcon' },
-      { id: 'empresarial', title: 'Direito', subtitle: 'Empresarial', icon: 'TributarioIcon' },
-      { id: 'tributario', title: 'Direito', subtitle: 'Tributário', icon: 'TributarioIcon' },
-      { id: 'trabalhista', title: 'Direito', subtitle: 'Trabalhista', icon: 'TrabalhistaIcon' }
+      // { id: 'civil', title: 'Direito', subtitle: 'Civil', icon: 'CivilIcon' },
+      // { id: 'empresarial', title: 'Direito', subtitle: 'Empresarial', icon: 'TributarioIcon' },
+      // { id: 'tributario', title: 'Direito', subtitle: 'Tributário', icon: 'TributarioIcon' },
+      // { id: 'trabalhista', title: 'Direito', subtitle: 'Trabalhista', icon: 'TrabalhistaIcon' },
+      { id: 'previdenciario', title: 'Direito', subtitle: 'Previdenciário', icon: 'PrevidenciarioIcon' }
+
     ]
   },
   saoMiguelAraguaia: {

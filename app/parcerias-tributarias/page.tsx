@@ -128,40 +128,10 @@ export default function ParceriasTributarias() {
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#e2ba4b]/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#e2ba4b]/5 rounded-full blur-3xl"></div>
       <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%2523e2ba4b%22%20fill-opacity%3D%220.03%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
-      {/* [cursor-edit] - Header otimizado com acessibilidade */}
-      <header 
-        className="fixed top-0 left-0 right-0 bg-black/90 backdrop-blur-md text-white z-50 shadow-2xl border-b border-[#e2ba4b]/20"
-        role="banner"
-        aria-label="Cabeçalho principal"
-      >
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16 md:h-20">
-            <div className="flex-shrink-0">
-              <Image
-                src="/logo.png" 
-                alt="Logotipo Abrão & Silva Advocacia - Especialistas em Direito Tributário" 
-                className="h-8 w-auto md:h-12 transition-transform hover:scale-105"
-                width={100}
-                height={100}
-                priority
-                quality={85}
-              />
-            </div>
-            <nav className="flex items-center space-x-4" role="navigation" aria-label="Navegação principal">
-              <Button 
-                onClick={() => scrollToSection("contato")}
-                className="bg-[#e2ba4b] hover:bg-[#d4a93a] text-black px-6 py-2 font-semibold transition-all duration-300 hover:scale-105 focus:ring-2 focus:ring-[#e2ba4b] focus:ring-offset-2 focus:ring-offset-black"
-                aria-label="Ir para seção de contato"
-              >
-                FALE CONOSCO
-              </Button>
-            </nav>
-          </div>
-        </div>
-      </header>
+
 
       {/* [cursor-edit] - Main Content com melhor estrutura semântica */}
-      <main className="flex-1 pt-16 md:pt-20 relative z-10" role="main">
+      <main className="flex-1 relative z-10" role="main">
         
         {/* Hero Section */}
         <HeroSection
