@@ -354,17 +354,17 @@ export default function AbraoSilvaAdvocacia() {
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 bg-black text-white backdrop-blur-sm border-b border-gray-100 z-50 shadow-sm">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16 md:h-20">
+          <div className="flex items-center justify-between h-18 md:h-24 lg:h-28">
             {/* Logo - Left Side */}
             <div className="flex-shrink-0">
               <Image
                 src="/logo.png" 
                 alt="Abrão & Silva Advocacia" 
-                className="h-8 w-auto md:h-12"
-                width={100}
-                height={100}
+                className="h-10 w-auto md:h-16 lg:h-20"
+                width={400}
+                height={200}
                 priority
-                quality={85}
+                quality={100}
               />
             </div>
 
@@ -374,12 +374,11 @@ export default function AbraoSilvaAdvocacia() {
                   <button
                     key={item.key}
                     onClick={() => handleMenuClick(item)}
-                    className={`wp-animate-menu-item ${
+                    className={`${
                       item.key === 'localizacao' 
                         ? 'text-[#e2ba4b] hover:text-white' 
                         : 'text-white hover:text-[#e2ba4b]'
-                    } transition-all duration-300 font-medium text-sm btn-hover-scale`}
-                    style={{ animationDelay: `${index * 0.1}s` }}
+                    } transition-all duration-300 font-medium text-base btn-hover-scale opacity-100`}
                   >
                     {item.label}
                   </button>
@@ -467,7 +466,7 @@ export default function AbraoSilvaAdvocacia() {
       </header>
 
       {/* Main Content */}
-      <div className="flex-1 pt-16 md:pt-20">
+      <div className="flex-1 pt-18 md:pt-24 lg:pt-28">
 
         
         {/* Localização Section */}
@@ -790,11 +789,11 @@ export default function AbraoSilvaAdvocacia() {
               <Image 
                 src="/logo.png" 
                 alt="Abrão & Silva Advocacia" 
-                width={200} 
-                height={100} 
-                className="h-16 w-auto" 
+                width={300} 
+                height={150} 
+                className="h-20 w-auto" 
                 loading="lazy" 
-                quality={85} 
+                quality={100} 
               />
             </div>
 
