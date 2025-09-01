@@ -732,7 +732,7 @@ export default function AbraoSilvaAdvocacia() {
                           <Phone className="h-6 w-6 text-white" />
                         </div>
                         <div className="min-w-0 flex-1 mb-4">
-                          <p className="font-semibold text-black text-base">Telefone SAC</p>
+                          <p className="font-semibold text-black text-base">Telefone</p>
                           <p className="text-gray-600 text-base break-all">{cityConfig.phone}</p>
                         </div>
                       </div>
@@ -807,10 +807,11 @@ export default function AbraoSilvaAdvocacia() {
                 <div className="flex items-center justify-center space-x-2 group px-4 py-2 transition-colors duration-300">
                   <Phone className="h-5 w-5 text-white group-hover:text-[#e2ba4b] transition-colors duration-300 animate-bounce-gentle" />
                   <a 
-                    href={`tel:${cityConfig.phone.replace(/\D/g, '')}`}
+                    // href={`tel:${cityConfig.phone.replace(/\D/g, '')}`}
                     className="text-white hover:text-[#e2ba4b] transition-colors duration-300 text-lg font-bold animate-bounce-gentle"
                   >
-                    {cityConfig.phone}
+                    {/* {cityConfig.phone} */}
+                    (62) 3412-2893
                   </a>
                 </div>
               </div>

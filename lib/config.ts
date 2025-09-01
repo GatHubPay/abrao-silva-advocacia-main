@@ -82,7 +82,7 @@ export const citiesConfig: Record<string, CityConfig> = {
       state: 'GO',
       zipCode: '74063-010'
     },
-    phone: '(62) 3225-4567',
+    phone: '(62) 99643-4339',
     whatsapp: '556234122893', // [cursor-edit] - WhatsApp Goiânia Centro
     email: 'goiania@abraoesilva.adv.br',
     workingHours: 'Seg - Sex: 08:00 às 17:00',
