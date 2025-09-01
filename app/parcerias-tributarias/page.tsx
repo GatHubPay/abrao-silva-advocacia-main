@@ -10,12 +10,16 @@ import {
   CheckCircle,
   Handshake,
   Target,
-  Zap
+  Zap,
+  Search,
+  MessageSquare,
+  FileText,
+  Phone,
+  MapPin,
+  Clock,
+  Mail
 } from "lucide-react"
 import Image from "next/image"
-import HeroSection from "@/components/sections/HeroSection"
-import VideoSection from "@/components/sections/VideoSection"
-import ContactSection from "@/components/sections/ContactSection"
 
 import "@/styles/parcerias.css"
 
@@ -122,217 +126,732 @@ export default function ParceriasTributarias() {
   ], [])
 
   return (
-    <div className="bg-gradient-to-br from-gray-900 via-black to-gray-800 flex flex-col min-h-screen relative overflow-hidden">
-      {/* [cursor-edit] - Elementos decorativos de fundo */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#e2ba4b]/10 via-transparent to-transparent"></div>
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#e2ba4b]/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#e2ba4b]/5 rounded-full blur-3xl"></div>
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%2523e2ba4b%22%20fill-opacity%3D%220.03%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+    <div className="min-h-screen bg-black relative overflow-hidden">
+      {/* Background pattern */}
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.02%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
 
+      <main className="relative z-10">
+        {/* Hero Section - Método AS Style */}
+        <section className="bg-black min-h-screen flex items-center text-white relative overflow-hidden">
 
-      {/* [cursor-edit] - Main Content com melhor estrutura semântica */}
-      <main className="flex-1 relative z-10" role="main">
-        
-        {/* Hero Section */}
-        <HeroSection
-          title="Parcerias que Transformam Resultados"
-          subtitle="ESPECIALISTAS EM DIREITO TRIBUTÁRIO"
-          description="Mais de 2 bilhões em créditos recuperados através de parcerias estratégicas no ramo tributário"
-          primaryButtonText="CONHEÇA NOSSAS PARCERIAS"
-          secondaryButtonText="SEJA NOSSO PARCEIRO"
-          onPrimaryClick={() => scrollToSection("parcerias")}
-          onSecondaryClick={() => scrollToSection("contato")}
-          cityInfo={{
-            name: "UNIDADE SETOR SUL - GOIÂNIA",
-            address: "Rua 100, Nº 35, Qd. F-17, Lt. 12",
-            schedule: "08:00 às 17:00",
-            phone: "(62) 99912-8796",
-            email: "setorsul@abraoesilva.adv.br"
-          }}
-          heroImageSrc="/dr.png"
-          heroImageAlt="Especialista em Direito Tributário"
-        />
-
-        {/* [cursor-edit] - Seção de Estatísticas otimizada */}
-        <section 
-          className="py-16 md:py-24 bg-gradient-to-r from-[#e2ba4b] via-[#f4c430] to-[#e2ba4b] relative overflow-hidden"
-          aria-labelledby="statistics-title"
-        >
-          {/* Elementos decorativos */}
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23000000%22%20fill-opacity%3D%220.05%22%3E%3Cpath%20d%3D%22M20%2020c0-5.5-4.5-10-10-10s-10%204.5-10%2010%204.5%2010%2010%2010%2010-4.5%2010-10zm10%200c0-5.5-4.5-10-10-10s-10%204.5-10%2010%204.5%2010%2010%2010%2010-4.5%2010-10z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
-          <div className="absolute top-0 left-1/4 w-32 h-32 bg-black/10 rounded-full blur-2xl"></div>
-          <div className="absolute bottom-0 right-1/4 w-32 h-32 bg-black/10 rounded-full blur-2xl"></div>
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 id="statistics-title" className="text-3xl md:text-4xl font-bold text-black mb-4">
-                Resultados que <span className="text-white">Impressionam</span>
-              </h2>
-              <p className="text-xl text-gray-800 max-w-3xl mx-auto">
-                Nossa expertise em parcerias tributárias gera resultados excepcionais para nossos clientes
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
-              {statisticsData.map((stat, index) => (
-                <div key={index} className="text-center scroll-reveal">
-                  <div className="bg-black/90 backdrop-blur-sm rounded-2xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-2 border border-[#e2ba4b]/20 hover:border-[#e2ba4b]/40">
-                    <stat.icon 
-                      className="h-12 w-12 text-[#e2ba4b] mx-auto mb-4" 
-                      aria-hidden="true"
-                    />
-                    <div className="text-4xl md:text-5xl font-bold text-white mb-2" aria-label={`${stat.value} ${stat.label}`}>
-                      {stat.value}
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center min-h-screen py-12">
+              
+              {/* Coluna Esquerda - Texto */}
+              <div className="space-y-6 order-2 lg:order-1">
+                {/* Logo */}
+                <div className="flex items-center space-x-3 mb-6">
+                  <div className="relative">
+                    <div className="w-12 h-12 bg-[#e2ba4b] rounded p-1">
+                      <div className="w-full h-full bg-white rounded flex items-center justify-center">
+                        <span className="text-[#e2ba4b] font-bold text-lg">AS</span>
+                      </div>
                     </div>
-                    <p className="text-gray-300 text-lg">{stat.label}</p>
+                  </div>
+                  <div>
+                    <h1 className="text-lg font-bold text-[#e2ba4b] uppercase tracking-wider">
+                      ABRÃO & SILVA
+                    </h1>
+                    <p className="text-xs text-gray-400 uppercase tracking-wider">
+                      A FREQUÊNCIA DO RESULTADO
+                    </p>
                   </div>
                 </div>
-              ))}
+
+                {/* Badge/Tag */}
+                <div className="inline-block">
+                  <div className="border border-[#e2ba4b] rounded-full px-4 py-2">
+                    <span className="text-[#e2ba4b] text-sm font-medium">
+                      Método AS | 30 e 01 de Outubro
+                    </span>
+                  </div>
+                </div>
+
+                {/* Título Principal */}
+                <div className="space-y-4">
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+                    São 2 dias para <span className="text-[#e2ba4b]">ativar sua identidade</span>, 
+                    <span className="text-[#e2ba4b]"> clarificar o seu propósito</span> e descobrir como 
+                    <span className="text-[#e2ba4b]"> prosperar em todas as áreas da sua vida</span>
+                  </h2>
+                  
+                  <p className="text-lg text-gray-300 leading-relaxed">
+                    Uma metodologia única desenvolvida para quem quer prosperar de verdade em todas as áreas da vida. 
+                    Mais de 150 turmas e <span className="text-[#e2ba4b] font-semibold">milhares de pessoas impactadas</span> que 
+                    estão mudando suas vidas, famílias e negócios
+                  </p>
+                </div>
+
+                {/* CTA Button */}
+                <div className="pt-4">
+                  <Button 
+                    size="lg"
+                    className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black font-bold px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full md:w-auto"
+                    onClick={() => scrollToSection("contato")}
+                  >
+                    QUERO ENTRAR NO MÉTODO AS
+                  </Button>
+                </div>
+              </div>
+
+              {/* Coluna Direita - Imagem */}
+              <div className="relative flex justify-center lg:justify-end order-1 lg:order-2">
+                {/* // [cursor-edit] */}
+                {/* Imagem bem destacada e grande */}
+                <div className="relative w-full max-w-lg lg:max-w-xl">
+                  <Image 
+                    src="/leao/leao.png"
+                    alt="Abrão & Silva Advocacia"
+                    width={600}
+                    height={700}
+                    className="w-full h-auto object-contain filter brightness-110 contrast-110"
+                    priority={true}
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Seção inferior - "O Método que você precisa fazer para prosperar" */}
+            <div className="text-center pb-16">
+              <h3 className="text-2xl md:text-3xl font-bold">
+                O Método que <span className="text-[#e2ba4b]">você precisa fazer</span>
+              </h3>
+              <h3 className="text-2xl md:text-3xl font-bold">
+                <span className="text-[#e2ba4b]">para prosperar</span>
+              </h3>
+            </div>
+          </div>
+
+          {/* WhatsApp Button */}
+          <div className="fixed bottom-6 right-6 z-50">
+            <Button
+              size="lg"
+              className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black rounded-full w-16 h-16 p-0 shadow-lg hover:shadow-xl transition-all duration-300"
+              onClick={() => scrollToSection("contato")}
+            >
+              <MessageSquare className="h-8 w-8" />
+            </Button>
+          </div>
+        </section>
+
+        {/* Statistics Section - Cards Escuros */}
+        <section className="py-16 bg-gray-100">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+              <div className="bg-gray-800 rounded-2xl p-6 md:p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
+                  +10
+                </div>
+                <p className="text-gray-300 text-base md:text-lg">Anos de experiência</p>
+              </div>
+              
+              <div className="bg-gray-800 rounded-2xl p-6 md:p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
+                  +15
+                </div>
+                <p className="text-gray-300 text-base md:text-lg">Estados Atendidos</p>
+              </div>
+              
+              <div className="bg-gray-800 rounded-2xl p-6 md:p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
+                  +2.000
+                </div>
+                <p className="text-gray-300 text-base md:text-lg">Clientes Atendidos</p>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* [cursor-edit] - Seção de Parcerias com fundo moderno */}
-        <section id="parcerias" className="py-16 md:py-24 bg-gradient-to-b from-gray-800/50 to-gray-900/50 backdrop-blur-sm relative overflow-hidden">
-          {/* Elementos decorativos */}
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%22100%22%20height%3D%22100%22%20viewBox%3D%220%200%20100%20100%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23e2ba4b%22%20fill-opacity%3D%220.02%22%3E%3Cpath%20d%3D%22M50%2050c13.8%200%2025-11.2%2025-25S63.8%200%2050%200%2025%2011.2%2025%2025s11.2%2025%2025%2025zm25%2025c13.8%200%2025-11.2%2025-25S88.8%2025%2075%2025%2050%2036.2%2050%2050s11.2%2025%2025%2025zM25%2075c13.8%200%2025-11.2%2025-25S38.8%2025%2025%2025%200%2036.2%200%2050s11.2%2025%2025%2025z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-40"></div>
-          <div className="absolute top-1/4 right-0 w-64 h-64 bg-[#e2ba4b]/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-[#e2ba4b]/5 rounded-full blur-3xl"></div>
-          <div className="container mx-auto px-4 relative z-10">
+        {/* Como Funciona Nossa Atuação / Vantagens */}
+        <section className="py-16 bg-gray-900">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <div className="w-24 h-1 bg-[#e2ba4b] mx-auto mb-4"></div>
+              <p className="text-sm text-gray-400 uppercase tracking-wider mb-4">
+                ÁREAS DE ATUAÇÃO DO ESCRITÓRIO
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Como Funciona Nossa Atuação / Vantagens
+              </h2>
+              <p className="text-lg text-gray-300 max-w-4xl mx-auto">
+                Por que confiar em nossa atuação tributária?
+              </p>
+            </div>
+
+            {/* Grid responsivo de cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+              {/* Card 1 - Diagnóstico Personalizado */}
+              <div className="bg-slate-700 rounded-2xl p-6 md:p-8 text-white hover:bg-slate-600 transition-all duration-300 hover:scale-105">
+                <div className="bg-gray-800 rounded-full w-12 h-12 md:w-16 md:h-16 flex items-center justify-center mb-4 md:mb-6 mx-auto">
+                  <Search className="h-6 w-6 md:h-8 md:w-8 text-white" />
+                </div>
+                <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-center">Diagnóstico Personalizado</h3>
+                <p className="text-gray-300 leading-relaxed text-center text-sm md:text-base">
+                  Analisamos detalhadamente a situação fiscal da sua empresa e 
+                  identificamos oportunidades de economia imediata.
+                </p>
+              </div>
+
+              {/* Card 2 - Comunicação Transparente */}
+              <div className="bg-slate-700 rounded-2xl p-6 md:p-8 text-white hover:bg-slate-600 transition-all duration-300 hover:scale-105">
+                <div className="bg-gray-800 rounded-full w-12 h-12 md:w-16 md:h-16 flex items-center justify-center mb-4 md:mb-6 mx-auto">
+                  <MessageSquare className="h-6 w-6 md:h-8 md:w-8 text-white" />
+                </div>
+                <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-center">Comunicação Transparente e Objetiva</h3>
+                <p className="text-gray-300 leading-relaxed text-center text-sm md:text-base">
+                  Você tem acesso direto à nossa equipe, com explicações claras e 
+                  suporte contínuo.
+                </p>
+              </div>
+
+              {/* Card 3 - Atuação 100% Legal */}
+              <div className="bg-slate-700 rounded-2xl p-6 md:p-8 text-white hover:bg-slate-600 transition-all duration-300 hover:scale-105 md:col-span-2 lg:col-span-1">
+                <div className="bg-gray-800 rounded-full w-12 h-12 md:w-16 md:h-16 flex items-center justify-center mb-4 md:mb-6 mx-auto">
+                  <Shield className="h-6 w-6 md:h-8 md:w-8 text-white" />
+                </div>
+                <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-center">Atuação 100% Legal e Segura</h3>
+                <p className="text-gray-300 leading-relaxed text-center text-sm md:text-base">
+                  Todas as estratégias aplicadas seguem rigorosamente a legislação 
+                  e jurisprudência atualizada.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+              {/* Card 4 - Economia Real */}
+              <div className="bg-slate-700 rounded-2xl p-6 md:p-8 text-white hover:bg-slate-600 transition-all duration-300 hover:scale-105">
+                <div className="bg-gray-800 rounded-full w-12 h-12 md:w-16 md:h-16 flex items-center justify-center mb-4 md:mb-6 mx-auto">
+                  <TrendingUp className="h-6 w-6 md:h-8 md:w-8 text-white" />
+                </div>
+                <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-center">Economia Real e Imediata</h3>
+                <p className="text-gray-300 leading-relaxed text-center text-sm md:text-base">
+                  Geramos impacto direto no caixa da sua empresa, seja com recuperação de 
+                  tributos ou redução da carga futura.
+                </p>
+              </div>
+
+              {/* Card 5 - Capacitação do Parceiro */}
+              <div className="bg-slate-700 rounded-2xl p-6 md:p-8 text-white hover:bg-slate-600 transition-all duration-300 hover:scale-105">
+                <div className="bg-gray-800 rounded-full w-12 h-12 md:w-16 md:h-16 flex items-center justify-center mb-4 md:mb-6 mx-auto">
+                  <Award className="h-6 w-6 md:h-8 md:w-8 text-white" />
+                </div>
+                <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-center">Capacitação do Parceiro</h3>
+                <p className="text-gray-300 leading-relaxed text-center text-sm md:text-base">
+                  Orientamos sua equipe para compreender e dar andamento às ações 
+                  junto aos seus clientes, promovendo autonomia e confiança.
+                </p>
+              </div>
+            </div>
+
+            {/* CTA Button */}
+            <div className="text-center">
+              <Button 
+                size="lg"
+                className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+                onClick={() => scrollToSection("contato")}
+              >
+                <MessageSquare className="mr-2 h-4 w-4 md:h-5 md:w-5" />
+                CLIQUE AQUI E FALE COM UM ADVOGADO ESPECIALISTA
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Quem irá trabalhar ao seu favor */}
+        <section className="py-16 bg-gray-800">
+          <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Parcerias com <span className="gradient-text">Foco na Transparência</span>
+                Quem irá trabalhar ao seu favor
               </h2>
-              <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-                Parcerias com foco na transparência e agilidade para assegurar os direitos tributários das empresas, 
-                atendendo com um atendimento humanizado e focado na capacitação dos parceiros para atendimento dos clientes.
-                Onde o principal objetivo da parceria é ter uma comunicação fluída e objetiva sobre as demandas de cada cliente.
+              <div className="w-24 h-1 bg-[#e2ba4b] mx-auto mt-4"></div>
+              <p className="text-lg text-gray-300 mt-4 uppercase tracking-wider">
+                CONHEÇA O ADVOGADO
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-              
-              {/* Card 1 - Transparência */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-300 scroll-reveal card-hover-effect border border-white/20 hover:border-[#e2ba4b]/50">
-                <div className="bg-[#e2ba4b] rounded-full w-16 h-16 flex items-center justify-center mb-6 shadow-lg">
-                  <Shield className="h-8 w-8 text-black" />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              {/* Imagem do Advogado */}
+              <div className="order-2 lg:order-1">
+                <div className="relative">
+                  <Image 
+                    src="/dr.png"
+                    alt="Abrão e Silva Advogados Associados"
+                    width={500}
+                    height={400}
+                    className="w-full h-auto rounded-2xl shadow-2xl"
+                    priority={true}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-2xl"></div>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4">Transparência Total</h3>
-                <p className="text-gray-300 leading-relaxed">
-                  Comunicação clara e objetiva em todas as etapas do processo, garantindo que nossos parceiros 
-                  tenham total visibilidade dos resultados.
-                </p>
               </div>
 
-              {/* Card 2 - Agilidade */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-300 scroll-reveal card-hover-effect border border-white/20 hover:border-[#e2ba4b]/50">
-                <div className="bg-[#e2ba4b] rounded-full w-16 h-16 flex items-center justify-center mb-6 shadow-lg">
-                  <Zap className="h-8 w-8 text-black" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-4">Agilidade Comprovada</h3>
-                <p className="text-gray-300 leading-relaxed">
-                  Processos otimizados e equipe especializada garantem respostas rápidas e eficientes 
-                  para todas as demandas tributárias.
-                </p>
-              </div>
-
-              {/* Card 3 - Capacitação */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-300 scroll-reveal card-hover-effect border border-white/20 hover:border-[#e2ba4b]/50">
-                <div className="bg-[#e2ba4b] rounded-full w-16 h-16 flex items-center justify-center mb-6 shadow-lg">
-                  <Target className="h-8 w-8 text-black" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-4">Capacitação Contínua</h3>
-                <p className="text-gray-300 leading-relaxed">
-                  Investimos na capacitação constante de nossos parceiros, garantindo atendimento 
-                  de excelência aos clientes finais.
-                </p>
-              </div>
-            </div>
-
-            {/* [cursor-edit] - Benefícios da Parceria otimizados */}
-            <div className="bg-black/80 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-[#e2ba4b]/20 shadow-2xl">
-              <div className="text-center mb-12">
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                  Por que escolher nossa <span className="text-[#e2ba4b]">Parceria?</span>
+              {/* Informações do Escritório */}
+              <div className="order-1 lg:order-2">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
+                  Abrão e Silva Advogados Associados
                 </h3>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {benefitsData.map((benefit, index) => (
-                  <div key={index} className="flex items-start space-x-4 group">
-                    <CheckCircle 
-                      className="h-6 w-6 text-[#e2ba4b] flex-shrink-0 mt-1 transition-transform group-hover:scale-110" 
-                      aria-hidden="true"
-                    />
-                    <div>
-                      <h4 className="text-white font-semibold mb-2 group-hover:text-[#e2ba4b] transition-colors">
-                        {benefit.title}
-                      </h4>
-                      <p className="text-gray-300 leading-relaxed">{benefit.description}</p>
-                    </div>
-                  </div>
-                ))}
+                <p className="text-lg text-gray-300 leading-relaxed mb-6">
+                  Somos um time de especialistas em direito tributário com atuação 
+                  nacional, focado em gerar economia real para empresas dos mais 
+                  diversos setores. Nosso diferencial está na comunicação transparente, 
+                  agilidade nas entregas e parcerias duradouras, sempre com foco em 
+                  segurança jurídica e impacto positivo no caixa da empresa. Com 
+                  centenas de empresas atendidas e mais de R$ 113 milhões em economia 
+                  efetiva, nos orgulhamos de entregar resultados consistentes e duradouros.
+                </p>
+                <Button 
+                  size="lg"
+                  className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                  onClick={() => scrollToSection("contato")}
+                >
+                  <MessageSquare className="mr-2 h-5 w-5" />
+                  CLIQUE AQUI E FALE COM UM ADVOGADO ESPECIALISTA
+                </Button>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Seção de Vídeo */}
-        <VideoSection
-          title="Conheça Nossa Abordagem"
-          subtitle="Assista ao vídeo e entenda como nossas parcerias podem transformar seus resultados"
-          className="bg-black"
-          // videoId="SEU_VIDEO_ID_AQUI" // Descomente e adicione o ID do YouTube quando disponível
-          // videoUrl="/videos/parcerias.mp4" // Ou use um vídeo local
-        />
-
-        {/* [cursor-edit] - Nova seção de contato com mapa integrado */}
-        <ContactSection
-          cityConfig={{
-            coordinates: { lat: -16.6869, lng: -49.2648 }, // Coordenadas de Goiânia - Setor Sul
-            address: {
-              street: "Rua 100, Nº 35, Qd. F-17, Lt. 12",
-              neighborhood: "Setor Sul",
-              city: "Goiânia",
-              state: "GO",
-              zipCode: "74080-000"
-            },
-            whatsapp: "5562985851251", // [cursor-edit] - WhatsApp Setor Sul
-            description: "Escritório especializado em parcerias tributárias"
-          }}
-          contactInfo={{
-            name: "Contato Direto - Setor Sul",
-            phone: "(62) 99912-8796",
-            email: "setorsul@abraoesilva.adv.br",
-            address: "Rua 100, Nº 35, Qd. F-17, Lt. 12 - Setor Sul, Goiânia/GO",
-            schedule: "Segunda a Sexta: 08:00 às 17:00"
-          }}
-        />
-      </main>
-
-      {/* [cursor-edit] - Footer moderno */}
-      <footer className="bg-black/95 backdrop-blur-sm text-white py-8 border-t border-[#e2ba4b]/20 relative z-10">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="mb-4 md:mb-0">
-              <Image 
-                src="/logo.png" 
-                alt="Abrão & Silva Advocacia" 
-                width={150} 
-                height={75} 
-                className="h-12 w-auto" 
-              />
+        {/* Nossas áreas de atuação */}
+        <section className="py-16 bg-gray-800">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Nossas áreas de atuação
+              </h2>
+              <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+                Especialistas nas principais frentes de economia tributária
+              </p>
             </div>
-            <div className="text-center md:text-right">
-              <p className="text-gray-400 text-sm">
-                © {new Date().getFullYear()} Abrão & Silva Advocacia - Parcerias Tributárias
-              </p>
-              <p className="text-gray-400 text-sm">
-                Especialistas em Direito Tributário - Setor Sul, Goiânia/GO
-              </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+              {/* Coluna Esquerda */}
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4">
+                  <div className="bg-[#e2ba4b] rounded-full w-3 h-3 mt-2 flex-shrink-0"></div>
+                  <div>
+                    <h3 className="text-white font-bold text-lg mb-2">
+                      Recuperação de tributos pagos indevidamente:
+                    </h3>
+                    <p className="text-gray-300">
+                      PIS, COFINS, INSS, IRPJ e CSLL
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="bg-[#e2ba4b] rounded-full w-3 h-3 mt-2 flex-shrink-0"></div>
+                  <div>
+                    <h3 className="text-white font-bold text-lg mb-2">
+                      Renegociação fiscal com a Receita Federal e PGFN
+                    </h3>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="bg-[#e2ba4b] rounded-full w-3 h-3 mt-2 flex-shrink-0"></div>
+                  <div>
+                    <h3 className="text-white font-bold text-lg mb-2">
+                      Transações tributárias e programas especiais de parcelamento
+                    </h3>
+                  </div>
+                </div>
+              </div>
+
+              {/* Coluna Direita */}
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4">
+                  <div className="bg-[#e2ba4b] rounded-full w-3 h-3 mt-2 flex-shrink-0"></div>
+                  <div>
+                    <h3 className="text-white font-bold text-lg mb-2">
+                      Planejamento tributário estratégico
+                    </h3>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="bg-[#e2ba4b] rounded-full w-3 h-3 mt-2 flex-shrink-0"></div>
+                  <div>
+                    <h3 className="text-white font-bold text-lg mb-2">
+                      Regularidade fiscal e certidões negativas
+                    </h3>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="bg-[#e2ba4b] rounded-full w-3 h-3 mt-2 flex-shrink-0"></div>
+                  <div>
+                    <h3 className="text-white font-bold text-lg mb-2">
+                      Atendimento a empresas de todos os portes e segmentos
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* CTA Button */}
+            <div className="text-center">
+              <Button 
+                size="lg"
+                className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                onClick={() => scrollToSection("contato")}
+              >
+                <MessageSquare className="mr-2 h-5 w-5" />
+                Quero conversar com uma advogada especializada
+              </Button>
             </div>
           </div>
-        </div>
-      </footer>
+        </section>
+
+        {/* Nossos Depoimentos */}
+        <section className="py-16 bg-gray-800">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Nossos Depoimentos
+              </h2>
+            </div>
+            
+            <div className="text-center">
+              <Button 
+                size="lg"
+                className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                onClick={() => scrollToSection("contato")}
+              >
+                <MessageSquare className="mr-2 h-5 w-5" />
+                Quero conversar com uma advogada especializada
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Galeria de Vídeos */}
+        <section className="py-16 bg-gray-800">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Galeria de Vídeos
+              </h2>
+            </div>
+            
+            <div className="text-center">
+              <Button 
+                size="lg"
+                className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                onClick={() => scrollToSection("contato")}
+              >
+                <MessageSquare className="mr-2 h-5 w-5" />
+                Quero conversar com uma advogada especializada
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Como Funciona Nosso Programa ? */}
+        <section className="py-16 bg-gray-900">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Como Funciona Nosso Programa ?
+              </h2>
+            </div>
+
+            {/* Timeline do Processo - Responsivo */}
+            <div className="max-w-4xl mx-auto">
+              {/* Mobile: Layout vertical simples */}
+              <div className="block md:hidden space-y-8">
+                {/* Step 1 - Mobile */}
+                <div className="bg-gray-800 rounded-2xl p-6 border-l-4 border-[#e2ba4b]">
+                  <div className="flex items-center mb-4">
+                    <div className="bg-[#e2ba4b] rounded-full w-8 h-8 flex items-center justify-center mr-4">
+                      <span className="text-sm font-bold text-black">1</span>
+                    </div>
+                    <MessageSquare className="h-6 w-6 text-green-500" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-2">CONTATO NO WHATSAPP</h3>
+                  <p className="text-gray-300 text-sm">
+                    Você entra em contato conosco através de um dos botões disponíveis no site
+                  </p>
+                </div>
+
+                {/* Step 2 - Mobile */}
+                <div className="bg-gray-800 rounded-2xl p-6 border-l-4 border-[#e2ba4b]">
+                  <div className="flex items-center mb-4">
+                    <div className="bg-[#e2ba4b] rounded-full w-8 h-8 flex items-center justify-center mr-4">
+                      <span className="text-sm font-bold text-black">2</span>
+                    </div>
+                    <Search className="h-6 w-6 text-blue-500" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-2">DIAGNÓSTICO</h3>
+                  <p className="text-gray-300 text-sm">
+                    Nossos especialistas fazem análise minuciosa da sua empresa, em busca de 
+                    melhores práticas de mercado.
+                  </p>
+                </div>
+
+                {/* Step 3 - Mobile */}
+                <div className="bg-gray-800 rounded-2xl p-6 border-l-4 border-[#e2ba4b]">
+                  <div className="flex items-center mb-4">
+                    <div className="bg-[#e2ba4b] rounded-full w-8 h-8 flex items-center justify-center mr-4">
+                      <span className="text-sm font-bold text-black">3</span>
+                    </div>
+                    <FileText className="h-6 w-6 text-purple-500" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-2">ESTRUTURAÇÃO</h3>
+                  <p className="text-gray-300 text-sm">
+                    Será estruturado um programa personalizado para sua empresa.
+                  </p>
+                </div>
+
+                {/* Step 4 - Mobile */}
+                <div className="bg-gray-800 rounded-2xl p-6 border-l-4 border-[#e2ba4b]">
+                  <div className="flex items-center mb-4">
+                    <div className="bg-[#e2ba4b] rounded-full w-8 h-8 flex items-center justify-center mr-4">
+                      <span className="text-sm font-bold text-black">4</span>
+                    </div>
+                    <MessageSquare className="h-6 w-6 text-green-500" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-2">EXECUÇÃO</h3>
+                  <p className="text-gray-300 text-sm">
+                    Implantação do programa na empresa de forma estruturada.
+                  </p>
+                </div>
+              </div>
+
+              {/* Desktop: Layout timeline tradicional */}
+              <div className="hidden md:block relative">
+                {/* Linha vertical central */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gray-600"></div>
+
+                {/* Step 1 - Desktop */}
+                <div className="relative flex items-center mb-12">
+                  <div className="w-1/2 pr-8 text-right">
+                    <div className="bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-700">
+                      <div className="flex justify-end mb-4">
+                        <MessageSquare className="h-8 w-8 text-green-500" />
+                      </div>
+                      <h3 className="text-xl font-bold text-white mb-2">CONTATO NO WHATSAPP</h3>
+                      <p className="text-gray-300">
+                        Você entra em contato conosco através de um dos botões disponíveis no site
+                      </p>
+                    </div>
+                  </div>
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-[#e2ba4b] border-4 border-gray-600 rounded-full flex items-center justify-center">
+                    <span className="text-sm font-bold text-black">1</span>
+                  </div>
+                  <div className="w-1/2 pl-8"></div>
+                </div>
+
+                {/* Step 2 - Desktop */}
+                <div className="relative flex items-center mb-12">
+                  <div className="w-1/2 pr-8"></div>
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-[#e2ba4b] border-4 border-gray-600 rounded-full flex items-center justify-center">
+                    <span className="text-sm font-bold text-black">2</span>
+                  </div>
+                  <div className="w-1/2 pl-8">
+                    <div className="bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-700">
+                      <div className="flex justify-start mb-4">
+                        <Search className="h-8 w-8 text-blue-500" />
+                      </div>
+                      <h3 className="text-xl font-bold text-white mb-2">DIAGNÓSTICO</h3>
+                      <p className="text-gray-300">
+                        Nossos especialistas fazem análise minuciosa da sua empresa, em busca de 
+                        melhores práticas de mercado.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Step 3 - Desktop */}
+                <div className="relative flex items-center mb-12">
+                  <div className="w-1/2 pr-8 text-right">
+                    <div className="bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-700">
+                      <div className="flex justify-end mb-4">
+                        <FileText className="h-8 w-8 text-purple-500" />
+                      </div>
+                      <h3 className="text-xl font-bold text-white mb-2">ESTRUTURAÇÃO</h3>
+                      <p className="text-gray-300">
+                        Será estruturado um programa personalizado para sua empresa.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-[#e2ba4b] border-4 border-gray-600 rounded-full flex items-center justify-center">
+                    <span className="text-sm font-bold text-black">3</span>
+                  </div>
+                  <div className="w-1/2 pl-8"></div>
+                </div>
+
+                {/* Step 4 - Desktop */}
+                <div className="relative flex items-center">
+                  <div className="w-1/2 pr-8"></div>
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-[#e2ba4b] border-4 border-gray-600 rounded-full flex items-center justify-center">
+                    <span className="text-sm font-bold text-black">4</span>
+                  </div>
+                  <div className="w-1/2 pl-8">
+                    <div className="bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-700">
+                      <div className="flex justify-start mb-4">
+                        <MessageSquare className="h-8 w-8 text-green-500" />
+                      </div>
+                      <h3 className="text-xl font-bold text-white mb-2">EXECUÇÃO</h3>
+                      <p className="text-gray-300">
+                        Implantação do programa na empresa de forma estruturada.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* Contato */}
+        <section id="contato" className="py-16 bg-gray-800">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Contato
+              </h2>
+              <div className="w-24 h-1 bg-[#e2ba4b] mx-auto mb-4"></div>
+              <p className="text-sm text-gray-400 uppercase tracking-wider">
+                REDES SOCIAIS
+              </p>
+            </div>
+
+            <div className="max-w-3xl mx-auto">
+              {/* Grid responsivo de contatos */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                {/* Telefone */}
+                <div className="bg-gray-700 rounded-2xl p-6 shadow-lg border border-gray-600 text-center hover:bg-gray-600 transition-all duration-300 hover:scale-105">
+                  <div className="bg-green-500 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                    <Phone className="h-6 w-6 text-white" />
+                  </div>
+                  <a 
+                    href="tel:+5562999128796" 
+                    className="text-lg md:text-xl font-semibold text-white hover:text-[#e2ba4b] transition-colors block"
+                  >
+                    (62) 9912-8796
+                  </a>
+                </div>
+
+                {/* Instagram */}
+                <div className="bg-gray-700 rounded-2xl p-6 shadow-lg border border-gray-600 text-center hover:bg-gray-600 transition-all duration-300 hover:scale-105">
+                  <div className="bg-gradient-to-br from-purple-500 to-pink-500 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                    <span className="text-white text-lg font-bold">@</span>
+                  </div>
+                  <span className="text-lg md:text-xl font-semibold text-white block">
+                    @abraoesilva_tributario
+                  </span>
+                </div>
+
+                {/* Horário */}
+                <div className="bg-gray-700 rounded-2xl p-6 shadow-lg border border-gray-600 text-center hover:bg-gray-600 transition-all duration-300 hover:scale-105 md:col-span-3 lg:col-span-1">
+                  <div className="bg-blue-500 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                    <Clock className="h-6 w-6 text-white" />
+                  </div>
+                  <span className="text-base md:text-lg font-semibold text-white block">
+                    Segunda a Sexta
+                  </span>
+                  <span className="text-sm text-gray-300">
+                    das 9h às 18h
+                  </span>
+                </div>
+              </div>
+
+              {/* CTA Final */}
+              <div className="text-center">
+                <Button 
+                  size="lg"
+                  className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+                  onClick={() => window.open('https://wa.me/5562999128796', '_blank')}
+                >
+                  <MessageSquare className="mr-2 h-4 w-4 md:h-5 md:w-5" />
+                  FALAR NO WHATSAPP AGORA
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Perguntas realizadas com frequência */}
+        <section className="py-16 bg-gray-800">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Perguntas realizadas com frequência
+              </h2>
+              <div className="w-24 h-1 bg-[#e2ba4b] mx-auto mb-4"></div>
+              <p className="text-sm text-gray-400 uppercase tracking-wider">
+                F.A.Q
+              </p>
+            </div>
+
+            <div className="max-w-4xl mx-auto space-y-4">
+              {/* FAQ Item 1 */}
+              <div className="bg-gray-700 rounded-2xl p-4 md:p-6 hover:bg-gray-600 transition-colors">
+                <h3 className="text-lg md:text-xl font-bold text-white mb-3 md:mb-4 flex items-start">
+                  <span className="mr-3 text-[#e2ba4b] flex-shrink-0">—</span>
+                  <span className="leading-tight">Quais empresas podem recuperar tributos ?</span>
+                </h3>
+                <div className="pl-6">
+                  <p className="text-gray-300 leading-relaxed text-sm md:text-base">
+                    Empresas do regime de lucro real ou presumido que tenham recolhido impostos indevidamente ou com base em 
+                    cálculo equivocado.
+                  </p>
+                </div>
+              </div>
+
+              {/* FAQ Item 2 */}
+              <div className="bg-gray-700 rounded-2xl p-4 md:p-6 hover:bg-gray-600 transition-colors">
+                <h3 className="text-lg md:text-xl font-bold text-white mb-3 md:mb-4 flex items-start">
+                  <span className="mr-3 text-[#e2ba4b] flex-shrink-0">—</span>
+                  <span className="leading-tight">O que é necessário para iniciar o processo ?</span>
+                </h3>
+                <div className="pl-6">
+                  <p className="text-gray-300 leading-relaxed text-sm md:text-base">
+                    Documentação fiscal da empresa dos últimos 5 anos, incluindo declarações, guias de recolhimento e 
+                    demonstrativos contábeis para análise detalhada.
+                  </p>
+                </div>
+              </div>
+
+              {/* FAQ Item 3 */}
+              <div className="bg-gray-700 rounded-2xl p-4 md:p-6 hover:bg-gray-600 transition-colors">
+                <h3 className="text-lg md:text-xl font-bold text-white mb-3 md:mb-4 flex items-start">
+                  <span className="mr-3 text-[#e2ba4b] flex-shrink-0">—</span>
+                  <span className="leading-tight">Essa recuperação é legal ?</span>
+                </h3>
+                <div className="pl-6">
+                  <p className="text-gray-300 leading-relaxed text-sm md:text-base">
+                    Sim, totalmente legal. Utilizamos apenas estratégias previstas em lei e jurisprudência consolidada, 
+                    garantindo segurança jurídica total para sua empresa.
+                  </p>
+                </div>
+              </div>
+
+              {/* CTA FAQ */}
+              <div className="text-center pt-8">
+                <Button 
+                  size="lg"
+                  className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+                  onClick={() => window.open('https://wa.me/5562999128796', '_blank')}
+                >
+                  <MessageSquare className="mr-2 h-4 w-4 md:h-5 md:w-5" />
+                  TIRE SUAS DÚVIDAS NO WHATSAPP
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="bg-white py-8 text-center">
+          <div className="container mx-auto px-4">
+            <p className="text-gray-600">
+              Copyright 2025. Todos os Direitos Reservados. Desenvolvido por <strong>MRG Digital</strong>
+            </p>
+          </div>
+        </footer>
+      </main>
     </div>
   )
 }

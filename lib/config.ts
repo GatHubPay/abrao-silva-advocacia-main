@@ -84,7 +84,7 @@ export const citiesConfig: Record<string, CityConfig> = {
     },
     phone: '(62) 3412-2893',
     whatsapp: '556234122893', // [cursor-edit] - WhatsApp Goiânia Centro
-    email: 'goiania@abraoesilva.adv.br',
+    email: 'abraoesilvaadv@gmail.com',
     workingHours: 'Seg - Sex: 08:00 às 17:00',
     title: 'Nossa localização em GOIÂNIA CENTRO - GOIÁS',
     subtitle: 'Especializada em Direito Empresarial e Civil no centro da capital.',
