@@ -373,11 +373,11 @@ export default function ParceriasTributarias() {
             <div className="text-center">
               <Button 
                 size="lg"
-                className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+                className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
                 onClick={() => scrollToSection("contato")}
               >
-                <MessageSquare className="mr-2 h-4 w-4 md:h-5 md:w-5" />
-                CLIQUE AQUI E FALE COM UM ADVOGADO ESPECIALISTA
+                <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
+                <span className="text-xs sm:text-sm md:text-lg leading-tight">CLIQUE AQUI E FALE COM UM ADVOGADO ESPECIALISTA</span>
               </Button>
             </div>
           </div>
@@ -399,15 +399,17 @@ export default function ParceriasTributarias() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Imagem do Advogado */}
               <div className="order-2 lg:order-1">
-                <div className="relative">
-                  <Image 
-                    src="/dr.png"
-                    alt="Abrão e Silva Advogados Associados"
-                    width={500}
-                    height={400}
-                    className="w-full h-auto rounded-2xl shadow-2xl"
-                    priority={true}
-                  />
+                <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                  <div className="aspect-[3/4] relative">
+                    <Image 
+                      src="/dr.png"
+                      alt="Abrão e Silva Advogados Associados"
+                      width={500}
+                      height={400}
+                      className="w-full h-full object-cover object-center"
+                      priority={true}
+                    />
+                  </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-2xl"></div>
                 </div>
               </div>
@@ -428,11 +430,11 @@ export default function ParceriasTributarias() {
                 </p>
                 <Button 
                   size="lg"
-                  className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
                   onClick={() => scrollToSection("contato")}
                 >
-                  <MessageSquare className="mr-2 h-5 w-5" />
-                  CLIQUE AQUI E FALE COM UM ADVOGADO ESPECIALISTA
+                  <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
+                  <span className="text-xs sm:text-sm md:text-lg leading-tight">CLIQUE AQUI E FALE COM UM ADVOGADO ESPECIALISTA</span>
                 </Button>
               </div>
             </div>
@@ -520,11 +522,11 @@ export default function ParceriasTributarias() {
             <div className="text-center">
               <Button 
                 size="lg"
-                className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
                 onClick={() => scrollToSection("contato")}
               >
-                <MessageSquare className="mr-2 h-5 w-5" />
-                Quero conversar com uma advogada especializada
+                <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
+                <span className="text-xs sm:text-sm md:text-lg leading-tight">Quero conversar com uma advogada especializada</span>
               </Button>
             </div>
           </div>
@@ -542,11 +544,11 @@ export default function ParceriasTributarias() {
             <div className="text-center">
               <Button 
                 size="lg"
-                className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
                 onClick={() => scrollToSection("contato")}
               >
-                <MessageSquare className="mr-2 h-5 w-5" />
-                Quero conversar com uma advogada especializada
+                <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
+                <span className="text-xs sm:text-sm md:text-lg leading-tight">Quero conversar com uma advogada especializada</span>
               </Button>
             </div>
           </div>
@@ -564,11 +566,11 @@ export default function ParceriasTributarias() {
             <div className="text-center">
               <Button 
                 size="lg"
-                className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
                 onClick={() => scrollToSection("contato")}
               >
-                <MessageSquare className="mr-2 h-5 w-5" />
-                Quero conversar com uma advogada especializada
+                <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
+                <span className="text-xs sm:text-sm md:text-lg leading-tight">Quero conversar com uma advogada especializada</span>
               </Button>
             </div>
           </div>
@@ -796,11 +798,11 @@ export default function ParceriasTributarias() {
               <div className="text-center">
                 <Button 
                   size="lg"
-                  className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+                  className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
                   onClick={() => window.open('https://wa.me/5562999128796', '_blank')}
                 >
-                  <MessageSquare className="mr-2 h-4 w-4 md:h-5 md:w-5" />
-                  FALAR NO WHATSAPP AGORA
+                  <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
+                  <span className="text-xs sm:text-sm md:text-lg leading-tight">FALAR NO WHATSAPP AGORA</span>
                 </Button>
               </div>
             </div>
@@ -879,11 +881,11 @@ export default function ParceriasTributarias() {
               <div className="text-center pt-8">
                 <Button 
                   size="lg"
-                  className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+                  className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
                   onClick={() => window.open('https://wa.me/5562999128796', '_blank')}
                 >
-                  <MessageSquare className="mr-2 h-4 w-4 md:h-5 md:w-5" />
-                  TIRE SUAS DÚVIDAS NO WHATSAPP
+                  <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
+                  <span className="text-xs sm:text-sm md:text-lg leading-tight">TIRE SUAS DÚVIDAS NO WHATSAPP</span>
                 </Button>
               </div>
             </div>
