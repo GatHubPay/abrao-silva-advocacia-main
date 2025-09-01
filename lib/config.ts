@@ -40,8 +40,8 @@ export const citiesConfig: Record<string, CityConfig> = {
     displayName: 'ANICUNS - GOIÁS',
     path: '/anicuns', // [cursor-edit] - Alterado para subpasta
     coordinates: {
-      lat: -16.4647,
-      lng: -49.9614
+      lat: -16.464561, // [cursor-edit]
+      lng: -49.951667  // [cursor-edit]
     },
     address: {
       street: 'Av. Bandeirantes, 2216',
@@ -72,8 +72,8 @@ export const citiesConfig: Record<string, CityConfig> = {
     displayName: 'GOIÂNIA CENTRO - GOIÁS',
     path: '/goiania-centro', // [cursor-edit] - Alterado para subpasta
     coordinates: {
-      lat: -16.6772722,
-      lng: -49.257407
+      lat: -16.6763647, // [cursor-edit]
+      lng: -49.2574073  // [cursor-edit]
     },
     address: {
       street: 'Av. Goiás, 382',
@@ -104,14 +104,15 @@ export const citiesConfig: Record<string, CityConfig> = {
     displayName: 'SÃO MIGUEL DO ARAGUAIA - GOIÁS',
     path: '/sao-miguel', // [cursor-edit] - Alterado para subpasta
     coordinates: {
-      lat: -13.2750,
-      lng: -50.1628
+      lat: -13.272635, // [cursor-edit]
+      lng: -50.160236  // [cursor-edit]
     },
     address: {
-      street: 'Av. Mato Grosso, casa 2',
-      neighborhood: 'quadra 58, lote p2, setor central',
+      street: 'Av. Mato Grosso, 814', // [cursor-edit]
+      neighborhood: 'St. Centro', // [cursor-edit]
       city: 'São Miguel do Araguaia',
-      state: 'GO'
+      state: 'GO',
+      zipCode: '76590-000' // [cursor-edit]
     },
     phone: '(62) 99643-4339',
     whatsapp: '5562996434339', // [cursor-edit] - WhatsApp São Miguel
@@ -130,15 +131,15 @@ export const citiesConfig: Record<string, CityConfig> = {
     displayName: 'GOIÂNIA - SETOR SUL - GOIÁS',
     path: '/setor-sul', // [cursor-edit] - Alterado para subpasta
     coordinates: {
-      lat: -16.6864,
-      lng: -49.2653
+      lat: -16.682907, // [cursor-edit]
+      lng: -49.258459  // [cursor-edit]
     },
     address: {
-      street: 'Rua 100, Nº 35',
-      neighborhood: 'Qd. F-17, Lt. 12, Setor Sul',
+      street: 'R. 100, 35', // [cursor-edit]
+      neighborhood: 'Quadra F17, Lote 12 - St. Sul', // [cursor-edit]
       city: 'Goiânia',
       state: 'GO',
-      zipCode: '74080-100'
+      zipCode: '74080-140' // [cursor-edit]
     },
     phone: '(62) 98585-1251',
     whatsapp: '5562985851251', // [cursor-edit] - WhatsApp Setor Sul
