@@ -135,6 +135,72 @@
   }
 }
 
+/* [cursor-edit] - Animações sequenciais para cards empilhados */
+.scroll-reveal-card {
+  opacity: 0;
+  transform: translateY(80px) scale(0.95);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal-card.revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Efeito de empilhamento visual */
+.scroll-reveal-card:not(.revealed) {
+  filter: blur(1px);
+}
+
+.scroll-reveal-card.revealed {
+  filter: blur(0px);
+}
+
+/* Animação mais suave para mobile */
+@media (max-width: 768px) {
+  .scroll-reveal-card {
+    transform: translateY(50px) scale(0.98);
+  }
+}
+
+/* Efeito de brilho nos cards */
+.card-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-glow::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(226, 186, 75, 0.1), transparent);
+  transform: rotate(45deg) translate(-100%, -100%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+
+.card-glow:hover::before {
+  transform: rotate(45deg) translate(100%, 100%);
+}
+
+/* Animação de pulsação para elementos destacados */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(226, 186, 75, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(226, 186, 75, 0.6);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
 /* Suporte para modo escuro */
 @media (prefers-color-scheme: dark) {
   .bg-white {
