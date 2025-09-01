@@ -26,7 +26,9 @@ import "@/styles/parcerias.css"
 // [cursor-edit] - Componente otimizado da página de parcerias tributárias
 export default function ParceriasTributarias() {
   const [isLoaded, setIsLoaded] = useState(false)
+  const [timelineProgress, setTimelineProgress] = useState(0)
   const observerRef = useRef<IntersectionObserver | null>(null)
+  const timelineRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     const setupScrollAnimations = () => {
@@ -52,6 +54,42 @@ export default function ParceriasTributarias() {
       })
     }
 
+    // Função para animar a linha da timeline
+    const handleTimelineScroll = () => {
+      if (!timelineRef.current) return
+
+      const timelineSection = timelineRef.current.closest('section')
+      if (!timelineSection) return
+
+      const rect = timelineSection.getBoundingClientRect()
+      const windowHeight = window.innerHeight
+      const sectionTop = rect.top
+      const sectionHeight = timelineSection.offsetHeight
+      
+      let progress = 0
+      
+      // Começar animação quando a seção está 60% visível na tela
+      const triggerPoint = windowHeight * 0.6
+      
+      if (sectionTop <= triggerPoint) {
+        // Calcular progresso baseado em quanto a seção já passou do ponto de trigger
+        const scrolledDistance = triggerPoint - sectionTop
+        const maxScrollDistance = sectionHeight * 0.8 // 80% da altura da seção
+        
+        progress = Math.min(scrolledDistance / maxScrollDistance, 1)
+        
+        // Suavizar o início da animação
+        if (progress < 0.1) {
+          progress = 0
+        } else {
+          // Mapear de 0.1-1.0 para 0-1.0 para suavizar
+          progress = (progress - 0.1) / 0.9
+        }
+      }
+      
+      setTimelineProgress(Math.max(0, Math.min(progress, 1)))
+    }
+
     const loadTimer = setTimeout(() => {
       setIsLoaded(true)
       setupScrollAnimations()
@@ -63,10 +101,15 @@ export default function ParceriasTributarias() {
           el.classList.add('revealed')
         }
       })
+
+      // Adicionar listener para scroll da timeline
+      window.addEventListener('scroll', handleTimelineScroll)
+      handleTimelineScroll() // Executar uma vez para estado inicial
     }, 100)
 
     return () => {
       observerRef.current?.disconnect()
+      window.removeEventListener('scroll', handleTimelineScroll)
       clearTimeout(loadTimer)
     }
   }, [])
@@ -620,9 +663,18 @@ export default function ParceriasTributarias() {
               </div>
 
               {/* Desktop: Layout timeline tradicional */}
-              <div className="hidden md:block relative">
-                {/* Linha vertical central */}
+              <div className="hidden md:block relative" ref={timelineRef}>
+                {/* Linha vertical central - fundo */}
                 <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gray-600"></div>
+                {/* Linha vertical central - animada */}
+                <div 
+                  className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-[#e2ba4b] transition-all duration-500 ease-out"
+                  style={{
+                    height: `${timelineProgress * 100}%`,
+                    boxShadow: timelineProgress > 0 ? '0 0 15px rgba(226, 186, 75, 0.6)' : 'none',
+                    background: timelineProgress > 0 ? 'linear-gradient(to bottom, #e2ba4b, #d4a942)' : '#e2ba4b'
+                  }}
+                ></div>
 
                 {/* Step 1 - Desktop */}
                 <div className="relative flex items-center mb-12">
@@ -637,8 +689,8 @@ export default function ParceriasTributarias() {
                       </p>
                     </div>
                   </div>
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-[#e2ba4b] border-4 border-gray-600 rounded-full flex items-center justify-center">
-                    <span className="text-sm font-bold text-black">1</span>
+                  <div className={`absolute left-1/2 transform -translate-x-1/2 w-8 h-8 border-4 border-gray-600 rounded-full flex items-center justify-center transition-all duration-700 ${timelineProgress >= 0.15 ? 'bg-[#e2ba4b] scale-110' : 'bg-gray-600'}`}>
+                    <span className={`text-sm font-bold transition-colors duration-700 ${timelineProgress >= 0.15 ? 'text-black' : 'text-gray-400'}`}>1</span>
                   </div>
                   <div className="w-1/2 pl-8"></div>
                 </div>
@@ -646,8 +698,8 @@ export default function ParceriasTributarias() {
                 {/* Step 2 - Desktop */}
                 <div className="relative flex items-center mb-12">
                   <div className="w-1/2 pr-8"></div>
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-[#e2ba4b] border-4 border-gray-600 rounded-full flex items-center justify-center">
-                    <span className="text-sm font-bold text-black">2</span>
+                  <div className={`absolute left-1/2 transform -translate-x-1/2 w-8 h-8 border-4 border-gray-600 rounded-full flex items-center justify-center transition-all duration-700 ${timelineProgress >= 0.4 ? 'bg-[#e2ba4b] scale-110' : 'bg-gray-600'}`}>
+                    <span className={`text-sm font-bold transition-colors duration-700 ${timelineProgress >= 0.4 ? 'text-black' : 'text-gray-400'}`}>2</span>
                   </div>
                   <div className="w-1/2 pl-8">
                     <div className="bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-700">
@@ -676,8 +728,8 @@ export default function ParceriasTributarias() {
                       </p>
                     </div>
                   </div>
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-[#e2ba4b] border-4 border-gray-600 rounded-full flex items-center justify-center">
-                    <span className="text-sm font-bold text-black">3</span>
+                  <div className={`absolute left-1/2 transform -translate-x-1/2 w-8 h-8 border-4 border-gray-600 rounded-full flex items-center justify-center transition-all duration-700 ${timelineProgress >= 0.65 ? 'bg-[#e2ba4b] scale-110' : 'bg-gray-600'}`}>
+                    <span className={`text-sm font-bold transition-colors duration-700 ${timelineProgress >= 0.65 ? 'text-black' : 'text-gray-400'}`}>3</span>
                   </div>
                   <div className="w-1/2 pl-8"></div>
                 </div>
@@ -685,8 +737,8 @@ export default function ParceriasTributarias() {
                 {/* Step 4 - Desktop */}
                 <div className="relative flex items-center">
                   <div className="w-1/2 pr-8"></div>
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-[#e2ba4b] border-4 border-gray-600 rounded-full flex items-center justify-center">
-                    <span className="text-sm font-bold text-black">4</span>
+                  <div className={`absolute left-1/2 transform -translate-x-1/2 w-8 h-8 border-4 border-gray-600 rounded-full flex items-center justify-center transition-all duration-700 ${timelineProgress >= 0.9 ? 'bg-[#e2ba4b] scale-110' : 'bg-gray-600'}`}>
+                    <span className={`text-sm font-bold transition-colors duration-700 ${timelineProgress >= 0.9 ? 'text-black' : 'text-gray-400'}`}>4</span>
                   </div>
                   <div className="w-1/2 pl-8">
                     <div className="bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-700">
