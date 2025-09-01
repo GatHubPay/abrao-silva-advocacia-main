@@ -31,30 +31,12 @@ export default function ParceriasTributarias() {
   const timelineRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
-    // Função para animar cards sequencialmente
-    const animateCardsSequentially = (cardsContainer: Element) => {
-      const cards = cardsContainer.querySelectorAll('.scroll-reveal-card')
-      cards.forEach((card, index) => {
-        setTimeout(() => {
-          card.classList.add('revealed')
-        }, index * 400) // 400ms de delay entre cada card
-      })
-    }
-
     const setupScrollAnimations = () => {
       observerRef.current = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              // Se for um container de cards, animar sequencialmente
-              if (entry.target.classList.contains('cards-container')) {
-                animateCardsSequentially(entry.target)
-              } else if (entry.target.classList.contains('scroll-reveal-card')) {
-                // Cards individuais já são tratados pelo container
-                return
-              } else {
-                entry.target.classList.add('revealed')
-              }
+              entry.target.classList.add('revealed')
             }
           })
         },
@@ -65,7 +47,7 @@ export default function ParceriasTributarias() {
       )
 
       const scrollElements = document.querySelectorAll(
-        '.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .cards-container'
+        '.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right'
       )
       scrollElements.forEach((el) => {
         observerRef.current?.observe(el)
@@ -112,15 +94,11 @@ export default function ParceriasTributarias() {
       setIsLoaded(true)
       setupScrollAnimations()
       
-      const elementsInView = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .cards-container')
+      const elementsInView = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right')
       elementsInView.forEach((el) => {
         const rect = el.getBoundingClientRect()
         if (rect.top < window.innerHeight * 0.8) {
-          if (el.classList.contains('cards-container')) {
-            animateCardsSequentially(el)
-          } else {
-            el.classList.add('revealed')
-          }
+          el.classList.add('revealed')
         }
       })
 
@@ -223,27 +201,18 @@ export default function ParceriasTributarias() {
                   </div>
                 </div>
 
-                {/* Badge/Tag */}
-                <div className="inline-block">
-                  <div className="border border-[#e2ba4b] rounded-full px-4 py-2">
-                    <span className="text-[#e2ba4b] text-sm font-medium">
-                      Método AS | 30 e 01 de Outubro
-                    </span>
-                  </div>
-                </div>
+
 
                 {/* Título Principal */}
                 <div className="space-y-4">
                   <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-                    São 2 dias para <span className="text-[#e2ba4b]">ativar sua identidade</span>, 
-                    <span className="text-[#e2ba4b]"> clarificar o seu propósito</span> e descobrir como 
-                    <span className="text-[#e2ba4b]"> prosperar em todas as áreas da sua vida</span>
+                    Sua empresa pode estar <span className="text-[#e2ba4b]">pagando mais impostos</span> do que deveria. 
+                    Descubra como <span className="text-[#e2ba4b]">reverter isso</span> com segurança e agilidade.
                   </h2>
                   
                   <p className="text-lg text-gray-300 leading-relaxed">
-                    Uma metodologia única desenvolvida para quem quer prosperar de verdade em todas as áreas da vida. 
-                    Mais de 150 turmas e <span className="text-[#e2ba4b] font-semibold">milhares de pessoas impactadas</span> que 
-                    estão mudando suas vidas, famílias e negócios
+                    Parcerias inteligentes para regularidade fiscal, recuperação de créditos tributários e redução real da carga tributária. 
+                    <span className="text-[#e2ba4b] font-semibold">Mais de R$ 113 milhões já economizados</span> para empresas em todo o Brasil.
                   </p>
                 </div>
 
@@ -254,7 +223,7 @@ export default function ParceriasTributarias() {
                     className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black font-bold px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full md:w-auto"
                     onClick={() => scrollToSection("contato")}
                   >
-                    QUERO ENTRAR NO MÉTODO AS
+                    QUERO UMA ANÁLISE GRATUITA
                   </Button>
                 </div>
               </div>
@@ -276,15 +245,7 @@ export default function ParceriasTributarias() {
               </div>
             </div>
 
-            {/* Seção inferior - "O Método que você precisa fazer para prosperar" */}
-            <div className="text-center pb-16">
-              <h3 className="text-2xl md:text-3xl font-bold">
-                O Método que <span className="text-[#e2ba4b]">você precisa fazer</span>
-              </h3>
-              <h3 className="text-2xl md:text-3xl font-bold">
-                <span className="text-[#e2ba4b]">para prosperar</span>
-              </h3>
-            </div>
+
           </div>
 
           {/* WhatsApp Button */}
@@ -323,160 +284,6 @@ export default function ParceriasTributarias() {
                 </div>
                 <p className="text-gray-300 text-base md:text-lg">Clientes Atendidos</p>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Seção de Cards Inspirados - Método AS */}
-        <section className="py-16 bg-black relative overflow-hidden">
-          {/* Background pattern */}
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.02%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
-          
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8">
-                Transforme Sua Realidade Financeira
-              </h2>
-            </div>
-
-            {/* Cards Container - Empilhados */}
-            <div className="max-w-4xl mx-auto relative cards-container">
-              {/* Card 1 - Liberdade Financeira */}
-              <div className="scroll-reveal-card mb-8 relative z-30">
-                <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-8 md:p-12 border border-slate-700 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.02] relative overflow-hidden card-glow mx-auto max-w-2xl">
-                  {/* Logo/Brand */}
-                  <div className="flex items-center justify-center mb-8">
-                    <div className="relative">
-                      <div className="w-16 h-16 bg-[#e2ba4b] rounded-full p-1">
-                        <div className="w-full h-full bg-white rounded-full flex items-center justify-center">
-                          <span className="text-[#e2ba4b] font-bold text-xl">AS</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="ml-4">
-                      <h3 className="text-lg font-bold text-[#e2ba4b] uppercase tracking-wider">
-                        ABRÃO & SILVA
-                      </h3>
-                      <p className="text-xs text-gray-400 uppercase tracking-wider">
-                        MÉTODO AS
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Main Content */}
-                  <div className="text-center">
-                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
-                      Quer garantir sua liberdade financeira
-                    </h3>
-                    <h4 className="text-xl md:text-2xl font-bold text-white mb-8">
-                      (e da sua família)
-                    </h4>
-                    
-                    <p className="text-gray-300 text-lg leading-relaxed max-w-2xl mx-auto">
-                      Você não quer só ganhar mais. Você quer construir um{' '}
-                      <span className="text-[#e2ba4b] font-semibold">CELEIRO FINANCEIRO</span>. 
-                      Quer blindar sua casa e terminar o ciclo de escassez da sua família.
-                    </p>
-                  </div>
-
-                  {/* Decorative elements */}
-                  <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-[#e2ba4b]/10 to-transparent rounded-full"></div>
-                  <div className="absolute bottom-4 left-4 w-16 h-16 bg-gradient-to-tr from-[#e2ba4b]/10 to-transparent rounded-full"></div>
-                </div>
-              </div>
-
-              {/* Card 2 - Propósito */}
-              <div className="scroll-reveal-card mb-8 relative z-20">
-                <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-8 md:p-12 border border-slate-700 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.02] relative overflow-hidden card-glow mx-auto max-w-2xl">
-                  {/* Logo/Brand */}
-                  <div className="flex items-center justify-center mb-8">
-                    <div className="relative">
-                      <div className="w-16 h-16 bg-[#e2ba4b] rounded-full p-1">
-                        <div className="w-full h-full bg-white rounded-full flex items-center justify-center">
-                          <span className="text-[#e2ba4b] font-bold text-xl">AS</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="ml-4">
-                      <h3 className="text-lg font-bold text-[#e2ba4b] uppercase tracking-wider">
-                        ABRÃO & SILVA
-                      </h3>
-                      <p className="text-xs text-gray-400 uppercase tracking-wider">
-                        MÉTODO AS
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Main Content */}
-                  <div className="text-center">
-                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-8">
-                      Saiba por quem foi chamado.
-                    </h3>
-                    
-                    <p className="text-gray-300 text-lg leading-relaxed max-w-2xl mx-auto">
-                      Você sente isso. Lá no fundo. Que nasceu pra algo maior. Que sua história ainda não chegou 
-                      onde deveria — mas que agora, o tempo da espera acabou.
-                    </p>
-                  </div>
-
-                  {/* Decorative elements */}
-                  <div className="absolute top-4 left-4 w-24 h-24 bg-gradient-to-br from-[#e2ba4b]/10 to-transparent rounded-full"></div>
-                  <div className="absolute bottom-4 right-4 w-20 h-20 bg-gradient-to-tl from-[#e2ba4b]/10 to-transparent rounded-full"></div>
-                </div>
-              </div>
-
-              {/* Card 3 - Transformação */}
-              <div className="scroll-reveal-card mb-8 relative z-10">
-                <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-8 md:p-12 border border-slate-700 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.02] relative overflow-hidden card-glow mx-auto max-w-2xl">
-                  {/* Logo/Brand */}
-                  <div className="flex items-center justify-center mb-8">
-                    <div className="relative">
-                      <div className="w-16 h-16 bg-[#e2ba4b] rounded-full p-1">
-                        <div className="w-full h-full bg-white rounded-full flex items-center justify-center">
-                          <span className="text-[#e2ba4b] font-bold text-xl">AS</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="ml-4">
-                      <h3 className="text-lg font-bold text-[#e2ba4b] uppercase tracking-wider">
-                        ABRÃO & SILVA
-                      </h3>
-                      <p className="text-xs text-gray-400 uppercase tracking-wider">
-                        MÉTODO AS
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Main Content */}
-                  <div className="text-center">
-                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-8">
-                      É hora de ativar sua verdadeira identidade
-                    </h3>
-                    
-                    <p className="text-gray-300 text-lg leading-relaxed max-w-2xl mx-auto">
-                      Você não quer só ganhar mais. Você quer construir um{' '}
-                      <span className="text-[#e2ba4b] font-semibold">CELEIRO FINANCEIRO</span>. 
-                      Quer blindar sua casa e terminar o ciclo de escassez da sua família.
-                    </p>
-                  </div>
-
-                  {/* Decorative elements */}
-                  <div className="absolute top-4 right-4 w-28 h-28 bg-gradient-to-bl from-[#e2ba4b]/10 to-transparent rounded-full"></div>
-                  <div className="absolute bottom-4 left-4 w-24 h-24 bg-gradient-to-tr from-[#e2ba4b]/10 to-transparent rounded-full"></div>
-                </div>
-              </div>
-            </div>
-
-            {/* CTA Final */}
-            <div className="text-center mt-16">
-              <Button 
-                size="lg"
-                className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black font-bold px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-                onClick={() => scrollToSection("contato")}
-              >
-                QUERO PARTICIPAR DO MÉTODO AS
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
             </div>
           </div>
         </section>
@@ -955,7 +762,7 @@ export default function ParceriasTributarias() {
                   </div>
                   <a 
                     href="tel:+5562999128796" 
-                    className="text-lg md:text-xl font-semibold text-white hover:text-[#e2ba4b] transition-colors block"
+                    className="text-sm md:text-base font-semibold text-white hover:text-[#e2ba4b] transition-colors block leading-tight"
                   >
                     (62) 9912-8796
                   </a>
@@ -966,7 +773,7 @@ export default function ParceriasTributarias() {
                   <div className="bg-gradient-to-br from-purple-500 to-pink-500 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
                     <span className="text-white text-lg font-bold">@</span>
                   </div>
-                  <span className="text-lg md:text-xl font-semibold text-white block">
+                  <span className="text-sm md:text-base font-semibold text-white block leading-tight">
                     @abraoesilva_tributario
                   </span>
                 </div>
@@ -976,10 +783,10 @@ export default function ParceriasTributarias() {
                   <div className="bg-blue-500 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
                     <Clock className="h-6 w-6 text-white" />
                   </div>
-                  <span className="text-base md:text-lg font-semibold text-white block">
+                  <span className="text-sm md:text-base font-semibold text-white block leading-tight">
                     Segunda a Sexta
                   </span>
-                  <span className="text-sm text-gray-300">
+                  <span className="text-xs text-gray-300">
                     das 9h às 18h
                   </span>
                 </div>
@@ -1036,8 +843,8 @@ export default function ParceriasTributarias() {
                 </h3>
                 <div className="pl-6">
                   <p className="text-gray-300 leading-relaxed text-sm md:text-base">
-                    Documentação fiscal da empresa dos últimos 5 anos, incluindo declarações, guias de recolhimento e 
-                    demonstrativos contábeis para análise detalhada.
+                    Basta uma análise prévia gratuita. Com documentos fiscais e contábeis, conseguimos avaliar as 
+                    oportunidades de crédito.
                   </p>
                 </div>
               </div>
@@ -1050,8 +857,20 @@ export default function ParceriasTributarias() {
                 </h3>
                 <div className="pl-6">
                   <p className="text-gray-300 leading-relaxed text-sm md:text-base">
-                    Sim, totalmente legal. Utilizamos apenas estratégias previstas em lei e jurisprudência consolidada, 
-                    garantindo segurança jurídica total para sua empresa.
+                    Sim. Atuamos com base na legislação tributária, decisões do STF/STJ e instruções normativas vigentes.
+                  </p>
+                </div>
+              </div>
+
+              {/* FAQ Item 4 - Nova */}
+              <div className="bg-gray-700 rounded-2xl p-4 md:p-6 hover:bg-gray-600 transition-colors">
+                <h3 className="text-lg md:text-xl font-bold text-white mb-3 md:mb-4 flex items-start">
+                  <span className="mr-3 text-[#e2ba4b] flex-shrink-0">—</span>
+                  <span className="leading-tight">Em quanto tempo vejo os resultados ?</span>
+                </h3>
+                <div className="pl-6">
+                  <p className="text-gray-300 leading-relaxed text-sm md:text-base">
+                    Dependendo do caso, os primeiros efeitos aparecem em até 30 dias após o início da atuação.
                   </p>
                 </div>
               </div>
@@ -1075,7 +894,7 @@ export default function ParceriasTributarias() {
         <footer className="bg-white py-8 text-center">
           <div className="container mx-auto px-4">
             <p className="text-gray-600">
-              Copyright 2025. Todos os Direitos Reservados. Desenvolvido por <strong>MRG Digital</strong>
+              Copyright 2025. Todos os Direitos Reservados. Desenvolvido por <strong>Gat Hub Digital</strong>
             </p>
           </div>
         </footer>
