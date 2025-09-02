@@ -609,7 +609,7 @@ export default function AbraoSilvaAdvocacia() {
           <div className="container mx-auto px-4 relative z-10">
             <div className="text-center mb-12 md:mb-16">
               <h2 className="wp-animate-title text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 inline-block relative">
-                <span className="gradient-text">Áreas de</span> ATUAÇÃO
+                <span className="gradient-text">{cityConfig.practiceAreas.length === 1 ? 'Área de' : 'Áreas de'}</span> ATUAÇÃO
                 <span
                   className="block absolute left-0 -bottom-1 w-full h-1 bg-white"
                   style={{ transform: 'translateY(100%)' }}
