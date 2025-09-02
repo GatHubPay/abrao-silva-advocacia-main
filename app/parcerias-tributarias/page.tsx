@@ -238,15 +238,12 @@ export default function ParceriasTributarias() {
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black opacity-40 z-10"></div>
                   
                   <Image 
-                    src="/leao/leao.png"
+                    src="/dr/leaodr.png"
                     alt="Abrão & Silva Advocacia"
                     width={600}
                     height={700}
                     className="w-full h-auto object-contain opacity-90 mix-blend-luminosity"
-                    style={{
-                      filter: 'brightness(1.2) contrast(1.3) saturate(0.8)',
-                      maskImage: 'radial-gradient(circle at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0.8) 70%, rgba(0,0,0,0.3) 90%, transparent 100%)'
-                    }}
+                   
                     priority={true}
                   />
                   
