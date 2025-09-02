@@ -231,16 +231,28 @@ export default function ParceriasTributarias() {
               {/* Coluna Direita - Imagem */}
               <div className="relative flex justify-center lg:justify-end order-1 lg:order-2">
                 {/* // [cursor-edit] */}
-                {/* Imagem bem destacada e grande */}
+                {/* Imagem integrada ao fundo da página */}
                 <div className="relative w-full max-w-lg lg:max-w-xl">
+                  {/* Gradiente de integração com o fundo */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-transparent opacity-60 z-10"></div>
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black opacity-40 z-10"></div>
+                  
                   <Image 
                     src="/leao/leao.png"
                     alt="Abrão & Silva Advocacia"
                     width={600}
                     height={700}
-                    className="w-full h-auto object-contain filter brightness-110 contrast-110"
+                    className="w-full h-auto object-contain opacity-90 mix-blend-luminosity"
+                    style={{
+                      filter: 'brightness(1.2) contrast(1.3) saturate(0.8)',
+                      maskImage: 'radial-gradient(circle at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0.8) 70%, rgba(0,0,0,0.3) 90%, transparent 100%)'
+                    }}
                     priority={true}
                   />
+                  
+                  {/* Efeitos de integração */}
+                  <div className="absolute top-0 left-0 w-full h-full bg-black opacity-10 mix-blend-multiply"></div>
+                  <div className="absolute -inset-4 bg-gradient-to-br from-transparent via-black/5 to-black/20 blur-sm"></div>
                 </div>
               </div>
             </div>
