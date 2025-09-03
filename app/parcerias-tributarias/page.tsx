@@ -274,22 +274,25 @@ export default function ParceriasTributarias() {
                 <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
                   +10
                 </div>
-                <p className="text-gray-300 text-base md:text-lg">Anos de experiência</p>
+                <p className="text-gray-300 text-base md:text-lg">Anos de Experiência</p>
               </div>
+              
+             
               
               <div className="bg-gray-800 rounded-2xl p-8 md:p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
-                  +25
+                  +3.000
                 </div>
-                <p className="text-gray-300 text-base md:text-lg">Estados Atendidos</p>
+                <p className="text-gray-300 text-base md:text-lg"> Contatos Efetivos</p>
               </div>
-              
+
               <div className="bg-gray-800 rounded-2xl p-8 md:p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
-                  +3000
+                  +2 BI
                 </div>
-                <p className="text-gray-300 text-base md:text-lg">Clientes Atendidos</p>
+                <p className="text-gray-300 text-base md:text-lg">De Créditos Recuperados</p>
               </div>
+
             </div>
           </div>
         </section>
