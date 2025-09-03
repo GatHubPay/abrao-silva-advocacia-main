@@ -201,6 +201,40 @@
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
+/* [cursor-edit] - Gradiente radial para integração de imagem */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
+/* Efeitos de integração de imagem com fundo */
+.image-blend-seamless {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-blend-seamless::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 20%, rgba(0, 0, 0, 0.8) 70%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.image-blend-seamless::after {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  background: linear-gradient(45deg, 
+    rgba(0, 0, 0, 0.9) 0%, 
+    transparent 30%, 
+    transparent 70%, 
+    rgba(0, 0, 0, 0.9) 100%);
+  filter: blur(15px);
+  z-index: 5;
+  pointer-events: none;
+}
+
 /* Suporte para modo escuro */
 @media (prefers-color-scheme: dark) {
   .bg-white {

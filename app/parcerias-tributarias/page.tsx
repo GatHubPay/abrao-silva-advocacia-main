@@ -177,50 +177,35 @@ export default function ParceriasTributarias() {
         {/* Hero Section - Método AS Style */}
         <section className="bg-black min-h-screen flex items-center text-white relative overflow-hidden">
 
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center min-h-screen py-12">
+          {/* // [cursor-edit] container: padding mobile maior */}
+          <div className=" mx-auto px-10 md:px-6 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center min-h-screen">
               
               {/* Coluna Esquerda - Texto */}
-              <div className="space-y-6 order-2 lg:order-1">
+              <div className="space-y-6 order-2 lg:order-1 text-center lg:text-left">
                 {/* Logo */}
-                <div className="flex items-center space-x-3 mb-6">
-                  <div className="relative">
-                    <div className="w-12 h-12 bg-[#e2ba4b] rounded p-1">
-                      <div className="w-full h-full bg-white rounded flex items-center justify-center">
-                        <span className="text-[#e2ba4b] font-bold text-lg">AS</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <h1 className="text-lg font-bold text-[#e2ba4b] uppercase tracking-wider">
-                      ABRÃO & SILVA
-                    </h1>
-                    <p className="text-xs text-gray-400 uppercase tracking-wider">
-                      A FREQUÊNCIA DO RESULTADO
-                    </p>
-                  </div>
-                </div>
+              
 
 
 
                 {/* Título Principal */}
                 <div className="space-y-4">
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
                     Sua empresa pode estar <span className="text-[#e2ba4b]">pagando mais impostos</span> do que deveria. 
                     Descubra como <span className="text-[#e2ba4b]">reverter isso</span> com segurança e agilidade.
                   </h2>
                   
-                  <p className="text-lg text-gray-300 leading-relaxed">
+                  <p className="text-base text-gray-300 leading-relaxed">
                     Parcerias inteligentes para regularidade fiscal, recuperação de créditos tributários e redução real da carga tributária. 
                     <span className="text-[#e2ba4b] font-semibold">Mais de R$ 113 milhões já economizados</span> para empresas em todo o Brasil.
                   </p>
                 </div>
 
                 {/* CTA Button */}
-                <div className="pt-4">
+                <div className="pt-4 flex justify-center lg:justify-start">
                   <Button 
                     size="lg"
-                    className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black font-bold px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full md:w-auto"
+                    className="bg-[#2bee35] hover:bg-[#24a92c] text-black font-bold px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full md:w-auto"
                     onClick={() => scrollToSection("contato")}
                   >
                     QUERO UMA ANÁLISE GRATUITA
@@ -233,23 +218,34 @@ export default function ParceriasTributarias() {
                 {/* // [cursor-edit] */}
                 {/* Imagem integrada ao fundo da página */}
                 <div className="relative w-full max-w-lg lg:max-w-xl">
-                  {/* Gradiente de integração com o fundo */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-transparent opacity-60 z-10"></div>
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black opacity-40 z-10"></div>
+                  {/* Título impactante sobreposto - mobile */}
+                  {/* // [cursor-edit] padding mobile do título sobreposto */}
+                  <div className="absolute top-4 left-0 right-0 z-20 block lg:hidden px-10">
+                    <div className="text-center">
+                      <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-white leading-tight drop-shadow-2xl tracking-tight" style={{fontFamily: '-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji'}}>
+                        SUA EMPRESA PODE ESTAR <span className="text-[#e2ba4b] font-black">PERDENDO DINHEIRO</span>
+                      </h3>
+                      
+                    </div>
+                  </div>
+
+                  {/* Gradientes suaves nas laterais - versão mais clara */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 via-black/20 to-transparent opacity-80 z-10"></div>
+                  <div className="absolute inset-0 bg-gradient-to-l from-black via-black/50 via-black/20 to-transparent opacity-80 z-10"></div>
                   
                   <Image 
                     src="/dr/leaodr.png"
                     alt="Abrão & Silva Advocacia"
                     width={600}
                     height={700}
-                    className="w-full h-auto object-contain opacity-90 mix-blend-luminosity"
+                    className="w-full h-auto object-contain opacity-100"
                    
                     priority={true}
                   />
                   
-                  {/* Efeitos de integração */}
-                  <div className="absolute top-0 left-0 w-full h-full bg-black opacity-10 mix-blend-multiply"></div>
-                  <div className="absolute -inset-4 bg-gradient-to-br from-transparent via-black/5 to-black/20 blur-sm"></div>
+                  {/* Efeito suave nas bordas laterais */}
+                  <div className="absolute inset-y-0 left-0 w-6 bg-gradient-to-r from-black to-transparent opacity-60 z-15"></div>
+                  <div className="absolute inset-y-0 right-0 w-6 bg-gradient-to-l from-black to-transparent opacity-60 z-15"></div>
                 </div>
               </div>
             </div>
@@ -261,7 +257,7 @@ export default function ParceriasTributarias() {
           <div className="fixed bottom-6 right-6 z-50">
             <Button
               size="lg"
-              className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black rounded-full w-16 h-16 p-0 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-[#2bee35] hover:bg-[#24a92c] text-black rounded-full w-16 h-16 p-0 shadow-lg hover:shadow-xl transition-all duration-300"
               onClick={() => scrollToSection("contato")}
             >
               <MessageSquare className="h-8 w-8" />
@@ -271,25 +267,26 @@ export default function ParceriasTributarias() {
 
         {/* Statistics Section - Cards Escuros */}
         <section className="py-16 bg-gray-100">
-          <div className="container mx-auto px-4">
+          {/* // [cursor-edit] container: padding mobile maior */}
+          <div className="container mx-auto px-10 md:px-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-              <div className="bg-gray-800 rounded-2xl p-6 md:p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="bg-gray-800 rounded-2xl p-8 md:p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
                   +10
                 </div>
                 <p className="text-gray-300 text-base md:text-lg">Anos de experiência</p>
               </div>
               
-              <div className="bg-gray-800 rounded-2xl p-6 md:p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="bg-gray-800 rounded-2xl p-8 md:p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
-                  +15
+                  +25
                 </div>
                 <p className="text-gray-300 text-base md:text-lg">Estados Atendidos</p>
               </div>
               
-              <div className="bg-gray-800 rounded-2xl p-6 md:p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="bg-gray-800 rounded-2xl p-8 md:p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
-                  +2.000
+                  +3000
                 </div>
                 <p className="text-gray-300 text-base md:text-lg">Clientes Atendidos</p>
               </div>
@@ -299,7 +296,8 @@ export default function ParceriasTributarias() {
 
         {/* Como Funciona Nossa Atuação / Vantagens */}
         <section className="py-16 bg-gray-900">
-          <div className="container mx-auto px-4">
+          {/* // [cursor-edit] container: padding mobile maior */}
+          <div className="container mx-auto px-10 md:px-6">
             <div className="text-center mb-16">
               <div className="w-24 h-1 bg-[#e2ba4b] mx-auto mb-4"></div>
               <p className="text-sm text-gray-400 uppercase tracking-wider mb-4">
@@ -382,7 +380,7 @@ export default function ParceriasTributarias() {
             <div className="text-center">
               <Button 
                 size="lg"
-                className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+                className="bg-[#2bee35] hover:bg-[#24a92c] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
                 onClick={() => scrollToSection("contato")}
               >
                 <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
@@ -394,7 +392,8 @@ export default function ParceriasTributarias() {
 
         {/* Quem irá trabalhar ao seu favor */}
         <section className="py-16 bg-gray-800">
-          <div className="container mx-auto px-4">
+          {/* // [cursor-edit] container: padding mobile maior */}
+          <div className="container mx-auto px-10 md:px-6">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Quem irá trabalhar ao seu favor
@@ -424,7 +423,7 @@ export default function ParceriasTributarias() {
               </div>
 
               {/* Informações do Escritório */}
-              <div className="order-1 lg:order-2">
+              <div className="order-1 lg:order-2 text-center lg:text-left">
                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
                   Abrão e Silva Advogados Associados
                 </h3>
@@ -437,14 +436,16 @@ export default function ParceriasTributarias() {
                   centenas de empresas atendidas e mais de R$ 113 milhões em economia 
                   efetiva, nos orgulhamos de entregar resultados consistentes e duradouros.
                 </p>
-                <Button 
-                  size="lg"
-                  className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
-                  onClick={() => scrollToSection("contato")}
-                >
-                  <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
-                  <span className="text-xs sm:text-sm md:text-lg leading-tight">CLIQUE AQUI E FALE COM UM ADVOGADO ESPECIALISTA</span>
-                </Button>
+                <div className="flex justify-center lg:justify-start">
+                  <Button 
+                    size="lg"
+                    className="bg-[#2bee35] hover:bg-[#24a92c] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+                    onClick={() => scrollToSection("contato")}
+                  >
+                    <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
+                    <span className="text-xs sm:text-sm md:text-lg leading-tight">CLIQUE AQUI E FALE COM UM ADVOGADO ESPECIALISTA</span>
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
@@ -452,7 +453,8 @@ export default function ParceriasTributarias() {
 
         {/* Nossas áreas de atuação */}
         <section className="py-16 bg-gray-800">
-          <div className="container mx-auto px-4">
+          {/* // [cursor-edit] container: padding mobile maior */}
+          <div className="container mx-auto px-10 md:px-6">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Nossas áreas de atuação
@@ -464,10 +466,10 @@ export default function ParceriasTributarias() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
               {/* Coluna Esquerda */}
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
+              <div className="space-y-6 text-center md:text-left">
+                <div className="flex items-start space-x-4 justify-center md:justify-start">
                   <div className="bg-[#e2ba4b] rounded-full w-3 h-3 mt-2 flex-shrink-0"></div>
-                  <div>
+                  <div className="text-center md:text-left">
                     <h3 className="text-white font-bold text-lg mb-2">
                       Recuperação de tributos pagos indevidamente:
                     </h3>
@@ -477,18 +479,18 @@ export default function ParceriasTributarias() {
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4">
+                <div className="flex items-start space-x-4 justify-center md:justify-start">
                   <div className="bg-[#e2ba4b] rounded-full w-3 h-3 mt-2 flex-shrink-0"></div>
-                  <div>
+                  <div className="text-center md:text-left">
                     <h3 className="text-white font-bold text-lg mb-2">
                       Renegociação fiscal com a Receita Federal e PGFN
                     </h3>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4">
+                <div className="flex items-start space-x-4 justify-center md:justify-start">
                   <div className="bg-[#e2ba4b] rounded-full w-3 h-3 mt-2 flex-shrink-0"></div>
-                  <div>
+                  <div className="text-center md:text-left">
                     <h3 className="text-white font-bold text-lg mb-2">
                       Transações tributárias e programas especiais de parcelamento
                     </h3>
@@ -497,28 +499,28 @@ export default function ParceriasTributarias() {
               </div>
 
               {/* Coluna Direita */}
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
+              <div className="space-y-6 text-center md:text-left">
+                <div className="flex items-start space-x-4 justify-center md:justify-start">
                   <div className="bg-[#e2ba4b] rounded-full w-3 h-3 mt-2 flex-shrink-0"></div>
-                  <div>
+                  <div className="text-center md:text-left">
                     <h3 className="text-white font-bold text-lg mb-2">
                       Planejamento tributário estratégico
                     </h3>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4">
+                <div className="flex items-start space-x-4 justify-center md:justify-start">
                   <div className="bg-[#e2ba4b] rounded-full w-3 h-3 mt-2 flex-shrink-0"></div>
-                  <div>
+                  <div className="text-center md:text-left">
                     <h3 className="text-white font-bold text-lg mb-2">
                       Regularidade fiscal e certidões negativas
                     </h3>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4">
+                <div className="flex items-start space-x-4 justify-center md:justify-start">
                   <div className="bg-[#e2ba4b] rounded-full w-3 h-3 mt-2 flex-shrink-0"></div>
-                  <div>
+                  <div className="text-center md:text-left">
                     <h3 className="text-white font-bold text-lg mb-2">
                       Atendimento a empresas de todos os portes e segmentos
                     </h3>
@@ -531,7 +533,7 @@ export default function ParceriasTributarias() {
             <div className="text-center">
               <Button 
                 size="lg"
-                className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+                  className="bg-[#2bee35] hover:bg-[#24a92c] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
                 onClick={() => scrollToSection("contato")}
               >
                 <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
@@ -543,7 +545,8 @@ export default function ParceriasTributarias() {
 
         {/* Nossos Depoimentos */}
         <section className="py-16 bg-gray-800">
-          <div className="container mx-auto px-4">
+          {/* // [cursor-edit] container: padding mobile maior */}
+          <div className="container mx-auto px-10 md:px-6">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Nossos Depoimentos
@@ -553,7 +556,7 @@ export default function ParceriasTributarias() {
             <div className="text-center">
               <Button 
                 size="lg"
-                className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+                className="bg-[#2bee35] hover:bg-[#24a92c] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
                 onClick={() => scrollToSection("contato")}
               >
                 <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
@@ -565,7 +568,8 @@ export default function ParceriasTributarias() {
 
         {/* Galeria de Vídeos */}
         <section className="py-16 bg-gray-800">
-          <div className="container mx-auto px-4">
+          {/* // [cursor-edit] container: padding mobile maior */}
+          <div className="container mx-auto px-10 md:px-6">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Galeria de Vídeos
@@ -575,7 +579,7 @@ export default function ParceriasTributarias() {
             <div className="text-center">
               <Button 
                 size="lg"
-                className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+                  className="bg-[#2bee35] hover:bg-[#24a92c] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
                 onClick={() => scrollToSection("contato")}
               >
                 <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
@@ -587,7 +591,7 @@ export default function ParceriasTributarias() {
 
         {/* Como Funciona Nosso Programa ? */}
         <section className="py-16 bg-gray-900">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-8 md:px-4">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Como Funciona Nosso Programa ?
@@ -752,7 +756,7 @@ export default function ParceriasTributarias() {
         </section>
         {/* Contato */}
         <section id="contato" className="py-16 bg-gray-800">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-8 md:px-4">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Contato
@@ -820,7 +824,7 @@ export default function ParceriasTributarias() {
 
         {/* Perguntas realizadas com frequência */}
         <section className="py-16 bg-gray-800">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-8 md:px-4">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Perguntas realizadas com frequência
@@ -903,7 +907,7 @@ export default function ParceriasTributarias() {
 
         {/* Footer */}
         <footer className="bg-white py-8 text-center">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-8 md:px-4">
             <p className="text-gray-600">
               Copyright 2025. Todos os Direitos Reservados. Desenvolvido por <strong>Gat Hub Digital</strong>
             </p>
