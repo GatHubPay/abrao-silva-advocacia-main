@@ -273,7 +273,7 @@ export default function ParceriasTributarias() {
                 <div className="pt-4 flex justify-center lg:justify-start">
                   <Button 
                     size="lg"
-                    className="bg-[#2bee35] hover:bg-[#24a92c] text-black font-bold px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full md:w-auto"
+                    className="bg-[#2bee3597] hover:bg-[#24a92c] text-black font-bold px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full md:w-auto"
                     onClick={() => scrollToSection("contato")}
                   >
                     QUERO UMA ANÁLISE GRATUITA
@@ -325,7 +325,7 @@ export default function ParceriasTributarias() {
           <div className="fixed bottom-6 right-6 z-50">
             <Button
               size="lg"
-              className="bg-[#2bee35] hover:bg-[#24a92c] text-black rounded-full w-16 h-16 p-0 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-[#2bee3597] hover:bg-[#24a92c] text-black rounded-full w-16 h-16 p-0 shadow-lg hover:shadow-xl transition-all duration-300"
               onClick={() => scrollToSection("contato")}
             >
               <MessageSquare className="h-8 w-8" />
