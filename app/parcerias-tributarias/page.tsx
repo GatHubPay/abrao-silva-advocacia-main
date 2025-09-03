@@ -601,34 +601,14 @@ export default function ParceriasTributarias() {
                 onClick={() => scrollToSection("contato")}
               >
                 <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
-                <span className="text-xs sm:text-sm md:text-lg leading-tight font-bold">Aumente seu fluxo de caixa</span>
+                <span className="text-xs sm:text-sm md:text-lg leading-tight font-bold">Faça um diagnóstico gratuito</span>
               </Button>
             </div>
           </div>
         </section>
 
         {/* Nossos Depoimentos */}
-        <section className="py-16 bg-black">
-          {/* // [cursor-edit] container: padding mobile maior */}
-          <div className=" mx-auto px-10 md:px-6">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Nossos Depoimentos
-              </h2>
-            </div>
-            
-            <div className="text-center">
-              <Button 
-                size="lg"
-                className="bg-[#2bee3597] hover:bg-[#24a92c] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
-                onClick={() => scrollToSection("contato")}
-              >
-                <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
-                <span className="text-xs sm:text-sm md:text-lg leading-tight font-bolds ">Aumente seu fluxo de caixa</span>
-              </Button>
-            </div>
-          </div>
-        </section>
+      
 
         {/* Galeria de Vídeos */}
         <section className="py-16 bg-black">
@@ -643,181 +623,18 @@ export default function ParceriasTributarias() {
             <div className="text-center">
               <Button 
                 size="lg"
-                  className="bg-[#2ee3597] hover:bg-[#24a92c] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+                  className="bg-[#2bee3597] hover:bg-[#24a92c] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
                 onClick={() => scrollToSection("contato")}
               >
                 <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
-                <span className="text-xs sm:text-sm md:text-lg leading-tight font-bold">Aumente seu fluxo de caixa</span>
+                <span className="text-xs sm:text-sm md:text-lg leading-tight font-bold">Faça um diagnóstico gratuito</span>
               </Button>
             </div>
           </div>
         </section>
 
         {/* Como Funciona Nosso Programa ? */}
-        <section className="py-16 bg-black">
-          <div className=" mx-auto px-8 md:px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Como Funciona Nosso Programa ?
-              </h2>
-            </div>
-
-            {/* Timeline do Processo - Responsivo */}
-            <div className="max-w-4xl mx-auto">
-              {/* Mobile: Layout vertical simples */}
-              <div className="block md:hidden space-y-8">
-                {/* Step 1 - Mobile */}
-                <div className="bg-gray-800 rounded-2xl p-6 border-l-4 border-[#e2ba4b]">
-                  <div className="flex items-center mb-4">
-                    <div className="bg-[#e2ba4b] rounded-full w-8 h-8 flex items-center justify-center mr-4">
-                      <span className="text-sm font-bold text-black">1</span>
-                    </div>
-                    <MessageSquare className="h-6 w-6 text-green-500" />
-                  </div>
-                  <h3 className="text-lg font-bold text-white mb-2">CONTATO NO WHATSAPP</h3>
-                  <p className="text-gray-300 text-sm">
-                    Você entra em contato conosco através de um dos botões disponíveis no site
-                  </p>
-                </div>
-
-                {/* Step 2 - Mobile */}
-                <div className="bg-gray-800 rounded-2xl p-6 border-l-4 border-[#e2ba4b]">
-                  <div className="flex items-center mb-4">
-                    <div className="bg-[#e2ba4b] rounded-full w-8 h-8 flex items-center justify-center mr-4">
-                      <span className="text-sm font-bold text-black">2</span>
-                    </div>
-                    <Search className="h-6 w-6 text-blue-500" />
-                  </div>
-                  <h3 className="text-lg font-bold text-white mb-2">DIAGNÓSTICO</h3>
-                  <p className="text-gray-300 text-sm">
-                    Nossos especialistas fazem análise minuciosa da sua empresa, em busca de 
-                    melhores práticas de mercado.
-                  </p>
-                </div>
-
-                {/* Step 3 - Mobile */}
-                <div className="bg-gray-800 rounded-2xl p-6 border-l-4 border-[#e2ba4b]">
-                  <div className="flex items-center mb-4">
-                    <div className="bg-[#e2ba4b] rounded-full w-8 h-8 flex items-center justify-center mr-4">
-                      <span className="text-sm font-bold text-black">3</span>
-                    </div>
-                    <FileText className="h-6 w-6 text-purple-500" />
-                  </div>
-                  <h3 className="text-lg font-bold text-white mb-2">ESTRUTURAÇÃO</h3>
-                  <p className="text-gray-300 text-sm">
-                    Será estruturado um programa personalizado para sua empresa.
-                  </p>
-                </div>
-
-                {/* Step 4 - Mobile */}
-                <div className="bg-gray-800 rounded-2xl p-6 border-l-4 border-[#e2ba4b]">
-                  <div className="flex items-center mb-4">
-                    <div className="bg-[#e2ba4b] rounded-full w-8 h-8 flex items-center justify-center mr-4">
-                      <span className="text-sm font-bold text-black">4</span>
-                    </div>
-                    <MessageSquare className="h-6 w-6 text-green-500" />
-                  </div>
-                  <h3 className="text-lg font-bold text-white mb-2">EXECUÇÃO</h3>
-                  <p className="text-gray-300 text-sm">
-                    Implantação do programa na empresa de forma estruturada.
-                  </p>
-                </div>
-              </div>
-
-              {/* Desktop: Layout timeline tradicional */}
-              <div className="hidden md:block relative" ref={timelineRef}>
-                {/* Linha vertical central - fundo */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gray-600"></div>
-                {/* Linha vertical central - animada */}
-                <div 
-                  className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-[#e2ba4b] transition-all duration-500 ease-out"
-                  style={{
-                    height: `${timelineProgress * 100}%`,
-                    boxShadow: timelineProgress > 0 ? '0 0 15px rgba(226, 186, 75, 0.6)' : 'none',
-                    background: timelineProgress > 0 ? 'linear-gradient(to bottom, #e2ba4b, #d4a942)' : '#e2ba4b'
-                  }}
-                ></div>
-
-                {/* Step 1 - Desktop */}
-                <div className="relative flex items-center mb-12">
-                  <div className="w-1/2 pr-8 text-right">
-                    <div className="bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-700">
-                      <div className="flex justify-end mb-4">
-                        <MessageSquare className="h-8 w-8 text-green-500" />
-                      </div>
-                      <h3 className="text-xl font-bold text-white mb-2">CONTATO NO WHATSAPP</h3>
-                      <p className="text-gray-300">
-                        Você entra em contato conosco através de um dos botões disponíveis no site
-                      </p>
-                    </div>
-                  </div>
-                  <div className={`absolute left-1/2 transform -translate-x-1/2 w-8 h-8 border-4 border-gray-600 rounded-full flex items-center justify-center transition-all duration-700 ${timelineProgress >= 0.15 ? 'bg-[#e2ba4b] scale-110' : 'bg-gray-600'}`}>
-                    <span className={`text-sm font-bold transition-colors duration-700 ${timelineProgress >= 0.15 ? 'text-black' : 'text-gray-400'}`}>1</span>
-                  </div>
-                  <div className="w-1/2 pl-8"></div>
-                </div>
-
-                {/* Step 2 - Desktop */}
-                <div className="relative flex items-center mb-12">
-                  <div className="w-1/2 pr-8"></div>
-                  <div className={`absolute left-1/2 transform -translate-x-1/2 w-8 h-8 border-4 border-gray-600 rounded-full flex items-center justify-center transition-all duration-700 ${timelineProgress >= 0.4 ? 'bg-[#e2ba4b] scale-110' : 'bg-gray-600'}`}>
-                    <span className={`text-sm font-bold transition-colors duration-700 ${timelineProgress >= 0.4 ? 'text-black' : 'text-gray-400'}`}>2</span>
-                  </div>
-                  <div className="w-1/2 pl-8">
-                    <div className="bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-700">
-                      <div className="flex justify-start mb-4">
-                        <Search className="h-8 w-8 text-blue-500" />
-                      </div>
-                      <h3 className="text-xl font-bold text-white mb-2">DIAGNÓSTICO</h3>
-                      <p className="text-gray-300">
-                        Nossos especialistas fazem análise minuciosa da sua empresa, em busca de 
-                        melhores práticas de mercado.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Step 3 - Desktop */}
-                <div className="relative flex items-center mb-12">
-                  <div className="w-1/2 pr-8 text-right">
-                    <div className="bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-700">
-                      <div className="flex justify-end mb-4">
-                        <FileText className="h-8 w-8 text-purple-500" />
-                      </div>
-                      <h3 className="text-xl font-bold text-white mb-2">ESTRUTURAÇÃO</h3>
-                      <p className="text-gray-300">
-                        Será estruturado um programa personalizado para sua empresa.
-                      </p>
-                    </div>
-                  </div>
-                  <div className={`absolute left-1/2 transform -translate-x-1/2 w-8 h-8 border-4 border-gray-600 rounded-full flex items-center justify-center transition-all duration-700 ${timelineProgress >= 0.65 ? 'bg-[#e2ba4b] scale-110' : 'bg-gray-600'}`}>
-                    <span className={`text-sm font-bold transition-colors duration-700 ${timelineProgress >= 0.65 ? 'text-black' : 'text-gray-400'}`}>3</span>
-                  </div>
-                  <div className="w-1/2 pl-8"></div>
-                </div>
-
-                {/* Step 4 - Desktop */}
-                <div className="relative flex items-center">
-                  <div className="w-1/2 pr-8"></div>
-                  <div className={`absolute left-1/2 transform -translate-x-1/2 w-8 h-8 border-4 border-gray-600 rounded-full flex items-center justify-center transition-all duration-700 ${timelineProgress >= 0.9 ? 'bg-[#e2ba4b] scale-110' : 'bg-gray-600'}`}>
-                    <span className={`text-sm font-bold transition-colors duration-700 ${timelineProgress >= 0.9 ? 'text-black' : 'text-gray-400'}`}>4</span>
-                  </div>
-                  <div className="w-1/2 pl-8">
-                    <div className="bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-700">
-                      <div className="flex justify-start mb-4">
-                        <MessageSquare className="h-8 w-8 text-green-500" />
-                      </div>
-                      <h3 className="text-xl font-bold text-white mb-2">EXECUÇÃO</h3>
-                      <p className="text-gray-300">
-                        Implantação do programa na empresa de forma estruturada.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+    
         {/* Contato */}
         <section id="contato" className="py-16 bg-gray-800">
           <div className="container mx-auto px-8 md:px-4">
