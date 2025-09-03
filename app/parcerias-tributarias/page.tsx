@@ -524,75 +524,72 @@ export default function ParceriasTributarias() {
           <div className=" mx-auto px-10 md:px-6">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Nossas áreas de atuação
+               Áreas de Atuação
               </h2>
-              <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+              <p className="text-sm text-gray-300 max-w-3xl mx-auto">
                 Especialistas nas principais frentes de economia tributária
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-              {/* Coluna Esquerda */}
-              <div className="space-y-6 text-center md:text-left">
-                <div className="flex items-start space-x-4 justify-center md:justify-start">
-                  <div className="bg-[#e2ba4b] rounded-full w-3 h-3 mt-2 flex-shrink-0"></div>
-                  <div className="text-center md:text-left">
-                    <h3 className="text-white font-bold text-lg mb-2">
-                      Recuperação de tributos pagos indevidamente:
-                    </h3>
-                    <p className="text-gray-300">
-                      PIS, COFINS, INSS, IRPJ e CSLL
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4 justify-center md:justify-start">
-                  <div className="bg-[#e2ba4b] rounded-full w-3 h-3 mt-2 flex-shrink-0"></div>
-                  <div className="text-center md:text-left">
-                    <h3 className="text-white font-bold text-lg mb-2">
-                      Renegociação fiscal com a Receita Federal e PGFN
-                    </h3>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4 justify-center md:justify-start">
-                  <div className="bg-[#e2ba4b] rounded-full w-3 h-3 mt-2 flex-shrink-0"></div>
-                  <div className="text-center md:text-left">
-                    <h3 className="text-white font-bold text-lg mb-2">
-                      Transações tributárias e programas especiais de parcelamento
-                    </h3>
-                  </div>
-                </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+              {/* Card 1 */}
+              <div className="bg-gray-800 rounded-2xl p-6 hover:bg-gray-700 transition-all duration-300 hover:scale-105 border border-gray-700">
+                <h3 className="text-white font-bold text-lg mb-4">
+                  Recuperação de Tributos
+                </h3>
+                <p className="text-gray-300 text-sm">
+                  PIS, COFINS, INSS, IRPJ e CSLL pagos indevidamente
+                </p>
               </div>
 
-              {/* Coluna Direita */}
-              <div className="space-y-6 text-center md:text-left">
-                <div className="flex items-start space-x-4 justify-center md:justify-start">
-                  <div className="bg-[#e2ba4b] rounded-full w-3 h-3 mt-2 flex-shrink-0"></div>
-                  <div className="text-center md:text-left">
-                    <h3 className="text-white font-bold text-lg mb-2">
-                      Planejamento tributário estratégico
-                    </h3>
-                  </div>
-                </div>
+              {/* Card 2 */}
+              <div className="bg-gray-800 rounded-2xl p-6 hover:bg-gray-700 transition-all duration-300 hover:scale-105 border border-gray-700">
+                <h3 className="text-white font-bold text-lg mb-4">
+                  Renegociação Fiscal
+                </h3>
+                <p className="text-gray-300 text-sm">
+                  Com a Receita Federal e PGFN
+                </p>
+              </div>
 
-                <div className="flex items-start space-x-4 justify-center md:justify-start">
-                  <div className="bg-[#e2ba4b] rounded-full w-3 h-3 mt-2 flex-shrink-0"></div>
-                  <div className="text-center md:text-left">
-                    <h3 className="text-white font-bold text-lg mb-2">
-                      Regularidade fiscal e certidões negativas
-                    </h3>
-                  </div>
-                </div>
+              {/* Card 3 */}
+              <div className="bg-gray-800 rounded-2xl p-6 hover:bg-gray-700 transition-all duration-300 hover:scale-105 border border-gray-700">
+                <h3 className="text-white font-bold text-lg mb-4">
+                  Transações Tributárias
+                </h3>
+                <p className="text-gray-300 text-sm">
+                  Programas especiais de parcelamento
+                </p>
+              </div>
 
-                <div className="flex items-start space-x-4 justify-center md:justify-start">
-                  <div className="bg-[#e2ba4b] rounded-full w-3 h-3 mt-2 flex-shrink-0"></div>
-                  <div className="text-center md:text-left">
-                    <h3 className="text-white font-bold text-lg mb-2">
-                      Atendimento a empresas de todos os portes e segmentos
-                    </h3>
-                  </div>
-                </div>
+              {/* Card 4 */}
+              <div className="bg-gray-800 rounded-2xl p-6 hover:bg-gray-700 transition-all duration-300 hover:scale-105 border border-gray-700">
+                <h3 className="text-white font-bold text-lg mb-4">
+                  Planejamento Estratégico
+                </h3>
+                <p className="text-gray-300 text-sm">
+                  Tributário personalizado
+                </p>
+              </div>
+
+              {/* Card 5 */}
+              <div className="bg-gray-800 rounded-2xl p-6 hover:bg-gray-700 transition-all duration-300 hover:scale-105 border border-gray-700">
+                <h3 className="text-white font-bold text-lg mb-4">
+                  Regularidade Fiscal
+                </h3>
+                <p className="text-gray-300 text-sm">
+                  Certidões negativas e compliance
+                </p>
+              </div>
+
+              {/* Card 6 */}
+              <div className="bg-gray-800 rounded-2xl p-6 hover:bg-gray-700 transition-all duration-300 hover:scale-105 border border-gray-700">
+                <h3 className="text-white font-bold text-lg mb-4">
+                  Atendimento Completo
+                </h3>
+                <p className="text-gray-300 text-sm">
+                  Empresas de todos os portes e segmentos
+                </p>
               </div>
             </div>
 
