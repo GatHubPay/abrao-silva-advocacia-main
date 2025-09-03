@@ -23,6 +23,74 @@ import Image from "next/image"
 
 import "@/styles/parcerias.css"
 
+// [cursor-edit] Componente de contagem animada ao entrar em view
+function CountUpOnView({
+  start = 0,
+  end,
+  duration = 1200,
+  prefix = "",
+  suffix = "",
+  formatLocale = "pt-BR",
+  className = ""
+}: {
+  start?: number
+  end: number
+  duration?: number
+  prefix?: string
+  suffix?: string
+  formatLocale?: string
+  className?: string
+}) {
+  const [value, setValue] = useState<number>(start)
+  const [hasAnimated, setHasAnimated] = useState(false)
+  const elementRef = useRef<HTMLSpanElement | null>(null)
+
+  useEffect(() => {
+    if (!elementRef.current) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated) {
+            setHasAnimated(true)
+          }
+        })
+      },
+      { threshold: 0.3, rootMargin: "0px 0px -10% 0px" }
+    )
+
+    observer.observe(elementRef.current)
+    return () => observer.disconnect()
+  }, [hasAnimated])
+
+  useEffect(() => {
+    if (!hasAnimated) return
+    const startTime = performance.now()
+
+    const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3)
+
+    const animate = (now: number) => {
+      const elapsed = now - startTime
+      const progress = Math.min(elapsed / duration, 1)
+      const eased = easeOutCubic(progress)
+      const current = Math.round(start + (end - start) * eased)
+      setValue(current)
+      if (progress < 1) requestAnimationFrame(animate)
+    }
+
+    const r = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(r)
+  }, [hasAnimated, start, end, duration])
+
+  const formatted = new Intl.NumberFormat(formatLocale).format(value)
+
+  return (
+    <span ref={elementRef} className={className}>
+      {prefix}{formatted}{suffix}
+    </span>
+  )
+}
+
 // [cursor-edit] - Componente otimizado da página de parcerias tributárias
 export default function ParceriasTributarias() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -266,13 +334,14 @@ export default function ParceriasTributarias() {
         </section>
 
         {/* Statistics Section - Cards Escuros */}
-        <section className="py-16 bg-gray-100">
+        <section className="py-16 bg-black;">
           {/* // [cursor-edit] container: padding mobile maior */}
-          <div className="container mx-auto px-10 md:px-6">
+          <div className=" mx-auto px-10 md:px-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
               <div className="bg-gray-800 rounded-2xl p-8 md:p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
-                  +10
+                  {/* // [cursor-edit] contador animado */}
+                  <CountUpOnView end={10} prefix="+" />
                 </div>
                 <p className="text-gray-300 text-base md:text-lg">Anos de Experiência</p>
               </div>
@@ -281,14 +350,16 @@ export default function ParceriasTributarias() {
               
               <div className="bg-gray-800 rounded-2xl p-8 md:p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
-                  +3.000
+                  {/* // [cursor-edit] contador animado */}
+                  <CountUpOnView end={3000} prefix="+" />
                 </div>
                 <p className="text-gray-300 text-base md:text-lg"> Contatos Efetivos</p>
               </div>
 
               <div className="bg-gray-800 rounded-2xl p-8 md:p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
-                  +2 BI
+                  {/* // [cursor-edit] contador animado */}
+                  <CountUpOnView end={2} prefix="+" suffix=" BI" />
                 </div>
                 <p className="text-gray-300 text-base md:text-lg">De Créditos Recuperados</p>
               </div>
