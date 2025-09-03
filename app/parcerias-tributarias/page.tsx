@@ -369,7 +369,7 @@ export default function ParceriasTributarias() {
         </section>
 
         {/* Como Funciona Nossa Atuação / Vantagens */}
-        <section className="py-16 bg-gray-900">
+        <section className="py-16 bg-black">
           {/* // [cursor-edit] container: padding mobile maior */}
           <div className="container mx-auto px-10 md:px-6">
             <div className="text-center mb-16">
@@ -458,16 +458,16 @@ export default function ParceriasTributarias() {
                 onClick={() => scrollToSection("contato")}
               >
                 <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
-                <span className="text-xs sm:text-sm md:text-lg leading-tight">CLIQUE AQUI E FALE COM UM ADVOGADO ESPECIALISTA</span>
+                <span className="text-xs sm:text-sm md:text-lg leading-tight font-bold">Aumente seu fluxo de caixa</span>
               </Button>
             </div>
           </div>
         </section>
 
         {/* Quem irá trabalhar ao seu favor */}
-        <section className="py-16 bg-gray-800">
+        <section className="py-16 bg-black">
           {/* // [cursor-edit] container: padding mobile maior */}
-          <div className="container mx-auto px-10 md:px-6">
+          <div className=" mx-auto px-10 md:px-6">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Quem irá trabalhar ao seu favor
@@ -513,11 +513,11 @@ export default function ParceriasTributarias() {
                 <div className="flex justify-center lg:justify-start">
                   <Button 
                     size="lg"
-                    className="bg-[#2bee35] hover:bg-[#24a92c] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+                    className="bg-[#2bee3597] hover:bg-[#24a92c] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
                     onClick={() => scrollToSection("contato")}
                   >
                     <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
-                    <span className="text-xs sm:text-sm md:text-lg leading-tight">CLIQUE AQUI E FALE COM UM ADVOGADO ESPECIALISTA</span>
+                    <span className="text-xs sm:text-sm md:text-lg leading-tight font-bold">Aumente seu fluxo de caixa</span>
                   </Button>
                 </div>
               </div>
@@ -526,9 +526,9 @@ export default function ParceriasTributarias() {
         </section>
 
         {/* Nossas áreas de atuação */}
-        <section className="py-16 bg-gray-800">
+        <section className="py-16 bg-black">
           {/* // [cursor-edit] container: padding mobile maior */}
-          <div className="container mx-auto px-10 md:px-6">
+          <div className=" mx-auto px-10 md:px-6">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Nossas áreas de atuação
@@ -618,9 +618,9 @@ export default function ParceriasTributarias() {
         </section>
 
         {/* Nossos Depoimentos */}
-        <section className="py-16 bg-gray-800">
+        <section className="py-16 bg-black">
           {/* // [cursor-edit] container: padding mobile maior */}
-          <div className="container mx-auto px-10 md:px-6">
+          <div className=" mx-auto px-10 md:px-6">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Nossos Depoimentos
@@ -641,9 +641,9 @@ export default function ParceriasTributarias() {
         </section>
 
         {/* Galeria de Vídeos */}
-        <section className="py-16 bg-gray-800">
+        <section className="py-16 bg-black">
           {/* // [cursor-edit] container: padding mobile maior */}
-          <div className="container mx-auto px-10 md:px-6">
+          <div className=" mx-auto px-10 md:px-6">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Galeria de Vídeos
