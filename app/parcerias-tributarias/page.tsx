@@ -634,166 +634,172 @@ export default function ParceriasTributarias() {
         </section>
 
         {/* Como Funciona Nosso Programa ? */}
-    
-        {/* Contato */}
-        <section id="contato" className="py-16 bg-gray-800">
-          <div className="container mx-auto px-8 md:px-4">
-            <div className="text-center mb-12">
+        <section className="py-16 bg-black">
+          <div className=" mx-auto px-10 md:px-6">
+            <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Contato
+                Como Funciona Nossa Análise ?
               </h2>
-              <div className="w-24 h-1 bg-[#e2ba4b] mx-auto mb-4"></div>
-              <p className="text-sm text-gray-400 uppercase tracking-wider">
-                REDES SOCIAIS
-              </p>
             </div>
 
-            <div className="max-w-3xl mx-auto">
-              {/* Grid responsivo de contatos */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                {/* Telefone */}
-                <div className="bg-gray-700 rounded-2xl p-6 shadow-lg border border-gray-600 text-center hover:bg-gray-600 transition-all duration-300 hover:scale-105">
-                  <div className="bg-green-500 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
-                    <Phone className="h-6 w-6 text-white" />
+            {/* Timeline do Processo - Responsivo */}
+            <div className="max-w-4xl mx-auto">
+              {/* Mobile: Layout vertical simples */}
+              <div className="block md:hidden space-y-8">
+                {/* Step 1 - Mobile */}
+                <div className="bg-gray-800 rounded-2xl p-6 ">
+                  <div className="flex items-center mb-4">
+                    <div className="bg-white rounded-full w-8 h-8 flex items-center justify-center mr-4">
+                      <span className="text-sm font-bold text-black">1</span>
+                    </div>
                   </div>
-                  <a 
-                    href="tel:+5562999128796" 
-                    className="text-sm md:text-base font-semibold text-white hover:text-[#e2ba4b] transition-colors block leading-tight"
-                  >
-                    (62) 9912-8796
-                  </a>
+                  <h3 className="text-lg font-bold text-white mb-2">CONTATO NO WHATSAPP</h3>
+                  <p className="text-gray-300 text-sm">
+                    Você entra em contato conosco através de um dos botões disponíveis no site
+                  </p>
                 </div>
 
-                {/* Instagram */}
-                <div className="bg-gray-700 rounded-2xl p-6 shadow-lg border border-gray-600 text-center hover:bg-gray-600 transition-all duration-300 hover:scale-105">
-                  <div className="bg-gradient-to-br from-purple-500 to-pink-500 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
-                    <span className="text-white text-lg font-bold">@</span>
+                {/* Step 2 - Mobile */}
+                <div className="bg-gray-800 rounded-2xl p-6 ">
+                  <div className="flex items-center mb-4">
+                    <div className="bg-white rounded-full w-8 h-8 flex items-center justify-center mr-4">
+                      <span className="text-sm font-bold text-black">2</span>
+                    </div>
                   </div>
-                  <span className="text-sm md:text-base font-semibold text-white block leading-tight">
-                    @abraoesilva_tributario
-                  </span>
+                  <h3 className="text-lg font-bold text-white mb-2">DIAGNÓSTICO</h3>
+                  <p className="text-gray-300 text-sm">
+                    Nossos especialistas fazem análise minuciosa da sua empresa, em busca de 
+                    melhores práticas de mercado.
+                  </p>
                 </div>
 
-                {/* Horário */}
-                <div className="bg-gray-700 rounded-2xl p-6 shadow-lg border border-gray-600 text-center hover:bg-gray-600 transition-all duration-300 hover:scale-105 md:col-span-3 lg:col-span-1">
-                  <div className="bg-blue-500 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
-                    <Clock className="h-6 w-6 text-white" />
+                {/* Step 3 - Mobile */}
+                <div className="bg-gray-800 rounded-2xl p-6 ">
+                  <div className="flex items-center mb-4">
+                    <div className="bg-white rounded-full w-8 h-8 flex items-center justify-center mr-4">
+                      <span className="text-sm font-bold text-black">3</span>
+                    </div>
                   </div>
-                  <span className="text-sm md:text-base font-semibold text-white block leading-tight">
-                    Segunda a Sexta
-                  </span>
-                  <span className="text-xs text-gray-300">
-                    das 9h às 18h
-                  </span>
+                  <h3 className="text-lg font-bold text-white mb-2">ESTRUTURAÇÃO</h3>
+                  <p className="text-gray-300 text-sm">
+                    Será estruturado um programa personalizado para sua empresa.
+                  </p>
+                </div>
+
+                {/* Step 4 - Mobile */}
+                <div className="bg-gray-800 rounded-2xl p-6 ">
+                  <div className="flex items-center mb-4">
+                    <div className="bg-white rounded-full w-8 h-8 flex items-center justify-center mr-4">
+                      <span className="text-sm font-bold text-black">4</span>
+                    </div>
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-2">EXECUÇÃO</h3>
+                  <p className="text-gray-300 text-sm">
+                    Implantação do programa na empresa de forma estruturada.
+                  </p>
                 </div>
               </div>
 
-              {/* CTA Final */}
-              <div className="text-center">
-                <Button 
-                  size="lg"
-                  className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
-                  onClick={() => window.open('https://wa.me/5562999128796', '_blank')}
-                >
-                  <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
-                  <span className="text-xs sm:text-sm md:text-lg leading-tight">FALAR NO WHATSAPP AGORA</span>
-                </Button>
+              {/* Desktop: Layout timeline tradicional */}
+              <div className="hidden md:block relative" ref={timelineRef}>
+                {/* Linha vertical central - fundo */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gray-600"></div>
+                {/* Linha vertical central - animada */}
+                <div 
+                  className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-[#e2ba4b] transition-all duration-500 ease-out"
+                  style={{
+                    height: `${timelineProgress * 100}%`,
+                    boxShadow: timelineProgress > 0 ? '0 0 15px rgba(226, 186, 75, 0.6)' : 'none',
+                    background: timelineProgress > 0 ? 'linear-gradient(to bottom, #e2ba4b, #d4a942)' : '#e2ba4b'
+                  }}
+                ></div>
+
+                {/* Step 1 - Desktop */}
+                <div className="relative flex items-center mb-12">
+                  <div className="w-1/2 pr-8 text-right">
+                    <div className="bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-700">
+                      <h3 className="text-xl font-bold text-white mb-2">CONTATO NO WHATSAPP</h3>
+                      <p className="text-gray-300">
+                        Você entra em contato conosco através de um dos botões disponíveis no site
+                      </p>
+                    </div>
+                  </div>
+                  <div className={`absolute left-1/2 transform -translate-x-1/2 w-8 h-8 border-4 border-gray-600 rounded-full flex items-center justify-center transition-all duration-700 ${timelineProgress >= 0.15 ? 'bg-white scale-110' : 'bg-gray-600'}`}>
+                    <span className={`text-sm font-bold transition-colors duration-700 ${timelineProgress >= 0.15 ? 'text-black' : 'text-gray-400'}`}>1</span>
+                  </div>
+                  <div className="w-1/2 pl-8"></div>
+                </div>
+
+                {/* Step 2 - Desktop */}
+                <div className="relative flex items-center mb-12">
+                  <div className="w-1/2 pr-8"></div>
+                  <div className={`absolute left-1/2 transform -translate-x-1/2 w-8 h-8 border-4 border-gray-600 rounded-full flex items-center justify-center transition-all duration-700 ${timelineProgress >= 0.4 ? 'bg-white scale-110' : 'bg-gray-600'}`}>
+                    <span className={`text-sm font-bold transition-colors duration-700 ${timelineProgress >= 0.4 ? 'text-black' : 'text-gray-400'}`}>2</span>
+                  </div>
+                  <div className="w-1/2 pl-8">
+                    <div className="bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-700">
+                      <h3 className="text-xl font-bold text-white mb-2">DIAGNÓSTICO</h3>
+                      <p className="text-gray-300">
+                        Nossos especialistas fazem análise minuciosa da sua empresa, em busca de 
+                        melhores práticas de mercado.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Step 3 - Desktop */}
+                <div className="relative flex items-center mb-12">
+                  <div className="w-1/2 pr-8 text-right">
+                    <div className="bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-700">
+                      <h3 className="text-xl font-bold text-white mb-2">ESTRUTURAÇÃO</h3>
+                      <p className="text-gray-300">
+                        Será estruturado um programa personalizado para sua empresa.
+                      </p>
+                    </div>
+                  </div>
+                  <div className={`absolute left-1/2 transform -translate-x-1/2 w-8 h-8 border-4 border-gray-600 rounded-full flex items-center justify-center transition-all duration-700 ${timelineProgress >= 0.65 ? 'bg-white scale-110' : 'bg-gray-600'}`}>
+                    <span className={`text-sm font-bold transition-colors duration-700 ${timelineProgress >= 0.65 ? 'text-black' : 'text-gray-400'}`}>3</span>
+                  </div>
+                  <div className="w-1/2 pl-8"></div>
+                </div>
+
+                {/* Step 4 - Desktop */}
+                <div className="relative flex items-center">
+                  <div className="w-1/2 pr-8"></div>
+                  <div className={`absolute left-1/2 transform -translate-x-1/2 w-8 h-8 border-4 border-gray-600 rounded-full flex items-center justify-center transition-all duration-700 ${timelineProgress >= 0.9 ? 'bg-white scale-110' : 'bg-gray-600'}`}>
+                    <span className={`text-sm font-bold transition-colors duration-700 ${timelineProgress >= 0.9 ? 'text-black' : 'text-gray-400'}`}>4</span>
+                  </div>
+                  <div className="w-1/2 pl-8">
+                    <div className="bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-700">
+                      <h3 className="text-xl font-bold text-white mb-2">EXECUÇÃO</h3>
+                      <p className="text-gray-300">
+                        Implantação do programa na empresa de forma estruturada.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
+            </div>
+
+            {/* // [cursor-edit] Botão mobile na última seção */}
+            <div className="block md:hidden mt-10">
+              <Button 
+                size="lg"
+                className="bg-[#2bee3597] hover:bg-[#24a92c] text-black font-bold px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full"
+                onClick={() => scrollToSection("contato")}
+              >
+                FALE COM ESPECIALISTA AGORA
+              </Button>
             </div>
           </div>
         </section>
+        {/* Contato */}
+       
 
         {/* Perguntas realizadas com frequência */}
-        <section className="py-16 bg-gray-800">
-          <div className="container mx-auto px-8 md:px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Perguntas realizadas com frequência
-              </h2>
-              <div className="w-24 h-1 bg-[#e2ba4b] mx-auto mb-4"></div>
-              <p className="text-sm text-gray-400 uppercase tracking-wider">
-                F.A.Q
-              </p>
-            </div>
-
-            <div className="max-w-4xl mx-auto space-y-4">
-              {/* FAQ Item 1 */}
-              <div className="bg-gray-700 rounded-2xl p-4 md:p-6 hover:bg-gray-600 transition-colors">
-                <h3 className="text-lg md:text-xl font-bold text-white mb-3 md:mb-4 flex items-start">
-                  <span className="mr-3 text-[#e2ba4b] flex-shrink-0">—</span>
-                  <span className="leading-tight">Quais empresas podem recuperar tributos ?</span>
-                </h3>
-                <div className="pl-6">
-                  <p className="text-gray-300 leading-relaxed text-sm md:text-base">
-                    Empresas do regime de lucro real ou presumido que tenham recolhido impostos indevidamente ou com base em 
-                    cálculo equivocado.
-                  </p>
-                </div>
-              </div>
-
-              {/* FAQ Item 2 */}
-              <div className="bg-gray-700 rounded-2xl p-4 md:p-6 hover:bg-gray-600 transition-colors">
-                <h3 className="text-lg md:text-xl font-bold text-white mb-3 md:mb-4 flex items-start">
-                  <span className="mr-3 text-[#e2ba4b] flex-shrink-0">—</span>
-                  <span className="leading-tight">O que é necessário para iniciar o processo ?</span>
-                </h3>
-                <div className="pl-6">
-                  <p className="text-gray-300 leading-relaxed text-sm md:text-base">
-                    Basta uma análise prévia gratuita. Com documentos fiscais e contábeis, conseguimos avaliar as 
-                    oportunidades de crédito.
-                  </p>
-                </div>
-              </div>
-
-              {/* FAQ Item 3 */}
-              <div className="bg-gray-700 rounded-2xl p-4 md:p-6 hover:bg-gray-600 transition-colors">
-                <h3 className="text-lg md:text-xl font-bold text-white mb-3 md:mb-4 flex items-start">
-                  <span className="mr-3 text-[#e2ba4b] flex-shrink-0">—</span>
-                  <span className="leading-tight">Essa recuperação é legal ?</span>
-                </h3>
-                <div className="pl-6">
-                  <p className="text-gray-300 leading-relaxed text-sm md:text-base">
-                    Sim. Atuamos com base na legislação tributária, decisões do STF/STJ e instruções normativas vigentes.
-                  </p>
-                </div>
-              </div>
-
-              {/* FAQ Item 4 - Nova */}
-              <div className="bg-gray-700 rounded-2xl p-4 md:p-6 hover:bg-gray-600 transition-colors">
-                <h3 className="text-lg md:text-xl font-bold text-white mb-3 md:mb-4 flex items-start">
-                  <span className="mr-3 text-[#e2ba4b] flex-shrink-0">—</span>
-                  <span className="leading-tight">Em quanto tempo vejo os resultados ?</span>
-                </h3>
-                <div className="pl-6">
-                  <p className="text-gray-300 leading-relaxed text-sm md:text-base">
-                    Dependendo do caso, os primeiros efeitos aparecem em até 30 dias após o início da atuação.
-                  </p>
-                </div>
-              </div>
-
-              {/* CTA FAQ */}
-              <div className="text-center pt-8">
-                <Button 
-                  size="lg"
-                  className="bg-[#e2ba4b] hover:bg-[#d4a942] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
-                  onClick={() => window.open('https://wa.me/5562999128796', '_blank')}
-                >
-                  <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
-                  <span className="text-xs sm:text-sm md:text-lg leading-tight">TIRE SUAS DÚVIDAS NO WHATSAPP</span>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
-
+   
         {/* Footer */}
-        <footer className="bg-white py-8 text-center">
-          <div className="container mx-auto px-8 md:px-4">
-            <p className="text-gray-600">
-              Copyright 2025. Todos os Direitos Reservados. Desenvolvido por <strong>Gat Hub Digital</strong>
-            </p>
-          </div>
-        </footer>
+       
       </main>
     </div>
   )
