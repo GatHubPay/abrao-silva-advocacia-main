@@ -454,7 +454,7 @@ export default function ParceriasTributarias() {
             <div className="text-center">
               <Button 
                 size="lg"
-                className="bg-[#2bee35] hover:bg-[#24a92c] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+                className="bg-[#2bee3597] hover:bg-[#24a92c] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
                 onClick={() => scrollToSection("contato")}
               >
                 <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
@@ -465,9 +465,22 @@ export default function ParceriasTributarias() {
         </section>
 
         {/* Quem irá trabalhar ao seu favor */}
-        <section className="py-16 bg-black">
-          {/* // [cursor-edit] container: padding mobile maior */}
-          <div className=" mx-auto px-10 md:px-6">
+        <section className="relative bg-black overflow-hidden">
+          {/* Imagem de fundo */}
+          <div className="absolute -top-72 inset-x-0 bottom-0 z-0">
+            <Image 
+              src="/dr.png"
+              alt="Abrão e Silva Advogados Associados"
+              fill
+              className="object-cover object-top opacity-60 grayscale"
+              priority={true}
+            />
+            {/* Overlay escuro para melhorar legibilidade do texto */}
+            <div className="absolute inset-0 bg-black/40"></div>
+          </div>
+
+          {/* Conteúdo sobreposto */}
+          <div className="relative z-10 mx-auto px-10 md:px-6 py-16">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Quem irá trabalhar ao seu favor
@@ -478,48 +491,28 @@ export default function ParceriasTributarias() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              {/* Imagem do Advogado */}
-              <div className="order-2 lg:order-1">
-                <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-                  <div className="aspect-[3/4] relative">
-                    <Image 
-                      src="/dr.png"
-                      alt="Abrão e Silva Advogados Associados"
-                      width={500}
-                      height={400}
-                      className="w-full h-full object-cover object-center"
-                      priority={true}
-                    />
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-2xl"></div>
-                </div>
-              </div>
-
-              {/* Informações do Escritório */}
-              <div className="order-1 lg:order-2 text-center lg:text-left">
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
-                  Abrão e Silva Advogados Associados
-                </h3>
-                <p className="text-lg text-gray-300 leading-relaxed mb-6">
-                  Somos um time de especialistas em direito tributário com atuação 
-                  nacional, focado em gerar economia real para empresas dos mais 
-                  diversos setores. Nosso diferencial está na comunicação transparente, 
-                  agilidade nas entregas e parcerias duradouras, sempre com foco em 
-                  segurança jurídica e impacto positivo no caixa da empresa. Com 
-                  centenas de empresas atendidas e mais de R$ 113 milhões em economia 
-                  efetiva, nos orgulhamos de entregar resultados consistentes e duradouros.
-                </p>
-                <div className="flex justify-center lg:justify-start">
-                  <Button 
-                    size="lg"
-                    className="bg-[#2bee3597] hover:bg-[#24a92c] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
-                    onClick={() => scrollToSection("contato")}
-                  >
-                    <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
-                    <span className="text-xs sm:text-sm md:text-lg leading-tight font-bold">Aumente seu fluxo de caixa</span>
-                  </Button>
-                </div>
+            <div className="max-w-4xl mx-auto text-center">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
+                Abrão e Silva Advogados Associados
+              </h3>
+              <p className="text-lg text-gray-300 leading-relaxed mb-8">
+                Somos um time de especialistas em direito tributário com atuação 
+                nacional, focado em gerar economia real para empresas dos mais 
+                diversos setores. Nosso diferencial está na comunicação transparente, 
+                agilidade nas entregas e parcerias duradouras, sempre com foco em 
+                segurança jurídica e impacto positivo no caixa da empresa. Com 
+                centenas de empresas atendidas e mais de R$ 113 milhões em economia 
+                efetiva, nos orgulhamos de entregar resultados consistentes e duradouros.
+              </p>
+              <div className="flex justify-center">
+                <Button 
+                  size="lg"
+                  className="bg-[#2bee3597] hover:bg-[#24a92c] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+                  onClick={() => scrollToSection("contato")}
+                >
+                  <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
+                  <span className="text-xs sm:text-sm md:text-lg leading-tight font-bold">Aumente seu fluxo de caixa</span>
+                </Button>
               </div>
             </div>
           </div>
@@ -607,11 +600,11 @@ export default function ParceriasTributarias() {
             <div className="text-center">
               <Button 
                 size="lg"
-                  className="bg-[#2bee35] hover:bg-[#24a92c] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+                  className="bg-[#2bee3597] hover:bg-[#24a92c] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
                 onClick={() => scrollToSection("contato")}
               >
                 <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
-                <span className="text-xs sm:text-sm md:text-lg leading-tight">Quero conversar com uma advogada especializada</span>
+                <span className="text-xs sm:text-sm md:text-lg leading-tight font-bold">Aumente seu fluxo de caixa</span>
               </Button>
             </div>
           </div>
@@ -630,11 +623,11 @@ export default function ParceriasTributarias() {
             <div className="text-center">
               <Button 
                 size="lg"
-                className="bg-[#2bee35] hover:bg-[#24a92c] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+                className="bg-[#2bee3597] hover:bg-[#24a92c] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
                 onClick={() => scrollToSection("contato")}
               >
                 <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
-                <span className="text-xs sm:text-sm md:text-lg leading-tight">Quero conversar com uma advogada especializada</span>
+                <span className="text-xs sm:text-sm md:text-lg leading-tight font-bolds ">Aumente seu fluxo de caixa</span>
               </Button>
             </div>
           </div>
@@ -653,19 +646,19 @@ export default function ParceriasTributarias() {
             <div className="text-center">
               <Button 
                 size="lg"
-                  className="bg-[#2bee35] hover:bg-[#24a92c] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+                  className="bg-[#2ee3597] hover:bg-[#24a92c] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
                 onClick={() => scrollToSection("contato")}
               >
                 <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
-                <span className="text-xs sm:text-sm md:text-lg leading-tight">Quero conversar com uma advogada especializada</span>
+                <span className="text-xs sm:text-sm md:text-lg leading-tight font-bold">Aumente seu fluxo de caixa</span>
               </Button>
             </div>
           </div>
         </section>
 
         {/* Como Funciona Nosso Programa ? */}
-        <section className="py-16 bg-gray-900">
-          <div className="container mx-auto px-8 md:px-4">
+        <section className="py-16 bg-black">
+          <div className=" mx-auto px-8 md:px-4">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Como Funciona Nosso Programa ?
