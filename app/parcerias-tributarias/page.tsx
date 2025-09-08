@@ -465,7 +465,7 @@ export default function ParceriasTributarias() {
             </div>
 
             {/* Cards empilhados com Framer Motion */}
-            <div ref={cardsContainerRef} className="relative h-[45rem] md:h-auto">
+            <div ref={cardsContainerRef} className="relative h-[40rem] md:h-auto">
               {/* Grid responsivo para desktop */}
               <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 mb-12">
                 {cardsData.map((card, index) => {
@@ -514,8 +514,8 @@ export default function ParceriasTributarias() {
                   // Animação com melhor separação dos cards
                   const y = useTransform(
                     scrollYProgress,
-                    [0, 0.3, 0.7, 1],
-                    [0, 0, index * 100, index * 160]
+                    [0, 0.2, 0.6, 1],
+                    [0, 0, index * 80, index * 140]
                   )
                   
                   const rotate = useTransform(
@@ -568,7 +568,7 @@ export default function ParceriasTributarias() {
               <motion.div 
                 className="text-center absolute left-1/2 w-full md:relative md:left-auto md:w-auto"
                 style={{
-                  y: useTransform(scrollYProgress, [0, 1], [0, cardsData.length * 160 + 50]),
+                  y: useTransform(scrollYProgress, [0, 1], [0, cardsData.length * 140 + 40]),
                   x: "-50%",
                   zIndex: 60
                 }}
