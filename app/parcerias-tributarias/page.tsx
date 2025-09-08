@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef, useCallback, useMemo } from "react"
-import { motion, useScroll, useTransform, useInView } from "framer-motion"
+import { motion, useInView } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import {
   ArrowRight,
@@ -124,24 +124,9 @@ export default function ParceriasTributarias() {
   const [timelineProgress, setTimelineProgress] = useState(0)
   const observerRef = useRef<IntersectionObserver | null>(null)
   const timelineRef = useRef<HTMLDivElement | null>(null)
-  const cardsContainerRef = useRef<HTMLDivElement | null>(null)
   
   // [cursor-edit] Hook para efeito de scroll das cartas
   const { scrollY, isInView, containerRef } = useScrollEffect()
-
-  // [cursor-edit] Framer Motion scroll para cards empilhados
-  const { scrollYProgress } = useScroll({
-    target: cardsContainerRef,
-    offset: ["start 0.9", "end 0.1"]
-  })
-
-  // [cursor-edit] Debug do scroll progress
-  useEffect(() => {
-    const unsubscribe = scrollYProgress.onChange((latest) => {
-      console.log('Framer Motion scroll progress:', latest)
-    })
-    return unsubscribe
-  }, [scrollYProgress])
 
   // [cursor-edit] Dados dos cards
   const cardsData = [
@@ -464,8 +449,8 @@ export default function ParceriasTributarias() {
               </p>
             </div>
 
-            {/* Cards empilhados com Framer Motion */}
-            <div ref={cardsContainerRef} className="relative h-[40rem] md:h-auto">
+            {/* Cards com animação profissional refatorada */}
+            <div className="relative">
               {/* Grid responsivo para desktop */}
               <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 mb-12">
                 {cardsData.map((card, index) => {
@@ -473,30 +458,25 @@ export default function ParceriasTributarias() {
                   return (
                     <motion.div
                       key={card.id}
-                      initial={{ opacity: 0, y: 50, scale: 0.9 }}
-                      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
                       transition={{ 
-                        delay: index * 0.15, 
-                        duration: 0.6,
-                        ease: [0.25, 0.46, 0.45, 0.94]
+                        delay: index * 0.1, 
+                        duration: 0.5,
+                        ease: "easeOut"
                       }}
-                      viewport={{ once: true, margin: "-50px" }}
+                      viewport={{ once: true, margin: "-20px" }}
                       whileHover={{ 
-                        scale: 1.05, 
-                        y: -5,
+                        y: -8,
                         transition: { duration: 0.2 }
                       }}
                       className={`bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-6 md:p-8 text-white shadow-xl hover:shadow-2xl transition-shadow duration-300 ${
                         index === 2 ? 'md:col-span-2 lg:col-span-1' : ''
                       }`}
                     >
-                      <motion.div 
-                        className="bg-gradient-to-br from-gray-700 to-gray-800 rounded-full w-12 h-12 md:w-16 md:h-16 flex items-center justify-center mb-4 md:mb-6 mx-auto shadow-lg"
-                        whileHover={{ rotate: 360, scale: 1.1 }}
-                        transition={{ duration: 0.5 }}
-                      >
+                      <div className="bg-gradient-to-br from-gray-700 to-gray-800 rounded-full w-12 h-12 md:w-16 md:h-16 flex items-center justify-center mb-4 md:mb-6 mx-auto shadow-lg">
                         <IconComponent className="h-6 w-6 md:h-8 md:w-8 text-white" />
-                      </motion.div>
+                      </div>
                       <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-center">{card.title}</h3>
                       <p className="text-gray-300 leading-relaxed text-center text-sm md:text-base">
                         {card.description}
@@ -506,80 +486,81 @@ export default function ParceriasTributarias() {
                 })}
               </div>
 
-              {/* Cards empilhados para mobile */}
-              <div className="md:hidden relative">
+              {/* Cards sequenciais para mobile - cada card aparece individualmente */}
+              <div className="md:hidden space-y-6">
                 {cardsData.map((card, index) => {
                   const IconComponent = card.icon
-                  
-                  // Animação mais lenta para permitir leitura
-                  const y = useTransform(
-                    scrollYProgress,
-                    [0, 0.1, 0.9, 1],
-                    [0, 0, index * 60, index * 120]
-                  )
-                  
-                  const rotate = useTransform(
-                    scrollYProgress,
-                    [0, 0.8, 1],
-                    [0, index * 1, 0]
-                  )
-                  
-                  const scale = useTransform(
-                    scrollYProgress,
-                    [0, 0.3, 1],
-                    [1, 0.95, 1]
-                  )
                   
                   return (
                     <motion.div
                       key={card.id}
-                      className="absolute left-1/2 w-[90%] max-w-sm bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-6 text-white shadow-xl border border-slate-600/30"
-                      initial={{ x: "-50%" }}
+                      initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                      whileInView={{ 
+                        opacity: 1, 
+                        y: 0, 
+                        scale: 1,
+                        transition: {
+                          duration: 0.6,
+                          delay: index * 0.1,
+                          ease: [0.25, 0.46, 0.45, 0.94]
+                        }
+                      }}
+                      viewport={{ 
+                        once: false, 
+                        margin: "-100px",
+                        amount: 0.3
+                      }}
                       whileHover={{ 
                         scale: 1.02,
+                        y: -5,
                         transition: { duration: 0.2 }
                       }}
-                      whileTap={{ scale: 0.98 }}
-                      style={{
-                        y,
-                        rotate,
-                        scale,
-                        x: "-50%",
-                        zIndex: 50 - index
-                      }}
+                      className="w-full bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-6 text-white shadow-xl border border-slate-600/20"
                     >
                       <motion.div 
                         className="bg-gradient-to-br from-gray-700 to-gray-800 rounded-full w-12 h-12 flex items-center justify-center mb-4 mx-auto shadow-lg"
-                        whileHover={{ rotate: 180, scale: 1.1 }}
-                        transition={{ duration: 0.3 }}
+                        initial={{ rotate: -10 }}
+                        whileInView={{ rotate: 0 }}
+                        transition={{ delay: index * 0.1 + 0.3, duration: 0.4 }}
                       >
                         <IconComponent className="h-6 w-6 text-white" />
                       </motion.div>
-                      <h3 className="text-lg font-bold mb-3 text-center">{card.title}</h3>
-                      <p className="text-gray-300 leading-relaxed text-center text-sm">
+                      <motion.h3 
+                        className="text-lg font-bold mb-3 text-center"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ delay: index * 0.1 + 0.4, duration: 0.4 }}
+                      >
+                        {card.title}
+                      </motion.h3>
+                      <motion.p 
+                        className="text-gray-300 leading-relaxed text-center text-sm"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ delay: index * 0.1 + 0.5, duration: 0.4 }}
+                      >
                         {card.description}
-                      </p>
+                      </motion.p>
                     </motion.div>
                   )
                 })}
               </div>
 
-              {/* CTA Button que acompanha a animação */}
+              {/* CTA Button simples e limpo */}
               <motion.div 
-                className="text-center absolute left-1/2 w-full md:relative md:left-auto md:w-auto"
-                style={{
-                  y: useTransform(scrollYProgress, [0, 1], [0, cardsData.length * 120 + 30]),
-                  x: "-50%",
-                  zIndex: 60
-                }}
+                className="text-center mt-8"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6, duration: 0.5 }}
+                viewport={{ once: true }}
               >
                 <Button 
                   size="lg"
-                  className="bg-[#2bee3597] hover:bg-[#24a92c] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-[90%] max-w-sm md:w-auto"
+                  className="bg-[#2bee3597] hover:bg-[#24a92c] text-black px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
                   onClick={() => scrollToSection("contato")}
                 >
-                  <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
-                  <span className="text-xs sm:text-sm md:text-lg leading-tight font-bold">Aumente seu fluxo de caixa</span>
+                  <MessageSquare className="mr-2 h-5 w-5" />
+                  <span className="font-bold">Aumente seu fluxo de caixa</span>
                 </Button>
               </motion.div>
             </div>
