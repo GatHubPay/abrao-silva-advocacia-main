@@ -511,17 +511,17 @@ export default function ParceriasTributarias() {
                 {cardsData.map((card, index) => {
                   const IconComponent = card.icon
                   
-                  // Animação com melhor separação dos cards
+                  // Animação mais lenta para permitir leitura
                   const y = useTransform(
                     scrollYProgress,
-                    [0, 0.2, 0.6, 1],
-                    [0, 0, index * 80, index * 140]
+                    [0, 0.1, 0.9, 1],
+                    [0, 0, index * 60, index * 120]
                   )
                   
                   const rotate = useTransform(
                     scrollYProgress,
-                    [0, 0.6, 1],
-                    [0, index * 1.5, 0]
+                    [0, 0.8, 1],
+                    [0, index * 1, 0]
                   )
                   
                   const scale = useTransform(
@@ -568,7 +568,7 @@ export default function ParceriasTributarias() {
               <motion.div 
                 className="text-center absolute left-1/2 w-full md:relative md:left-auto md:w-auto"
                 style={{
-                  y: useTransform(scrollYProgress, [0, 1], [0, cardsData.length * 140 + 40]),
+                  y: useTransform(scrollYProgress, [0, 1], [0, cardsData.length * 120 + 30]),
                   x: "-50%",
                   zIndex: 60
                 }}
