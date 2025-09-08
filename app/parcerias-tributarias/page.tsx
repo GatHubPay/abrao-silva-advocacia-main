@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef, useCallback, useMemo } from "react"
+import { motion, useScroll, useTransform, useInView } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import {
   ArrowRight,
@@ -22,6 +23,32 @@ import {
 import Image from "next/image"
 
 import "@/styles/parcerias.css"
+
+// [cursor-edit] Hook para efeito de scroll das cartas
+function useScrollEffect() {
+  const [scrollY, setScrollY] = useState(0)
+  const [isInView, setIsInView] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
+      
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect()
+        const windowHeight = window.innerHeight
+        setIsInView(rect.top < windowHeight && rect.bottom > 0)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    handleScroll() // Verificar estado inicial
+    
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  return { scrollY, isInView, containerRef }
+}
 
 // [cursor-edit] Componente de contagem animada ao entrar em view
 function CountUpOnView({
@@ -97,6 +124,58 @@ export default function ParceriasTributarias() {
   const [timelineProgress, setTimelineProgress] = useState(0)
   const observerRef = useRef<IntersectionObserver | null>(null)
   const timelineRef = useRef<HTMLDivElement | null>(null)
+  const cardsContainerRef = useRef<HTMLDivElement | null>(null)
+  
+  // [cursor-edit] Hook para efeito de scroll das cartas
+  const { scrollY, isInView, containerRef } = useScrollEffect()
+
+  // [cursor-edit] Framer Motion scroll para cards empilhados
+  const { scrollYProgress } = useScroll({
+    target: cardsContainerRef,
+    offset: ["start 0.9", "end 0.1"]
+  })
+
+  // [cursor-edit] Debug do scroll progress
+  useEffect(() => {
+    const unsubscribe = scrollYProgress.onChange((latest) => {
+      console.log('Framer Motion scroll progress:', latest)
+    })
+    return unsubscribe
+  }, [scrollYProgress])
+
+  // [cursor-edit] Dados dos cards
+  const cardsData = [
+    {
+      id: 1,
+      icon: Search,
+      title: "Diagnóstico Personalizado",
+      description: "Analisamos detalhadamente a situação fiscal da sua empresa e identificamos oportunidades de economia imediata."
+    },
+    {
+      id: 2,
+      icon: MessageSquare,
+      title: "Comunicação Transparente e Objetiva",
+      description: "Você tem acesso direto à nossa equipe, com explicações claras e suporte contínuo."
+    },
+    {
+      id: 3,
+      icon: Shield,
+      title: "Atuação 100% Legal e Segura",
+      description: "Todas as estratégias aplicadas seguem rigorosamente a legislação e jurisprudência atualizada."
+    },
+    {
+      id: 4,
+      icon: TrendingUp,
+      title: "Economia Real e Imediata",
+      description: "Geramos impacto direto no caixa da sua empresa, seja com recuperação de tributos ou redução da carga futura."
+    },
+    {
+      id: 5,
+      icon: Award,
+      title: "Capacitação do Parceiro",
+      description: "Orientamos sua equipe para compreender e dar andamento às ações junto aos seus clientes, promovendo autonomia e confiança."
+    }
+  ]
 
   useEffect(() => {
     const setupScrollAnimations = () => {
@@ -385,68 +464,111 @@ export default function ParceriasTributarias() {
               </p>
             </div>
 
-            {/* Grid responsivo de cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-              {/* Card 1 - Diagnóstico Personalizado */}
-              <div className="bg-slate-700 rounded-2xl p-6 md:p-8 text-white hover:bg-slate-600 transition-all duration-300 hover:scale-105">
-                <div className="bg-gray-800 rounded-full w-12 h-12 md:w-16 md:h-16 flex items-center justify-center mb-4 md:mb-6 mx-auto">
-                  <Search className="h-6 w-6 md:h-8 md:w-8 text-white" />
-                </div>
-                <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-center">Diagnóstico Personalizado</h3>
-                <p className="text-gray-300 leading-relaxed text-center text-sm md:text-base">
-                  Analisamos detalhadamente a situação fiscal da sua empresa e 
-                  identificamos oportunidades de economia imediata.
-                </p>
+            {/* Cards empilhados com Framer Motion */}
+            <div ref={cardsContainerRef} className="relative h-[35rem] md:h-auto">
+              {/* Grid responsivo para desktop */}
+              <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 mb-12">
+                {cardsData.map((card, index) => {
+                  const IconComponent = card.icon
+                  return (
+                    <motion.div
+                      key={card.id}
+                      initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                      transition={{ 
+                        delay: index * 0.15, 
+                        duration: 0.6,
+                        ease: [0.25, 0.46, 0.45, 0.94]
+                      }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      whileHover={{ 
+                        scale: 1.05, 
+                        y: -5,
+                        transition: { duration: 0.2 }
+                      }}
+                      className={`bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-6 md:p-8 text-white shadow-xl hover:shadow-2xl transition-shadow duration-300 ${
+                        index === 2 ? 'md:col-span-2 lg:col-span-1' : ''
+                      }`}
+                    >
+                      <motion.div 
+                        className="bg-gradient-to-br from-gray-700 to-gray-800 rounded-full w-12 h-12 md:w-16 md:h-16 flex items-center justify-center mb-4 md:mb-6 mx-auto shadow-lg"
+                        whileHover={{ rotate: 360, scale: 1.1 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <IconComponent className="h-6 w-6 md:h-8 md:w-8 text-white" />
+                      </motion.div>
+                      <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-center">{card.title}</h3>
+                      <p className="text-gray-300 leading-relaxed text-center text-sm md:text-base">
+                        {card.description}
+                      </p>
+                    </motion.div>
+                  )
+                })}
               </div>
 
-              {/* Card 2 - Comunicação Transparente */}
-              <div className="bg-slate-700 rounded-2xl p-6 md:p-8 text-white hover:bg-slate-600 transition-all duration-300 hover:scale-105">
-                <div className="bg-gray-800 rounded-full w-12 h-12 md:w-16 md:h-16 flex items-center justify-center mb-4 md:mb-6 mx-auto">
-                  <MessageSquare className="h-6 w-6 md:h-8 md:w-8 text-white" />
-                </div>
-                <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-center">Comunicação Transparente e Objetiva</h3>
-                <p className="text-gray-300 leading-relaxed text-center text-sm md:text-base">
-                  Você tem acesso direto à nossa equipe, com explicações claras e 
-                  suporte contínuo.
-                </p>
-              </div>
-
-              {/* Card 3 - Atuação 100% Legal */}
-              <div className="bg-slate-700 rounded-2xl p-6 md:p-8 text-white hover:bg-slate-600 transition-all duration-300 hover:scale-105 md:col-span-2 lg:col-span-1">
-                <div className="bg-gray-800 rounded-full w-12 h-12 md:w-16 md:h-16 flex items-center justify-center mb-4 md:mb-6 mx-auto">
-                  <Shield className="h-6 w-6 md:h-8 md:w-8 text-white" />
-                </div>
-                <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-center">Atuação 100% Legal e Segura</h3>
-                <p className="text-gray-300 leading-relaxed text-center text-sm md:text-base">
-                  Todas as estratégias aplicadas seguem rigorosamente a legislação 
-                  e jurisprudência atualizada.
-                </p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-              {/* Card 4 - Economia Real */}
-              <div className="bg-slate-700 rounded-2xl p-6 md:p-8 text-white hover:bg-slate-600 transition-all duration-300 hover:scale-105">
-                <div className="bg-gray-800 rounded-full w-12 h-12 md:w-16 md:h-16 flex items-center justify-center mb-4 md:mb-6 mx-auto">
-                  <TrendingUp className="h-6 w-6 md:h-8 md:w-8 text-white" />
-                </div>
-                <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-center">Economia Real e Imediata</h3>
-                <p className="text-gray-300 leading-relaxed text-center text-sm md:text-base">
-                  Geramos impacto direto no caixa da sua empresa, seja com recuperação de 
-                  tributos ou redução da carga futura.
-                </p>
-              </div>
-
-              {/* Card 5 - Capacitação do Parceiro */}
-              <div className="bg-slate-700 rounded-2xl p-6 md:p-8 text-white hover:bg-slate-600 transition-all duration-300 hover:scale-105">
-                <div className="bg-gray-800 rounded-full w-12 h-12 md:w-16 md:h-16 flex items-center justify-center mb-4 md:mb-6 mx-auto">
-                  <Award className="h-6 w-6 md:h-8 md:w-8 text-white" />
-                </div>
-                <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-center">Capacitação do Parceiro</h3>
-                <p className="text-gray-300 leading-relaxed text-center text-sm md:text-base">
-                  Orientamos sua equipe para compreender e dar andamento às ações 
-                  junto aos seus clientes, promovendo autonomia e confiança.
-                </p>
+              {/* Cards empilhados para mobile */}
+              <div className="md:hidden relative">
+                {cardsData.map((card, index) => {
+                  const IconComponent = card.icon
+                  
+                  // Animação profissional - cards começam empilhados no topo
+                  const y = useTransform(
+                    scrollYProgress,
+                    [0, 0.4, 0.8, 1],
+                    [0, 0, index * 80, index * 120]
+                  )
+                  
+                  const rotate = useTransform(
+                    scrollYProgress,
+                    [0, 0.6, 1],
+                    [0, index * 1, 0]
+                  )
+                  
+                  const scale = useTransform(
+                    scrollYProgress,
+                    [0, 0.3, 1],
+                    [1, 0.95, 1]
+                  )
+                  
+                  const opacity = useTransform(
+                    scrollYProgress,
+                    [0, 0.1, 1],
+                    [1, 1, 1]
+                  )
+                  
+                  return (
+                    <motion.div
+                      key={card.id}
+                      className="absolute left-1/2 w-[90%] max-w-sm bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-6 text-white shadow-xl border border-slate-600/30"
+                      initial={{ x: "-50%" }}
+                      whileHover={{ 
+                        scale: 1.02,
+                        transition: { duration: 0.2 }
+                      }}
+                      whileTap={{ scale: 0.98 }}
+                      style={{
+                        y,
+                        rotate,
+                        scale,
+                        opacity,
+                        x: "-50%",
+                        zIndex: 50 - index
+                      }}
+                    >
+                      <motion.div 
+                        className="bg-gradient-to-br from-gray-700 to-gray-800 rounded-full w-12 h-12 flex items-center justify-center mb-4 mx-auto shadow-lg"
+                        whileHover={{ rotate: 180, scale: 1.1 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <IconComponent className="h-6 w-6 text-white" />
+                      </motion.div>
+                      <h3 className="text-lg font-bold mb-3 text-center">{card.title}</h3>
+                      <p className="text-gray-300 leading-relaxed text-center text-sm">
+                        {card.description}
+                      </p>
+                    </motion.div>
+                  )
+                })}
               </div>
             </div>
 
