@@ -465,7 +465,7 @@ export default function ParceriasTributarias() {
             </div>
 
             {/* Cards empilhados com Framer Motion */}
-            <div ref={cardsContainerRef} className="relative h-[35rem] md:h-auto">
+            <div ref={cardsContainerRef} className="relative h-[45rem] md:h-auto">
               {/* Grid responsivo para desktop */}
               <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 mb-12">
                 {cardsData.map((card, index) => {
@@ -511,29 +511,23 @@ export default function ParceriasTributarias() {
                 {cardsData.map((card, index) => {
                   const IconComponent = card.icon
                   
-                  // Animação profissional - cards começam empilhados no topo
+                  // Animação com melhor separação dos cards
                   const y = useTransform(
                     scrollYProgress,
-                    [0, 0.4, 0.8, 1],
-                    [0, 0, index * 80, index * 120]
+                    [0, 0.3, 0.7, 1],
+                    [0, 0, index * 100, index * 160]
                   )
                   
                   const rotate = useTransform(
                     scrollYProgress,
                     [0, 0.6, 1],
-                    [0, index * 1, 0]
+                    [0, index * 1.5, 0]
                   )
                   
                   const scale = useTransform(
                     scrollYProgress,
                     [0, 0.3, 1],
                     [1, 0.95, 1]
-                  )
-                  
-                  const opacity = useTransform(
-                    scrollYProgress,
-                    [0, 0.1, 1],
-                    [1, 1, 1]
                   )
                   
                   return (
@@ -550,7 +544,6 @@ export default function ParceriasTributarias() {
                         y,
                         rotate,
                         scale,
-                        opacity,
                         x: "-50%",
                         zIndex: 50 - index
                       }}
@@ -570,18 +563,25 @@ export default function ParceriasTributarias() {
                   )
                 })}
               </div>
-            </div>
 
-            {/* CTA Button */}
-            <div className="text-center">
-              <Button 
-                size="lg"
-                className="bg-[#2bee3597] hover:bg-[#24a92c] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
-                onClick={() => scrollToSection("contato")}
+              {/* CTA Button que acompanha a animação */}
+              <motion.div 
+                className="text-center absolute left-1/2 w-full md:relative md:left-auto md:w-auto"
+                style={{
+                  y: useTransform(scrollYProgress, [0, 1], [0, cardsData.length * 160 + 50]),
+                  x: "-50%",
+                  zIndex: 60
+                }}
               >
-                <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
-                <span className="text-xs sm:text-sm md:text-lg leading-tight font-bold">Aumente seu fluxo de caixa</span>
-              </Button>
+                <Button 
+                  size="lg"
+                  className="bg-[#2bee3597] hover:bg-[#24a92c] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-[90%] max-w-sm md:w-auto"
+                  onClick={() => scrollToSection("contato")}
+                >
+                  <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
+                  <span className="text-xs sm:text-sm md:text-lg leading-tight font-bold">Aumente seu fluxo de caixa</span>
+                </Button>
+              </motion.div>
             </div>
           </div>
         </section>
