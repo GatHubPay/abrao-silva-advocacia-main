@@ -12,6 +12,7 @@ module.exports = {
       fontFamily: {
         sans: ['Montserrat', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
         montserrat: ['Montserrat', 'sans-serif'],
+        oswald: ['Oswald', 'sans-serif'],
       },
       fontSize: {
         'xs': ['0.75rem', { lineHeight: '1rem' }],

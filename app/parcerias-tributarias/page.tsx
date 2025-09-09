@@ -322,7 +322,7 @@ export default function ParceriasTributarias() {
 
                 {/* Título Principal */}
                 <div className="space-y-4">
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
+                  <h2 className="font-oswald text-2xl md:text-3xl lg:text-4xl font-bold leading-tight tracking-wide uppercase">
                     Sua empresa pode estar <span className="text-[#e2ba4b]">pagando mais impostos</span> do que deveria. 
                     Descubra como <span className="text-[#e2ba4b]">reverter isso</span> com segurança e agilidade.
                   </h2>
@@ -337,7 +337,7 @@ export default function ParceriasTributarias() {
                 <div className="pt-4 flex justify-center lg:justify-start">
                   <Button 
                     size="lg"
-                    className="bg-[#2bee3597] hover:bg-[#24a92c] text-black font-bold px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full md:w-auto"
+                    className="bg-[#2bee3597] hover:bg-[#24a92c] text-black font-bold px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full md:w-auto"
                     onClick={() => scrollToSection("contato")}
                   >
                     QUERO UMA ANÁLISE GRATUITA
@@ -350,8 +350,8 @@ export default function ParceriasTributarias() {
                 {/* // [cursor-edit] */}
                 {/* Título acima da imagem - Desktop */}
                 <div className="hidden lg:block mb-6 text-center">
-                  <h3 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight drop-shadow-2xl tracking-tight" style={{fontFamily: '-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji'}}>
-                    SUA EMPRESA PODE ESTAR <span className="text-[#e2ba4b] font-black">PERDENDO DINHEIRO</span>
+                  <h3 className="font-oswald text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight drop-shadow-2xl tracking-wide uppercase">
+                    SUA EMPRESA PODE ESTAR <span className="text-[#e2ba4b] font-bold">PERDENDO DINHEIRO</span>
                   </h3>
                 </div>
 
@@ -361,8 +361,8 @@ export default function ParceriasTributarias() {
                   {/* // [cursor-edit] título mobile posicionado mais acima */}
                   <div className="absolute top-0 left-0 right-0 z-20 block lg:hidden px-6 pt-2">
                     <div className="text-center">
-                      <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-white leading-tight drop-shadow-2xl tracking-tight" style={{fontFamily: '-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji'}}>
-                        SUA EMPRESA PODE ESTAR <span className="text-[#e2ba4b] font-black">PERDENDO DINHEIRO</span>
+                      <h3 className="font-oswald text-xl sm:text-2xl md:text-3xl font-bold text-white leading-tight drop-shadow-2xl tracking-wide uppercase">
+                        SUA EMPRESA PODE ESTAR <span className="text-[#e2ba4b] font-bold">PERDENDO DINHEIRO</span>
                       </h3>
                     </div>
                   </div>
@@ -449,7 +449,7 @@ export default function ParceriasTributarias() {
               <p className="text-sm text-gray-400 uppercase tracking-wider mb-4">
                 ÁREAS DE ATUAÇÃO DO ESCRITÓRIO
               </p>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <h2 className="font-oswald text-3xl md:text-4xl font-bold text-white mb-4 tracking-wide uppercase">
                 Como Funciona Nossa Atuação / Vantagens
               </h2>
               <p className="text-lg text-gray-300 max-w-4xl mx-auto">
@@ -564,10 +564,10 @@ export default function ParceriasTributarias() {
               >
                 <Button 
                   size="lg"
-                  className="bg-[#2bee3597] hover:bg-[#24a92c] text-black px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="bg-[#2bee3597] hover:bg-[#24a92c] text-black font-bold px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full md:w-auto"
                   onClick={() => scrollToSection("contato")}
                 >
-                  <MessageSquare className="mr-2 h-5 w-5" />
+                  <MessageSquare className="mr-2 h-5 w-5 flex-shrink-0" />
                   <span className="font-bold">Aumente seu fluxo de caixa</span>
                 </Button>
               </motion.div>
@@ -593,7 +593,7 @@ export default function ParceriasTributarias() {
           {/* Conteúdo sobreposto */}
           <div className="relative z-10 mx-auto px-10 md:px-6 py-16">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <h2 className="font-oswald text-3xl md:text-4xl font-bold text-white mb-4 tracking-wide uppercase">
                 Quem irá trabalhar ao seu favor
               </h2>
               <div className="w-24 h-1 bg-[#e2ba4b] mx-auto mt-4"></div>
@@ -603,7 +603,7 @@ export default function ParceriasTributarias() {
             </div>
 
             <div className="max-w-4xl mx-auto text-center">
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
+              <h3 className="font-oswald text-2xl md:text-3xl font-bold text-white mb-6 tracking-wide uppercase">
                 Abrão e Silva Advogados Associados
               </h3>
               <p className="text-lg text-gray-300 leading-relaxed mb-8">
@@ -618,11 +618,11 @@ export default function ParceriasTributarias() {
               <div className="flex justify-center">
                 <Button 
                   size="lg"
-                  className="bg-[#2bee3597] hover:bg-[#24a92c] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+                  className="bg-[#2bee3597] hover:bg-[#24a92c] text-black font-bold px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full md:w-auto"
                   onClick={() => scrollToSection("contato")}
                 >
-                  <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
-                  <span className="text-xs sm:text-sm md:text-lg leading-tight font-bold">Aumente seu fluxo de caixa</span>
+                  <MessageSquare className="mr-2 h-5 w-5 flex-shrink-0" />
+                  <span className="font-bold">Aumente seu fluxo de caixa</span>
                 </Button>
               </div>
             </div>
@@ -634,7 +634,7 @@ export default function ParceriasTributarias() {
           {/* // [cursor-edit] container: padding mobile maior */}
           <div className=" mx-auto px-10 md:px-6">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <h2 className="font-oswald text-3xl md:text-4xl font-bold text-white mb-4 tracking-wide uppercase">
                Áreas de Atuação
               </h2>
               <p className="text-sm text-gray-300 max-w-3xl mx-auto">
@@ -708,11 +708,11 @@ export default function ParceriasTributarias() {
             <div className="text-center">
               <Button 
                 size="lg"
-                  className="bg-[#2bee3597] hover:bg-[#24a92c] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+                  className="bg-[#2bee3597] hover:bg-[#24a92c] text-black font-bold px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full md:w-auto"
                 onClick={() => scrollToSection("contato")}
               >
                 <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
-                <span className="text-xs sm:text-sm md:text-lg leading-tight font-bold">Faça um diagnóstico gratuito</span>
+                <span className="font-bold">Faça um diagnóstico gratuito</span>
               </Button>
             </div>
           </div>
@@ -726,7 +726,7 @@ export default function ParceriasTributarias() {
           {/* // [cursor-edit] container: padding mobile maior */}
           <div className=" mx-auto px-10 md:px-6">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <h2 className="font-oswald text-3xl md:text-4xl font-bold text-white mb-4 tracking-wide uppercase">
                 Galeria de Vídeos
               </h2>
             </div>
@@ -734,11 +734,11 @@ export default function ParceriasTributarias() {
             <div className="text-center">
               <Button 
                 size="lg"
-                  className="bg-[#2bee3597] hover:bg-[#24a92c] text-black px-4 md:px-8 py-3 md:py-4 text-sm md:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+                  className="bg-[#2bee3597] hover:bg-[#24a92c] text-black font-bold px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full md:w-auto"
                 onClick={() => scrollToSection("contato")}
               >
                 <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
-                <span className="text-xs sm:text-sm md:text-lg leading-tight font-bold">Faça um diagnóstico gratuito</span>
+                <span className="font-bold">Faça um diagnóstico gratuito</span>
               </Button>
             </div>
           </div>
@@ -748,7 +748,7 @@ export default function ParceriasTributarias() {
         <section className="py-16 bg-black">
           <div className=" mx-auto px-10 md:px-6">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <h2 className="font-oswald text-3xl md:text-4xl font-bold text-white mb-4 tracking-wide uppercase">
                 Como Funciona Nossa Análise ?
               </h2>
             </div>
@@ -896,7 +896,7 @@ export default function ParceriasTributarias() {
             <div className="block md:hidden mt-10">
               <Button 
                 size="lg"
-                className="bg-[#2bee3597] hover:bg-[#24a92c] text-black font-bold px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full"
+                className="bg-[#2bee3597] hover:bg-[#24a92c] text-black font-bold px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full"
                 onClick={() => scrollToSection("contato")}
               >
                 FALE COM ESPECIALISTA AGORA

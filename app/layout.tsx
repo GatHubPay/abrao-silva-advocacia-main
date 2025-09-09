@@ -50,7 +50,7 @@ export default function RootLayout({
         
         {/* Fontes com display=swap para evitar bloqueio */}
         <link 
-          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" 
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Oswald:wght@300;400;500;600;700&display=swap" 
           rel="stylesheet"
         />
         
