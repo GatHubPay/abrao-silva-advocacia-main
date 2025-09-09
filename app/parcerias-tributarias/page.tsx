@@ -346,38 +346,46 @@ export default function ParceriasTributarias() {
               </div>
 
               {/* Coluna Direita - Imagem */}
-              <div className="relative flex justify-center lg:justify-end order-1 lg:order-2">
+              <div className="relative flex flex-col justify-center lg:justify-end order-1 lg:order-2">
                 {/* // [cursor-edit] */}
-                {/* Imagem integrada ao fundo da página */}
-                <div className="relative w-full max-w-lg lg:max-w-xl">
+                {/* Título acima da imagem - Desktop */}
+                <div className="hidden lg:block mb-6 text-center">
+                  <h3 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight drop-shadow-2xl tracking-tight" style={{fontFamily: '-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji'}}>
+                    SUA EMPRESA PODE ESTAR <span className="text-[#e2ba4b] font-black">PERDENDO DINHEIRO</span>
+                  </h3>
+                </div>
+
+                {/* Container da imagem com fundo transparente */}
+                <div className="relative w-full max-w-lg lg:max-w-xl mx-auto">
                   {/* Título impactante sobreposto - mobile */}
-                  {/* // [cursor-edit] padding mobile do título sobreposto */}
-                  <div className="absolute top-4 left-0 right-0 z-20 block lg:hidden px-10">
+                  {/* // [cursor-edit] título mobile posicionado mais acima */}
+                  <div className="absolute top-0 left-0 right-0 z-20 block lg:hidden px-6 pt-2">
                     <div className="text-center">
-                      <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-white leading-tight drop-shadow-2xl tracking-tight" style={{fontFamily: '-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji'}}>
+                      <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-white leading-tight drop-shadow-2xl tracking-tight" style={{fontFamily: '-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji'}}>
                         SUA EMPRESA PODE ESTAR <span className="text-[#e2ba4b] font-black">PERDENDO DINHEIRO</span>
                       </h3>
-                      
                     </div>
                   </div>
 
-                  {/* Gradientes suaves nas laterais - versão mais clara */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 via-black/20 to-transparent opacity-80 z-10"></div>
-                  <div className="absolute inset-0 bg-gradient-to-l from-black via-black/50 via-black/20 to-transparent opacity-80 z-10"></div>
+                  {/* Gradientes suaves apenas no mobile para não interferir na transparência */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-black via-black/30 to-transparent opacity-60 z-10 lg:hidden"></div>
+                  <div className="absolute inset-0 bg-gradient-to-l from-black via-black/30 to-transparent opacity-60 z-10 lg:hidden"></div>
                   
-                  <Image 
-                    src="/dr/leaodr.png"
-                    alt="Abrão & Silva Advocacia"
-                    width={600}
-                    height={700}
-                    className="w-full h-auto object-contain opacity-100"
-                   
-                    priority={true}
-                  />
-                  
-                  {/* Efeito suave nas bordas laterais */}
-                  <div className="absolute inset-y-0 left-0 w-6 bg-gradient-to-r from-black to-transparent opacity-60 z-15"></div>
-                  <div className="absolute inset-y-0 right-0 w-6 bg-gradient-to-l from-black to-transparent opacity-60 z-15"></div>
+                  {/* // [cursor-edit] Imagem com fundo transparente preservado */}
+                  <div className="relative bg-transparent">
+                    <Image 
+                      src="/dr/leaodr.png"
+                      alt="Abrão & Silva Advocacia - Especialista em Direito Tributário"
+                      width={600}
+                      height={700}
+                      className="w-full h-auto object-contain drop-shadow-2xl"
+                      style={{ 
+                        filter: 'drop-shadow(0 25px 25px rgba(0, 0, 0, 0.5))',
+                        background: 'transparent'
+                      }}
+                      priority={true}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
