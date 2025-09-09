@@ -322,7 +322,7 @@ export default function ParceriasTributarias() {
 
                 {/* Título Principal */}
                 <div className="space-y-4">
-                  <h2 className="font-oswald text-2xl md:text-3xl lg:text-4xl font-bold leading-tight tracking-wide uppercase">
+                  <h2 className="font-bebas text-2xl md:text-3xl lg:text-4xl font-normal leading-tight tracking-widest uppercase">
                     Sua empresa pode estar <span className="text-[#e2ba4b]">pagando mais impostos</span> do que deveria. 
                     Descubra como <span className="text-[#e2ba4b]">reverter isso</span> com segurança e agilidade.
                   </h2>
@@ -337,7 +337,7 @@ export default function ParceriasTributarias() {
                 <div className="pt-4 flex justify-center lg:justify-start">
                   <Button 
                     size="lg"
-                    className="bg-[#2bee3597] hover:bg-[#24a92c] text-black font-bold px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full md:w-auto"
+                    className="bg-[#2bee3597] hover:bg-[#24a92c] text-black font-normal px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full md:w-auto"
                     onClick={() => scrollToSection("contato")}
                   >
                     QUERO UMA ANÁLISE GRATUITA
@@ -350,8 +350,8 @@ export default function ParceriasTributarias() {
                 {/* // [cursor-edit] */}
                 {/* Título acima da imagem - Desktop */}
                 <div className="hidden lg:block mb-6 text-center">
-                  <h3 className="font-oswald text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight drop-shadow-2xl tracking-wide uppercase">
-                    SUA EMPRESA PODE ESTAR <span className="text-[#e2ba4b] font-bold">PERDENDO DINHEIRO</span>
+                  <h3 className="font-bebas text-3xl md:text-4xl lg:text-5xl font-normal text-white leading-tight drop-shadow-2xl tracking-widest uppercase">
+                    SUA EMPRESA PODE ESTAR <span className="text-[#e2ba4b] font-normal">PERDENDO DINHEIRO</span>
                   </h3>
                 </div>
 
@@ -361,8 +361,8 @@ export default function ParceriasTributarias() {
                   {/* // [cursor-edit] título mobile posicionado mais acima */}
                   <div className="absolute top-0 left-0 right-0 z-20 block lg:hidden px-6 pt-2">
                     <div className="text-center">
-                      <h3 className="font-oswald text-xl sm:text-2xl md:text-3xl font-bold text-white leading-tight drop-shadow-2xl tracking-wide uppercase">
-                        SUA EMPRESA PODE ESTAR <span className="text-[#e2ba4b] font-bold">PERDENDO DINHEIRO</span>
+                      <h3 className="font-bebas text-xl sm:text-2xl md:text-3xl font-normal text-white leading-tight drop-shadow-2xl tracking-widest uppercase">
+                        SUA EMPRESA PODE ESTAR <span className="text-[#e2ba4b] font-normal">PERDENDO DINHEIRO</span>
                       </h3>
                     </div>
                   </div>
@@ -411,7 +411,7 @@ export default function ParceriasTributarias() {
           <div className=" mx-auto px-10 md:px-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
               <div className="bg-gray-800 rounded-2xl p-8 md:p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
+                <div className="text-3xl md:text-4xl lg:text-5xl font-normal text-white mb-2">
                   {/* // [cursor-edit] contador animado */}
                   <CountUpOnView end={10} prefix="+" />
                 </div>
@@ -421,7 +421,7 @@ export default function ParceriasTributarias() {
              
               
               <div className="bg-gray-800 rounded-2xl p-8 md:p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
+                <div className="text-3xl md:text-4xl lg:text-5xl font-normal text-white mb-2">
                   {/* // [cursor-edit] contador animado */}
                   <CountUpOnView end={3000} prefix="+" />
                 </div>
@@ -429,7 +429,7 @@ export default function ParceriasTributarias() {
               </div>
 
               <div className="bg-gray-800 rounded-2xl p-8 md:p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
+                <div className="text-3xl md:text-4xl lg:text-5xl font-normal text-white mb-2">
                   {/* // [cursor-edit] contador animado */}
                   <CountUpOnView end={2} prefix="+" suffix=" BI" />
                 </div>
@@ -446,10 +446,10 @@ export default function ParceriasTributarias() {
           <div className="container mx-auto px-10 md:px-6">
             <div className="text-center mb-16">
               <div className="w-24 h-1 bg-[#e2ba4b] mx-auto mb-4"></div>
-              <p className="text-sm text-gray-400 uppercase tracking-wider mb-4">
+              <p className="text-sm text-gray-400 uppercase tracking-widestr mb-4">
                 ÁREAS DE ATUAÇÃO DO ESCRITÓRIO
               </p>
-              <h2 className="font-oswald text-3xl md:text-4xl font-bold text-white mb-4 tracking-wide uppercase">
+              <h2 className="font-bebas text-3xl md:text-4xl font-normal text-white mb-4 tracking-widest uppercase">
                 Como Funciona Nossa Atuação / Vantagens
               </h2>
               <p className="text-lg text-gray-300 max-w-4xl mx-auto">
@@ -485,7 +485,7 @@ export default function ParceriasTributarias() {
                       <div className="bg-gradient-to-br from-gray-700 to-gray-800 rounded-full w-12 h-12 md:w-16 md:h-16 flex items-center justify-center mb-4 md:mb-6 mx-auto shadow-lg">
                         <IconComponent className="h-6 w-6 md:h-8 md:w-8 text-white" />
                       </div>
-                      <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-center">{card.title}</h3>
+                      <h3 className="text-lg md:text-xl font-normal mb-3 md:mb-4 text-center">{card.title}</h3>
                       <p className="text-gray-300 leading-relaxed text-center text-sm md:text-base">
                         {card.description}
                       </p>
@@ -534,7 +534,7 @@ export default function ParceriasTributarias() {
                         <IconComponent className="h-6 w-6 text-white" />
                       </motion.div>
                       <motion.h3 
-                        className="text-lg font-bold mb-3 text-center"
+                        className="text-lg font-normal mb-3 text-center"
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         transition={{ delay: index * 0.1 + 0.4, duration: 0.4 }}
@@ -564,11 +564,11 @@ export default function ParceriasTributarias() {
               >
                 <Button 
                   size="lg"
-                  className="bg-[#2bee3597] hover:bg-[#24a92c] text-black font-bold px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full md:w-auto"
+                  className="bg-[#2bee3597] hover:bg-[#24a92c] text-black font-normal px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full md:w-auto"
                   onClick={() => scrollToSection("contato")}
                 >
                   <MessageSquare className="mr-2 h-5 w-5 flex-shrink-0" />
-                  <span className="font-bold">Aumente seu fluxo de caixa</span>
+                  <span className="font-normal">Aumente seu fluxo de caixa</span>
                 </Button>
               </motion.div>
             </div>
@@ -593,17 +593,17 @@ export default function ParceriasTributarias() {
           {/* Conteúdo sobreposto */}
           <div className="relative z-10 mx-auto px-10 md:px-6 py-16">
             <div className="text-center mb-16">
-              <h2 className="font-oswald text-3xl md:text-4xl font-bold text-white mb-4 tracking-wide uppercase">
+              <h2 className="font-bebas text-3xl md:text-4xl font-normal text-white mb-4 tracking-widest uppercase">
                 Quem irá trabalhar ao seu favor
               </h2>
               <div className="w-24 h-1 bg-[#e2ba4b] mx-auto mt-4"></div>
-              <p className="text-lg text-gray-300 mt-4 uppercase tracking-wider">
+              <p className="text-lg text-gray-300 mt-4 uppercase tracking-widestr">
                 CONHEÇA O ADVOGADO
               </p>
             </div>
 
             <div className="max-w-4xl mx-auto text-center">
-              <h3 className="font-oswald text-2xl md:text-3xl font-bold text-white mb-6 tracking-wide uppercase">
+              <h3 className="font-bebas text-2xl md:text-3xl font-normal text-white mb-6 tracking-widest uppercase">
                 Abrão e Silva Advogados Associados
               </h3>
               <p className="text-lg text-gray-300 leading-relaxed mb-8">
@@ -618,11 +618,11 @@ export default function ParceriasTributarias() {
               <div className="flex justify-center">
                 <Button 
                   size="lg"
-                  className="bg-[#2bee3597] hover:bg-[#24a92c] text-black font-bold px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full md:w-auto"
+                  className="bg-[#2bee3597] hover:bg-[#24a92c] text-black font-normal px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full md:w-auto"
                   onClick={() => scrollToSection("contato")}
                 >
                   <MessageSquare className="mr-2 h-5 w-5 flex-shrink-0" />
-                  <span className="font-bold">Aumente seu fluxo de caixa</span>
+                  <span className="font-normal">Aumente seu fluxo de caixa</span>
                 </Button>
               </div>
             </div>
@@ -634,7 +634,7 @@ export default function ParceriasTributarias() {
           {/* // [cursor-edit] container: padding mobile maior */}
           <div className=" mx-auto px-10 md:px-6">
             <div className="text-center mb-16">
-              <h2 className="font-oswald text-3xl md:text-4xl font-bold text-white mb-4 tracking-wide uppercase">
+              <h2 className="font-bebas text-3xl md:text-4xl font-normal text-white mb-4 tracking-widest uppercase">
                Áreas de Atuação
               </h2>
               <p className="text-sm text-gray-300 max-w-3xl mx-auto">
@@ -645,7 +645,7 @@ export default function ParceriasTributarias() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
               {/* Card 1 */}
               <div className="bg-gray-800 rounded-2xl p-6 hover:bg-gray-700 transition-all duration-300 hover:scale-105 border border-gray-700">
-                <h3 className="text-white font-bold text-lg mb-4">
+                <h3 className="text-white font-normal text-lg mb-4">
                   Recuperação de Tributos
                 </h3>
                 <p className="text-gray-300 text-sm">
@@ -655,7 +655,7 @@ export default function ParceriasTributarias() {
 
               {/* Card 2 */}
               <div className="bg-gray-800 rounded-2xl p-6 hover:bg-gray-700 transition-all duration-300 hover:scale-105 border border-gray-700">
-                <h3 className="text-white font-bold text-lg mb-4">
+                <h3 className="text-white font-normal text-lg mb-4">
                   Renegociação Fiscal
                 </h3>
                 <p className="text-gray-300 text-sm">
@@ -665,7 +665,7 @@ export default function ParceriasTributarias() {
 
               {/* Card 3 */}
               <div className="bg-gray-800 rounded-2xl p-6 hover:bg-gray-700 transition-all duration-300 hover:scale-105 border border-gray-700">
-                <h3 className="text-white font-bold text-lg mb-4">
+                <h3 className="text-white font-normal text-lg mb-4">
                   Transações Tributárias
                 </h3>
                 <p className="text-gray-300 text-sm">
@@ -675,7 +675,7 @@ export default function ParceriasTributarias() {
 
               {/* Card 4 */}
               <div className="bg-gray-800 rounded-2xl p-6 hover:bg-gray-700 transition-all duration-300 hover:scale-105 border border-gray-700">
-                <h3 className="text-white font-bold text-lg mb-4">
+                <h3 className="text-white font-normal text-lg mb-4">
                   Planejamento Estratégico
                 </h3>
                 <p className="text-gray-300 text-sm">
@@ -685,7 +685,7 @@ export default function ParceriasTributarias() {
 
               {/* Card 5 */}
               <div className="bg-gray-800 rounded-2xl p-6 hover:bg-gray-700 transition-all duration-300 hover:scale-105 border border-gray-700">
-                <h3 className="text-white font-bold text-lg mb-4">
+                <h3 className="text-white font-normal text-lg mb-4">
                   Regularidade Fiscal
                 </h3>
                 <p className="text-gray-300 text-sm">
@@ -695,7 +695,7 @@ export default function ParceriasTributarias() {
 
               {/* Card 6 */}
               <div className="bg-gray-800 rounded-2xl p-6 hover:bg-gray-700 transition-all duration-300 hover:scale-105 border border-gray-700">
-                <h3 className="text-white font-bold text-lg mb-4">
+                <h3 className="text-white font-normal text-lg mb-4">
                   Atendimento Completo
                 </h3>
                 <p className="text-gray-300 text-sm">
@@ -708,11 +708,11 @@ export default function ParceriasTributarias() {
             <div className="text-center">
               <Button 
                 size="lg"
-                  className="bg-[#2bee3597] hover:bg-[#24a92c] text-black font-bold px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full md:w-auto"
+                  className="bg-[#2bee3597] hover:bg-[#24a92c] text-black font-normal px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full md:w-auto"
                 onClick={() => scrollToSection("contato")}
               >
                 <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
-                <span className="font-bold">Faça um diagnóstico gratuito</span>
+                <span className="font-normal">Faça um diagnóstico gratuito</span>
               </Button>
             </div>
           </div>
@@ -726,7 +726,7 @@ export default function ParceriasTributarias() {
           {/* // [cursor-edit] container: padding mobile maior */}
           <div className=" mx-auto px-10 md:px-6">
             <div className="text-center mb-12">
-              <h2 className="font-oswald text-3xl md:text-4xl font-bold text-white mb-4 tracking-wide uppercase">
+              <h2 className="font-bebas text-3xl md:text-4xl font-normal text-white mb-4 tracking-widest uppercase">
                 Galeria de Vídeos
               </h2>
             </div>
@@ -734,11 +734,11 @@ export default function ParceriasTributarias() {
             <div className="text-center">
               <Button 
                 size="lg"
-                  className="bg-[#2bee3597] hover:bg-[#24a92c] text-black font-bold px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full md:w-auto"
+                  className="bg-[#2bee3597] hover:bg-[#24a92c] text-black font-normal px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full md:w-auto"
                 onClick={() => scrollToSection("contato")}
               >
                 <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
-                <span className="font-bold">Faça um diagnóstico gratuito</span>
+                <span className="font-normal">Faça um diagnóstico gratuito</span>
               </Button>
             </div>
           </div>
@@ -748,7 +748,7 @@ export default function ParceriasTributarias() {
         <section className="py-16 bg-black">
           <div className=" mx-auto px-10 md:px-6">
             <div className="text-center mb-16">
-              <h2 className="font-oswald text-3xl md:text-4xl font-bold text-white mb-4 tracking-wide uppercase">
+              <h2 className="font-bebas text-3xl md:text-4xl font-normal text-white mb-4 tracking-widest uppercase">
                 Como Funciona Nossa Análise ?
               </h2>
             </div>
@@ -761,10 +761,10 @@ export default function ParceriasTributarias() {
                 <div className="bg-gray-800 rounded-2xl p-6 ">
                   <div className="flex items-center mb-4">
                     <div className="bg-white rounded-full w-8 h-8 flex items-center justify-center mr-4">
-                      <span className="text-sm font-bold text-black">1</span>
+                      <span className="text-sm font-normal text-black">1</span>
                     </div>
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2">CONTATO NO WHATSAPP</h3>
+                  <h3 className="text-lg font-normal text-white mb-2">CONTATO NO WHATSAPP</h3>
                   <p className="text-gray-300 text-sm">
                     Você entra em contato conosco através de um dos botões disponíveis no site
                   </p>
@@ -774,10 +774,10 @@ export default function ParceriasTributarias() {
                 <div className="bg-gray-800 rounded-2xl p-6 ">
                   <div className="flex items-center mb-4">
                     <div className="bg-white rounded-full w-8 h-8 flex items-center justify-center mr-4">
-                      <span className="text-sm font-bold text-black">2</span>
+                      <span className="text-sm font-normal text-black">2</span>
                     </div>
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2">DIAGNÓSTICO</h3>
+                  <h3 className="text-lg font-normal text-white mb-2">DIAGNÓSTICO</h3>
                   <p className="text-gray-300 text-sm">
                     Nossos especialistas fazem análise minuciosa da sua empresa, em busca de 
                     melhores práticas de mercado.
@@ -788,10 +788,10 @@ export default function ParceriasTributarias() {
                 <div className="bg-gray-800 rounded-2xl p-6 ">
                   <div className="flex items-center mb-4">
                     <div className="bg-white rounded-full w-8 h-8 flex items-center justify-center mr-4">
-                      <span className="text-sm font-bold text-black">3</span>
+                      <span className="text-sm font-normal text-black">3</span>
                     </div>
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2">ESTRUTURAÇÃO</h3>
+                  <h3 className="text-lg font-normal text-white mb-2">ESTRUTURAÇÃO</h3>
                   <p className="text-gray-300 text-sm">
                     Será estruturado um programa personalizado para sua empresa.
                   </p>
@@ -801,10 +801,10 @@ export default function ParceriasTributarias() {
                 <div className="bg-gray-800 rounded-2xl p-6 ">
                   <div className="flex items-center mb-4">
                     <div className="bg-white rounded-full w-8 h-8 flex items-center justify-center mr-4">
-                      <span className="text-sm font-bold text-black">4</span>
+                      <span className="text-sm font-normal text-black">4</span>
                     </div>
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2">EXECUÇÃO</h3>
+                  <h3 className="text-lg font-normal text-white mb-2">EXECUÇÃO</h3>
                   <p className="text-gray-300 text-sm">
                     Implantação do programa na empresa de forma estruturada.
                   </p>
@@ -829,14 +829,14 @@ export default function ParceriasTributarias() {
                 <div className="relative flex items-center mb-12">
                   <div className="w-1/2 pr-8 text-right">
                     <div className="bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-700">
-                      <h3 className="text-xl font-bold text-white mb-2">CONTATO NO WHATSAPP</h3>
+                      <h3 className="text-xl font-normal text-white mb-2">CONTATO NO WHATSAPP</h3>
                       <p className="text-gray-300">
                         Você entra em contato conosco através de um dos botões disponíveis no site
                       </p>
                     </div>
                   </div>
                   <div className={`absolute left-1/2 transform -translate-x-1/2 w-8 h-8 border-4 border-gray-600 rounded-full flex items-center justify-center transition-all duration-700 ${timelineProgress >= 0.15 ? 'bg-white scale-110' : 'bg-gray-600'}`}>
-                    <span className={`text-sm font-bold transition-colors duration-700 ${timelineProgress >= 0.15 ? 'text-black' : 'text-gray-400'}`}>1</span>
+                    <span className={`text-sm font-normal transition-colors duration-700 ${timelineProgress >= 0.15 ? 'text-black' : 'text-gray-400'}`}>1</span>
                   </div>
                   <div className="w-1/2 pl-8"></div>
                 </div>
@@ -845,11 +845,11 @@ export default function ParceriasTributarias() {
                 <div className="relative flex items-center mb-12">
                   <div className="w-1/2 pr-8"></div>
                   <div className={`absolute left-1/2 transform -translate-x-1/2 w-8 h-8 border-4 border-gray-600 rounded-full flex items-center justify-center transition-all duration-700 ${timelineProgress >= 0.4 ? 'bg-white scale-110' : 'bg-gray-600'}`}>
-                    <span className={`text-sm font-bold transition-colors duration-700 ${timelineProgress >= 0.4 ? 'text-black' : 'text-gray-400'}`}>2</span>
+                    <span className={`text-sm font-normal transition-colors duration-700 ${timelineProgress >= 0.4 ? 'text-black' : 'text-gray-400'}`}>2</span>
                   </div>
                   <div className="w-1/2 pl-8">
                     <div className="bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-700">
-                      <h3 className="text-xl font-bold text-white mb-2">DIAGNÓSTICO</h3>
+                      <h3 className="text-xl font-normal text-white mb-2">DIAGNÓSTICO</h3>
                       <p className="text-gray-300">
                         Nossos especialistas fazem análise minuciosa da sua empresa, em busca de 
                         melhores práticas de mercado.
@@ -862,14 +862,14 @@ export default function ParceriasTributarias() {
                 <div className="relative flex items-center mb-12">
                   <div className="w-1/2 pr-8 text-right">
                     <div className="bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-700">
-                      <h3 className="text-xl font-bold text-white mb-2">ESTRUTURAÇÃO</h3>
+                      <h3 className="text-xl font-normal text-white mb-2">ESTRUTURAÇÃO</h3>
                       <p className="text-gray-300">
                         Será estruturado um programa personalizado para sua empresa.
                       </p>
                     </div>
                   </div>
                   <div className={`absolute left-1/2 transform -translate-x-1/2 w-8 h-8 border-4 border-gray-600 rounded-full flex items-center justify-center transition-all duration-700 ${timelineProgress >= 0.65 ? 'bg-white scale-110' : 'bg-gray-600'}`}>
-                    <span className={`text-sm font-bold transition-colors duration-700 ${timelineProgress >= 0.65 ? 'text-black' : 'text-gray-400'}`}>3</span>
+                    <span className={`text-sm font-normal transition-colors duration-700 ${timelineProgress >= 0.65 ? 'text-black' : 'text-gray-400'}`}>3</span>
                   </div>
                   <div className="w-1/2 pl-8"></div>
                 </div>
@@ -878,11 +878,11 @@ export default function ParceriasTributarias() {
                 <div className="relative flex items-center">
                   <div className="w-1/2 pr-8"></div>
                   <div className={`absolute left-1/2 transform -translate-x-1/2 w-8 h-8 border-4 border-gray-600 rounded-full flex items-center justify-center transition-all duration-700 ${timelineProgress >= 0.9 ? 'bg-white scale-110' : 'bg-gray-600'}`}>
-                    <span className={`text-sm font-bold transition-colors duration-700 ${timelineProgress >= 0.9 ? 'text-black' : 'text-gray-400'}`}>4</span>
+                    <span className={`text-sm font-normal transition-colors duration-700 ${timelineProgress >= 0.9 ? 'text-black' : 'text-gray-400'}`}>4</span>
                   </div>
                   <div className="w-1/2 pl-8">
                     <div className="bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-700">
-                      <h3 className="text-xl font-bold text-white mb-2">EXECUÇÃO</h3>
+                      <h3 className="text-xl font-normal text-white mb-2">EXECUÇÃO</h3>
                       <p className="text-gray-300">
                         Implantação do programa na empresa de forma estruturada.
                       </p>
@@ -896,7 +896,7 @@ export default function ParceriasTributarias() {
             <div className="block md:hidden mt-10">
               <Button 
                 size="lg"
-                className="bg-[#2bee3597] hover:bg-[#24a92c] text-black font-bold px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full"
+                className="bg-[#2bee3597] hover:bg-[#24a92c] text-black font-normal px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full"
                 onClick={() => scrollToSection("contato")}
               >
                 FALE COM ESPECIALISTA AGORA
