@@ -358,8 +358,8 @@ export default function ParceriasTributarias() {
                 {/* // [cursor-edit] Container da imagem integrada ao fundo */}
                 <div className="relative w-full max-w-lg lg:max-w-xl mx-auto overflow-hidden">
                   {/* Título impactante sobreposto - mobile */}
-                  {/* // [cursor-edit] título mobile posicionado mais acima */}
-                  <div className="absolute top-0 left-0 right-0 z-20 block lg:hidden px-6 pt-2">
+                  {/* // [cursor-edit] título mobile centralizado na imagem */}
+                  <div className="absolute top-3/4 left-0 right-0 z-20 block lg:hidden px-6 transform -translate-y-1/2">
                     <div className="text-center">
                       <h3 className="font-bebas text-xl sm:text-2xl md:text-3xl font-normal text-white leading-tight drop-shadow-2xl tracking-widest uppercase">
                         SUA EMPRESA PODE ESTAR <span className="text-[#e2ba4b] font-normal">PERDENDO DINHEIRO</span>
@@ -367,8 +367,8 @@ export default function ParceriasTributarias() {
                     </div>
                   </div>
 
-                  {/* Gradiente sutil apenas no mobile para legibilidade do texto */}
-                  <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-black/40 to-transparent z-10 lg:hidden"></div>
+                  {/* Gradiente sutil no centro da imagem para legibilidade do texto mobile */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-transparent z-10 lg:hidden"></div>
                   
                   {/* // [cursor-edit] Imagem integrada ao fundo sem divisórias */}
                   <div className="relative">
