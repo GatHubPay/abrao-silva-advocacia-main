@@ -355,8 +355,8 @@ export default function ParceriasTributarias() {
                   </h3>
                 </div>
 
-                {/* Container da imagem com fundo transparente */}
-                <div className="relative w-full max-w-lg lg:max-w-xl mx-auto">
+                {/* // [cursor-edit] Container da imagem integrada ao fundo */}
+                <div className="relative w-full max-w-lg lg:max-w-xl mx-auto overflow-hidden">
                   {/* Título impactante sobreposto - mobile */}
                   {/* // [cursor-edit] título mobile posicionado mais acima */}
                   <div className="absolute top-0 left-0 right-0 z-20 block lg:hidden px-6 pt-2">
@@ -367,21 +367,21 @@ export default function ParceriasTributarias() {
                     </div>
                   </div>
 
-                  {/* Gradientes suaves apenas no mobile para não interferir na transparência */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-black via-black/30 to-transparent opacity-60 z-10 lg:hidden"></div>
-                  <div className="absolute inset-0 bg-gradient-to-l from-black via-black/30 to-transparent opacity-60 z-10 lg:hidden"></div>
+                  {/* Gradiente sutil apenas no mobile para legibilidade do texto */}
+                  <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-black/40 to-transparent z-10 lg:hidden"></div>
                   
-                  {/* // [cursor-edit] Imagem com fundo transparente preservado */}
-                  <div className="relative bg-transparent">
+                  {/* // [cursor-edit] Imagem integrada ao fundo sem divisórias */}
+                  <div className="relative">
                     <Image 
                       src="/dr/leaodr.png"
                       alt="Abrão & Silva Advocacia - Especialista em Direito Tributário"
                       width={600}
                       height={700}
-                      className="w-full h-auto object-contain drop-shadow-2xl"
+                      className="w-full h-auto object-contain"
                       style={{ 
-                        filter: 'drop-shadow(0 25px 25px rgba(0, 0, 0, 0.5))',
-                        background: 'transparent'
+                        filter: 'drop-shadow(0 25px 25px rgba(0, 0, 0, 0.3))',
+                        background: 'transparent',
+                        mixBlendMode: 'normal'
                       }}
                       priority={true}
                     />
