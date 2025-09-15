@@ -329,7 +329,7 @@ export default function ParceriasTributarias() {
                   
                   <p className="text-base text-gray-300 leading-relaxed">
                     Parcerias inteligentes para regularidade fiscal, recuperação de créditos tributários e redução real da carga tributária. 
-                    <span className="text-[#e2ba4b] font-bold">Mais de R$ 113 milhões já economizados</span> para empresas em todo o Brasil.
+                    <span className="text-[#e2ba4b] font-bold">Mais de R$ <span className="text-[#e2ba4b] font-bold">113</span> milhões já <span className="font-bold">economizados</span></span> para empresas em todo o Brasil.
                   </p>
                 </div>
 
@@ -431,9 +431,9 @@ export default function ParceriasTributarias() {
               <div className="bg-gray-800 rounded-2xl p-8 md:p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <div className="text-3xl md:text-4xl lg:text-5xl font-normal text-white mb-2">
                   {/* // [cursor-edit] contador animado */}
-                  <CountUpOnView end={10} prefix="+" />
+                  <CountUpOnView end={10} prefix="+" className="text-[#e2ba4b]" />
                 </div>
-                <p className="text-gray-300 text-base md:text-lg">Anos de Experiência</p>
+                <p className="text-gray-300 text-base md:text-lg"><span className="font-bold">Anos</span> de <span className="font-bold">Experiência</span></p>
               </div>
               
              
@@ -441,17 +441,17 @@ export default function ParceriasTributarias() {
               <div className="bg-gray-800 rounded-2xl p-8 md:p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <div className="text-3xl md:text-4xl lg:text-5xl font-normal text-white mb-2">
                   {/* // [cursor-edit] contador animado */}
-                  <CountUpOnView end={3000} prefix="+" />
+                  <CountUpOnView end={3000} prefix="+" className="text-[#e2ba4b]" />
                 </div>
-                <p className="text-gray-300 text-base md:text-lg"> Contatos Efetivos</p>
+                <p className="text-gray-300 text-base md:text-lg"> <span className="font-bold">Contatos</span> <span className="font-bold">Efetivos</span></p>
               </div>
 
               <div className="bg-gray-800 rounded-2xl p-8 md:p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <div className="text-3xl md:text-4xl lg:text-5xl font-normal text-white mb-2">
                   {/* // [cursor-edit] contador animado */}
-                  <CountUpOnView end={2} prefix="+" suffix=" BI" />
+                  <CountUpOnView end={2} prefix="+" suffix=" BI" className="text-[#e2ba4b]" />
                 </div>
-                <p className="text-gray-300 text-base md:text-lg">De Créditos Recuperados</p>
+                <p className="text-gray-300 text-base md:text-lg">De <span className="font-bold">Créditos</span> <span className="font-bold">Recuperados</span></p>
               </div>
 
             </div>
@@ -630,7 +630,7 @@ export default function ParceriasTributarias() {
                 diversos setores. Nosso diferencial está na comunicação transparente, 
                 agilidade nas entregas e parcerias duradouras, sempre com foco em 
                 segurança jurídica e impacto positivo no caixa da empresa. Com 
-                centenas de empresas atendidas e mais de R$ 113 milhões em economia 
+                <span className="font-bold">centenas</span> de empresas atendidas e mais de R$ <span className="text-[#e2ba4b] font-bold">113</span> milhões em <span className="font-bold">economia</span> 
                 efetiva, nos orgulhamos de entregar resultados consistentes e duradouros.
               </p>
               <div className="flex justify-center">
@@ -779,10 +779,10 @@ export default function ParceriasTributarias() {
                 <div className="bg-gray-800 rounded-2xl p-6 ">
                   <div className="flex items-center mb-4">
                     <div className="bg-white rounded-full w-8 h-8 flex items-center justify-center mr-4">
-                      <span className="text-sm font-normal text-black">1</span>
+                      <span className="text-sm font-bold text-[#e2ba4b]">1</span>
                     </div>
                   </div>
-                  <h3 className="text-lg font-normal text-white mb-2">CONTATO NO WHATSAPP</h3>
+                  <h3 className="text-lg font-bold text-white mb-2"><span className="text-[#e2ba4b]">CONTATO</span> NO <span className="text-[#e2ba4b]">WHATSAPP</span></h3>
                   <p className="text-gray-300 text-sm">
                     Você entra em contato conosco através de um dos botões disponíveis no site
                   </p>
@@ -792,10 +792,10 @@ export default function ParceriasTributarias() {
                 <div className="bg-gray-800 rounded-2xl p-6 ">
                   <div className="flex items-center mb-4">
                     <div className="bg-white rounded-full w-8 h-8 flex items-center justify-center mr-4">
-                      <span className="text-sm font-normal text-black">2</span>
+                      <span className="text-sm font-bold text-[#e2ba4b]">2</span>
                     </div>
                   </div>
-                  <h3 className="text-lg font-normal text-white mb-2">DIAGNÓSTICO</h3>
+                  <h3 className="text-lg font-bold text-white mb-2"><span className="text-[#e2ba4b]">DIAGNÓSTICO</span></h3>
                   <p className="text-gray-300 text-sm">
                     Nossos especialistas fazem análise minuciosa da sua empresa, em busca de 
                     melhores práticas de mercado.
@@ -806,10 +806,10 @@ export default function ParceriasTributarias() {
                 <div className="bg-gray-800 rounded-2xl p-6 ">
                   <div className="flex items-center mb-4">
                     <div className="bg-white rounded-full w-8 h-8 flex items-center justify-center mr-4">
-                      <span className="text-sm font-normal text-black">3</span>
+                      <span className="text-sm font-bold text-[#e2ba4b]">3</span>
                     </div>
                   </div>
-                  <h3 className="text-lg font-normal text-white mb-2">ESTRUTURAÇÃO</h3>
+                  <h3 className="text-lg font-bold text-white mb-2"><span className="text-[#e2ba4b]">ESTRUTURAÇÃO</span></h3>
                   <p className="text-gray-300 text-sm">
                     Será estruturado um programa personalizado para sua empresa.
                   </p>
@@ -819,10 +819,10 @@ export default function ParceriasTributarias() {
                 <div className="bg-gray-800 rounded-2xl p-6 ">
                   <div className="flex items-center mb-4">
                     <div className="bg-white rounded-full w-8 h-8 flex items-center justify-center mr-4">
-                      <span className="text-sm font-normal text-black">4</span>
+                      <span className="text-sm font-bold text-[#e2ba4b]">4</span>
                     </div>
                   </div>
-                  <h3 className="text-lg font-normal text-white mb-2">EXECUÇÃO</h3>
+                  <h3 className="text-lg font-bold text-white mb-2"><span className="text-[#e2ba4b]">EXECUÇÃO</span></h3>
                   <p className="text-gray-300 text-sm">
                     Implantação do programa na empresa de forma estruturada.
                   </p>
@@ -847,14 +847,14 @@ export default function ParceriasTributarias() {
                 <div className="relative flex items-center mb-12">
                   <div className="w-1/2 pr-8 text-right">
                     <div className="bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-700">
-                      <h3 className="text-xl font-normal text-white mb-2">CONTATO NO WHATSAPP</h3>
+                      <h3 className="text-xl font-bold text-white mb-2"><span className="text-[#e2ba4b]">CONTATO</span> NO <span className="text-[#e2ba4b]">WHATSAPP</span></h3>
                       <p className="text-gray-300">
                         Você entra em contato conosco através de um dos botões disponíveis no site
                       </p>
                     </div>
                   </div>
                   <div className={`absolute left-1/2 transform -translate-x-1/2 w-8 h-8 border-4 border-gray-600 rounded-full flex items-center justify-center transition-all duration-700 ${timelineProgress >= 0.15 ? 'bg-white scale-110' : 'bg-gray-600'}`}>
-                    <span className={`text-sm font-normal transition-colors duration-700 ${timelineProgress >= 0.15 ? 'text-black' : 'text-gray-400'}`}>1</span>
+                    <span className={`text-sm font-bold transition-colors duration-700 ${timelineProgress >= 0.15 ? 'text-[#e2ba4b]' : 'text-gray-400'}`}>1</span>
                   </div>
                   <div className="w-1/2 pl-8"></div>
                 </div>
@@ -863,11 +863,11 @@ export default function ParceriasTributarias() {
                 <div className="relative flex items-center mb-12">
                   <div className="w-1/2 pr-8"></div>
                   <div className={`absolute left-1/2 transform -translate-x-1/2 w-8 h-8 border-4 border-gray-600 rounded-full flex items-center justify-center transition-all duration-700 ${timelineProgress >= 0.4 ? 'bg-white scale-110' : 'bg-gray-600'}`}>
-                    <span className={`text-sm font-normal transition-colors duration-700 ${timelineProgress >= 0.4 ? 'text-black' : 'text-gray-400'}`}>2</span>
+                    <span className={`text-sm font-bold transition-colors duration-700 ${timelineProgress >= 0.4 ? 'text-[#e2ba4b]' : 'text-gray-400'}`}>2</span>
                   </div>
                   <div className="w-1/2 pl-8">
                     <div className="bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-700">
-                      <h3 className="text-xl font-normal text-white mb-2">DIAGNÓSTICO</h3>
+                      <h3 className="text-xl font-bold text-white mb-2"><span className="text-[#e2ba4b]">DIAGNÓSTICO</span></h3>
                       <p className="text-gray-300">
                         Nossos especialistas fazem análise minuciosa da sua empresa, em busca de 
                         melhores práticas de mercado.
@@ -880,14 +880,14 @@ export default function ParceriasTributarias() {
                 <div className="relative flex items-center mb-12">
                   <div className="w-1/2 pr-8 text-right">
                     <div className="bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-700">
-                      <h3 className="text-xl font-normal text-white mb-2">ESTRUTURAÇÃO</h3>
+                      <h3 className="text-xl font-bold text-white mb-2"><span className="text-[#e2ba4b]">ESTRUTURAÇÃO</span></h3>
                       <p className="text-gray-300">
                         Será estruturado um programa personalizado para sua empresa.
                       </p>
                     </div>
                   </div>
                   <div className={`absolute left-1/2 transform -translate-x-1/2 w-8 h-8 border-4 border-gray-600 rounded-full flex items-center justify-center transition-all duration-700 ${timelineProgress >= 0.65 ? 'bg-white scale-110' : 'bg-gray-600'}`}>
-                    <span className={`text-sm font-normal transition-colors duration-700 ${timelineProgress >= 0.65 ? 'text-black' : 'text-gray-400'}`}>3</span>
+                    <span className={`text-sm font-bold transition-colors duration-700 ${timelineProgress >= 0.65 ? 'text-[#e2ba4b]' : 'text-gray-400'}`}>3</span>
                   </div>
                   <div className="w-1/2 pl-8"></div>
                 </div>
@@ -896,11 +896,11 @@ export default function ParceriasTributarias() {
                 <div className="relative flex items-center">
                   <div className="w-1/2 pr-8"></div>
                   <div className={`absolute left-1/2 transform -translate-x-1/2 w-8 h-8 border-4 border-gray-600 rounded-full flex items-center justify-center transition-all duration-700 ${timelineProgress >= 0.9 ? 'bg-white scale-110' : 'bg-gray-600'}`}>
-                    <span className={`text-sm font-normal transition-colors duration-700 ${timelineProgress >= 0.9 ? 'text-black' : 'text-gray-400'}`}>4</span>
+                    <span className={`text-sm font-bold transition-colors duration-700 ${timelineProgress >= 0.9 ? 'text-[#e2ba4b]' : 'text-gray-400'}`}>4</span>
                   </div>
                   <div className="w-1/2 pl-8">
                     <div className="bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-700">
-                      <h3 className="text-xl font-normal text-white mb-2">EXECUÇÃO</h3>
+                      <h3 className="text-xl font-bold text-white mb-2"><span className="text-[#e2ba4b]">EXECUÇÃO</span></h3>
                       <p className="text-gray-300">
                         Implantação do programa na empresa de forma estruturada.
                       </p>
