@@ -323,8 +323,8 @@ export default function ParceriasTributarias() {
                 {/* Título Principal */}
                 <div className="space-y-4">
                   <h2 className="font-bebas text-2xl md:text-3xl lg:text-4xl font-normal leading-tight tracking-widest uppercase">
-                    Sua empresa pode estar <span className="text-[#e2ba4b] font-bold">pagando mais impostos</span> do que deveria. 
-                    Descubra como <span className="text-[#e2ba4b] font-bold">reverter isso</span> com segurança e agilidade.
+                    Sua <span className="text-[#e2ba4b] font-bold">empresa</span> pode estar <span className="text-[#e2ba4b] font-bold">pagando mais impostos</span> do que deveria. 
+                    Descubra como <span className="text-[#e2ba4b] font-bold">reverter isso</span> com <span className="text-[#e2ba4b] font-bold">segurança</span> e agilidade.
                   </h2>
                   
                   <p className="text-base text-gray-300 leading-relaxed">
@@ -594,7 +594,7 @@ export default function ParceriasTributarias() {
           <div className="relative z-10 mx-auto px-10 md:px-6 py-16">
             <div className="text-center mb-16">
               <h2 className="font-bebas text-3xl md:text-4xl font-normal text-white mb-4 tracking-widest uppercase">
-                Quem irá trabalhar ao seu favor
+                Quem irá <span className="text-[#e2ba4b] font-bold">trabalhar</span> ao seu <span className="text-[#e2ba4b] font-bold">favor</span>
               </h2>
               <div className="w-24 h-1 bg-[#e2ba4b] mx-auto mt-4"></div>
               <p className="text-lg text-gray-300 mt-4 uppercase tracking-widestr">
@@ -604,7 +604,7 @@ export default function ParceriasTributarias() {
 
             <div className="max-w-4xl mx-auto text-center">
               <h3 className="font-bebas text-2xl md:text-3xl font-normal text-white mb-6 tracking-widest uppercase">
-                Abrão e Silva Advogados Associados
+                <span className="text-[#e2ba4b] font-bold">Abrão e Silva</span> Advogados Associados
               </h3>
               <p className="text-lg text-gray-300 leading-relaxed mb-8">
                 Somos um time de especialistas em direito tributário com atuação 
@@ -635,7 +635,7 @@ export default function ParceriasTributarias() {
           <div className=" mx-auto px-10 md:px-6">
             <div className="text-center mb-16">
               <h2 className="font-bebas text-3xl md:text-4xl font-normal text-white mb-4 tracking-widest uppercase">
-               Áreas de Atuação
+               <span className="text-[#e2ba4b] font-bold">Áreas</span> de <span className="text-[#e2ba4b] font-bold">Atuação</span>
               </h2>
               <p className="text-sm text-gray-300 max-w-3xl mx-auto">
                 Especialistas nas principais frentes de economia tributária
@@ -727,7 +727,7 @@ export default function ParceriasTributarias() {
           <div className=" mx-auto px-10 md:px-6">
             <div className="text-center mb-12">
               <h2 className="font-bebas text-3xl md:text-4xl font-normal text-white mb-4 tracking-widest uppercase">
-                Galeria de Vídeos
+                <span className="text-[#e2ba4b] font-bold">Galeria</span> de <span className="text-[#e2ba4b] font-bold">Vídeos</span>
               </h2>
             </div>
             
@@ -749,7 +749,7 @@ export default function ParceriasTributarias() {
           <div className=" mx-auto px-10 md:px-6">
             <div className="text-center mb-16">
               <h2 className="font-bebas text-3xl md:text-4xl font-normal text-white mb-4 tracking-widest uppercase">
-                Como Funciona Nossa Análise ?
+                Como Funciona Nossa <span className="text-[#e2ba4b] font-bold">Análise</span> ?
               </h2>
             </div>
 
