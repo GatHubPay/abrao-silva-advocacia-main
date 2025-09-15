@@ -350,6 +350,15 @@ export default function ParceriasTributarias() {
                 {/* // [cursor-edit] */}
                 {/* Título acima da imagem - Desktop */}
                 <div className="hidden lg:block mb-6 text-center">
+                  <div className="flex items-center justify-center mb-4">
+                    <Image 
+                      src="/logo.png"
+                      alt="Abrão & Silva Advocacia"
+                      width={120}
+                      height={120}
+                      className="mr-4"
+                    />
+                  </div>
                   <h3 className="font-bebas text-3xl md:text-4xl lg:text-5xl font-normal text-white leading-tight drop-shadow-2xl tracking-widest uppercase">
                     SUA EMPRESA PODE ESTAR <span className="text-[#e2ba4b] font-bold">PERDENDO DINHEIRO</span>
                   </h3>
@@ -361,6 +370,15 @@ export default function ParceriasTributarias() {
                   {/* // [cursor-edit] título mobile centralizado na imagem */}
                   <div className="absolute top-3/4 left-0 right-0 z-20 block lg:hidden px-6 transform -translate-y-1/2">
                     <div className="text-center">
+                      <div className="flex items-center justify-center mb-2">
+                        <Image 
+                          src="/logo.png"
+                          alt="Abrão & Silva Advocacia"
+                          width={200}
+                          height={200}
+                          className="mr-2"
+                        />
+                      </div>
                       <h3 className="font-bebas text-xl sm:text-2xl md:text-3xl font-normal text-white leading-tight drop-shadow-2xl tracking-widest uppercase">
                         SUA EMPRESA PODE ESTAR <span className="text-[#e2ba4b] font-bold">PERDENDO DINHEIRO</span>
                       </h3>
