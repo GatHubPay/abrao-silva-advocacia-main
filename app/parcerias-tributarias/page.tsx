@@ -601,7 +601,7 @@ export default function ParceriasTributarias() {
               src="/dr.png"
               alt="Abrão e Silva Advogados Associados"
               fill
-              className="object-cover object-top opacity-60 grayscale"
+              className="object-cover object-top opacity-40 grayscale"
               priority={true}
             />
             {/* Overlay escuro para melhorar legibilidade do texto */}
