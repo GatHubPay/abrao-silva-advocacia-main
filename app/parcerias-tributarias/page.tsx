@@ -323,13 +323,13 @@ export default function ParceriasTributarias() {
                 {/* Título Principal */}
                 <div className="space-y-4">
                   <h2 className="font-bebas text-2xl md:text-3xl lg:text-4xl font-normal leading-tight tracking-widest uppercase">
-                    Sua empresa pode estar <span className="text-[#e2ba4b]">pagando mais impostos</span> do que deveria. 
-                    Descubra como <span className="text-[#e2ba4b]">reverter isso</span> com segurança e agilidade.
+                    Sua empresa pode estar <span className="text-[#e2ba4b] font-bold">pagando mais impostos</span> do que deveria. 
+                    Descubra como <span className="text-[#e2ba4b] font-bold">reverter isso</span> com segurança e agilidade.
                   </h2>
                   
                   <p className="text-base text-gray-300 leading-relaxed">
                     Parcerias inteligentes para regularidade fiscal, recuperação de créditos tributários e redução real da carga tributária. 
-                    <span className="text-[#e2ba4b] font-semibold">Mais de R$ 113 milhões já economizados</span> para empresas em todo o Brasil.
+                    <span className="text-[#e2ba4b] font-bold">Mais de R$ 113 milhões já economizados</span> para empresas em todo o Brasil.
                   </p>
                 </div>
 
@@ -351,7 +351,7 @@ export default function ParceriasTributarias() {
                 {/* Título acima da imagem - Desktop */}
                 <div className="hidden lg:block mb-6 text-center">
                   <h3 className="font-bebas text-3xl md:text-4xl lg:text-5xl font-normal text-white leading-tight drop-shadow-2xl tracking-widest uppercase">
-                    SUA EMPRESA PODE ESTAR <span className="text-[#e2ba4b] font-normal">PERDENDO DINHEIRO</span>
+                    SUA EMPRESA PODE ESTAR <span className="text-[#e2ba4b] font-bold">PERDENDO DINHEIRO</span>
                   </h3>
                 </div>
 
@@ -362,7 +362,7 @@ export default function ParceriasTributarias() {
                   <div className="absolute top-3/4 left-0 right-0 z-20 block lg:hidden px-6 transform -translate-y-1/2">
                     <div className="text-center">
                       <h3 className="font-bebas text-xl sm:text-2xl md:text-3xl font-normal text-white leading-tight drop-shadow-2xl tracking-widest uppercase">
-                        SUA EMPRESA PODE ESTAR <span className="text-[#e2ba4b] font-normal">PERDENDO DINHEIRO</span>
+                        SUA EMPRESA PODE ESTAR <span className="text-[#e2ba4b] font-bold">PERDENDO DINHEIRO</span>
                       </h3>
                     </div>
                   </div>
@@ -450,10 +450,10 @@ export default function ParceriasTributarias() {
                 ÁREAS DE ATUAÇÃO DO ESCRITÓRIO
               </p>
               <h2 className="font-bebas text-3xl md:text-4xl font-normal text-white mb-4 tracking-widest uppercase">
-                Como Funciona Nossa Atuação / Vantagens
+                Como Funciona Nossa <span className="text-[#e2ba4b] font-bold">Atuação</span> Vantagens
               </h2>
               <p className="text-lg text-gray-300 max-w-4xl mx-auto">
-                Por que confiar em nossa atuação tributária?
+                Por que <span className="text-[#e2ba4b] font-bold">confiar</span> em nossa <span className="text-[#e2ba4b] font-bold">atuação tributária</span>?
               </p>
             </div>
 
