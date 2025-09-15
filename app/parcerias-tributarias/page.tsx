@@ -337,7 +337,7 @@ export default function ParceriasTributarias() {
                 <div className="pt-4 flex justify-center lg:justify-start">
                   <Button 
                     size="lg"
-                    className="bg-[#2bee3597] hover:bg-[#24a92c] text-black font-normal px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full md:w-auto"
+                    className="bg-[#e2ba4b] hover:bg-[#d4a93a] text-black font-normal px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full md:w-auto"
                     onClick={() => scrollToSection("contato")}
                   >
                     QUERO UMA ANÁLISE GRATUITA
@@ -582,7 +582,7 @@ export default function ParceriasTributarias() {
               >
                 <Button 
                   size="lg"
-                  className="bg-[#2bee3597] hover:bg-[#24a92c] text-black font-normal px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full md:w-auto"
+                  className="bg-[#e2ba4b] hover:bg-[#d4a93a] text-black font-normal px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full md:w-auto"
                   onClick={() => scrollToSection("contato")}
                 >
                   <MessageSquare className="mr-2 h-5 w-5 flex-shrink-0" />
@@ -636,7 +636,7 @@ export default function ParceriasTributarias() {
               <div className="flex justify-center">
                 <Button 
                   size="lg"
-                  className="bg-[#2bee3597] hover:bg-[#24a92c] text-black font-normal px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full md:w-auto"
+                  className="bg-[#e2ba4b] hover:bg-[#d4a93a] text-black font-normal px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full md:w-auto"
                   onClick={() => scrollToSection("contato")}
                 >
                   <MessageSquare className="mr-2 h-5 w-5 flex-shrink-0" />
@@ -726,7 +726,7 @@ export default function ParceriasTributarias() {
             <div className="text-center">
               <Button 
                 size="lg"
-                  className="bg-[#2bee3597] hover:bg-[#24a92c] text-black font-normal px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full md:w-auto"
+                  className="bg-[#e2ba4b] hover:bg-[#d4a93a] text-black font-normal px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full md:w-auto"
                 onClick={() => scrollToSection("contato")}
               >
                 <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
@@ -752,7 +752,7 @@ export default function ParceriasTributarias() {
             <div className="text-center">
               <Button 
                 size="lg"
-                  className="bg-[#2bee3597] hover:bg-[#24a92c] text-black font-normal px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full md:w-auto"
+                  className="bg-[#e2ba4b] hover:bg-[#d4a93a] text-black font-normal px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full md:w-auto"
                 onClick={() => scrollToSection("contato")}
               >
                 <MessageSquare className="mr-1 md:mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
@@ -914,7 +914,7 @@ export default function ParceriasTributarias() {
             <div className="block md:hidden mt-10">
               <Button 
                 size="lg"
-                className="bg-[#2bee3597] hover:bg-[#24a92c] text-black font-normal px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full"
+                className="bg-[#e2ba4b] hover:bg-[#d4a93a] text-black font-normal px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full"
                 onClick={() => scrollToSection("contato")}
               >
                 FALE COM ESPECIALISTA AGORA
@@ -944,13 +944,11 @@ export default function ParceriasTributarias() {
                   <Image 
                     src="/logo.png"
                     alt="Abrão & Silva Advocacia"
-                    width={50}
-                    height={50}
+                    width={180}
+                    height={120}
                     className="mr-3"
                   />
-                  <h3 className="font-bebas text-2xl text-white tracking-wider">
-                    <span className="text-[#e2ba4b]">ABRÃO</span> & <span className="text-[#e2ba4b]">SILVA</span>
-                  </h3>
+                  
                 </div>
                 <p className="text-gray-300 text-sm leading-relaxed">
                   Especialistas em <span className="font-bold text-[#e2ba4b]">direito tributário</span> com mais de 
