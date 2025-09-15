@@ -663,61 +663,61 @@ export default function ParceriasTributarias() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
               {/* Card 1 */}
               <div className="bg-gray-800 rounded-2xl p-6 hover:bg-gray-700 transition-all duration-300 hover:scale-105 border border-gray-700">
-                <h3 className="text-white font-normal text-lg mb-4">
-                  Recuperação de Tributos
+                <h3 className="text-white font-bold text-lg mb-4">
+                  <span className="text-[#e2ba4b]">Recuperação</span> de <span className="text-[#e2ba4b]">Tributos</span>
                 </h3>
                 <p className="text-gray-300 text-sm">
-                  PIS, COFINS, INSS, IRPJ e CSLL pagos indevidamente
+                  <span className="font-bold">PIS</span>, <span className="font-bold">COFINS</span>, <span className="font-bold">INSS</span>, <span className="font-bold">IRPJ</span> e <span className="font-bold">CSLL</span> pagos <span className="font-bold">indevidamente</span>
                 </p>
               </div>
 
               {/* Card 2 */}
               <div className="bg-gray-800 rounded-2xl p-6 hover:bg-gray-700 transition-all duration-300 hover:scale-105 border border-gray-700">
-                <h3 className="text-white font-normal text-lg mb-4">
-                  Renegociação Fiscal
+                <h3 className="text-white font-bold text-lg mb-4">
+                  <span className="text-[#e2ba4b]">Renegociação</span> <span className="text-[#e2ba4b]">Fiscal</span>
                 </h3>
                 <p className="text-gray-300 text-sm">
-                  Com a Receita Federal e PGFN
+                  Com a <span className="font-bold">Receita Federal</span> e <span className="font-bold">PGFN</span>
                 </p>
               </div>
 
               {/* Card 3 */}
               <div className="bg-gray-800 rounded-2xl p-6 hover:bg-gray-700 transition-all duration-300 hover:scale-105 border border-gray-700">
-                <h3 className="text-white font-normal text-lg mb-4">
-                  Transações Tributárias
+                <h3 className="text-white font-bold text-lg mb-4">
+                  <span className="text-[#e2ba4b]">Transações</span> <span className="text-[#e2ba4b]">Tributárias</span>
                 </h3>
                 <p className="text-gray-300 text-sm">
-                  Programas especiais de parcelamento
+                  <span className="font-bold">Programas especiais</span> de <span className="font-bold">parcelamento</span>
                 </p>
               </div>
 
               {/* Card 4 */}
               <div className="bg-gray-800 rounded-2xl p-6 hover:bg-gray-700 transition-all duration-300 hover:scale-105 border border-gray-700">
-                <h3 className="text-white font-normal text-lg mb-4">
-                  Planejamento Estratégico
+                <h3 className="text-white font-bold text-lg mb-4">
+                  <span className="text-[#e2ba4b]">Planejamento</span> <span className="text-[#e2ba4b]">Estratégico</span>
                 </h3>
                 <p className="text-gray-300 text-sm">
-                  Tributário personalizado
+                  <span className="font-bold">Tributário personalizado</span>
                 </p>
               </div>
 
               {/* Card 5 */}
               <div className="bg-gray-800 rounded-2xl p-6 hover:bg-gray-700 transition-all duration-300 hover:scale-105 border border-gray-700">
-                <h3 className="text-white font-normal text-lg mb-4">
-                  Regularidade Fiscal
+                <h3 className="text-white font-bold text-lg mb-4">
+                  <span className="text-[#e2ba4b]">Regularidade</span> <span className="text-[#e2ba4b]">Fiscal</span>
                 </h3>
                 <p className="text-gray-300 text-sm">
-                  Certidões negativas e compliance
+                  <span className="font-bold">Certidões negativas</span> e <span className="font-bold">compliance</span>
                 </p>
               </div>
 
               {/* Card 6 */}
               <div className="bg-gray-800 rounded-2xl p-6 hover:bg-gray-700 transition-all duration-300 hover:scale-105 border border-gray-700">
-                <h3 className="text-white font-normal text-lg mb-4">
-                  Atendimento Completo
+                <h3 className="text-white font-bold text-lg mb-4">
+                  <span className="text-[#e2ba4b]">Atendimento</span> <span className="text-[#e2ba4b]">Completo</span>
                 </h3>
                 <p className="text-gray-300 text-sm">
-                  Empresas de todos os portes e segmentos
+                  <span className="font-bold">Empresas</span> de todos os <span className="font-bold">portes</span> e <span className="font-bold">segmentos</span>
                 </p>
               </div>
             </div>
