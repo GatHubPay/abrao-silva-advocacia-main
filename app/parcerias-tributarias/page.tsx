@@ -928,6 +928,94 @@ export default function ParceriasTributarias() {
         {/* Perguntas realizadas com frequência */}
    
         {/* Footer */}
+        <footer className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black py-16 overflow-hidden">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23e2ba4b%22%20fill-opacity%3D%220.03%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+          
+          {/* Accent Line */}
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#e2ba4b] to-transparent"></div>
+          
+          <div className="relative z-10 mx-auto px-10 md:px-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+              
+              {/* Logo e Descrição */}
+              <div className="text-center md:text-left">
+                <div className="flex items-center justify-center md:justify-start mb-4">
+                  <Image 
+                    src="/logo.png"
+                    alt="Abrão & Silva Advocacia"
+                    width={50}
+                    height={50}
+                    className="mr-3"
+                  />
+                  <h3 className="font-bebas text-2xl text-white tracking-wider">
+                    <span className="text-[#e2ba4b]">ABRÃO</span> & <span className="text-[#e2ba4b]">SILVA</span>
+                  </h3>
+                </div>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Especialistas em <span className="font-bold text-[#e2ba4b]">direito tributário</span> com mais de 
+                  <span className="font-bold text-[#e2ba4b]">R$ 2 bilhões</span> em créditos recuperados.
+                </p>
+              </div>
+              
+              {/* Contato */}
+              <div className="text-center md:text-left">
+                <h4 className="font-bold text-white text-lg mb-4 flex items-center justify-center md:justify-start">
+                  <Phone className="h-5 w-5 text-[#e2ba4b] mr-2" />
+                  <span className="text-[#e2ba4b]">CONTATO</span>
+                </h4>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-center md:justify-start text-gray-300">
+                    <MessageSquare className="h-4 w-4 text-[#e2ba4b] mr-2 flex-shrink-0" />
+                    <span className="text-sm">(62) 99912-8796</span>
+                  </div>
+                  <div className="flex items-center justify-center md:justify-start text-gray-300">
+                    <Mail className="h-4 w-4 text-[#e2ba4b] mr-2 flex-shrink-0" />
+                    <span className="text-sm">contato@abraoesilva.adv.br</span>
+                  </div>
+                  <div className="flex items-start justify-center md:justify-start text-gray-300">
+                    <MapPin className="h-4 w-4 text-[#e2ba4b] mr-2 flex-shrink-0 mt-0.5" />
+                    <span className="text-sm">Rua 100, Nº 35, Qd. F-17, Lt. 12<br />Setor Sul - Goiânia/GO</span>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Horário e CTA */}
+              <div className="text-center md:text-left">
+                <h4 className="font-bold text-white text-lg mb-4 flex items-center justify-center md:justify-start">
+                  <Clock className="h-5 w-5 text-[#e2ba4b] mr-2" />
+                  <span className="text-[#e2ba4b]">ATENDIMENTO</span>
+                </h4>
+                <div className="space-y-3 mb-6">
+                  <p className="text-gray-300 text-sm">
+                    <span className="font-bold">Segunda a Sexta</span><br />
+                    08:00 às 17:00
+                  </p>
+                </div>
+                <Button 
+                  size="sm"
+                  className="bg-[#e2ba4b] hover:bg-[#d4a93a] text-black font-bold px-4 py-2 text-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full md:w-auto"
+                >
+                  <MessageSquare className="mr-2 h-4 w-4" />
+                  FALE CONOSCO
+                </Button>
+              </div>
+            </div>
+            
+            {/* Linha Divisória */}
+            <div className="border-t border-gray-700 pt-8">
+              <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <p className="text-gray-400 text-sm mb-4 md:mb-0">
+                  © 2024 <span className="font-bold text-[#e2ba4b]">Abrão & Silva Advogados Associados</span>. Todos os direitos reservados.
+                </p>
+                <div className="flex space-x-6 text-sm text-gray-400">
+                  <span className="hover:text-[#e2ba4b] transition-colors cursor-pointer">Política de Privacidade</span>
+                  <span className="hover:text-[#e2ba4b] transition-colors cursor-pointer">Termos de Uso</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
        
       </main>
     </div>
